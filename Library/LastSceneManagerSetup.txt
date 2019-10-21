@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Game-JumpShoot/GAME_JUMPSHOOT.unity
+- path: Assets/Game-HitHamster/GAME_HITHAMSTER.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

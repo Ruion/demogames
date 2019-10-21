@@ -6,12 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game-Honda/Scenes/HOME.unity
-    guid: dd6b293254d4e7f488dbf2e1f468eec8
+    path: Assets/Game-HitHamster/HOME_HITHAMSTER.unity
+    guid: c2b72eef37ed46344949cad3fce5b340
   - enabled: 1
-    path: Assets/Game-Honda/Scenes/GAME.unity
-    guid: 46a4e19f8b9890945b47a045db2cf918
-  - enabled: 1
-    path: Assets/Game-Honda/Scenes/SCORE.unity
-    guid: 0f15b6c718cea604ea06c77d17197ec7
+    path: Assets/Game-HitHamster/GAME_HITHAMSTER.unity
+    guid: 672618a4cd7653f488081a607c30beed
   m_configObjects: {}
