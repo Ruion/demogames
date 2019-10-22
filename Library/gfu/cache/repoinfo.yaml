@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2019-10-22T11:01:04.282+08:00
-  initializedAtString: 2019-10-22T11:01:04.282+08:00
+  lastUpdatedAtString: 2019-10-22T12:49:00.613+08:00
+  initializedAtString: 2019-10-22T12:49:00.613+08:00
   currentGitRemote:
     name: origin
     url: https://github.com/Ruion/demogames.git

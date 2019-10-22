@@ -716,7 +716,12 @@ PrefabInstance:
     - target: {fileID: 188203586488382660, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: serverAddress
-      value: http://192.168.0.28/jumpshoot/submit-data.php
+      value: http://localhost/jumpshoot/jumpshoot/submit-data.php
+      objectReference: {fileID: 0}
+    - target: {fileID: 188203586488382660, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: serverGetDataAddress
+      value: http://localhost/jumpshoot/jumpshoot/submit-data.php
       objectReference: {fileID: 0}
     - target: {fileID: 6427371689844106663, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -836,7 +841,7 @@ PrefabInstance:
     - target: {fileID: 218756497738917073, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_MethodName
-      value: DOPlay
+      value: DOPlayAllById
       objectReference: {fileID: 0}
     - target: {fileID: 218756497738917073, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -852,6 +857,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
       value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 218756497738917073, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 218756497738917073, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_Arguments.m_StringArgument
+      value: fadeOutRegistration
       objectReference: {fileID: 0}
     - target: {fileID: 185014424703867228, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -941,7 +956,7 @@ PrefabInstance:
     - target: {fileID: 185014424703867228, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: delays.Array.data[1]
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 185014424703867228, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -3422,7 +3437,7 @@ MonoBehaviour:
   animationType: 11
   targetType: 11
   forcedTargetType: 0
-  autoPlay: 1
+  autoPlay: 0
   useTargetAsV3: 0
   endValueFloat: 1.2
   endValueV3: {x: 0.6, y: 0.6, z: 0.6}
@@ -3878,7 +3893,7 @@ MonoBehaviour:
   targetGO: {fileID: 405384892}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 0.6
+  duration: 1
   easeType: 6
   easeCurve:
     serializedVersion: 2
@@ -3906,7 +3921,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   loopType: 0
   loops: 1
-  id: 0
+  id: fadeOutRegistration
   isRelative: 0
   isFrom: 0
   isIndependentUpdate: 0
@@ -3919,7 +3934,7 @@ MonoBehaviour:
   forcedTargetType: 2
   autoPlay: 0
   useTargetAsV3: 0
-  endValueFloat: 1
+  endValueFloat: 0
   endValueV3: {x: 0, y: 0, z: 0}
   endValueV2: {x: 0, y: 0}
   endValueColor: {r: 1, g: 1, b: 1, a: 1}

@@ -15,7 +15,7 @@ public class HamsterScoreManagerScript : MonoBehaviour {
 
 	void Start(){
         //UpdateScore();
-        sv.UpdateText(1);
+        sv.UpdateText(0);
     }
 	
 	public void AddScore(){

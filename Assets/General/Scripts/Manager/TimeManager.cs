@@ -10,7 +10,7 @@ public class TimeManager : MonoBehaviour {
         get { return second; }
         set { second = value; }
     }
-    public int second = 60;
+    public int second = 120;
     private int initialSecond;
 
     public bool isRealtime = true;
@@ -28,6 +28,14 @@ public class TimeManager : MonoBehaviour {
     {
         initialSecond = second;
         StartCoroutine(StartCountdown());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            second = 1;
+        }
     }
 
     public IEnumerator StartCountdown()

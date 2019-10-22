@@ -28,14 +28,16 @@ public class HamsterManagerScript : MonoBehaviour {
 		gameManager = GameObject.Find("GameManager").GetComponent<HamsterGameManagerScript>();
 	}
 
-	void Start(){
-		GeneratePrefabCoroutine();
-		GeneratePrefabCoroutine();
-	}
+    public void StartGame()
+    {
+        StartCoroutine(GeneratePrefab());
+        StartCoroutine(GeneratePrefab());
+       // GeneratePrefabCoroutine();
+    }
 
-	void GeneratePrefabCoroutine(){		
-		StartCoroutine(GeneratePrefab());
-	}
+	void GeneratePrefabCoroutine(){
+        StartCoroutine(GeneratePrefab());
+    }
 
 	public void RemovedInstance(){
 		currentInstance -= 1;
@@ -43,22 +45,32 @@ public class HamsterManagerScript : MonoBehaviour {
 	}
 
 	IEnumerator GeneratePrefab(){
-		while(gameManager.loseAlready() == false){
-			instanceFrequency = gameManager.getMaxLevel() - gameManager.getCurrentLevel();
-			yield return new WaitForSeconds(Mathf.Max(0,instanceFrequency + Random.Range(-spawnVariance,spawnVariance)));
+        while (gameManager.loseAlready() == false)
+        {
+            instanceFrequency = gameManager.getMaxLevel() - gameManager.getCurrentLevel();
 
-			// If still allow to spwn instance
-			if(currentInstance < maxInstance){
-				spawnedObject = objectPrefabs[Random.Range(0,objectPrefabs.Count)];
-				do{
-					spawnPoint = spawnPoints[Random.Range(0,spawnPoints.Count)];
-				}while(spawnPoint.transform.childCount > 1);
-			
-				currentInstance += 1;
-				position = spawnPoint.transform.position;
-				GameObject newObject = Instantiate(spawnedObject,position,Quaternion.identity);
-				newObject.transform.SetParent(spawnPoint.transform);
-			}
-		}	
+            float second = Mathf.Max(0, instanceFrequency + Random.Range(-spawnVariance, spawnVariance));
+            Debug.Log("waiting for " + second);
+
+            yield return new WaitForSeconds(second);
+
+            Debug.Log("spawn now");
+
+            // If still allow to spwn instance
+            if (currentInstance < maxInstance)
+            {
+                spawnedObject = objectPrefabs[Random.Range(0, objectPrefabs.Count)];
+
+                do
+                {
+                    spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+                } while (spawnPoint.transform.childCount > 2); // number "2" has to been same as child number of SpawnPoint
+
+                currentInstance += 1;
+                position = spawnPoint.transform.position;
+                GameObject newObject = Instantiate(spawnedObject, position, Quaternion.identity);
+                newObject.transform.SetParent(spawnPoint.transform);
+            }
+        }
 	}
 }

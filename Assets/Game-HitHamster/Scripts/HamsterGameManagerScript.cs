@@ -30,14 +30,13 @@ public class HamsterGameManagerScript : MonoBehaviour {
 	void Start(){
 		
 		Time.timeScale = 1.0F;
-		Time.fixedDeltaTime = Time.timeScale * 0.02F;
-		currentTime = gameTime;
-		UpdateTimeBar();
-        
 	}
 
     public void StartGame()
     {
+        Time.fixedDeltaTime = Time.timeScale * 0.02F;
+        currentTime = gameTime;
+        UpdateTimeBar();
         StartCoroutine(EndGameCoroutine());
     }
 
@@ -74,7 +73,7 @@ public class HamsterGameManagerScript : MonoBehaviour {
 		newObject.transform.SetParent(fadeTextHolder.transform);
 	}
 
-	void UpdateTimeBar(){
+	public void UpdateTimeBar(){
 		currentTimeText.text = currentTime.ToString();
 	}
 
@@ -82,7 +81,7 @@ public class HamsterGameManagerScript : MonoBehaviour {
 		lose = true;
 		int score = GameObject.Find("ScoreManager").GetComponent<HamsterScoreManagerScript>().currentScore;
 	//	GameObject.Find("PrizeManager").GetComponent<PrizeManagerScript>().GameOver(score);
-		Time.timeScale = 0f;
+	//	Time.timeScale = 0f;
 		Time.fixedDeltaTime = Time.timeScale * 0.02F;
 
         GM.GameOver();

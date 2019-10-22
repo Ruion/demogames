@@ -1000,8 +1000,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538217455}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0.008, z: 0}
-  m_LocalScale: {x: 0.55, y: 0.55, z: 1}
+  m_LocalPosition: {x: 0.03, y: 0.008, z: 0}
+  m_LocalScale: {x: 0.58, y: 0.58, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1313,7 +1313,7 @@ PrefabInstance:
     - target: {fileID: 188203586488382660, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: serverAddress
-      value: http://192.168.0.28/jumpshoot/submit-data.php
+      value: http://localhost/jumpshoot/jumpshoot/submit-data.php
       objectReference: {fileID: 0}
     - target: {fileID: 6427371689844106663, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}

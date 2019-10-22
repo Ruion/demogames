@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Game-HitHamster/HOME_HITHAMSTER.unity
+- path: Assets/Game-Honda/Scenes/SCORE.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

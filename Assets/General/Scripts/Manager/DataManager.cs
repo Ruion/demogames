@@ -318,15 +318,15 @@ public class DataManager : MonoBehaviour {
         UserDB userDb = new UserDB(dbName, tableName);
 
         List<UserEntity> unSyncUsers = new List<UserEntity>();
-        //try {
-            //unSyncUsers = userDb.GetAllUnSyncUser();
-           yield return StartCoroutine(CompareLocalAndServerData());
-            Debug.Log("unsync users : " + unSyncUsers.Count);
-      //  }
-      //  catch {
-       //     errorHandler.SetActive(true);
-       //     yield break;
-      //  }
+        try {
+            unSyncUsers = userDb.GetAllUnSyncUser();
+          //  StartCoroutine(CompareLocalAndServerData());
+          //  Debug.Log("unsync users : " + unSyncUsers.Count);
+        }
+        catch {
+            errorHandler.SetActive(true);
+            yield break;
+        }
 
         if (unSyncUsers == null || unSyncUsers.Count < 1)
         {
@@ -335,6 +335,8 @@ public class DataManager : MonoBehaviour {
         }
 
         totalSent = 0;
+
+      //  StartCoroutine(CompareLocalAndServerData());
 
         blockDataHandler.SetActive(true);
 
@@ -368,7 +370,7 @@ public class DataManager : MonoBehaviour {
                     yield return new WaitForEndOfFrame();
                     var jsonData = JsonUtility.FromJson<JSONResponse>(www.downloadHandler.text);
 
-                    //Debug.Log(www.downloadHandler.text);
+                    Debug.Log(www.downloadHandler.text);
 
                     if (jsonData.result != "success")
                     {

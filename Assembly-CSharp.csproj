@@ -121,6 +121,8 @@
     <Compile Include="Assets\General\Scripts\Manager\ScoreVisualizer.cs" />
     <Compile Include="Assets\General\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\General\Scripts\Manager\TimeManager.cs" />
+    <Compile Include="Assets\General\Scripts\Rewards\Print_Program.cs" />
+    <Compile Include="Assets\General\Scripts\Rewards\TestSpCon.cs" />
     <Compile Include="Assets\General\Scripts\ScriptableObject\ScriptableScore.cs" />
     <Compile Include="Assets\General\Scripts\Ultility\ActivateObjectOnDelay.cs" />
     <Compile Include="Assets\General\Scripts\Ultility\EventConditional.cs" />

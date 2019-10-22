@@ -11928,6 +11928,16 @@ PrefabInstance:
       propertyPath: scoreName
       value: score_honda
       objectReference: {fileID: 0}
+    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
+        type: 3}
+      propertyPath: serverAddress
+      value: http://localhost/honda/honda/submit-data.php
+      objectReference: {fileID: 0}
+    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
+        type: 3}
+      propertyPath: serverGetDataAddress
+      value: http://localhost/honda/honda/submit-data.php
+      objectReference: {fileID: 0}
     - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

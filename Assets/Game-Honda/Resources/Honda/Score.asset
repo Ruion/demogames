@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7e9f059a3d9984f8006bd853f2df0b, type: 3}
   m_Name: Score
   m_EditorClassIdentifier: 
-  score: 0
+  score: 21
   maximumScore: 999
   minimumScore: 0

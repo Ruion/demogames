@@ -500,6 +500,16 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 37460735}
+    - target: {fileID: 188203586488382660, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: serverAddress
+      value: http://localhost/honda/honda/submit-data.php
+      objectReference: {fileID: 0}
+    - target: {fileID: 188203586488382660, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: serverGetDataAddress
+      value: http://localhost/honda/honda/submit-data.php
+      objectReference: {fileID: 0}
     - target: {fileID: 218756497457966202, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: m_IsActive

@@ -9,9 +9,18 @@ public class ScoreVisualizer : MonoBehaviour {
     [Header("Caution")]
     public bool clearScoreOnNewGame;
 
-    void OnEnable()
+    void Awake()
     {
+        score = 0;
         if (clearScoreOnNewGame) scriptableScore.score = 0;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            UpdateText(2);
+        }
     }
 
     public void UpdateText(int amount)

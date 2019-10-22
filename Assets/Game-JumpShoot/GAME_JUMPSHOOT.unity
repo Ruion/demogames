@@ -4909,7 +4909,7 @@ PrefabInstance:
     - target: {fileID: 6134143298025417765, guid: d48465a539032b84cb7d9d863dd1dce4,
         type: 3}
       propertyPath: serverAddress
-      value: http://192.168.0.28/jumpshoot/submit-data.php
+      value: http://localhost/jumpshoot/jumpshoot/submit-data.php
       objectReference: {fileID: 0}
     - target: {fileID: 6134143298025417765, guid: d48465a539032b84cb7d9d863dd1dce4,
         type: 3}
