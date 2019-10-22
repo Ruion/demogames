@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2019-10-21T18:54:11.289+08:00
-  initializedAtString: 2019-10-21T18:54:11.289+08:00
+  lastUpdatedAtString: 2019-10-22T08:16:05.659+08:00
+  initializedAtString: 2019-10-22T08:16:05.659+08:00
   currentGitRemote:
     name: origin
     url: https://github.com/Ruion/demogames.git
@@ -24,14 +24,14 @@ MonoBehaviour:
     function: 0
     token: 
   currentGitBranch:
-    name: asher
-    tracking: origin/asher
+    name: master
+    tracking: origin/master
   currentConfigBranch:
-    name: asher
+    name: master
     remote:
       name: origin
       url: https://github.com/Ruion/demogames.git
-    trackingBranch: asher
+    trackingBranch: master
   currentConfigRemote:
     name: origin
     url: https://github.com/Ruion/demogames.git

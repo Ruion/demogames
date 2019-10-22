@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HamsterGameManagerScript : MonoBehaviour {
 
@@ -13,7 +14,7 @@ public class HamsterGameManagerScript : MonoBehaviour {
 	public GameObject fadeText;
 	public GameObject fadeTextHolder;
 	public float currentTime;
-	public Text currentTimeText;
+	public TextMeshProUGUI currentTimeText;
 	public bool lose;
 	[ReadOnly] public int level;
 
@@ -27,13 +28,18 @@ public class HamsterGameManagerScript : MonoBehaviour {
 	}
 
 	void Start(){
-		StartCoroutine(EndGameCoroutine());
+		
 		Time.timeScale = 1.0F;
 		Time.fixedDeltaTime = Time.timeScale * 0.02F;
 		currentTime = gameTime;
 		UpdateTimeBar();
-        GM.StartGame();
+        
 	}
+
+    public void StartGame()
+    {
+        StartCoroutine(EndGameCoroutine());
+    }
 
 	IEnumerator EndGameCoroutine(){
 		while(true){

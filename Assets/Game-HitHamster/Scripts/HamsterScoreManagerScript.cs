@@ -7,25 +7,20 @@ using TMPro;
 public class HamsterScoreManagerScript : MonoBehaviour {
 	public TextMeshProUGUI scoreText;
 	public int currentScore;
-
+    ScoreVisualizer sv;
 	void Awake () {
 		currentScore = 0;
+        sv = GetComponent<ScoreVisualizer>();
 	}
 
 	void Start(){
-		UpdateScore();
-	}
+        //UpdateScore();
+        sv.UpdateText(1);
+    }
 	
 	public void AddScore(){
 		currentScore += 1;
-		string newScore = currentScore.ToString(); 
-		scoreText.text = newScore;
-		Debug.Log(newScore);
+             sv.UpdateText(1);
 	}
 
-	void UpdateScore(){
-		Debug.Log("Update score");
-		string newScore = currentScore.ToString(); 
-		scoreText.text = newScore;
-	}
 }
