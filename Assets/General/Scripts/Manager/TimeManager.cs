@@ -11,6 +11,7 @@ public class TimeManager : MonoBehaviour {
         set { second = value; }
     }
     public int second = 60;
+    private int initialSecond;
 
     public bool isRealtime = true;
 
@@ -25,11 +26,13 @@ public class TimeManager : MonoBehaviour {
 
     public void StartGame()
     {
+        initialSecond = second;
         StartCoroutine(StartCountdown());
     }
 
     public IEnumerator StartCountdown()
     {
+        
         if (isRealtime) yield return new WaitForSecondsRealtime(1);
 
         else yield return new WaitForSeconds(1);
@@ -67,5 +70,10 @@ public class TimeManager : MonoBehaviour {
         {
             countDownTexts[t].text = second.ToString();
         }
+    }
+
+    public void ResetCountDown()
+    {
+        second = initialSecond;
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7987872809000007069}
   - component: {fileID: 7987872809000007066}
   - component: {fileID: 8990502132721801882}
+  - component: {fileID: 4285986717444261114}
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
@@ -188,6 +189,25 @@ MonoBehaviour:
   optionalRotationMode: 0
   optionalScrambleMode: 0
   optionalString: 
+--- !u!95 &4285986717444261114
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987872809000007068}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 40bd54d8f42378e4f9d3f3397bb9c451, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7987872809515338851
 GameObject:
   m_ObjectHideFlags: 0
