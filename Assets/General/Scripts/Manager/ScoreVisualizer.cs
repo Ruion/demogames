@@ -12,7 +12,7 @@ public class ScoreVisualizer : MonoBehaviour {
     void Awake()
     {
         score = 0;
-        if (clearScoreOnNewGame) scriptableScore.score = 0;
+        if (clearScoreOnNewGame) { scriptableScore.score = 0; UpdateText(0); }
     }
 
     private void Update()

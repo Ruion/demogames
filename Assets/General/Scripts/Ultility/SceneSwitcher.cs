@@ -12,6 +12,7 @@ public class SceneSwitcher : MonoBehaviour {
 
     public void SwitchScene(int sceneNumber)
     {
+        Debug.Log("switching to " + sceneNumber + " th scene");
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneNumber);
 
@@ -22,6 +23,7 @@ public class SceneSwitcher : MonoBehaviour {
 
     public void SwitchScene(string sceneName)
     {
+        Debug.Log("switching to " + sceneName);
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
 
@@ -31,6 +33,7 @@ public class SceneSwitcher : MonoBehaviour {
     }
     public void RestartScene()
     {
+        Debug.Log("restart scene");
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

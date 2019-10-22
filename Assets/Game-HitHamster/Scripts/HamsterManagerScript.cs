@@ -50,11 +50,8 @@ public class HamsterManagerScript : MonoBehaviour {
             instanceFrequency = gameManager.getMaxLevel() - gameManager.getCurrentLevel();
 
             float second = Mathf.Max(0, instanceFrequency + Random.Range(-spawnVariance, spawnVariance));
-            Debug.Log("waiting for " + second);
 
             yield return new WaitForSeconds(second);
-
-            Debug.Log("spawn now");
 
             // If still allow to spwn instance
             if (currentInstance < maxInstance)
