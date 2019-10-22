@@ -401,6 +401,7 @@ MonoBehaviour:
   license_key_page: {fileID: 218756497967361608}
   loading_page: {fileID: 218756497967361607}
   error_no_internet: {fileID: 218756497967361606}
+  error_no_internet2: {fileID: 0}
   check_online_validation_page: {fileID: 218756497967361605}
   error_page1: {fileID: 218756497967361604}
   error_page2: {fileID: 218756497967361603}
@@ -409,25 +410,14 @@ MonoBehaviour:
   error_page4: {fileID: 218756497967361600}
   error_page5: {fileID: 895963147}
   error_page6: {fileID: 729036648}
-  error_page7: {fileID: 218756497967361597}
-  error_page8: {fileID: 218756497967361596}
-  error_page9: {fileID: 2061769686}
-  error_page10: {fileID: 218756497967361594}
   Lkey: {fileID: 1503466471}
   Submit: {fileID: 218756497967361592}
   licensekey: 
   lkey_expdate: 
-  temp_lkey_expdate: 
   machine_id: 
   session_expdate: 
   checkpoint: 
   temp_msg: 
---- !u!1 &2061769686 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4955880778716600437, guid: 3b4d50dd24c7255459098612e26d6ee2,
-    type: 3}
-  m_PrefabInstance: {fileID: 218756497967361591}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &218756497967361591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -510,6 +500,21 @@ PrefabInstance:
       propertyPath: serverGetDataAddress
       value: http://localhost/honda/honda/submit-data.php
       objectReference: {fileID: 0}
+    - target: {fileID: 188203586488382660, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: settingFileName
+      value: game_honda
+      objectReference: {fileID: 0}
+    - target: {fileID: 188203586488382660, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: dbName
+      value: user_db_honda
+      objectReference: {fileID: 0}
+    - target: {fileID: 188203586488382660, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: scoreName
+      value: score_honda
+      objectReference: {fileID: 0}
     - target: {fileID: 218756497457966202, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: m_IsActive
@@ -554,24 +559,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &218756497967361594 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5367830209578203073, guid: 3b4d50dd24c7255459098612e26d6ee2,
-    type: 3}
-  m_PrefabInstance: {fileID: 218756497967361591}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &218756497967361596 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1314692560604990021, guid: 3b4d50dd24c7255459098612e26d6ee2,
-    type: 3}
-  m_PrefabInstance: {fileID: 218756497967361591}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &218756497967361597 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1242847298581205603, guid: 3b4d50dd24c7255459098612e26d6ee2,
-    type: 3}
-  m_PrefabInstance: {fileID: 218756497967361591}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &218756497967361600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1028468689855911311, guid: 3b4d50dd24c7255459098612e26d6ee2,

@@ -14,6 +14,7 @@ public class Encryption : MonoBehaviour
     public GameObject license_key_page; // input license key page
     public GameObject loading_page; // checking validation page
     public GameObject error_no_internet;
+    public GameObject error_no_internet2;
     public GameObject check_online_validation_page;
     [Header("Error Pages For Registration")]
     public GameObject error_page1; // invalid license key error
@@ -24,10 +25,6 @@ public class Encryption : MonoBehaviour
     public GameObject error_page4; // last checkpoint is newer than current time error
     public GameObject error_page5; // checkpoint not in sequence error
     public GameObject error_page6; // session expired error
-    public GameObject error_page7; // unexpected things happen error
-    public GameObject error_page8; //invalid error online check
-    public GameObject error_page9; //expired error online check
-    public GameObject error_page10; // used error online check
     #endregion
 
     [Header("License key Input Field")]
@@ -48,20 +45,17 @@ public class Encryption : MonoBehaviour
     #region Variable
     public string licensekey;
     public string lkey_expdate;
-    public string temp_lkey_expdate;
     public string machine_id;
     public string session_expdate;
     public string checkpoint;
     public DateTime TempDate;
     public string temp_msg;
-    bool Clean1 = false;
     bool Clean2 = false;
-    bool Clean3 = false;
     List<string> temp_checkpoint = new List<string>();
     #endregion
 
     const string glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
+    const string passwords_encryption = "Unicom_UID_2019";
     const string urlstage2_Register = "http://api-test.unicom-interactive-digital.com/activate-key.php";
 
     void Awake()
@@ -161,7 +155,6 @@ public class Encryption : MonoBehaviour
         {
             //current time > last checkpoint = correct
             //set validation 1 clear
-            Clean1 = true;
             //go to next stage
             Validation_Stage2();
         }
@@ -259,7 +252,6 @@ public class Encryption : MonoBehaviour
         if(compare_stage3 < 0)
         {
             //current time < session expiry date = nothings wrong
-            Clean3 = true;
             Validation_Stage4();
         }
         else if(compare_stage3 == 0)
@@ -284,7 +276,13 @@ public class Encryption : MonoBehaviour
     {
         Debug.Log("Start Validation Stage 4");
 
-        if (Clean1 && Clean2 && Clean3)
+        GetLocal_LicenseKey_ExpDate();
+        DateTime Date1 = DateTime.Now;
+        DateTime Date2 = DateTime.Parse(lkey_expdate);
+
+        int compare_stage4 = DateTime.Compare(Date1, Date2);
+
+        if(compare_stage4 < 0)
         {
             //set current checkpoint
             SetLocal_Checkpoint();
@@ -293,10 +291,16 @@ public class Encryption : MonoBehaviour
             //close all license key page
             loading_page.SetActive(false);
         }
+        else if(compare_stage4 == 0)
+        {
+            //license key expired since it is the same time as current time
+            error_page2.SetActive(true);
+            loading_page.SetActive(false);
+        }
         else
         {
-            //error in checking validation
-            error_page7.SetActive(true);
+            //license key expired since it is older than the current time
+            error_page2.SetActive(true);
             loading_page.SetActive(false);
         }
     }
@@ -308,8 +312,7 @@ public class Encryption : MonoBehaviour
         error_page4.SetActive(false);
         error_page5.SetActive(false);
         error_page6.SetActive(false);
-        error_page7.SetActive(false);
-        error_no_internet.SetActive(false);
+        error_no_internet2.SetActive(false);
         //check online
         GetLocal_MachineIdentity();
         GetLocal_LicenseKey();
@@ -330,7 +333,7 @@ public class Encryption : MonoBehaviour
             {
                 Debug.Log(www.error);
                 //show error no internet
-                error_no_internet.SetActive(true);
+                error_no_internet2.SetActive(true);
                 check_online_validation_page.SetActive(false);
             }
             else
@@ -342,19 +345,19 @@ public class Encryption : MonoBehaviour
                 if (temp_msg == "Invalid License Key")
                 {
                     //show error invalid
-                    error_page8.SetActive(true);
+                    error_page1.SetActive(true);
                     check_online_validation_page.SetActive(false);
                 }
                 else if (temp_msg == "Expired License Key")
                 {
                     //show error expired
-                    error_page9.SetActive(true);
+                    error_page2.SetActive(true);
                     check_online_validation_page.SetActive(false);
                 }
                 else if (temp_msg == "Used License Key")
                 {
                     //show error used license key
-                    error_page10.SetActive(true);
+                    error_page3.SetActive(true);
                     check_online_validation_page.SetActive(false);
                 }
                 else if (temp_msg == "Valid License Key")
@@ -369,8 +372,8 @@ public class Encryption : MonoBehaviour
     void Error_Validation_Stage2()
     {
         Debug.Log("Reset The local Data for trying to modify license key data");
+        check_online_validation_page.SetActive(false);
 
-        
         File.WriteAllText(pathfile4, "");
         File.WriteAllText(pathfile5, "");
 
@@ -390,6 +393,8 @@ public class Encryption : MonoBehaviour
     public void Stage2Register()
     {
         Debug.Log("Start Stage 2");
+        license_key_page.SetActive(false);
+        loading_page.SetActive(true);
         StartCoroutine(Stage2Register_SendData());
 
         //show loading page and hide insert license key page
@@ -412,6 +417,7 @@ public class Encryption : MonoBehaviour
                 Debug.Log(www.error);
                 //show error no internet
                 error_no_internet.SetActive(true);
+                loading_page.SetActive(false);
             }
             else
             {
@@ -423,19 +429,19 @@ public class Encryption : MonoBehaviour
                 {
                     //show error invalid
                     error_page1.SetActive(true);
-                    license_key_page.SetActive(false);
+                    loading_page.SetActive(false);
                 }
                 else if(temp_msg == "Expired License Key")
                 {
                     //show error expired
                     error_page2.SetActive(true);
-                    license_key_page.SetActive(false);
+                    loading_page.SetActive(false);
                 }
                 else if (temp_msg == "Used License Key")
                 {
                     //show error used license key
                     error_page3.SetActive(true);
-                    license_key_page.SetActive(false);
+                    loading_page.SetActive(false);
                 }
                 else if (temp_msg == "Valid License Key")
                 {
@@ -480,6 +486,7 @@ public class Encryption : MonoBehaviour
         SetLocal_Checkpoint();
 
         success_page.SetActive(true);
+        loading_page.SetActive(false);
     }
     #endregion
     //--------------------------------------------------------SET AND GET FOR CHECKING LOCAL DATA------------------------------------------------------------------------------------
@@ -505,16 +512,19 @@ public class Encryption : MonoBehaviour
     public void SetLocal_LicenseKey_ExpDate()
     {
         //license key expired date get from server
+        string temp_lkey_expdate = HashedClass.StringCipher.Encrypt(lkey_expdate, passwords_encryption);
         StreamWriter writer = new StreamWriter(pathfile2, true);
-        writer.Write(lkey_expdate + "\n");
+        writer.Write(temp_lkey_expdate + "\n");
         Debug.Log("set license key expiry date : " + lkey_expdate);
         writer.Close();
     }
     public void GetLocal_LicenseKey_ExpDate()
     {
         StreamReader reader = new StreamReader(pathfile2, true);
-        temp_lkey_expdate = reader.ReadLine();
-        Debug.Log(temp_lkey_expdate);
+        string temp_lkey_expdate = reader.ReadLine();
+        string temp_get_lkeyexpdate = HashedClass.StringCipher.Decrypt(temp_lkey_expdate, passwords_encryption);
+        lkey_expdate = temp_get_lkeyexpdate;
+        Debug.Log(lkey_expdate);
         reader.Close();
     }
 
@@ -544,30 +554,23 @@ public class Encryption : MonoBehaviour
         Debug.Log(machine_id);
         reader.Close();
     }
-
-    public void SetLocal_Error_SessionExpDate()
-    {
-        //add yesterday session expiry date
-        session_expdate = DateTime.Now.AddDays(-1).ToString();
-        StreamWriter writer = new StreamWriter(pathfile4, true);
-        writer.Write(session_expdate + "\n");
-        Debug.Log("generate & set session expiry date : " + session_expdate);
-        writer.Close();
-    }
     //set and get for session expire date
     public void SetLocal_SessionExpDate()
     {
         DateTime ExpiryDateSession = DateTime.Now.AddDays(7);
         session_expdate = ExpiryDateSession.ToString();
+        string temp_sessionexpdate = HashedClass.StringCipher.Encrypt(session_expdate, passwords_encryption);
         StreamWriter writer = new StreamWriter(pathfile4, true);
-        writer.Write(session_expdate + "\n");
+        writer.Write(temp_sessionexpdate + "\n");
         Debug.Log("set session expiry date : " + session_expdate);
         writer.Close();
     }
     public void GetLocal_SessionExpDate()
     {
         StreamReader reader = new StreamReader(pathfile4, true);
-        session_expdate = reader.ReadLine();
+        string temp_sessionexpdate = reader.ReadLine();
+        string temp_decode = HashedClass.StringCipher.Decrypt(temp_sessionexpdate, passwords_encryption);
+        session_expdate = temp_decode;
         Debug.Log(session_expdate);
         reader.Close();
     }
@@ -577,8 +580,9 @@ public class Encryption : MonoBehaviour
     {
         //checkpoint is the datetime of local
         checkpoint = DateTime.Now.ToString();
+        string temp_checkpoint = HashedClass.StringCipher.Encrypt(checkpoint, passwords_encryption);
         StreamWriter writer = new StreamWriter(pathfile5, true);
-        writer.Write(checkpoint + "\n");
+        writer.Write(temp_checkpoint + "\n");
         Debug.Log("set checkpoint : " + checkpoint);
         writer.Close();
     }
@@ -588,7 +592,9 @@ public class Encryption : MonoBehaviour
         StreamReader reader = new StreamReader(pathfile5, true);
         while (!reader.EndOfStream)
         {
-            temp_checkpoint.Add(reader.ReadLine());
+            string temp_read = reader.ReadLine();
+            string temp_read_decrypt = HashedClass.StringCipher.Decrypt(temp_read, passwords_encryption);
+            temp_checkpoint.Add(temp_read_decrypt);
         }
         reader.Close();
     }
@@ -607,10 +613,6 @@ public class Encryption : MonoBehaviour
         error_page4.SetActive(false); // last checkpoint is newer than current time error
         error_page5.SetActive(false); // checkpoint not in sequence error
         error_page6.SetActive(false); // session expired error
-        error_page7.SetActive(false); // unexpected things happen error
-        error_page8.SetActive(false);
-        error_page9.SetActive(false);
-        error_page10.SetActive(false);
         error_no_internet.SetActive(false);
         check_online_validation_page.SetActive(false);
 }
@@ -620,15 +622,13 @@ public class Encryption : MonoBehaviour
         error_page1.SetActive(false);
         error_page2.SetActive(false);
         error_page3.SetActive(false);
-        error_page8.SetActive(false);
-        error_page9.SetActive(false);
-        error_page3.SetActive(false);
         error_no_internet.SetActive(false);
     }
     public void Close_Error_Validation4567()
     {
         Error_Validation_Stage1();
     }
+
 
     //json data class
     [System.Serializable]

@@ -108,10 +108,13 @@
     <Compile Include="Assets\General\Scripts\Databank\GameSetting.cs" />
     <Compile Include="Assets\General\Scripts\Databank\SqliteController.cs" />
     <Compile Include="Assets\General\Scripts\Databank\SqliteHelper.cs" />
+    <Compile Include="Assets\General\Scripts\Databank\Stock.cs" />
+    <Compile Include="Assets\General\Scripts\Databank\StockDB.cs" />
     <Compile Include="Assets\General\Scripts\Databank\UserDB.cs" />
     <Compile Include="Assets\General\Scripts\Databank\UserEntity.cs" />
     <Compile Include="Assets\General\Scripts\EditorUtility\ObjectReposition.cs" />
     <Compile Include="Assets\General\Scripts\LicenseKey\Encryption.cs" />
+    <Compile Include="Assets\General\Scripts\LicenseKey\HashedClass.cs" />
     <Compile Include="Assets\General\Scripts\LicenseKey\LicenseKeyManager.cs" />
     <Compile Include="Assets\General\Scripts\Manager\ApplicationManager.cs" />
     <Compile Include="Assets\General\Scripts\Manager\AutoSyncManager.cs" />
@@ -122,6 +125,7 @@
     <Compile Include="Assets\General\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\General\Scripts\Manager\TimeManager.cs" />
     <Compile Include="Assets\General\Scripts\Rewards\Print_Program.cs" />
+    <Compile Include="Assets\General\Scripts\Rewards\StockManager.cs" />
     <Compile Include="Assets\General\Scripts\Rewards\TestSpCon.cs" />
     <Compile Include="Assets\General\Scripts\Rewards\VendingMachine.cs" />
     <Compile Include="Assets\General\Scripts\ScriptableObject\ScriptableScore.cs" />

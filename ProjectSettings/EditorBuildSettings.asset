@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game-Honda/Scenes/HOME.unity
+    path: Assets/Game-Honda/HOME.unity
     guid: dd6b293254d4e7f488dbf2e1f468eec8
   - enabled: 1
-    path: Assets/Game-Honda/Scenes/GAME.unity
+    path: Assets/Game-Honda/GAME.unity
     guid: 46a4e19f8b9890945b47a045db2cf918
   - enabled: 1
-    path: Assets/Game-Honda/Scenes/SCORE.unity
+    path: Assets/Game-Honda/SCORE.unity
     guid: 0f15b6c718cea604ea06c77d17197ec7
   m_configObjects: {}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2019-10-22T16:30:23.722+08:00
-  initializedAtString: 2019-10-22T16:07:39.025+08:00
+  lastUpdatedAtString: 2019-10-22T18:25:33.794+08:00
+  initializedAtString: 2019-10-22T18:09:35.093+08:00
   entries:
   - path: .vs\demogames\v15\.suo
     fullPath: C:\UID_Projects\demogames\demogames\.vs\demogames\v15\.suo
@@ -46,57 +46,275 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
+  - path: Assembly-CSharp-Editor.csproj
+    fullPath: C:\UID_Projects\demogames\demogames\Assembly-CSharp-Editor.csproj
+    projectPath: Assembly-CSharp-Editor.csproj
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\Game-HitHamster\Artboard 1 copy 2.png
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-HitHamster\Artboard
+      1 copy 2.png
+    projectPath: Assets\Game-HitHamster\Artboard 1 copy 2.png
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-HitHamster\Artboard 1 copy 2.png.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-HitHamster\Artboard
+      1 copy 2.png.meta
+    projectPath: Assets\Game-HitHamster\Artboard 1 copy 2.png.meta
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-HitHamster\Artboard 1 copy 3.png
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-HitHamster\Artboard
+      1 copy 3.png
+    projectPath: Assets\Game-HitHamster\Artboard 1 copy 3.png
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-HitHamster\Artboard 1 copy 3.png.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-HitHamster\Artboard
+      1 copy 3.png.meta
+    projectPath: Assets\Game-HitHamster\Artboard 1 copy 3.png.meta
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-HitHamster\Artboard 1 copy.png
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-HitHamster\Artboard
+      1 copy.png
+    projectPath: Assets\Game-HitHamster\Artboard 1 copy.png
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-HitHamster\Artboard 1 copy.png.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-HitHamster\Artboard
+      1 copy.png.meta
+    projectPath: Assets\Game-HitHamster\Artboard 1 copy.png.meta
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-HitHamster\Artboard 1.png
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-HitHamster\Artboard
+      1.png
+    projectPath: Assets\Game-HitHamster\Artboard 1.png
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-HitHamster\Artboard 1.png.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-HitHamster\Artboard
+      1.png.meta
+    projectPath: Assets\Game-HitHamster\Artboard 1.png.meta
+    originalPath: 
+    status: 5
+    staged: 0
   - path: Assets\Game-HitHamster\GAME_HITHAMSTER.unity
     fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-HitHamster\GAME_HITHAMSTER.unity
     projectPath: Assets\Game-HitHamster\GAME_HITHAMSTER.unity
     originalPath: 
     status: 3
     staged: 0
-  - path: Assets\Game-HitHamster\Resources\Score.asset
-    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-HitHamster\Resources\Score.asset
-    projectPath: Assets\Game-HitHamster\Resources\Score.asset
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Assets\Game-HitHamster\Scripts\HamsterManagerScript.cs
-    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-HitHamster\Scripts\HamsterManagerScript.cs
-    projectPath: Assets\Game-HitHamster\Scripts\HamsterManagerScript.cs
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Assets\General\Prefabs\GameOverPanel.prefab
-    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Prefabs\GameOverPanel.prefab
-    projectPath: Assets\General\Prefabs\GameOverPanel.prefab
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Assets\General\Scripts\Manager\ScoreVisualizer.cs
-    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Manager\ScoreVisualizer.cs
-    projectPath: Assets\General\Scripts\Manager\ScoreVisualizer.cs
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Assets\General\Scripts\Rewards\Print_Program.cs
-    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Rewards\Print_Program.cs
-    projectPath: Assets\General\Scripts\Rewards\Print_Program.cs
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Assets\General\Scripts\Rewards\VendingMachine.cs
-    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Rewards\VendingMachine.cs
-    projectPath: Assets\General\Scripts\Rewards\VendingMachine.cs
+  - path: Assets\Game-HitHamster\Sprites\but_retry.png
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-HitHamster\Sprites\but_retry.png
+    projectPath: Assets\Game-HitHamster\Sprites\but_retry.png
     originalPath: 
     status: 1
     staged: 0
-  - path: Assets\General\Scripts\Rewards\VendingMachine.cs.meta
-    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Rewards\VendingMachine.cs.meta
-    projectPath: Assets\General\Scripts\Rewards\VendingMachine.cs.meta
+  - path: Assets\Game-HitHamster\Sprites\but_retry.png.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-HitHamster\Sprites\but_retry.png.meta
+    projectPath: Assets\Game-HitHamster\Sprites\but_retry.png.meta
     originalPath: 
     status: 1
     staged: 0
-  - path: Assets\General\Scripts\Ultility\SceneSwitcher.cs
-    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Ultility\SceneSwitcher.cs
-    projectPath: Assets\General\Scripts\Ultility\SceneSwitcher.cs
+  - path: Assets\Game-Honda\GAME.unity
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-Honda\GAME.unity
+    projectPath: Assets\Game-Honda\GAME.unity
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\Game-Honda\GAME.unity.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-Honda\GAME.unity.meta
+    projectPath: Assets\Game-Honda\GAME.unity.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\Game-Honda\HOME.unity
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-Honda\HOME.unity
+    projectPath: Assets\Game-Honda\HOME.unity
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\Game-Honda\HOME.unity.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-Honda\HOME.unity.meta
+    projectPath: Assets\Game-Honda\HOME.unity.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\Game-Honda\Scenes.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-Honda\Scenes.meta
+    projectPath: Assets\Game-Honda\Scenes.meta
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-Honda\Scenes\GAME.unity
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-Honda\Scenes\GAME.unity
+    projectPath: Assets\Game-Honda\Scenes\GAME.unity
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-Honda\Scenes\GAME.unity.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-Honda\Scenes\GAME.unity.meta
+    projectPath: Assets\Game-Honda\Scenes\GAME.unity.meta
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-Honda\Scenes\HOME.unity
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-Honda\Scenes\HOME.unity
+    projectPath: Assets\Game-Honda\Scenes\HOME.unity
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-Honda\Scenes\HOME.unity.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-Honda\Scenes\HOME.unity.meta
+    projectPath: Assets\Game-Honda\Scenes\HOME.unity.meta
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-Honda\Scenes\SCORE.unity
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-Honda\Scenes\SCORE.unity
+    projectPath: Assets\Game-Honda\Scenes\SCORE.unity
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-Honda\Scenes\SCORE.unity.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-Honda\Scenes\SCORE.unity.meta
+    projectPath: Assets\Game-Honda\Scenes\SCORE.unity.meta
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\Game-Honda\SCORE.unity
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-Honda\SCORE.unity
+    projectPath: Assets\Game-Honda\SCORE.unity
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\Game-Honda\SCORE.unity.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-Honda\SCORE.unity.meta
+    projectPath: Assets\Game-Honda\SCORE.unity.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\Game-JumpShoot\HOME_JUMPSHOOT.unity
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\Game-JumpShoot\HOME_JUMPSHOOT.unity
+    projectPath: Assets\Game-JumpShoot\HOME_JUMPSHOOT.unity
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Prefabs\HOME_Prefab.prefab
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Prefabs\HOME_Prefab.prefab
+    projectPath: Assets\General\Prefabs\HOME_Prefab.prefab
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Scripts\Databank\GameSetting.cs
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Databank\GameSetting.cs
+    projectPath: Assets\General\Scripts\Databank\GameSetting.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Scripts\Databank\SqliteHelper.cs
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Databank\SqliteHelper.cs
+    projectPath: Assets\General\Scripts\Databank\SqliteHelper.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Scripts\Databank\Stock.cs
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Databank\Stock.cs
+    projectPath: Assets\General\Scripts\Databank\Stock.cs
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\Databank\Stock.cs.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Databank\Stock.cs.meta
+    projectPath: Assets\General\Scripts\Databank\Stock.cs.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\Databank\StockDB.cs
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Databank\StockDB.cs
+    projectPath: Assets\General\Scripts\Databank\StockDB.cs
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\Databank\StockDB.cs.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Databank\StockDB.cs.meta
+    projectPath: Assets\General\Scripts\Databank\StockDB.cs.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\Databank\UserDB.cs
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Databank\UserDB.cs
+    projectPath: Assets\General\Scripts\Databank\UserDB.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Scripts\Editor.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Editor.meta
+    projectPath: Assets\General\Scripts\Editor.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\Editor\StockManagerEditor.cs
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Editor\StockManagerEditor.cs
+    projectPath: Assets\General\Scripts\Editor\StockManagerEditor.cs
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\Editor\StockManagerEditor.cs.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Editor\StockManagerEditor.cs.meta
+    projectPath: Assets\General\Scripts\Editor\StockManagerEditor.cs.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\LicenseKey\Encryption.cs
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\LicenseKey\Encryption.cs
+    projectPath: Assets\General\Scripts\LicenseKey\Encryption.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Scripts\LicenseKey\Encryption.cs.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\LicenseKey\Encryption.cs.meta
+    projectPath: Assets\General\Scripts\LicenseKey\Encryption.cs.meta
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Scripts\LicenseKey\HashedClass.cs
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\LicenseKey\HashedClass.cs
+    projectPath: Assets\General\Scripts\LicenseKey\HashedClass.cs
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\LicenseKey\HashedClass.cs.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\LicenseKey\HashedClass.cs.meta
+    projectPath: Assets\General\Scripts\LicenseKey\HashedClass.cs.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\Rewards\StockManager.cs
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Rewards\StockManager.cs
+    projectPath: Assets\General\Scripts\Rewards\StockManager.cs
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\Rewards\StockManager.cs.meta
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\General\Scripts\Rewards\StockManager.cs.meta
+    projectPath: Assets\General\Scripts\Rewards\StockManager.cs.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\StreamingAssets\user_db_hithamster
+    fullPath: C:\UID_Projects\demogames\demogames\Assets\StreamingAssets\user_db_hithamster
+    projectPath: Assets\StreamingAssets\user_db_hithamster
     originalPath: 
     status: 3
     staged: 0
@@ -106,11 +324,23 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
+  - path: Library\CurrentLayout-default.dwlt
+    fullPath: C:\UID_Projects\demogames\demogames\Library\CurrentLayout-default.dwlt
+    projectPath: Library\CurrentLayout-default.dwlt
+    originalPath: 
+    status: 3
+    staged: 0
   - path: Library\EditorInstance.json
     fullPath: C:\UID_Projects\demogames\demogames\Library\EditorInstance.json
     projectPath: Library\EditorInstance.json
     originalPath: 
     status: 1
+    staged: 0
+  - path: Library\expandedItems
+    fullPath: C:\UID_Projects\demogames\demogames\Library\expandedItems
+    projectPath: Library\expandedItems
+    originalPath: 
+    status: 3
     staged: 0
   - path: Library\gfu\cache\gitlocks.yaml
     fullPath: C:\UID_Projects\demogames\demogames\Library\gfu\cache\gitlocks.yaml
@@ -142,45 +372,207 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\metadata\0f\0f71d08747a356245ac9cd5bc923b7a3
-    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\0f\0f71d08747a356245ac9cd5bc923b7a3
-    projectPath: Library\metadata\0f\0f71d08747a356245ac9cd5bc923b7a3
+  - path: Library\LastSceneManagerSetup.txt
+    fullPath: C:\UID_Projects\demogames\demogames\Library\LastSceneManagerSetup.txt
+    projectPath: Library\LastSceneManagerSetup.txt
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\metadata\0f\0f15b6c718cea604ea06c77d17197ec7
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\0f\0f15b6c718cea604ea06c77d17197ec7
+    projectPath: Library\metadata\0f\0f15b6c718cea604ea06c77d17197ec7
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\metadata\13\131a6b21c8605f84396be9f6751fb6e3
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\13\131a6b21c8605f84396be9f6751fb6e3
+    projectPath: Library\metadata\13\131a6b21c8605f84396be9f6751fb6e3
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Library\metadata\13\131a6b21c8605f84396be9f6751fb6e3.info
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\13\131a6b21c8605f84396be9f6751fb6e3.info
+    projectPath: Library\metadata\13\131a6b21c8605f84396be9f6751fb6e3.info
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Library\metadata\14\141081a154f14cc4fba8876897bed011
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\14\141081a154f14cc4fba8876897bed011
+    projectPath: Library\metadata\14\141081a154f14cc4fba8876897bed011
     originalPath: 
     status: 1
     staged: 0
-  - path: Library\metadata\0f\0f71d08747a356245ac9cd5bc923b7a3.info
-    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\0f\0f71d08747a356245ac9cd5bc923b7a3.info
-    projectPath: Library\metadata\0f\0f71d08747a356245ac9cd5bc923b7a3.info
+  - path: Library\metadata\14\141081a154f14cc4fba8876897bed011.info
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\14\141081a154f14cc4fba8876897bed011.info
+    projectPath: Library\metadata\14\141081a154f14cc4fba8876897bed011.info
     originalPath: 
     status: 1
     staged: 0
-  - path: Library\metadata\29\293ce349e201e674386d5d96676e125c
-    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\29\293ce349e201e674386d5d96676e125c
-    projectPath: Library\metadata\29\293ce349e201e674386d5d96676e125c
+  - path: Library\metadata\2d\2d1ddbd30d4d5f34ca4a4ed4546b18d3
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\2d\2d1ddbd30d4d5f34ca4a4ed4546b18d3
+    projectPath: Library\metadata\2d\2d1ddbd30d4d5f34ca4a4ed4546b18d3
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Library\metadata\2d\2d1ddbd30d4d5f34ca4a4ed4546b18d3.info
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\2d\2d1ddbd30d4d5f34ca4a4ed4546b18d3.info
+    projectPath: Library\metadata\2d\2d1ddbd30d4d5f34ca4a4ed4546b18d3.info
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2
+    projectPath: Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\metadata\50\509dae1d78e36814aa460e2402a596fc
-    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\50\509dae1d78e36814aa460e2402a596fc
-    projectPath: Library\metadata\50\509dae1d78e36814aa460e2402a596fc
+  - path: Library\metadata\46\46a4e19f8b9890945b47a045db2cf918
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\46\46a4e19f8b9890945b47a045db2cf918
+    projectPath: Library\metadata\46\46a4e19f8b9890945b47a045db2cf918
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\metadata\94\946193babccc2b64ab7f3725e382c9e6
-    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\94\946193babccc2b64ab7f3725e382c9e6
-    projectPath: Library\metadata\94\946193babccc2b64ab7f3725e382c9e6
+  - path: Library\metadata\4e\4e3c8a8d07255da48ac74aa42c168a11
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\4e\4e3c8a8d07255da48ac74aa42c168a11
+    projectPath: Library\metadata\4e\4e3c8a8d07255da48ac74aa42c168a11
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Library\metadata\4e\4e3c8a8d07255da48ac74aa42c168a11.info
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\4e\4e3c8a8d07255da48ac74aa42c168a11.info
+    projectPath: Library\metadata\4e\4e3c8a8d07255da48ac74aa42c168a11.info
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Library\metadata\57\57fbe84e1ef6ea245b1595406f70d225
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\57\57fbe84e1ef6ea245b1595406f70d225
+    projectPath: Library\metadata\57\57fbe84e1ef6ea245b1595406f70d225
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\metadata\bc\bca38cfc2e5d02544a789a9612368db6
-    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\bc\bca38cfc2e5d02544a789a9612368db6
-    projectPath: Library\metadata\bc\bca38cfc2e5d02544a789a9612368db6
+  - path: Library\metadata\5a\5a45dc3a45098174b83fdaf40b59bb24
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\5a\5a45dc3a45098174b83fdaf40b59bb24
+    projectPath: Library\metadata\5a\5a45dc3a45098174b83fdaf40b59bb24
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\metadata\ce\cea128daa453297488074f3b967f8993
-    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\ce\cea128daa453297488074f3b967f8993
-    projectPath: Library\metadata\ce\cea128daa453297488074f3b967f8993
+  - path: Library\metadata\73\738d82d439153fb46bdab7963c9f1a6b
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\73\738d82d439153fb46bdab7963c9f1a6b
+    projectPath: Library\metadata\73\738d82d439153fb46bdab7963c9f1a6b
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Library\metadata\73\738d82d439153fb46bdab7963c9f1a6b.info
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\73\738d82d439153fb46bdab7963c9f1a6b.info
+    projectPath: Library\metadata\73\738d82d439153fb46bdab7963c9f1a6b.info
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Library\metadata\75\7573607f5f733f445b070d5fffd9d198
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\75\7573607f5f733f445b070d5fffd9d198
+    projectPath: Library\metadata\75\7573607f5f733f445b070d5fffd9d198
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Library\metadata\75\7573607f5f733f445b070d5fffd9d198.info
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\75\7573607f5f733f445b070d5fffd9d198.info
+    projectPath: Library\metadata\75\7573607f5f733f445b070d5fffd9d198.info
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Library\metadata\85\850f2bf9e1b5efa4785207a7122edf9d
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\85\850f2bf9e1b5efa4785207a7122edf9d
+    projectPath: Library\metadata\85\850f2bf9e1b5efa4785207a7122edf9d
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Library\metadata\85\850f2bf9e1b5efa4785207a7122edf9d.info
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\85\850f2bf9e1b5efa4785207a7122edf9d.info
+    projectPath: Library\metadata\85\850f2bf9e1b5efa4785207a7122edf9d.info
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Library\metadata\85\85d98c574ddbfd042a187e3b67df34f5
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\85\85d98c574ddbfd042a187e3b67df34f5
+    projectPath: Library\metadata\85\85d98c574ddbfd042a187e3b67df34f5
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Library\metadata\85\85d98c574ddbfd042a187e3b67df34f5.info
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\85\85d98c574ddbfd042a187e3b67df34f5.info
+    projectPath: Library\metadata\85\85d98c574ddbfd042a187e3b67df34f5.info
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Library\metadata\8e\8e5ff3949518545488bbf9452f4d43d6
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\8e\8e5ff3949518545488bbf9452f4d43d6
+    projectPath: Library\metadata\8e\8e5ff3949518545488bbf9452f4d43d6
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Library\metadata\8e\8e5ff3949518545488bbf9452f4d43d6.info
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\8e\8e5ff3949518545488bbf9452f4d43d6.info
+    projectPath: Library\metadata\8e\8e5ff3949518545488bbf9452f4d43d6.info
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Library\metadata\ac\ac19fb98c5471114ba59ac77bb1399ac
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\ac\ac19fb98c5471114ba59ac77bb1399ac
+    projectPath: Library\metadata\ac\ac19fb98c5471114ba59ac77bb1399ac
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Library\metadata\ac\ac19fb98c5471114ba59ac77bb1399ac.info
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\ac\ac19fb98c5471114ba59ac77bb1399ac.info
+    projectPath: Library\metadata\ac\ac19fb98c5471114ba59ac77bb1399ac.info
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Library\metadata\bc\bc473f87c6a6e2e4fb76e9f5554ce4ee
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\bc\bc473f87c6a6e2e4fb76e9f5554ce4ee
+    projectPath: Library\metadata\bc\bc473f87c6a6e2e4fb76e9f5554ce4ee
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\metadata\c6\c615edb96c1cdab43b8274e1b65aca51
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\c6\c615edb96c1cdab43b8274e1b65aca51
+    projectPath: Library\metadata\c6\c615edb96c1cdab43b8274e1b65aca51
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\metadata\dd\dd6b293254d4e7f488dbf2e1f468eec8
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\dd\dd6b293254d4e7f488dbf2e1f468eec8
+    projectPath: Library\metadata\dd\dd6b293254d4e7f488dbf2e1f468eec8
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\metadata\df\dfb2f799c40f0bb44909e631fd77c407
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\df\dfb2f799c40f0bb44909e631fd77c407
+    projectPath: Library\metadata\df\dfb2f799c40f0bb44909e631fd77c407
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Library\metadata\df\dfb2f799c40f0bb44909e631fd77c407.info
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\df\dfb2f799c40f0bb44909e631fd77c407.info
+    projectPath: Library\metadata\df\dfb2f799c40f0bb44909e631fd77c407.info
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Library\metadata\fc\fc8a21f12a3995e47890ae726e72e1c9
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\fc\fc8a21f12a3995e47890ae726e72e1c9
+    projectPath: Library\metadata\fc\fc8a21f12a3995e47890ae726e72e1c9
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Library\metadata\fc\fc8a21f12a3995e47890ae726e72e1c9.info
+    fullPath: C:\UID_Projects\demogames\demogames\Library\metadata\fc\fc8a21f12a3995e47890ae726e72e1c9.info
+    projectPath: Library\metadata\fc\fc8a21f12a3995e47890ae726e72e1c9.info
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Library\SceneVisibilityState.asset
+    fullPath: C:\UID_Projects\demogames\demogames\Library\SceneVisibilityState.asset
+    projectPath: Library\SceneVisibilityState.asset
     originalPath: 
     status: 3
     staged: 0
@@ -202,15 +594,21 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
+  - path: Library\ScriptAssemblies\Assembly-CSharp-Editor.pdb
+    fullPath: C:\UID_Projects\demogames\demogames\Library\ScriptAssemblies\Assembly-CSharp-Editor.pdb
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor.pdb
+    originalPath: 
+    status: 3
+    staged: 0
   - path: Library\shadercompiler-UnityShaderCompiler.exe0.log
     fullPath: C:\UID_Projects\demogames\demogames\Library\shadercompiler-UnityShaderCompiler.exe0.log
     projectPath: Library\shadercompiler-UnityShaderCompiler.exe0.log
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\StateCache\Hierarchy\f9488f-293ce349e201e67438.json
-    fullPath: C:\UID_Projects\demogames\demogames\Library\StateCache\Hierarchy\f9488f-293ce349e201e67438.json
-    projectPath: Library\StateCache\Hierarchy\f9488f-293ce349e201e67438.json
+  - path: Library\StateCache\Hierarchy\f9488f-3b4d50dd24c7255459.json
+    fullPath: C:\UID_Projects\demogames\demogames\Library\StateCache\Hierarchy\f9488f-3b4d50dd24c7255459.json
+    projectPath: Library\StateCache\Hierarchy\f9488f-3b4d50dd24c7255459.json
     originalPath: 
     status: 3
     staged: 0
@@ -226,11 +624,17 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Temp\__Backupscenes\0.backup
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\__Backupscenes\0.backup
-    projectPath: Temp\__Backupscenes\0.backup
+  - path: obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
+    fullPath: C:\UID_Projects\demogames\demogames\obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
+    projectPath: obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
     originalPath: 
-    status: 1
+    status: 3
+    staged: 0
+  - path: ProjectSettings\EditorBuildSettings.asset
+    fullPath: C:\UID_Projects\demogames\demogames\ProjectSettings\EditorBuildSettings.asset
+    projectPath: ProjectSettings\EditorBuildSettings.asset
+    originalPath: 
+    status: 3
     staged: 0
   - path: Temp\UnityLockfile
     fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityLockfile
@@ -238,87 +642,63 @@ MonoBehaviour:
     originalPath: 
     status: 1
     staged: 0
-  - path: Temp\UnityTempFile-028a5070e195a884fb401c9199fd16ed
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-028a5070e195a884fb401c9199fd16ed
-    projectPath: Temp\UnityTempFile-028a5070e195a884fb401c9199fd16ed
+  - path: Temp\UnityTempFile-0c266d646c646db4b88a2919b0efb427
+    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-0c266d646c646db4b88a2919b0efb427
+    projectPath: Temp\UnityTempFile-0c266d646c646db4b88a2919b0efb427
     originalPath: 
     status: 1
     staged: 0
-  - path: Temp\UnityTempFile-1ca63a5c992c04a47a1c9ca0261f9a86
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-1ca63a5c992c04a47a1c9ca0261f9a86
-    projectPath: Temp\UnityTempFile-1ca63a5c992c04a47a1c9ca0261f9a86
+  - path: Temp\UnityTempFile-0dcdbb33c3bd0b4439858cb33f77f230
+    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-0dcdbb33c3bd0b4439858cb33f77f230
+    projectPath: Temp\UnityTempFile-0dcdbb33c3bd0b4439858cb33f77f230
     originalPath: 
     status: 1
     staged: 0
-  - path: Temp\UnityTempFile-38ca1ba130bdb29438d5df793d405142
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-38ca1ba130bdb29438d5df793d405142
-    projectPath: Temp\UnityTempFile-38ca1ba130bdb29438d5df793d405142
+  - path: Temp\UnityTempFile-3a7306c580b17c446a1c4851ac1ba596
+    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-3a7306c580b17c446a1c4851ac1ba596
+    projectPath: Temp\UnityTempFile-3a7306c580b17c446a1c4851ac1ba596
     originalPath: 
     status: 1
     staged: 0
-  - path: Temp\UnityTempFile-489a7992686ffa1468e770592fb78a66
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-489a7992686ffa1468e770592fb78a66
-    projectPath: Temp\UnityTempFile-489a7992686ffa1468e770592fb78a66
+  - path: Temp\UnityTempFile-4adf9cb2c7e15884aa4f2f060893e4db
+    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-4adf9cb2c7e15884aa4f2f060893e4db
+    projectPath: Temp\UnityTempFile-4adf9cb2c7e15884aa4f2f060893e4db
     originalPath: 
     status: 1
     staged: 0
-  - path: Temp\UnityTempFile-4a5071d9c4e66ee439e982d3953ab964
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-4a5071d9c4e66ee439e982d3953ab964
-    projectPath: Temp\UnityTempFile-4a5071d9c4e66ee439e982d3953ab964
+  - path: Temp\UnityTempFile-4c7ffd1cb26b1774c82f362733969c46
+    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-4c7ffd1cb26b1774c82f362733969c46
+    projectPath: Temp\UnityTempFile-4c7ffd1cb26b1774c82f362733969c46
     originalPath: 
     status: 1
     staged: 0
-  - path: Temp\UnityTempFile-afbba0dc59062a045ae1534a0500cc13
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-afbba0dc59062a045ae1534a0500cc13
-    projectPath: Temp\UnityTempFile-afbba0dc59062a045ae1534a0500cc13
+  - path: Temp\UnityTempFile-75190443de3ed4b418c4cc152b5aa36f
+    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-75190443de3ed4b418c4cc152b5aa36f
+    projectPath: Temp\UnityTempFile-75190443de3ed4b418c4cc152b5aa36f
     originalPath: 
     status: 1
     staged: 0
-  - path: Temp\UnityTempFile-bdb3ffcfd7f8a7b42a79b1bca99e0c8b
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-bdb3ffcfd7f8a7b42a79b1bca99e0c8b
-    projectPath: Temp\UnityTempFile-bdb3ffcfd7f8a7b42a79b1bca99e0c8b
+  - path: Temp\UnityTempFile-9fde9b741072f3449aeec5e684a151b7
+    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-9fde9b741072f3449aeec5e684a151b7
+    projectPath: Temp\UnityTempFile-9fde9b741072f3449aeec5e684a151b7
     originalPath: 
     status: 1
     staged: 0
-  - path: Temp\UnityTempFile-c1e8dd1d9d500c94ca0b32ca29a695af
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-c1e8dd1d9d500c94ca0b32ca29a695af
-    projectPath: Temp\UnityTempFile-c1e8dd1d9d500c94ca0b32ca29a695af
+  - path: Temp\UnityTempFile-cbb542e4923a90e438f1e34a98b78523
+    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-cbb542e4923a90e438f1e34a98b78523
+    projectPath: Temp\UnityTempFile-cbb542e4923a90e438f1e34a98b78523
     originalPath: 
     status: 1
     staged: 0
-  - path: Temp\UnityTempFile-ca3826189f7b1374aa39459d8b3ece13
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-ca3826189f7b1374aa39459d8b3ece13
-    projectPath: Temp\UnityTempFile-ca3826189f7b1374aa39459d8b3ece13
+  - path: Temp\UnityTempFile-f1e7362168480c444aa3544b8bf9ea71
+    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-f1e7362168480c444aa3544b8bf9ea71
+    projectPath: Temp\UnityTempFile-f1e7362168480c444aa3544b8bf9ea71
     originalPath: 
     status: 1
     staged: 0
-  - path: Temp\UnityTempFile-d42c5fbee22dc5245b7934034f076a24
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-d42c5fbee22dc5245b7934034f076a24
-    projectPath: Temp\UnityTempFile-d42c5fbee22dc5245b7934034f076a24
-    originalPath: 
-    status: 1
-    staged: 0
-  - path: Temp\UnityTempFile-dad25e69f664c474cbe59d9f1c05dfd9
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-dad25e69f664c474cbe59d9f1c05dfd9
-    projectPath: Temp\UnityTempFile-dad25e69f664c474cbe59d9f1c05dfd9
-    originalPath: 
-    status: 1
-    staged: 0
-  - path: Temp\UnityTempFile-eab4cb3c7ff8e50409410f985aa2fd6a
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-eab4cb3c7ff8e50409410f985aa2fd6a
-    projectPath: Temp\UnityTempFile-eab4cb3c7ff8e50409410f985aa2fd6a
-    originalPath: 
-    status: 1
-    staged: 0
-  - path: Temp\UnityTempFile-f8ed928b8a94b2b4fb4668f489b55253
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-f8ed928b8a94b2b4fb4668f489b55253
-    projectPath: Temp\UnityTempFile-f8ed928b8a94b2b4fb4668f489b55253
-    originalPath: 
-    status: 1
-    staged: 0
-  - path: Temp\UnityTempFile-fbcfd9658f195b94d9570ddc1d17ce74
-    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-fbcfd9658f195b94d9570ddc1d17ce74
-    projectPath: Temp\UnityTempFile-fbcfd9658f195b94d9570ddc1d17ce74
+  - path: Temp\UnityTempFile-f677518470139844992351d7e5f6b6ec
+    fullPath: C:\UID_Projects\demogames\demogames\Temp\UnityTempFile-f677518470139844992351d7e5f6b6ec
+    projectPath: Temp\UnityTempFile-f677518470139844992351d7e5f6b6ec
     originalPath: 
     status: 1
     staged: 0

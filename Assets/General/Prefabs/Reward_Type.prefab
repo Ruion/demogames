@@ -1,5 +1,63 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4596290985907111803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 966502153106799960}
+  - component: {fileID: 1430496413423124727}
+  m_Layer: 0
+  m_Name: StockManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &966502153106799960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596290985907111803}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6045434130955020526}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1430496413423124727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596290985907111803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e3c8a8d07255da48ac74aa42c168a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stockList: []
+  emptyHandler: {fileID: 0}
+  successSendDataHandler: {fileID: 0}
+  blockDataHandler: {fileID: 0}
+  stockNotSaveHandler: {fileID: 0}
+  numberToPopulate: 0
+  numberPerLane: 0
+  settingFileName: game
+  dbName: user_db
+  scoreName: score
+  tableName: user
+  serverAddress: http://192.168.0.28/honda/submit-data.php
+  serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
+  stockDbName: u665541817_eys10
+  stockTableName: stock
 --- !u!1 &6045434130529966912
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +159,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 966502153106799960}
   m_Father: {fileID: 6045434130676512967}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

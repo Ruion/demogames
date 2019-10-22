@@ -57,6 +57,8 @@ public class Settings
     public string tableName = "user";
     public string serverAddress = "http://192.168.0.28/honda/submit-data.php";
     public string serverGetDataAddress = "http://192.168.0.28/honda/submit-data.php";
+    public string stockDbName = "http://192.168.0.28/honda/submit-data.php";
+    public string stockTableName = "http://192.168.0.28/honda/submit-data.php";
 
     public Settings(Settings setting)
     {
@@ -66,6 +68,8 @@ public class Settings
         tableName = setting.tableName;
         serverAddress = setting.serverAddress;
         serverGetDataAddress = setting.serverGetDataAddress;
+        stockDbName = setting.stockDbName;
+        stockTableName = setting.stockTableName;
     }
 
     public Settings(){  }

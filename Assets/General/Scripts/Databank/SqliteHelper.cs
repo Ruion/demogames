@@ -38,7 +38,7 @@ namespace DataBank
             throw null;
         }
 
-        public virtual IDataReader GetDataByString(string str)
+        public virtual IDataReader GetDataByString(string conditionlowercase, string str)
         {
             Debug.Log(CodistanTag + "This function is not implemnted");
             throw null;

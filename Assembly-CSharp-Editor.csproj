@@ -67,6 +67,7 @@
     <Compile Include="Assets\Editor\ConditionalHidePropertyDrawer.cs" />
     <Compile Include="Assets\Editor\ReadOnlyDrawer.cs" />
     <Compile Include="Assets\Editor\ResourceChecker.cs" />
+    <Compile Include="Assets\General\Scripts\Editor\StockManagerEditor.cs" />
     <Compile Include="Assets\General\Scripts\Manager\Editor\DataManagerEditor.cs" />
     <Compile Include="Assets\SimpleNote\Editor\FindMissingScript.cs" />
     <Compile Include="Assets\SimpleNote\Editor\SimpleNoteAttributeDrawer.cs" />

@@ -251,7 +251,7 @@ namespace DataBank{
             return base.GetDataById(id);
         }
 
-        public override IDataReader GetDataByString(string str)
+        public override IDataReader GetDataByString(string condiotionlowercase, string str)
         {
             Debug.Log(CodistanTag + "Getting Location: " + str);
 
