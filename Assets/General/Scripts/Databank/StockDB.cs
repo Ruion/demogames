@@ -169,54 +169,32 @@ namespace DataBank
             }
         }
 
-        /*
-        public string UpdateLastDataScore(string score)
+        public void UpdateStock(Stock stock)
         {
-            IDataReader lastReader = GetLatestTimeStamp();
-            Stock lastEntity = new Stock();
-
-            while (lastReader.Read())
-            {
-                lastEntity.phone = lastReader[3].ToString();
-                lastEntity.score = lastReader[4].ToString();
-            }
+            /*
+            UPDATE table_name
+            SET column1 = value1, column2 = value2...., columnN = valueN
+            WHERE[condition];
+            */
 
             IDbCommand dbcmd2 = GetDbCommand();
-            dbcmd2.CommandText = "UPDATE " + TABLE_NAME + " SET " + KEY_SCORE + " = '" + score + "' WHERE " + KEY_PHONE + " = '" + lastEntity.phone + "' ;";
+            dbcmd2.CommandText =
+                "UPDATE " + TABLE_NAME
+                + " SET "
+                + KEY_NUMBER + " = " + stock.number + " , "
+                + KEY_LANE + " = '" + stock.lane + "' , "
+                + KEY_ISDISABLED + " = '" + stock.isDisabled + "' WHERE "
+                + KEY_ID + " = " + stock.ID +" ;";
 
-            using (db_connection)
+            try { dbcmd2.ExecuteNonQuery(); Debug.Log("Updated stock with ID " + stock.ID); }
+            catch (DbException ex)
             {
-                try
-                {
-                    dbcmd2.ExecuteNonQuery();
-                    return "true";
-                }
-                catch (DbException ex)
-                {
-                    string msg = string.Format("ErrorCode: {0}", ex.Message);
-                    Debug.Log(msg);
-                    return msg;
-                }
+                string msg = string.Format("ErrorCode: {0}", ex.Message);
+                Debug.Log(msg);
             }
-
-        }
-        */
-
-        public override IDataReader GetDataById(int id)
-        {
-            return base.GetDataById(id);
         }
 
-        public override IDataReader GetDataByString(string conditionlowercase, string str)
-        {
-            Debug.Log(CodistanTag + "Getting Location: " + str);
-
-            IDbCommand dbcmd = GetDbCommand();
-            dbcmd.CommandText =
-                "SELECT * FROM " + TABLE_NAME + " WHERE " + conditionlowercase + " = '" + str + "'";
-            return dbcmd.ExecuteReader();
-        }
-
+        #region Delete
         public override void DeleteDataByString(string id)
         {
             Debug.Log(CodistanTag + "Deleting Location: " + id);
@@ -239,6 +217,9 @@ namespace DataBank
             base.DeleteAllData(TABLE_NAME);
         }
 
+        #endregion
+
+        #region Get
         public override IDataReader GetAllData()
         {
             return base.GetAllData(TABLE_NAME);
@@ -269,11 +250,16 @@ namespace DataBank
         {
             List<Stock> entities = new List<Stock>();
 
+            /*
             IDbCommand dbcmd = GetDbCommand();
             dbcmd.CommandText =
                 "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_ISDISABLED + " = 'No'";
 
             IDataReader reader = dbcmd.ExecuteReader();
+            */
+
+            IDataReader reader = GetDataByString(KEY_ISDISABLED, "false");
+
             while (reader.Read())
             {
                 Stock entity = new Stock();
@@ -288,19 +274,23 @@ namespace DataBank
             return entities;
         }
 
-        public void UpdateSyncUser(Stock stock)
+        public override IDataReader GetDataById(int id)
         {
-            List<string> col = new List<string>();
-            List<string> con = new List<string>();
-
-            col.Add("isDisabled");
-            con.Add("Yes");
-
-            string condition = "ID = '" + stock.ID + "'";
-
-            UpdateData(col, con, condition);
-
+            return base.GetDataById(id);
         }
+
+        public override IDataReader GetDataByString(string conditionlowercase, string str)
+        {
+            Debug.Log(CodistanTag + "Getting Location: " + str);
+
+            IDbCommand dbcmd = GetDbCommand();
+            dbcmd.CommandText =
+                "SELECT * FROM " + TABLE_NAME + " WHERE " + conditionlowercase + " = '" + str + "'";
+            return dbcmd.ExecuteReader();
+        }
+
+        #endregion
+
 
         public IDataReader GetLatestTimeStamp()
         {

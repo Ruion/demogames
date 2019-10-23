@@ -13,7 +13,10 @@ public class StockManager : MonoBehaviour {
 
     #region fields
 
+    [ReadOnly]
     public List<Stock> stockList;
+    [ReadOnly]
+    public List<Stock> availableStockList;
 
     [Header("Handler")]
     public GameObject emptyHandler;
@@ -21,8 +24,12 @@ public class StockManager : MonoBehaviour {
     public GameObject blockDataHandler;
     public GameObject stockNotSaveHandler;
 
-    public int numberToPopulate;
-    public int numberPerLane;
+    [Header("Stock setting")]
+    public int numberToPopulate = 35;
+    public int numberPerLane = 3;
+    public int availableLanePerJump = 1;
+    public bool resetOnPopulate = true;
+    private StockDB stockDb;
 
     [Header("GameSetting - SAVE setting every new project")]
     public string settingFileName = "game";
@@ -39,6 +46,8 @@ public class StockManager : MonoBehaviour {
     private void Awake()
     {
         LoadSetting();
+        stockDb = new StockDB(stockDbName, stockTableName);
+        if (stockDb.GetAllStock().Count < 1) Populate(); // create stock list if no list exist
     }
 
     #region setting
@@ -79,7 +88,7 @@ public class StockManager : MonoBehaviour {
         HideAllHandler();
 
         stockList = new List<Stock>();
-        StockDB stockDb = new StockDB(stockDbName, stockTableName);
+        stockDb = new StockDB(stockDbName, stockTableName);
         stockList = stockDb.GetAllStock();
         stockDb.Close();
     }
@@ -95,38 +104,12 @@ public class StockManager : MonoBehaviour {
     public void GetAllStock()
     {
         LoadSetting();
-        StockDB stockDb = new StockDB(stockDbName, stockTableName);
         List<Stock> entities = stockDb.GetAllStock();
         stockDb.Close();
 
         if (entities.Count < 1)
         {
-            Debug.LogError("no data in record");
-            return;
-        }
-
-        int n = 0;
-        foreach (Stock e in entities)
-        {
-            n++;
-            Debug.Log(n + " ID is " + e.ID);
-            Debug.Log(n + " lane is " + e.lane);
-            Debug.Log(n + " number is " + e.number);
-            Debug.Log(n + " isSubmitted is " + e.isDisabled);
-        }
-    }
-
-    [ContextMenu("Get All stock")]
-    public void GetAllStock()
-    {
-        LoadSetting();
-        StockDB stockDb = new StockDB(stockDbName, stockTableName);
-        List<Stock> entities = stockDb.GetAllStock();
-        stockDb.Close();
-
-        if (entities.Count < 1)
-        {
-            Debug.LogError("no data in record");
+            Debug.LogError("empty in stock");
             return;
         }
 
@@ -143,7 +126,7 @@ public class StockManager : MonoBehaviour {
 
     public void ClearData()
     {
-        StockDB stockDb = new StockDB(stockDbName, stockTableName);
+        stockDb = new StockDB(stockDbName, stockTableName);
         stockDb.DeleteAllData();
         stockDb.Close();
     }
@@ -152,8 +135,6 @@ public class StockManager : MonoBehaviour {
 
     public void SaveStock(Stock stock)
     {
-        StockDB stockDb = new StockDB(stockDbName, stockTableName);
-
         string msg = stockDb.AddData(stock);
 
         stockDb.Close();
@@ -169,17 +150,18 @@ public class StockManager : MonoBehaviour {
 
     }
 
-    public void SaveStockMultiple(int amount, int numberPerLane)
+    public void SaveStockMultiple(int amount, int numberPerLane, int availableLanePerJump_ = 1  )
     {
-        StockDB stockDb = new StockDB(stockDbName, stockTableName);
         stockDb.DeleteAllData();
 
-        for (int i = 0; i < amount; i++)
+        for (int i = 1; i < amount+1; i++)
         {
             Stock stock = new Stock();
             stock.lane = "Motor_" + i.ToString();
             stock.number = numberPerLane;
-            stock.isDisabled = "false";
+
+           if(availableLanePerJump_ % i == 0) stock.isDisabled = "true";
+           if(i == 1) stock.isDisabled = "false";
 
             string msg = stockDb.AddData(stock);
             if (msg != "true")
@@ -192,12 +174,64 @@ public class StockManager : MonoBehaviour {
         stockDb.Close();
     }
 
+    private void UpdateStock(Stock stock)
+    {
+        stockDb.UpdateStock(stock);
+    }
+
     #endregion
 
+    #region Get stock
 
+    public List<Stock> GetAvailableStocks()
+    {
+        List<Stock> stocks = stockDb.GetAllAvailable();
+
+        if(stocks.Count < 1)
+        {
+            Debug.Log("empty stock");
+            emptyHandler.SetActive(true);
+            return stocks;
+        }
+
+        foreach (var s in stocks)
+        {
+            Debug.Log(s.ID + " stock is " + s.isDisabled);
+        }
+
+        return stocks;
+    }
+
+    public Stock GetAvailableStock()
+    {
+        availableStockList = GetAvailableStocks();
+
+        return availableStockList[0];
+    }
+
+    #endregion
+
+    public void DropGift() 
+    {
+
+        Stock stock = GetAvailableStock();
+
+        if (stock == null) return;
+
+        Debug.Log(stock.lane + " stock have " + stock.number + " left");
+
+        stock.number--;
+
+        if(stock.number == 0) { stock.isDisabled = "true";  Debug.Log("change motor on next drop"); } // if no more gift at that lane, disabled it in database
+
+        UpdateStock(stock);
+    }
+   
 
     public void Populate()
     {
-        SaveStockMultiple(numberToPopulate, numberPerLane);
+        Debug.Log("Creating stock list");
+        SaveStockMultiple(numberToPopulate, numberPerLane, availableLanePerJump);
+        GetAllStock();
     }
 }

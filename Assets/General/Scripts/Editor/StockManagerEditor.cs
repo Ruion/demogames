@@ -17,6 +17,7 @@ public class StockManagerEditor : Editor
 
         if (GUILayout.Button("Populate"))
         {
+            if (sm.resetOnPopulate) sm.ClearData();
             sm.Populate();
         }
 
