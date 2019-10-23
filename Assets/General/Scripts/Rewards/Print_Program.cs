@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 using System.Linq;
 
-class Print_Program : MonoBehaviour
+class Print_Program : RewardFeature
 {
+    public override void GiveReward()
+    {
+        Print();
+    }
+
     public void Print()
     {
 

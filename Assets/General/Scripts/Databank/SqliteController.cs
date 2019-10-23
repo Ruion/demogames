@@ -19,10 +19,10 @@ public class SqliteController : MonoBehaviour
     [ContextMenu("ShowAll")]
     void OnEnable()
     {
-        DataManager dm = FindObjectOfType<DataManager>();
+        GameSettingEntity dm = GameObject.Find("GameSettingEntity_DoNotChangeName").GetComponent<GameSettingEntity>();
         dm.LoadSetting();
-        dbName = dm.dbName;
-        tableName = dm.tableName;
+        dbName = dm.gameSettings.dbName;
+        tableName = dm.gameSettings.tableName;
 
         UserDB userDb = new UserDB(dbName, tableName);
 

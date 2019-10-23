@@ -54,18 +54,18 @@ public class ScoreVisualizer : MonoBehaviour {
 
     public void SaveScore()
     {
-        DataManager dm = FindObjectOfType<DataManager>();
+        GameSettingEntity dm = GameObject.Find("GameSettingEntity_DoNotChangeName").GetComponent<GameSettingEntity>();
         dm.LoadSetting();
 
         string scoreName = "score";
 
         if (dm == null)
         {
-            Debug.LogError("DataManager not found in scene");
+            Debug.LogError("DGameSettingEntity not found in scene");
         }
         else
         {
-            scoreName = dm.scoreName;
+            scoreName = dm.gameSettings.scoreName;
         }
 
         PlayerPrefs.SetString(scoreName, scriptableScore.score.ToString());

@@ -51,14 +51,25 @@ public static class GameSetting
 [System.Serializable]
 public class Settings
 {
-    public string fileName = "game_setting.setting";
+    public string fileName = "game_setting";
     public string dbName = "user_db";
     public string scoreName = "score";
     public string tableName = "user";
     public string serverAddress = "http://192.168.0.28/honda/submit-data.php";
     public string serverGetDataAddress = "http://192.168.0.28/honda/submit-data.php";
+
+    public RewardType rewardType = RewardType.PrintVoucher;
+
+    [Header("Vending Machine setting, Ignore if not involve vending machine")]
     public string stockDbName = "http://192.168.0.28/honda/submit-data.php";
     public string stockTableName = "http://192.168.0.28/honda/submit-data.php";
+    public WriteType VMSerialPortWriteType = WriteType.Byte;
+    public string vmserialPortText;
+    public PortName portname = PortName.COM1;
+    public PortBaudrate portbaudrate = PortBaudrate.pb115200;
+    public int numberToPopulate = 35;
+    public int numberPerLane = 3;
+    public int laneOccupyPerMotor = 1;
 
     public Settings(Settings setting)
     {
@@ -70,7 +81,24 @@ public class Settings
         serverGetDataAddress = setting.serverGetDataAddress;
         stockDbName = setting.stockDbName;
         stockTableName = setting.stockTableName;
-    }
+        portname = setting.portname;
+        portbaudrate = setting.portbaudrate;
+        VMSerialPortWriteType = setting.VMSerialPortWriteType;
+        vmserialPortText = setting.vmserialPortText;
+        rewardType = setting.rewardType;
+
+        // stock settings
+        numberToPopulate = setting.numberToPopulate;
+        numberPerLane = setting.numberPerLane;
+        laneOccupyPerMotor = setting.laneOccupyPerMotor;
+}
 
     public Settings(){  }
+}
+
+[System.Serializable]
+public enum WriteType
+{
+    Byte,
+    String
 }

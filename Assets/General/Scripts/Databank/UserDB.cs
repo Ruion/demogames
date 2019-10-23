@@ -9,7 +9,6 @@ using System.Data.Common;
 
 namespace DataBank{
 
-    [RequireComponent(typeof(DataManager))]
 	public class UserDB : SqliteHelper {
         #region variables
         private const string CodistanTag = "Codistan: UserDB:\t";

@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 using DataBank;
 using TMPro;
 
-public class DataManager : MonoBehaviour {
+public class DataManager : GameSettingEntity {
 
     #region fields
     [Header("Fields")]
@@ -35,14 +35,7 @@ public class DataManager : MonoBehaviour {
     public GameObject localScoreNotSaveHandler;
     public TextMeshProUGUI localNotSaveCodeText;
 
-    [Header("GameSetting - SAVE setting every new project")]
-    public string settingFileName = "game";
-    public string dbName = "user_db";
-    public string scoreName = "score";
-    public string tableName = "user";
-    public string serverAddress = "http://192.168.0.28/honda/submit-data.php";
-    public string serverGetDataAddress = "http://192.168.0.28/honda/submit-data.php";
-
+    private UserDB userDb;
     #endregion
 
     public UnityEvent OnErrorMsgShown;
@@ -51,46 +44,19 @@ public class DataManager : MonoBehaviour {
     private List<UserEntity> serverUsers = new List<UserEntity>();
     List<UserEntity> unSyncUsers = new List<UserEntity>();
 
-    private void Awake()
-    {
-        LoadSetting();
-    }
-
-    #region setting
-    public void LoadSetting()
-    {
-        string filepath = settingFileName;
-        Settings setting = GameSetting.LoadSetting(filepath);
-
-        dbName = setting.dbName;
-        scoreName = setting.scoreName;
-        tableName = setting.tableName;
-        serverAddress = setting.serverAddress;
-        serverGetDataAddress = setting.serverGetDataAddress;
-    }
-
-    public void SaveSetting()
-    {
-        Settings setting = new Settings();
-        setting.fileName = settingFileName;
-        setting.dbName = dbName;
-        setting.scoreName = scoreName;
-        setting.tableName = tableName;
-        setting.serverAddress = serverAddress;
-        setting.serverGetDataAddress = serverGetDataAddress;
-
-        GameSetting.SaveSetting(setting);
-    }
-    #endregion
-
     private void Start()
     {
         HideAllHandler();
 
         oldUser = new List<UserEntity>();
-        UserDB userDb = new UserDB(dbName, tableName);
+        UserDB userDb = new UserDB(gameSettings.dbName, gameSettings.tableName);
         oldUser = userDb.GetAllUser();
         userDb.Close();
+    }
+
+    private void SetUpDb()
+    {
+        userDb = new UserDB(gameSettings.dbName, gameSettings.tableName);
     }
 
     [ContextMenu("HideHandler")]
@@ -107,7 +73,8 @@ public class DataManager : MonoBehaviour {
     public void GetAllPlayer()
     {
         LoadSetting();
-        UserDB userDb = new UserDB(dbName, tableName);
+        SetUpDb();
+
         List<UserEntity> entities = userDb.GetAllUser();
         userDb.Close();
 
@@ -131,7 +98,7 @@ public class DataManager : MonoBehaviour {
 
     public void ClearData()
     {
-        UserDB userDb = new UserDB(dbName, tableName);
+        SetUpDb();
         userDb.DeleteAllData();
         userDb.Close();
     }
@@ -194,7 +161,7 @@ public class DataManager : MonoBehaviour {
         #endregion
 
 
-        UserDB userDb = new UserDB(dbName, tableName);
+        SetUpDb();
 
         /*
         UserEntity user = new UserEntity();
@@ -219,7 +186,7 @@ public class DataManager : MonoBehaviour {
         val.Add(PlayerPrefs.GetString("name"));
         val.Add(PlayerPrefs.GetString("email"));
         val.Add(PlayerPrefs.GetString("phone"));
-        val.Add(PlayerPrefs.GetString(scoreName));
+        val.Add(PlayerPrefs.GetString(gameSettings.scoreName));
         val.Add(PlayerPrefs.GetString("register_datetime"));
         val.Add("N");
 
@@ -315,7 +282,7 @@ public class DataManager : MonoBehaviour {
         }
 
         // Get unSync user
-        UserDB userDb = new UserDB(dbName, tableName);
+        SetUpDb();
 
         List<UserEntity> unSyncUsers = new List<UserEntity>();
         try {
@@ -349,7 +316,7 @@ public class DataManager : MonoBehaviour {
             form.AddField("score", unSyncUsers[i].score);
             form.AddField("register_datetime", unSyncUsers[i].register_datetime);
 
-            using (UnityWebRequest www = UnityWebRequest.Post(serverAddress, form))
+            using (UnityWebRequest www = UnityWebRequest.Post(gameSettings.serverAddress, form))
             {
 
                 loadingHandler.SetActive(true);
@@ -455,7 +422,7 @@ public class DataManager : MonoBehaviour {
             WWWForm form = new WWWForm();
             //form.AddField("licensekey", value);
 
-            using (UnityWebRequest www = UnityWebRequest.Post(serverGetDataAddress, form))
+            using (UnityWebRequest www = UnityWebRequest.Post(gameSettings.serverGetDataAddress, form))
             {
 
                 loadingHandler.SetActive(true);
@@ -510,7 +477,7 @@ public class DataManager : MonoBehaviour {
             WWWForm form = new WWWForm();
             //form.AddField("licensekey", value);
 
-            using (UnityWebRequest www = UnityWebRequest.Post(serverGetDataAddress, form))
+            using (UnityWebRequest www = UnityWebRequest.Post(gameSettings.serverGetDataAddress, form))
             {
 
                 loadingHandler.SetActive(true);
@@ -559,7 +526,7 @@ public class DataManager : MonoBehaviour {
 
         yield return StartCoroutine(GetDataFromServer());
 
-        UserDB userDb = new UserDB(dbName, tableName);
+        SetUpDb();
         oldUser = userDb.GetAllUser();
 
         if (serverUsers.Count > 1)
@@ -582,6 +549,7 @@ public class DataManager : MonoBehaviour {
         }
         // get new unsync list from sqlite
         unSyncUsers = userDb.GetAllUnSyncUser();
+        userDb.Close();
     }
 
 }

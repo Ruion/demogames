@@ -23,16 +23,16 @@ public class ScoreManager : MonoBehaviour {
     {
         instance = this;
 
-        DataManager dm = FindObjectOfType<DataManager>();
+        GameSettingEntity dm = GameObject.Find("GameSettingEntity_DoNotChangeName").GetComponent<GameSettingEntity>();
         dm.LoadSetting();
 
         if(dm == null)
         {
-            Debug.LogError("DataManager not found in scene");
+            Debug.LogError("GameSettingEntity not found in scene");
         }
         else
         {
-            scoreName = dm.scoreName;
+            scoreName = dm.gameSettings.scoreName;
         }
 
         PlayerPrefs.SetString(scoreName, "0");

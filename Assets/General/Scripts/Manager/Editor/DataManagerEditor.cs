@@ -17,11 +17,6 @@ public class DataManagerEditor : Editor
     {
         base.OnInspectorGUI();
 
-        if(GUILayout.Button("Save Setting"))
-        {
-            dm.SaveSetting();
-        }
-
         if (GUILayout.Button("Show Data"))
         {
             dm.GetAllPlayer();
@@ -30,6 +25,11 @@ public class DataManagerEditor : Editor
         if (GUILayout.Button("Clear Data"))
         {
             dm.ClearData();
+        }
+
+        if (GUILayout.Button("Load Master Setting"))
+        {
+            dm.LoadGameSettingFromMaster();
         }
     }
 }

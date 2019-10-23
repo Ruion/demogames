@@ -18,16 +18,16 @@ public class JumpShootScoreManagerScript : MonoBehaviour {
 
     private void Awake()
     {
-        DataManager dm = FindObjectOfType<DataManager>();
+        GameSettingEntity dm = GameObject.Find("GameSettingEntity_DoNotChangeName").GetComponent<GameSettingEntity>();
 
         if (dm == null)
         {
-            Debug.LogError("DataManager not found in scene");
+            Debug.LogError("Game setting entity not found in scene");
         }
         else
         {
             dm.LoadSetting();
-            scoreName = dm.scoreName;
+            scoreName = dm.gameSettings.scoreName;
         }
     }
 

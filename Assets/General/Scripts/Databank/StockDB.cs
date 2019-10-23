@@ -43,8 +43,10 @@ namespace DataBank
                 KEY_ID + " INTEGER PRIMARY KEY, " +
                 KEY_LANE + " TEXT NOT NULL, " +
                 KEY_NUMBER + " INTEGER NOT NULL, " +
-                KEY_ISDISABLED + " TEXT NOT NULL, " +
-            dbcmd.ExecuteNonQuery();
+                KEY_ISDISABLED + " TEXT NOT NULL " + " ) ;";
+
+            try { dbcmd.ExecuteNonQuery(); }
+            catch(Exception ex) { Debug.LogError(ex.Message); }
 
             return;
         }
@@ -127,7 +129,7 @@ namespace DataBank
                 catch (DbException ex)
                 {
                     string msg = string.Format("ErrorCode: {0}", ex.Message);
-                    Debug.Log(msg);
+                    Debug.LogError(msg);
                     return msg;
                 }
             }
@@ -235,9 +237,9 @@ namespace DataBank
             while (reader.Read())
             {
                 Stock entity = new Stock();
-                entity.ID = (int)reader[0];
+                entity.ID = System.Convert.ToInt32(reader[0]);
                 entity.lane = reader[1].ToString();
-                entity.number = (int)reader[2];
+                entity.number = System.Convert.ToInt32(reader[2]);
                 entity.isDisabled = reader[3].ToString();
 
                 entities.Add(entity);
@@ -263,9 +265,9 @@ namespace DataBank
             while (reader.Read())
             {
                 Stock entity = new Stock();
-                entity.ID = (int)reader[0];
+                entity.ID = System.Convert.ToInt32(reader[0]);
                 entity.lane = reader[1].ToString();
-                entity.number = (int)reader[2];
+                entity.number = System.Convert.ToInt32(reader[2]);
                 entity.isDisabled = reader[3].ToString();
 
                 entities.Add(entity);
@@ -281,7 +283,7 @@ namespace DataBank
 
         public override IDataReader GetDataByString(string conditionlowercase, string str)
         {
-            Debug.Log(CodistanTag + "Getting Location: " + str);
+          //  Debug.Log(CodistanTag + "Getting Location: " + str);
 
             IDbCommand dbcmd = GetDbCommand();
             dbcmd.CommandText =

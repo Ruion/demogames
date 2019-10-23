@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 using DataBank;
 using TMPro;
 
-public class StockManager : MonoBehaviour {
+public class StockManager : RewardFeature {
 
     #region fields
 
@@ -20,90 +20,57 @@ public class StockManager : MonoBehaviour {
 
     [Header("Handler")]
     public GameObject emptyHandler;
-    public GameObject successSendDataHandler;
-    public GameObject blockDataHandler;
-    public GameObject stockNotSaveHandler;
+    public GameObject errorHandler;
 
     [Header("Stock setting")]
     public int numberToPopulate = 35;
     public int numberPerLane = 3;
-    public int availableLanePerJump = 1;
+    public int laneOccupyPerMotor = 1;
     public bool resetOnPopulate = true;
+    public bool showAllOnPopulate = true;
+    public bool showAvailableOnPopulate = true;
     private StockDB stockDb;
-
-    [Header("GameSetting - SAVE setting every new project")]
-    public string settingFileName = "game";
-    public string dbName = "user_db";
-    public string scoreName = "score";
-    public string tableName = "user";
-    public string serverAddress = "http://192.168.0.28/honda/submit-data.php";
-    public string serverGetDataAddress = "http://192.168.0.28/honda/submit-data.php";
-    public string stockDbName = "u665541817_eys10";
-    public string stockTableName = "stock";
+    public VendingMachine vm;
 
     #endregion
 
-    private void Awake()
+    public override void GiveReward()
     {
-        LoadSetting();
-        stockDb = new StockDB(stockDbName, stockTableName);
-        if (stockDb.GetAllStock().Count < 1) Populate(); // create stock list if no list exist
+        DropGift();
     }
-
-    #region setting
-    public void LoadSetting()
-    {
-        string filepath = settingFileName;
-        Settings setting = GameSetting.LoadSetting(filepath);
-
-        dbName = setting.dbName;
-        scoreName = setting.scoreName;
-        tableName = setting.tableName;
-        serverAddress = setting.serverAddress;
-        serverGetDataAddress = setting.serverGetDataAddress;
-        stockDbName = setting.stockDbName;
-        stockTableName = setting.stockTableName;
-    }
-
-    
-    [ContextMenu("SaveSetting")]
-    public void SaveSetting()
-    {
-        Settings setting = new Settings();
-        setting.fileName = settingFileName;
-        setting.dbName = dbName;
-        setting.scoreName = scoreName;
-        setting.tableName = tableName;
-        setting.serverAddress = serverAddress;
-        setting.serverGetDataAddress = serverGetDataAddress;
-        setting.stockDbName = stockDbName;
-        setting.stockTableName = stockTableName;
-
-        GameSetting.SaveSetting(setting);
-    }
-    #endregion
 
     private void Start()
     {
+        stockDb = new StockDB(gameSettings.stockDbName, gameSettings.stockTableName);
+        if (stockDb.GetAllStock().Count < 1) Populate(); // create stock list if no list exist
+        if (vm == null) { vm = FindObjectOfType<VendingMachine>(); }
+
         HideAllHandler();
 
         stockList = new List<Stock>();
-        stockDb = new StockDB(stockDbName, stockTableName);
+        stockDb = new StockDB(gameSettings.stockDbName, gameSettings.stockTableName);
         stockList = stockDb.GetAllStock();
         stockDb.Close();
+    }
+
+    private void SetUpDb()
+    {
+        stockDb = new StockDB(gameSettings.stockDbName, gameSettings.stockTableName);
     }
 
     [ContextMenu("HideHandler")]
     public void HideAllHandler()
     {
         emptyHandler.SetActive(false);
-        successSendDataHandler.SetActive(false);
+        errorHandler.SetActive(false);
     }
 
     [ContextMenu("Get All stock")]
     public void GetAllStock()
     {
         LoadSetting();
+        SetUpDb();
+
         List<Stock> entities = stockDb.GetAllStock();
         stockDb.Close();
 
@@ -126,7 +93,7 @@ public class StockManager : MonoBehaviour {
 
     public void ClearData()
     {
-        stockDb = new StockDB(stockDbName, stockTableName);
+        SetUpDb();
         stockDb.DeleteAllData();
         stockDb.Close();
     }
@@ -135,13 +102,15 @@ public class StockManager : MonoBehaviour {
 
     public void SaveStock(Stock stock)
     {
+        SetUpDb();
         string msg = stockDb.AddData(stock);
 
         stockDb.Close();
 
         if (msg != "true")
         {
-            stockNotSaveHandler.SetActive(true);
+            errorHandler.SetActive(true);
+            errorHandler.GetComponentInChildren<TextMeshProUGUI>().text = "error" + msg;
         }
         else
         {
@@ -150,33 +119,43 @@ public class StockManager : MonoBehaviour {
 
     }
 
-    public void SaveStockMultiple(int amount, int numberPerLane, int availableLanePerJump_ = 1  )
+    public void SaveStockMultiple(int amount, int numberPerLane, int laneOccupyPerMotor = 1  )
     {
-        stockDb.DeleteAllData();
+        List<Stock> stocks = new List<Stock>();
 
-        for (int i = 1; i < amount+1; i++)
+        for (int i = 0; i < amount; i++)
         {
             Stock stock = new Stock();
-            stock.lane = "Motor_" + i.ToString();
+            stock.ID = i+1;
+            stock.lane = "Motor_" + (i.ToString());
             stock.number = numberPerLane;
+            stock.isDisabled = "true";
 
-           if(availableLanePerJump_ % i == 0) stock.isDisabled = "true";
-           if(i == 1) stock.isDisabled = "false";
+            if (i % (laneOccupyPerMotor) == 0) { stock.isDisabled = "false"; Debug.Log(i + "% " + laneOccupyPerMotor + " is " + i % laneOccupyPerMotor); }
+             if(i == 0) stock.isDisabled = "false";
 
+            stocks.Add(stock);
+
+            
+            SetUpDb();
             string msg = stockDb.AddData(stock);
+
             if (msg != "true")
             {
-                stockNotSaveHandler.SetActive(true);
+                Debug.LogError("Failed at " + i + "th saving");
                 break;
             }
-        }
 
-        stockDb.Close();
+            stockDb.Close();
+            
+        }
     }
 
     private void UpdateStock(Stock stock)
     {
+        SetUpDb();
         stockDb.UpdateStock(stock);
+        stockDb.Close();
     }
 
     #endregion
@@ -185,6 +164,7 @@ public class StockManager : MonoBehaviour {
 
     public List<Stock> GetAvailableStocks()
     {
+        SetUpDb();
         List<Stock> stocks = stockDb.GetAllAvailable();
 
         if(stocks.Count < 1)
@@ -194,10 +174,7 @@ public class StockManager : MonoBehaviour {
             return stocks;
         }
 
-        foreach (var s in stocks)
-        {
-            Debug.Log(s.ID + " stock is " + s.isDisabled);
-        }
+        stockDb.Close();
 
         return stocks;
     }
@@ -213,25 +190,41 @@ public class StockManager : MonoBehaviour {
 
     public void DropGift() 
     {
-
         Stock stock = GetAvailableStock();
 
-        if (stock == null) return;
+        if (stock == null) { Debug.LogError("out of stock"); return; }
 
-        Debug.Log(stock.lane + " stock have " + stock.number + " left");
+        try
+        {
+            vm.SendToPort(stock.ID - 1);
+        }
+        catch(System.Exception ex)
+        {
+            Debug.LogError("Vending Machine error " +ex.Message);
+        }
 
         stock.number--;
+
+        Debug.Log(stock.lane + " drop 1 gift, " + stock.lane + " stock have " + stock.number + " left");  
 
         if(stock.number == 0) { stock.isDisabled = "true";  Debug.Log("change motor on next drop"); } // if no more gift at that lane, disabled it in database
 
         UpdateStock(stock);
+
     }
    
-
     public void Populate()
     {
-        Debug.Log("Creating stock list");
-        SaveStockMultiple(numberToPopulate, numberPerLane, availableLanePerJump);
-        GetAllStock();
+        Debug.ClearDeveloperConsole();
+
+        LoadSetting();
+
+        if (resetOnPopulate) ClearData();
+
+        SaveStockMultiple(numberToPopulate, numberPerLane, laneOccupyPerMotor);
+
+        if(showAllOnPopulate) GetAllStock();
+        if(showAvailableOnPopulate) GetAvailableStocks();
+        
     }
 }

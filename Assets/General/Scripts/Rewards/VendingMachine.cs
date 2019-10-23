@@ -4,48 +4,23 @@ using System.IO.Ports;
 using System;
 
 
-public class VendingMachine : MonoBehaviour
+public class VendingMachine : GameSettingEntity
 {
-    public Text ReadData;
-    public Text DataInput;
-    public Toggle bytetoggle;
-    public Toggle stringtoggle;
-    public Dropdown ByteChoose;
-    public Dropdown PortNameChoose;
-    public Dropdown PortBaudrate;
-    public GameObject TextInput;
     /*public byte[] test;
     public byte aa;*/
 
     SerialPort VMSerialPort;
 
-    public string[] portbaudrate;
-    public string[] ports;
-
     // Start is called before the first frame update
     void Start()
     {
         VMSerialPort = new SerialPort();
-        ChoosePortName();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (stringtoggle.isOn)
-        {
-            TextInput.SetActive(true);
-        }
-        else
-        {
-            TextInput.SetActive(false);
-        }
     }
 
     public void OpenPort()
     {
-        VMSerialPort.PortName = PortNameChoose.options[PortNameChoose.value].text;
-        VMSerialPort.BaudRate = Convert.ToInt32(PortBaudrate.options[PortBaudrate.value].text);
+        VMSerialPort.PortName = gameSettings.portname.ToString();
+        VMSerialPort.BaudRate = Convert.ToInt32(gameSettings.portbaudrate);
         VMSerialPort.Parity = Parity.None;
         VMSerialPort.DataBits = 8;
         VMSerialPort.Open();
@@ -55,500 +30,473 @@ public class VendingMachine : MonoBehaviour
         System.Threading.Thread.Sleep(2000);
     }
 
-    public void PortNameOnChange()
-    {
-        Debug.Log("Chosen port name: " + PortNameChoose.options[PortNameChoose.value].text);
-    }
-
-    public void BaudRateOnChange()
-    {
-        Debug.Log("Chosen baud rate: " + PortBaudrate.options[PortBaudrate.value].text);
-    }
-
-    public void MotorChoiceOnChange()
-    {
-        Debug.Log("Chosen motor: " + ByteChoose.value);
-    }
-
-    public void SendToPort()
+    public void SendToPort(int value_)
     {
         OpenPort();
 
-        if (ByteChoose.value == 0)
+        if (value_ == 0)
         {
             Debug.Log("Running motor 1");
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x00, 0x00, 0x35 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 1)
+        else if (value_ == 1)
         {
             Debug.Log("Running motor 2");
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x01, 0x00, 0x36 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 2)
+        else if (value_ == 2)
         {
             Debug.Log("Running motor 3");
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x02, 0x00, 0x37 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 3)
+        else if (value_ == 3)
         {
             Debug.Log("Running motor 4");
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x03, 0x00, 0x38 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 4)
+        else if (value_ == 4)
         {
             Debug.Log("Running motor 5");
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x04, 0x00, 0x39 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 5)
+        else if (value_ == 5)
         {
             Debug.Log("Running motor 6");
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x05, 0x00, 0x3A };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 6)
+        else if (value_ == 6)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x06, 0x00, 0x3B };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 7)
+        else if (value_ == 7)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x0A, 0x00, 0x3F };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 8)
+        else if (value_ == 8)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x0B, 0x00, 0x40 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 9)
+        else if (value_ == 9)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x0C, 0x00, 0x41 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 10)
+        else if (value_ == 10)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x0D, 0x00, 0x42 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 11)
+        else if (value_ == 11)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x0E, 0x00, 0x43 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 12)
+        else if (value_ == 12)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x0F, 0x00, 0x44 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 13)
+        else if (value_ == 13)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x10, 0x00, 0x45 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 14)
+        else if (value_ == 14)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x14, 0x00, 0x49 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 15)
+        else if (value_ == 15)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x15, 0x00, 0x4A };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 16)
+        else if (value_ == 16)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x16, 0x00, 0x4B };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 17)
+        else if (value_ == 17)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x17, 0x00, 0x4C };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 18)
+        else if (value_ == 18)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x18, 0x00, 0x4D };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 19)
+        else if (value_ == 19)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x19, 0x00, 0x4E };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 20)
+        else if (value_ == 20)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x1A, 0x00, 0x4F };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 21)
+        else if (value_ == 21)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x1E, 0x00, 0x53 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 22)
+        else if (value_ == 22)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x1F, 0x00, 0x54 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 23)
+        else if (value_ == 23)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x20, 0x00, 0x55 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 24)
+        else if (value_ == 24)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x21, 0x00, 0x56 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 25)
+        else if (value_ == 25)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x22, 0x00, 0x57 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 26)
+        else if (value_ == 26)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x23, 0x00, 0x58 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 27)
+        else if (value_ == 27)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x24, 0x00, 0x59 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 28)
+        else if (value_ == 28)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x28, 0x00, 0x5D };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 29)
+        else if (value_ == 29)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x29, 0x00, 0x5E };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 30)
+        else if (value_ == 30)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x2A, 0x00, 0x5F };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 31)
+        else if (value_ == 31)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x2B, 0x00, 0x60 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 32)
+        else if (value_ == 32)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x2C, 0x00, 0x61 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 33)
+        else if (value_ == 33)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x2D, 0x00, 0x62 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
-        else if (ByteChoose.value == 34)
+        else if (value_ == 34)
         {
             PortReset();
-            if (bytetoggle.isOn)
+            if (gameSettings.VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x2E, 0x00, 0x63 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (stringtoggle.isOn)
+            else if (gameSettings.VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(DataInput.text);
+                VMSerialPort.Write(gameSettings.vmserialPortText);
             }
         }
 
         ClosePort();
-    }
-
-    void ChoosePortName()
-    {
-        ports = SerialPort.GetPortNames();
-        PortNameChoose.options.Clear();
-        foreach (string cc in ports)
-        {
-            PortNameChoose.options.Add(new Dropdown.OptionData() { text = cc });
-        }
-        PortNameChoose.value = 1;
-        PortNameChoose.value = 0;
     }
 
     void ClosePort()
@@ -563,4 +511,30 @@ public class VendingMachine : MonoBehaviour
 
         System.Threading.Thread.Sleep(2000);
     }
+}
+
+[Serializable]
+public enum PortName
+{
+    COM1,
+    COM2,
+    COM3
+}
+
+[Serializable]
+public enum PortBaudrate
+{
+    pb110 = 110,
+    pb300 = 300,
+    pb600 = 600,
+    pb1200 = 1200,
+    pb4800 = 4800,
+    pb9600 = 9600,
+    pb14400 = 14400,
+    pb19200 = 19200,
+    pb38400 = 38400,
+    pb57600 = 57600,
+    pb115200 = 115200,
+    pb128000 = 128000,
+    pb256000 = 256000
 }

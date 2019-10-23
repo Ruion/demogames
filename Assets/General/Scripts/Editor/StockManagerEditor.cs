@@ -17,13 +17,26 @@ public class StockManagerEditor : Editor
 
         if (GUILayout.Button("Populate"))
         {
-            if (sm.resetOnPopulate) sm.ClearData();
             sm.Populate();
         }
 
         if (GUILayout.Button("Clear stock"))
         {
             sm.ClearData();
+        }
+
+        if (GUILayout.Button("Get available stock"))
+        {
+           List<Stock> stocks = sm.GetAvailableStocks();
+            foreach (var s in stocks)
+            {
+                Debug.Log(s.ID + "th stock is available");
+            }
+        }
+
+        if (GUILayout.Button("Drop Gift"))
+        {
+            sm.DropGift();
         }
     }
 }
