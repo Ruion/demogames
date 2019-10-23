@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8942889261852245931}
   - component: {fileID: 5107244017836863797}
+  - component: {fileID: 199091733273068208}
   m_Layer: 0
   m_Name: GameSettingEntity_DoNotChangeName
-  m_TagString: Untagged
+  m_TagString: GameSettingMaster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,6 +59,22 @@ MonoBehaviour:
     vmserialPortText: 
     portname: 0
     portbaudrate: 115200
+    numberToPopulate: 35
+    numberPerLane: 3
+    laneOccupyPerMotor: 1
+--- !u!114 &199091733273068208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2901172509013719973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a77a26835e0b86d4b85f7dbbef0da51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: GameSettingMaster
 --- !u!1001 &7048322335643023073
 PrefabInstance:
   m_ObjectHideFlags: 0

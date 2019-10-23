@@ -18,6 +18,7 @@ TagManager:
   - UIManager
   - CharacterSelectController
   - Camera
+  - GameSettingMaster
   layers:
   - Default
   - TransparentFX

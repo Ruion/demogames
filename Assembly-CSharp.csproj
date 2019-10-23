@@ -132,6 +132,7 @@
     <Compile Include="Assets\General\Scripts\ScriptableObject\ScriptableScore.cs" />
     <Compile Include="Assets\General\Scripts\Ultility\ActivateObjectOnDelay.cs" />
     <Compile Include="Assets\General\Scripts\Ultility\AutoCanvasResolution.cs" />
+    <Compile Include="Assets\General\Scripts\Ultility\DontDestroy.cs" />
     <Compile Include="Assets\General\Scripts\Ultility\EventConditional.cs" />
     <Compile Include="Assets\General\Scripts\Ultility\EventSequencer.cs" />
     <Compile Include="Assets\General\Scripts\Ultility\GameSettingEntity.cs" />
