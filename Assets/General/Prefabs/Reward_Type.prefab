@@ -172,6 +172,9 @@ MonoBehaviour:
     vmserialPortText: 
     portname: 0
     portbaudrate: 115200
+    numberToPopulate: 35
+    numberPerLane: 3
+    laneOccupyPerMotor: 1
   stockList: []
   availableStockList:
   - ID: 2
@@ -213,6 +216,9 @@ MonoBehaviour:
     vmserialPortText: 
     portname: 0
     portbaudrate: 115200
+    numberToPopulate: 35
+    numberPerLane: 3
+    laneOccupyPerMotor: 1
 --- !u!1 &6045434130529966912
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +276,9 @@ MonoBehaviour:
     vmserialPortText: 
     portname: 0
     portbaudrate: 115200
+    numberToPopulate: 35
+    numberPerLane: 3
+    laneOccupyPerMotor: 1
 --- !u!1 &6045434130676512964
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6045434130676512967}
   - component: {fileID: 1802186495080113048}
+  - component: {fileID: 8096964584263571522}
   m_Layer: 0
   m_Name: Reward_Type
   m_TagString: Untagged
@@ -329,9 +339,41 @@ MonoBehaviour:
     vmserialPortText: 
     portname: 0
     portbaudrate: 115200
+    numberToPopulate: 35
+    numberPerLane: 3
+    laneOccupyPerMotor: 1
   rewardFeatures:
   - {fileID: 6045434130529966914}
   - {fileID: 1430496413423124727}
+--- !u!114 &8096964584263571522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045434130676512964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4b0fa41e3f84c4483504d6babaaff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  second: 3
+  isRealtime: 1
+  countDownTexts: []
+  countdownEndEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1802186495080113048}
+        m_MethodName: GiveReward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &5655789294575340944
 PrefabInstance:
   m_ObjectHideFlags: 0

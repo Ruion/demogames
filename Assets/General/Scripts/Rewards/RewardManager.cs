@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 public class RewardManager : GameSettingEntity
 {
     public RewardFeature[] rewardFeatures;
@@ -14,6 +11,8 @@ public class RewardManager : GameSettingEntity
 
     public void GiveReward()
     {
+        LoadGameSettingFromMaster();
+
         switch (gameSettings.rewardType)
         {
             case RewardType.PrintVoucher:

@@ -20,6 +20,7 @@ public class DataManager : GameSettingEntity {
     //public string[] columns;
 
     public List<UserEntity> oldUser;
+    public int numberToPopulate = 100;
 
     [Header("Handler")]
     public Text sentText;
@@ -37,9 +38,6 @@ public class DataManager : GameSettingEntity {
 
     private UserDB userDb;
     #endregion
-
-    public UnityEvent OnErrorMsgShown;
-    public UnityEvent OnSyncOperationEnded;
 
     private List<UserEntity> serverUsers = new List<UserEntity>();
     List<UserEntity> unSyncUsers = new List<UserEntity>();
@@ -110,68 +108,11 @@ public class DataManager : GameSettingEntity {
         SavePlayerTemporary("email", emailInput.text.ToString());
         SavePlayerTemporary("phone", phoneInput.text.ToString());
         SavePlayerTemporary("register_datetime", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-
-        #region sqlite
-        /*
-        UserDB userDb = new UserDB();
-        UserEntity user = new UserEntity();
-        user.name = nameInput.text.ToString();
-        user.email = emailInput.text.ToString();
-        user.phone = phoneInput.text.ToString();
-        user.register_datetime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        user.is_sync = "N";
-        
-
-        bool added = userDb.AddData(user);
-
-        userDb.Close();
-
-        if (!added)
-        {
-            localNotSaveHandler.SetActive(true);
-        }
-        */
-        #endregion
     }
 
     public void SaveScoreToLocal()
     {
-        #region old
-        /*
-        UserDB userDb = new UserDB();
-
-        bool updated = userDb.UpdateLastDataScore(PlayerPrefs.GetString("score"));
-
-        if (!updated)
-        {
-            localScoreNotSaveHandler.SetActive(true);
-        }
-
-        string msg = userDb.AddData(user);
-
-        userDb.Close();
-
-        if (msg != "true")
-        {
-            OnErrorMsgShown.Invoke();
-            localScoreNotSaveHandler.SetActive(true);
-            localNotSaveCodeText.text = msg;
-        }
-        */
-        #endregion
-
-
         SetUpDb();
-
-        /*
-        UserEntity user = new UserEntity();
-        user.name = PlayerPrefs.GetString("name");
-        user.email = PlayerPrefs.GetString("email");
-        user.phone = PlayerPrefs.GetString("phone");
-        user.score = PlayerPrefs.GetString(scoreName);
-        user.register_datetime = PlayerPrefs.GetString("register_datetime");
-        user.is_submitted = "N";
-        */
 
         List<string> col = new List<string>();
         List<string> val = new List<string>();
@@ -197,7 +138,6 @@ public class DataManager : GameSettingEntity {
 
         if (msg != "true")
         {
-            OnErrorMsgShown.Invoke();
             localScoreNotSaveHandler.SetActive(true);
             localNotSaveCodeText.text = msg;
         }
@@ -208,6 +148,26 @@ public class DataManager : GameSettingEntity {
     {
         PlayerPrefs.SetString(key, data);
     }
+
+    public void Populate()
+    {
+        SetUpDb();
+
+        for (int i = 0; i < numberToPopulate; i++)
+        {
+            UserEntity user = new UserEntity();
+            user.name = "p" + i.ToString();
+            user.email = "p" + i.ToString() + "@gmail.com";
+            user.phone = "01" + i.ToString() + "2244213";
+            user.score = i.ToString();
+            user.is_submitted = "false";
+
+            userDb.AddData(user);
+        }
+
+        userDb.Close();
+    }
+
     #endregion
 
     #region validation
@@ -273,6 +233,8 @@ public class DataManager : GameSettingEntity {
     {
         HideAllHandler();
 
+        blockDataHandler.SetActive(true);
+
         string HtmlText = GetHtmlFromUri("http://google.com");
         if (HtmlText == "")
         {
@@ -291,12 +253,14 @@ public class DataManager : GameSettingEntity {
           //  Debug.Log("unsync users : " + unSyncUsers.Count);
         }
         catch {
+            HideAllHandler();
             errorHandler.SetActive(true);
             yield break;
         }
 
         if (unSyncUsers == null || unSyncUsers.Count < 1)
         {
+            HideAllHandler();
             emptyHandler.SetActive(true);
             yield break;
         }
@@ -305,7 +269,7 @@ public class DataManager : GameSettingEntity {
 
       //  StartCoroutine(CompareLocalAndServerData());
 
-        blockDataHandler.SetActive(true);
+        
 
         for (int i = 0; i < unSyncUsers.Count; i++)
         {
@@ -369,7 +333,6 @@ public class DataManager : GameSettingEntity {
         userDb.Close();
 
         blockDataHandler.SetActive(false);
-        OnSyncOperationEnded.Invoke();
     }
 
     // function for check internet connection
@@ -406,117 +369,12 @@ public class DataManager : GameSettingEntity {
         return html;
     }
 
-    public void GetDataFromServerFunction()
-    {
-        serverUsers = new List<UserEntity>();
-
-        string HtmlText = GetHtmlFromUri("http://google.com");
-        if (HtmlText == "")
-        {
-            //No connection
-            internetErrorHandler.SetActive(true);
-        }
-        else
-        {
-            // fetch server data to serverUser
-            WWWForm form = new WWWForm();
-            //form.AddField("licensekey", value);
-
-            using (UnityWebRequest www = UnityWebRequest.Post(gameSettings.serverGetDataAddress, form))
-            {
-
-                loadingHandler.SetActive(true);
-                www.SendWebRequest();
-
-                if (www.isNetworkError || www.isHttpError)
-                {
-                    errorHandler.SetActive(true);
-                    errorCodeText.text = www.error;
-
-                    blockDataHandler.SetActive(false);
-
-                }
-                else
-                {
-                    var jsonData = JsonUtility.FromJson<JSONResponse>(www.downloadHandler.text);
-
-                    if (jsonData.result != "success")
-                    {
-                        HideAllHandler();
-                        errorHandler.SetActive(true);
-                        errorCodeText.text = "request but fail " + www.error;
-
-                        blockDataHandler.SetActive(false);
-                    }
-
-                    foreach (UserEntity u in jsonData.users)
-                    {
-                        serverUsers.Add(u);
-                        Debug.Log("user " + u.name + "is fetched from server");
-                    }
-
-                }
-            }
-        }
-    }
     // to be configure
     IEnumerator GetDataFromServer()
     {
         serverUsers = new List<UserEntity>();
 
-        string HtmlText = GetHtmlFromUri("http://google.com");
-        if (HtmlText == "")
-        {
-            //No connection
-            internetErrorHandler.SetActive(true);
-            yield break;
-        }
-        else
-        {
-            // fetch server data to serverUser
-            WWWForm form = new WWWForm();
-            //form.AddField("licensekey", value);
-
-            using (UnityWebRequest www = UnityWebRequest.Post(gameSettings.serverGetDataAddress, form))
-            {
-
-                loadingHandler.SetActive(true);
-                yield return www.SendWebRequest();
-
-                if (www.isNetworkError || www.isHttpError)
-                {
-                    errorHandler.SetActive(true);
-                    errorCodeText.text = www.error;
-
-                    blockDataHandler.SetActive(false);
-
-                    yield return null;
-                }
-                else
-                {
-                    var jsonData = JsonUtility.FromJson<JSONResponse>(www.downloadHandler.text);
-
-                    if (jsonData.result != "success")
-                    {
-                        HideAllHandler();
-                        errorHandler.SetActive(true);
-                        errorCodeText.text = "request but fail " + www.error;
-
-                        blockDataHandler.SetActive(false);
-
-                        yield return null;
-                    }
-
-                    foreach (UserEntity u in jsonData.users)
-                    {
-                        serverUsers.Add(u);
-                        Debug.Log("user " + u.name + "is fetched from server");
-                    }
-
-                }
-            }
-            
-        }
+        yield return serverUsers;
     }
 
     IEnumerator CompareLocalAndServerData()
@@ -542,21 +400,17 @@ public class DataManager : GameSettingEntity {
                         Debug.Log("user " + u.email + "existed in server");
                     }
                 }
-            }
-
-            
-            
+            } 
         }
         // get new unsync list from sqlite
         unSyncUsers = userDb.GetAllUnSyncUser();
         userDb.Close();
     }
-
 }
 
 [System.Serializable]
 public class JSONResponse
 {
     public string result;
-    public DataBank.UserEntity[] users;
+    public UserEntity[] users;
 }

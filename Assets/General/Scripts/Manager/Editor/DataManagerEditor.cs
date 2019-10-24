@@ -31,5 +31,10 @@ public class DataManagerEditor : Editor
         {
             dm.LoadGameSettingFromMaster();
         }
+
+        if (GUILayout.Button("Populate"))
+        {
+            dm.Populate();
+        }
     }
 }
