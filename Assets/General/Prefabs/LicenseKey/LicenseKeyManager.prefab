@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4823869821160906809}
   m_Layer: 0
   m_Name: LicenseKeyManager
-  m_TagString: Untagged
+  m_TagString: LicenseKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   license_key_page: {fileID: 0}
   loading_page: {fileID: 0}
   error_no_internet: {fileID: 0}
+  error_no_internet2: {fileID: 0}
   check_online_validation_page: {fileID: 0}
   error_page1: {fileID: 0}
   error_page2: {fileID: 0}
@@ -54,15 +55,10 @@ MonoBehaviour:
   error_page4: {fileID: 0}
   error_page5: {fileID: 0}
   error_page6: {fileID: 0}
-  error_page7: {fileID: 0}
-  error_page8: {fileID: 0}
-  error_page9: {fileID: 0}
-  error_page10: {fileID: 0}
   Lkey: {fileID: 0}
   Submit: {fileID: 0}
   licensekey: 
   lkey_expdate: 
-  temp_lkey_expdate: 
   machine_id: 
   session_expdate: 
   checkpoint: 

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using DataBank;
 using TMPro;
+using System.Linq;
 
 public class DataManager : GameSettingEntity {
 
@@ -16,10 +16,7 @@ public class DataManager : GameSettingEntity {
     public InputField nameInput;
     public InputField emailInput;
     public InputField phoneInput;
-
-    //public string[] columns;
-
-    public List<UserEntity> oldUser;
+    
     public int numberToPopulate = 100;
 
     [Header("Handler")]
@@ -39,8 +36,12 @@ public class DataManager : GameSettingEntity {
     private UserDB userDb;
     #endregion
 
-    private List<UserEntity> serverUsers = new List<UserEntity>();
-    List<UserEntity> unSyncUsers = new List<UserEntity>();
+    public List<UserEntity> oldUser;
+
+    public List<UserEntity> serverUsers = new List<UserEntity>();
+
+    private List<UserEntity> unSyncUsers = new List<UserEntity>();
+    private OnlineServerModel osm;
 
     private void Start()
     {
@@ -50,6 +51,7 @@ public class DataManager : GameSettingEntity {
         UserDB userDb = new UserDB(gameSettings.dbName, gameSettings.tableName);
         oldUser = userDb.GetAllUser();
         userDb.Close();
+
     }
 
     private void SetUpDb()
@@ -369,43 +371,53 @@ public class DataManager : GameSettingEntity {
         return html;
     }
 
+    [ContextMenu("GetServerData")]
+    public void DoGetDataFromServer()
+    {
+        StartCoroutine(GetDataFromServer());
+    }
+
     // to be configure
     IEnumerator GetDataFromServer()
     {
-        serverUsers = new List<UserEntity>();
+        LoadGameSettingFromMaster();
 
-        yield return serverUsers;
-    }
+        osm = FindObjectOfType<OnlineServerModel>();
 
-    IEnumerator CompareLocalAndServerData()
-    {
-        unSyncUsers = new List<UserEntity>();
-        
+       yield return StartCoroutine(osm.FeedUsers(serverUsers));
 
-        yield return StartCoroutine(GetDataFromServer());
+        if (osm.serverUsers.Count < 1) Debug.Log("no server user");
 
-        SetUpDb();
-        oldUser = userDb.GetAllUser();
+     //   serverUsers.Clear(); // clear list
+     //  serverUsers.AddRange(osm.serverUsers); // add server users into list
 
-        if (serverUsers.Count > 1)
+       for (int i = 0; i < osm.serverUsers.Count; i++)
+       {
+            // add user never exist in local
+            AddUniqueUser(osm.serverUsers[i], oldUser);
+       }
+
+        Debug.Log("Current old users");
+
+        foreach (UserEntity u in oldUser)
         {
-            foreach(UserEntity u in oldUser)
-            {
-                foreach(UserEntity s in serverUsers)
-                {
-                    if (s.email == u.email)
-                    {
-                        // update the old user isSubmmited
-                        userDb.UpdateSyncUser(u);
-                        Debug.Log("user " + u.email + "existed in server");
-                    }
-                }
-            } 
+            Debug.Log(u.email);
         }
-        // get new unsync list from sqlite
-        unSyncUsers = userDb.GetAllUnSyncUser();
-        userDb.Close();
+
     }
+
+    public void AddUniqueUser(UserEntity user, List<UserEntity> users)
+    {
+
+        UserEntity foundUser = users.FirstOrDefault(i => i.email == user.email);
+        if (foundUser == null)
+        {
+            users.Add(user);
+        }
+        else
+            Debug.Log("email : " + user.email + "already existed");
+    }
+
 }
 
 [System.Serializable]

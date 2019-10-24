@@ -5,6 +5,7 @@ using System.Text;
 
 namespace DataBank
 {
+    [Serializable]
 	public class UserEntity {
 
 		public string name;

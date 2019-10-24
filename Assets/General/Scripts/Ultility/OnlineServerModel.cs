@@ -6,46 +6,79 @@ using UnityEngine.Networking;
 using System.Net;
 using System.IO;
 using System.Linq;
+using System;
 
 public class OnlineServerModel : GameSettingEntity
 {
+    public bool isFetchingData = false;
+
+    public string TextPath = "Application.stremingAssetsPath/local/LocalData.txt";
+
+    public List<UserEntity> serverUsers = new List<UserEntity>();
+
+    private void Start()
+    {
+        SetUpTextPath();
+        isFetchingData = false;
+    }
+
+    private void SetUpTextPath()
+    {
+        TextPath = Application.streamingAssetsPath + "/LocalData.txt";
+        if (!File.Exists(TextPath))
+        {
+            File.WriteAllText(TextPath, "");
+        }
+        LoadGameSettingFromMaster();
+    }
+
     [ContextMenu("GetServerData")]
     public void DoGetDataFromServer()
     {
+        if (isFetchingData) return;
+
+        isFetchingData = true;
         StartCoroutine(GetDataFromServer());
     }
 
-    IEnumerator GetDataFromServer()
+    public IEnumerator GetDataFromServer()
     {
-        List<UserEntity> serverUsers = new List<UserEntity>();
+        SetUpTextPath();
+
+        serverUsers = new List<UserEntity>();
 
         string HtmlText = GetHtmlFromUri();
         if (HtmlText == "")
         {
             //No connection
+            Debug.LogError("no internet connection");
             yield return serverUsers;
+            isFetchingData = false;
             yield break;
         }
         else
         {
-            // fetch server data to serverUser
-            WWWForm form = new WWWForm();
-            //form.AddField("licensekey", value);
 
-            using (UnityWebRequest www = UnityWebRequest.Post(gameSettings.serverGetDataAddress, form))
+            using (UnityWebRequest www = UnityWebRequest.Get(gameSettings.serverGetDataAddress))
             {
-
                 yield return www.SendWebRequest();
-
                 if (www.isNetworkError || www.isHttpError)
                 {
                     Debug.LogError(www.error);
-                    yield return null;
                 }
                 else
                 {
+                    while (!www.downloadHandler.isDone) yield return null;
+
                     string texts = www.downloadHandler.text;
-                    //Debug.Log(texts);
+
+                    // clear text file
+                    File.WriteAllText(TextPath, "");
+
+                    // write email list to file
+                    StreamWriter writer = new StreamWriter(TextPath, true); //open txt file (doesnt actually open it inside the game)
+                    writer.Write(texts); //write into txt file the string declared above
+                    writer.Close();
 
                     List<string> lines = new List<string>(
                      texts
@@ -57,14 +90,34 @@ public class OnlineServerModel : GameSettingEntity
                                         || line.StartsWith("#")))
                         .ToList();
 
-                    foreach(string line in lines)
+                    foreach (string line in lines)
                     {
-                        Debug.Log(line);
+                        UserEntity user = new UserEntity();
+                        user.email = line.ToString();
+                       // Debug.Log("Server email " + user.email);
+                        serverUsers.Add(user);
                     }
                 }
             }
-
         }
+
+        isFetchingData = false;
+    }
+
+    public IEnumerator FeedUsers(List<UserEntity> newUsersList)
+    {
+        DoGetDataFromServer();
+
+        Debug.Log("Fetching user");
+
+        while (isFetchingData)
+        {
+            yield return null;
+        }
+
+        newUsersList.Clear(); // clear list
+        newUsersList.AddRange(serverUsers); // add server users into list
+
     }
 
     public string GetHtmlFromUri(string resource = "http://google.com")

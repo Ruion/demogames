@@ -3,6 +3,12 @@ using System.Linq;
 
 class Print_Program : RewardFeature
 {
+    [ReadOnly]
+    public string printerExePath;
+
+    [ReadOnly]
+    public string printPdfPath;
+
     public override void GiveReward()
     {
         Print();
@@ -11,8 +17,10 @@ class Print_Program : RewardFeature
     public void Print()
     {
 
-        string init_path = Application.dataPath + "/PDFtoPrinter.exe";
-        string init_path2 = Application.dataPath + "/test.pdf";
+       // string init_path = Application.dataPath + "/PDFtoPrinter.exe";
+        string init_path = Application.streamingAssetsPath + "/PDFtoPrinter.exe";
+       // string init_path2 = Application.dataPath + "/test.pdf";
+        string init_path2 = Application.streamingAssetsPath + "/test.pdf";
         Debug.Log(init_path);
         Debug.Log(init_path2);
         string[] DataPath1 = init_path.Split('/');

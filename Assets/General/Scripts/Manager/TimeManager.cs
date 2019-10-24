@@ -11,6 +11,8 @@ public class TimeManager : MonoBehaviour {
         set { second = value; }
     }
     public int second = 120;
+
+    [SerializeField]
     private int initialSecond;
 
     public bool isRealtime = true;
@@ -19,14 +21,15 @@ public class TimeManager : MonoBehaviour {
     public TextMeshProUGUI[] countDownTexts;
     public UnityEvent countdownEndEvents;
 
-    void Start()
+    private void OnEnable()
     {
         UpdateText();
+        initialSecond = second;
     }
 
     public void StartGame()
     {
-        initialSecond = second;
+        second = initialSecond;
         StartCoroutine(StartCountdown());
     }
 

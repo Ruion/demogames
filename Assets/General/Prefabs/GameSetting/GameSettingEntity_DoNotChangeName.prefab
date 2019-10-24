@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 833590868594879295}
   - component: {fileID: 3880680860983199461}
+  - component: {fileID: 1052533967521847613}
+  - component: {fileID: 194650397521978807}
   m_Layer: 0
   m_Name: OnlineServerModel
   m_TagString: Untagged
@@ -60,6 +62,87 @@ MonoBehaviour:
     numberToPopulate: 35
     numberPerLane: 3
     laneOccupyPerMotor: 1
+  isFetchingData: 0
+  TextPath: Application.stremingAssetsPath/local/LocalData.txt
+  serverUsers: []
+  emailList: []
+--- !u!114 &1052533967521847613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847692801241020772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4b0fa41e3f84c4483504d6babaaff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  second: 600
+  isRealtime: 1
+  countDownTexts: []
+  countdownEndEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3880680860983199461}
+        m_MethodName: DoGetDataFromServer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1052533967521847613}
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &194650397521978807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847692801241020772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571c04249d3eb754096dafc97ee440fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventsOEnable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3880680860983199461}
+        m_MethodName: DoGetDataFromServer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1052533967521847613}
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2901172509013719973
 GameObject:
   m_ObjectHideFlags: 0

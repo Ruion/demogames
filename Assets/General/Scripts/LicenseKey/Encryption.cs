@@ -60,7 +60,9 @@ public class Encryption : MonoBehaviour
 
     void Awake()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("licenseKey");
+        transform.SetParent(null);
+
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("LicenseKey");
 
         if (objs.Length > 1)
         {

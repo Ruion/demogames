@@ -252,7 +252,7 @@ namespace DataBank{
 
         public override IDataReader GetDataByString(string condiotionlowercase, string str)
         {
-            Debug.Log(CodistanTag + "Getting Location: " + str);
+            Debug.Log(CodistanTag + "Getting data: " + str);
 
             IDbCommand dbcmd = GetDbCommand();
             dbcmd.CommandText =
