@@ -53,10 +53,11 @@ public class Settings
 {
     public string fileName = "game_setting";
     public string dbName = "user_db";
-    public string scoreName = "score";
+    public string scoreName = "game_score";
     public string tableName = "user";
     public string serverAddress = "http://192.168.0.28/honda/submit-data.php";
     public string serverGetDataAddress = "http://192.168.0.28/honda/submit-data.php";
+    public int scoreToWin = 3;
 
     public RewardType rewardType = RewardType.PrintVoucher;
 
@@ -79,6 +80,9 @@ public class Settings
         tableName = setting.tableName;
         serverAddress = setting.serverAddress;
         serverGetDataAddress = setting.serverGetDataAddress;
+        scoreToWin = setting.scoreToWin;
+
+        // stock settings
         stockDbName = setting.stockDbName;
         stockTableName = setting.stockTableName;
         portname = setting.portname;
@@ -87,7 +91,7 @@ public class Settings
         vmserialPortText = setting.vmserialPortText;
         rewardType = setting.rewardType;
 
-        // stock settings
+        // not yet integrate
         numberToPopulate = setting.numberToPopulate;
         numberPerLane = setting.numberPerLane;
         laneOccupyPerMotor = setting.laneOccupyPerMotor;

@@ -14,17 +14,42 @@ namespace DataBank{
         private const string CodistanTag = "Codistan: UserDB:\t";
         
         private string TABLE_NAME = "user";
-        private string KEY_NAME = "name";
-        private string KEY_EMAIL = "email";
-        private string KEY_PHONE = "phone";
-        private string KEY_SCORE = "score";
-		private string KEY_DATE = "register_datetime";
-		private string KEY_SYNC = "is_submitted";
+        private string KEY_NAME = "name"; // 1
+        private string KEY_EMAIL = "email"; // 2
+        private string KEY_CONTACT = "contact"; // 3
+        private string KEY_AGE = "age"; // 4
+        private string KEY_DOB = "dob"; // 5
+        private string KEY_GENDER = "gender"; // 6
+        private string KEY_GAME_SCORE = "game_score"; // 7
+        private string KEY_GAME_RESULT = "game_result"; // 8
+        private string KEY_VOUCHER_ID = "voucher_id"; // 9
+		private string KEY_DATE = "register_datetime"; // 10
+		private string KEY_SYNC = "is_submitted"; // 11
 
         public List<string> columns = new List<string>();
         #endregion
 
         //  private string[] COLUMNS = new string[] {KEY_ID, KEY_TYPE, KEY_LAT, KEY_LNG, KEY_DATE};
+
+        /**
+        * Player data submission API
+        * 
+        * 2 possible results response from this player data submission api:
+        * 1. Success
+        * 2. Fail
+        * 
+        * Requires 10 parameters
+        * 1. name
+        * 2. email
+        * 3. contact
+        * 4. age
+        * 5. dob
+        * 6. gender
+        * 7. game_result
+        * 8. game_score
+        * 9. voucher_id
+        * 10. register_datetime
+        */
 
         public UserDB(string db_name, string table_name) : base()
         {
@@ -42,8 +67,13 @@ namespace DataBank{
                 "id" + " INTEGER PRIMARY KEY, " +
                 KEY_NAME + " TEXT, " +
                 KEY_EMAIL + " TEXT UNIQUE, " +
-                KEY_PHONE + " TEXT UNIQUE, " +
-                KEY_SCORE + " TEXT, " +
+                KEY_CONTACT + " TEXT UNIQUE, " +
+                KEY_AGE + " TEXT , " +
+                KEY_DOB + " TEXT , " +
+                KEY_GENDER + " TEXT , " +
+                KEY_GAME_RESULT + " TEXT , " +
+                KEY_GAME_SCORE + " TEXT, " +
+                KEY_VOUCHER_ID + " TEXT, " +
                 KEY_DATE + " TEXT, " +
                 KEY_SYNC + " TEXT )";
             dbcmd.ExecuteNonQuery();
@@ -61,13 +91,13 @@ namespace DataBank{
                 + " ( "
                 + KEY_NAME + ", "
                 + KEY_EMAIL + ", "
-                + KEY_PHONE + ", "
-                + KEY_SCORE + " ) "
+                + KEY_CONTACT + ", "
+                + KEY_GAME_SCORE + " ) "
 
                 + "VALUES ( '"
                 + user.name + "', '"
                 + user.email + "', '"
-                + user.phone + "', '"
+                + user.contact + "', '"
                 + user.score + "' )";
             dbcmd.ExecuteNonQuery();
 
@@ -82,13 +112,13 @@ namespace DataBank{
                 + " ( "
                 + KEY_NAME + ", "
                 + KEY_EMAIL + ", "
-                + KEY_PHONE + ", "
-                + KEY_SCORE + " ) "
+                + KEY_CONTACT + ", "
+                + KEY_GAME_SCORE + " ) "
 
                 + "VALUES ( '"
                 + user.name + "', '"
                 + user.email + "', '"
-                + user.phone + "', '"
+                + user.contact + "', '"
                 + user.score + "' )";
             dbcmd.ExecuteNonQuery();
             */
@@ -151,14 +181,14 @@ namespace DataBank{
                 + " ( "
                 + KEY_NAME + ", "
                 + KEY_EMAIL + ", "
-                + KEY_PHONE + ", "
+                + KEY_CONTACT + ", "
                 + KEY_DATE + ", "
                 + KEY_SYNC  + " ) "
 
                 + "VALUES ( '"
                 + user.name + "', '"
                 + user.email + "', '"
-                + user.phone + "', '"
+                + user.contact + "', '"
                 + user.register_datetime + "', '"
                 + user.is_submitted + "' )";
 
@@ -206,7 +236,11 @@ namespace DataBank{
             dbcmd2.CommandText += " WHERE ";
             dbcmd2.CommandText += conditions + " ;";
 
-            try { dbcmd2.ExecuteNonQuery(); }
+            try
+            {
+                int result = dbcmd2.ExecuteNonQuery();
+                if (result == 0) Debug.LogWarning("query not successful");
+            }
             catch (DbException ex)
             {
                 string msg = string.Format("ErrorCode: {0}", ex.Message);
@@ -221,12 +255,12 @@ namespace DataBank{
 
             while (lastReader.Read())
             {
-                lastEntity.phone = lastReader[3].ToString();
-                lastEntity.score = lastReader[4].ToString();
+                lastEntity.contact = lastReader[3].ToString();
+                lastEntity.game_score = lastReader[4].ToString();
             }
 
             IDbCommand dbcmd2 = GetDbCommand();
-            dbcmd2.CommandText = "UPDATE " + TABLE_NAME + " SET " + KEY_SCORE + " = '" + score + "' WHERE " + KEY_PHONE + " = '" + lastEntity.phone + "' ;";
+            dbcmd2.CommandText = "UPDATE " + TABLE_NAME + " SET " + KEY_GAME_SCORE + " = '" + score + "' WHERE " + KEY_CONTACT + " = '" + lastEntity.contact + "' ;";
 
             using (db_connection)
             {
@@ -256,7 +290,7 @@ namespace DataBank{
 
             IDbCommand dbcmd = GetDbCommand();
             dbcmd.CommandText =
-                "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_PHONE + " = '" + str + "'";
+                "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_CONTACT + " = '" + str + "'";
             return dbcmd.ExecuteReader();
         }
 
@@ -266,7 +300,7 @@ namespace DataBank{
 
             IDbCommand dbcmd = GetDbCommand();
             dbcmd.CommandText =
-                "DELETE FROM " + TABLE_NAME + " WHERE " + KEY_PHONE + " = '" + id + "'";
+                "DELETE FROM " + TABLE_NAME + " WHERE " + KEY_CONTACT + " = '" + id + "'";
             dbcmd.ExecuteNonQuery();
         }
 
@@ -299,8 +333,8 @@ namespace DataBank{
                 UserEntity entity = new UserEntity();
                 entity.name = reader[1].ToString();
                 entity.email = reader[2].ToString();
-                entity.phone = reader[3].ToString();
-                entity.score = reader[4].ToString();
+                entity.contact = reader[3].ToString();
+                entity.game_score = reader[4].ToString();
                 entity.register_datetime = reader[5].ToString();
                 entity.is_submitted = reader[6].ToString();
 
@@ -316,7 +350,7 @@ namespace DataBank{
 
             IDbCommand dbcmd = GetDbCommand();
             dbcmd.CommandText =
-                "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_SYNC + " = 'N'";
+                "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_SYNC + " = 'false'";
            
             IDataReader reader = dbcmd.ExecuteReader(); 
             while (reader.Read())
@@ -324,10 +358,15 @@ namespace DataBank{
                 UserEntity entity = new UserEntity();
                 entity.name = reader[1].ToString();
                 entity.email = reader[2].ToString();
-                entity.phone = reader[3].ToString();
-                entity.score = reader[4].ToString();
-                entity.register_datetime = reader[5].ToString();
-                entity.is_submitted = reader[6].ToString();
+                entity.contact = reader[3].ToString();
+                entity.age = reader[4].ToString();
+                entity.dob = reader[5].ToString();
+                entity.gender = reader[6].ToString();
+                entity.game_result = reader[7].ToString();
+                entity.game_score = reader[8].ToString();
+                entity.voucher_id = reader[9].ToString();
+                entity.register_datetime = reader[10].ToString();
+                entity.is_submitted = reader[11].ToString();
 
                 entities.Add(entity);
             }
@@ -341,11 +380,13 @@ namespace DataBank{
             List<string> con = new List<string>();
 
             col.Add("is_submitted");
-            con.Add("Y");
+            con.Add("true");
 
             string condition = "email = '"+ userEntity.email + "'";
 
             UpdateData(col, con, condition);
+
+            Debug.Log("Update user "+ userEntity.email + " to submitted");
 
         }
 

@@ -30,7 +30,7 @@ public class StockManagerEditor : Editor
            List<Stock> stocks = sm.GetAvailableStocks();
             foreach (var s in stocks)
             {
-                Debug.Log(s.ID + "th stock is available");
+                Debug.Log(s.ID + "th stock has "+ s.number + " is available");
             }
         }
 

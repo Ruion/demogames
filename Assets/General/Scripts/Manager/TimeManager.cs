@@ -12,7 +12,7 @@ public class TimeManager : MonoBehaviour {
     }
     public int second = 120;
 
-    [SerializeField]
+    [SerializeField] [ReadOnly]
     private int initialSecond;
 
     public bool isRealtime = true;
@@ -21,15 +21,18 @@ public class TimeManager : MonoBehaviour {
     public TextMeshProUGUI[] countDownTexts;
     public UnityEvent countdownEndEvents;
 
-    private void OnEnable()
+    void Awake()
     {
-        UpdateText();
         initialSecond = second;
+        UpdateText();
     }
 
     public void StartGame()
     {
-        second = initialSecond;
+        Debug.Log("reloading time");
+        if (initialSecond == 0) initialSecond = second;
+
+        ResetCountDown();
         StartCoroutine(StartCountdown());
     }
 
@@ -43,7 +46,6 @@ public class TimeManager : MonoBehaviour {
 
     public IEnumerator StartCountdown()
     {
-        
         if (isRealtime) yield return new WaitForSecondsRealtime(1);
 
         else yield return new WaitForSeconds(1);

@@ -15,7 +15,7 @@ public class DataManager : GameSettingEntity {
     [Header("Fields")]
     public InputField nameInput;
     public InputField emailInput;
-    public InputField phoneInput;
+    public InputField contactInput;
     
     public int numberToPopulate = 100;
 
@@ -40,7 +40,7 @@ public class DataManager : GameSettingEntity {
 
     public List<UserEntity> serverUsers = new List<UserEntity>();
 
-    private List<UserEntity> unSyncUsers = new List<UserEntity>();
+    public List<UserEntity> unSyncUsers = new List<UserEntity>();
     private OnlineServerModel osm;
 
     private void Start()
@@ -90,8 +90,8 @@ public class DataManager : GameSettingEntity {
             n++;
             Debug.Log(n + " name is " + e.name);
             Debug.Log(n + " email is " + e.email);
-            Debug.Log(n + " phone is " + e.phone);
-            Debug.Log(n + " score is " + e.score);
+            Debug.Log(n + " contact is " + e.contact);
+            Debug.Log(n + " score is " + e.game_score);
             Debug.Log(n + " register_datetime is " + e.register_datetime);
         }
     }
@@ -106,68 +106,107 @@ public class DataManager : GameSettingEntity {
     #region Save Data
     public void SaveToLocal()
     {
-        SavePlayerTemporary("name", nameInput.text.ToString());
-        SavePlayerTemporary("email", emailInput.text.ToString());
-        SavePlayerTemporary("phone", phoneInput.text.ToString());
-        SavePlayerTemporary("register_datetime", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+        /**
+        * Player data submission API
+        * 
+        * 2 possible results response from this player data submission api:
+        * 1. Success
+        * 2. Fail
+        * 
+        * Requires 10 parameters
+        * 1. name
+        * 2. email
+        * 3. contact
+        * 4. age
+        * 5. dob
+        * 6. gender
+        * 7. game_result
+        * 8. game_score
+        * 9. voucher_name
+        * 10. register_datetime
+        */
+
+         SavePlayerTemporary("name", nameInput.text.ToString());
+         SavePlayerTemporary("email", emailInput.text.ToString());
+         SavePlayerTemporary("contact", contactInput.text.ToString());
+         SavePlayerTemporary("age", contactInput.text.ToString());
+         SavePlayerTemporary("dob", contactInput.text.ToString());
+         SavePlayerTemporary("gender", contactInput.text.ToString());
+      //   SavePlayerTemporary("game_result", contactInput.text.ToString());
+      //   SavePlayerTemporary("game_score", contactInput.text.ToString());
+      //   SavePlayerTemporary("voucher_id", contactInput.text.ToString());
+         SavePlayerTemporary("register_datetime", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
     }
 
     public void SaveScoreToLocal()
     {
-        SetUpDb();
+     SetUpDb();
 
-        List<string> col = new List<string>();
-        List<string> val = new List<string>();
+     List<string> col = new List<string>();
+     List<string> val = new List<string>();
 
-        col.Add("name");
-        col.Add("email");
-        col.Add("phone");
-        col.Add("score");
-        col.Add("register_datetime");
-        col.Add("is_submitted");
+     col.Add("name");
+     col.Add("email");
+     col.Add("contact");
+     col.Add("age");
+     col.Add("dob");
+     col.Add("gender");
+     col.Add("game_result");
+     col.Add("game_score");
+     col.Add("voucher_id");
+     col.Add("register_datetime");
+     col.Add("is_submitted");
 
-        val.Add(PlayerPrefs.GetString("name"));
-        val.Add(PlayerPrefs.GetString("email"));
-        val.Add(PlayerPrefs.GetString("phone"));
-        val.Add(PlayerPrefs.GetString(gameSettings.scoreName));
-        val.Add(PlayerPrefs.GetString("register_datetime"));
-        val.Add("N");
+     val.Add(PlayerPrefs.GetString("name"));
+     val.Add(PlayerPrefs.GetString("email"));
+     val.Add(PlayerPrefs.GetString("contact"));
+     val.Add(PlayerPrefs.GetString("age"));
+     val.Add(PlayerPrefs.GetString("dob"));
+     val.Add(PlayerPrefs.GetString("gender"));
+
+        string game_result = "lose";
+        if (System.Int32.Parse(PlayerPrefs.GetString(gameSettings.scoreName)) >= gameSettings.scoreToWin) game_result = "win";
+
+     val.Add(PlayerPrefs.GetString(gameSettings.scoreName));
+     val.Add(game_result); // win or lose
+     val.Add(PlayerPrefs.GetString("voucher_id"));
+     val.Add(PlayerPrefs.GetString("register_datetime"));
+     val.Add("false");
 
         // string msg = userDb.AddData(user);
         string msg = userDb.AddData(col, val);
 
-        userDb.Close();
+     userDb.Close();
 
-        if (msg != "true")
-        {
-            localScoreNotSaveHandler.SetActive(true);
-            localNotSaveCodeText.text = msg;
-        }
+     if (msg != "true")
+     {
+         localScoreNotSaveHandler.SetActive(true);
+         localNotSaveCodeText.text = msg;
+     }
 
     }
 
     void SavePlayerTemporary(string key, string data)
     {
-        PlayerPrefs.SetString(key, data);
+     PlayerPrefs.SetString(key, data);
     }
 
     public void Populate()
     {
-        SetUpDb();
+     for (int i = 0; i < numberToPopulate; i++)
+     {
+         SetUpDb();
+          UserEntity user = new UserEntity();
+         user.name = "p" + i.ToString();
+         user.email = "p" + i.ToString() + "@gmail.com";
+         user.contact = "01" + i.ToString() + "2244213";
+         user.game_score = i.ToString();
+         user.is_submitted = "false";
 
-        for (int i = 0; i < numberToPopulate; i++)
-        {
-            UserEntity user = new UserEntity();
-            user.name = "p" + i.ToString();
-            user.email = "p" + i.ToString() + "@gmail.com";
-            user.phone = "01" + i.ToString() + "2244213";
-            user.score = i.ToString();
-            user.is_submitted = "false";
+         userDb.AddData(user);
+     }
 
-            userDb.AddData(user);
-        }
-
-        userDb.Close();
+     userDb.Close();
     }
 
     #endregion
@@ -175,61 +214,80 @@ public class DataManager : GameSettingEntity {
     #region validation
     public string CheckSameUserInput()
     {
-        string type = "";
+     string type = "";
 
-        for (int i = 0; i < oldUser.Count; i++)
-        {
-            // if the email & phone is same
-            if (emailInput.text == oldUser[i].email)
-            {
-                type = "email";
-            }
-            if (phoneInput.text == oldUser[i].phone)
-            {
-                type = "phone";
-            }
-        }
+     for (int i = 0; i < oldUser.Count; i++)
+     {
+         // if the email & contact is same
+         if (emailInput.text == oldUser[i].email)
+         {
+             type = "email";
+         }
+         if (contactInput.text == oldUser[i].contact)
+         {
+             type = "contact";
+         }
+     }
 
-        return type;
+     return type;
     }
 
     public bool CheckSameUserEmail()
     {
-        bool emailIsSame = false;
+     bool emailIsSame = false;
 
-        for (int i = 0; i < oldUser.Count; i++)
-        {
-            // if the email & phone is same
-            if (emailInput.text == oldUser[i].email)
-            {
-                emailIsSame = true;
-            }
-        }
+     for (int i = 0; i < oldUser.Count; i++)
+     {
+         // if the email & contact is same
+         if (emailInput.text == oldUser[i].email)
+         {
+             emailIsSame = true;
+         }
+     }
 
-        return emailIsSame;
+     return emailIsSame;
     }
 
     public bool CheckSameUserPhone()
     {
-        bool phoneIsSame = false;
+     bool contactIsSame = false;
 
-        for (int i = 0; i < oldUser.Count; i++)
-        {
-            // if the email & phone is same
-            if (phoneInput.text == oldUser[i].phone)
-            {
-                phoneIsSame = true;
-            }
-        }
+     for (int i = 0; i < oldUser.Count; i++)
+     {
+         // if the email & contact is same
+         if (contactInput.text == oldUser[i].contact)
+         {
+             contactIsSame = true;
+         }
+     }
 
-        return phoneIsSame;
+     return contactIsSame;
     }
     #endregion
 
+
     public void SendDataToDatabase()
     {
-        StartCoroutine(DataToSend());
-    }
+     /**
+    * Player data submission API
+    * 
+    * 2 possible results response from this player data submission api:
+    * 1. Success
+    * 2. Fail
+    * 
+    * Requires 8 parameters
+    * 1. name
+    * 2. email
+    * 3. contact
+    * 4. age
+    * 5. dob
+    * 6. gender
+    * 7. game_result
+    * 8. game_score
+    * 9. voucher_name
+    */
+            StartCoroutine(DataToSend());
+     }
 
     IEnumerator DataToSend()
     {
@@ -249,10 +307,13 @@ public class DataManager : GameSettingEntity {
         SetUpDb();
 
         List<UserEntity> unSyncUsers = new List<UserEntity>();
+        unSyncUsers.Clear();
+
         try {
             unSyncUsers = userDb.GetAllUnSyncUser();
-          //  StartCoroutine(CompareLocalAndServerData());
-          //  Debug.Log("unsync users : " + unSyncUsers.Count);
+
+            CompareLocalAndServerData();
+             Debug.Log("unsync users : " + unSyncUsers.Count);
         }
         catch {
             HideAllHandler();
@@ -269,18 +330,21 @@ public class DataManager : GameSettingEntity {
 
         totalSent = 0;
 
-      //  StartCoroutine(CompareLocalAndServerData());
-
-        
+        //  StartCoroutine(CompareLocalAndServerData());
 
         for (int i = 0; i < unSyncUsers.Count; i++)
         {
             WWWForm form = new WWWForm();
-            form.AddField("name", unSyncUsers[i].name);
-            form.AddField("email", unSyncUsers[i].email);
-            form.AddField("phone", unSyncUsers[i].phone);
-            form.AddField("score", unSyncUsers[i].score);
-            form.AddField("register_datetime", unSyncUsers[i].register_datetime);
+            form.AddField("name", unSyncUsers[i].name); // 1
+            form.AddField("email", unSyncUsers[i].email); // 2
+            form.AddField("contact", unSyncUsers[i].contact); // 3
+            form.AddField("age", unSyncUsers[i].age); // 4
+            form.AddField("dob", unSyncUsers[i].dob); // 5
+            form.AddField("gender", unSyncUsers[i].gender); // 6
+            form.AddField("game_result", unSyncUsers[i].game_result); // 7
+            form.AddField("game_score", unSyncUsers[i].game_score); // 8
+            form.AddField("voucher_id", unSyncUsers[i].voucher_id); // 9
+            form.AddField("register_datetime", unSyncUsers[i].register_datetime); // 10
 
             using (UnityWebRequest www = UnityWebRequest.Post(gameSettings.serverAddress, form))
             {
@@ -371,6 +435,7 @@ public class DataManager : GameSettingEntity {
         return html;
     }
 
+    #region Get Server Data
     [ContextMenu("GetServerData")]
     public void DoGetDataFromServer()
     {
@@ -384,45 +449,63 @@ public class DataManager : GameSettingEntity {
 
         osm = FindObjectOfType<OnlineServerModel>();
 
-       yield return StartCoroutine(osm.FeedUsers(serverUsers));
+        yield return StartCoroutine(osm.FeedUsers(serverUsers));
 
-        if (osm.serverUsers.Count < 1) Debug.Log("no server user");
+        if (serverUsers.Count < 1) { Debug.Log("no server user"); yield break; }
 
-     //   serverUsers.Clear(); // clear list
-     //  serverUsers.AddRange(osm.serverUsers); // add server users into list
-
-       for (int i = 0; i < osm.serverUsers.Count; i++)
-       {
-            // add user never exist in local
-            AddUniqueUser(osm.serverUsers[i], oldUser);
-       }
-
-        Debug.Log("Current old users");
-
-        foreach (UserEntity u in oldUser)
+        for (int i = 0; i < serverUsers.Count; i++)
         {
-            Debug.Log(u.email);
+            // add user never exist in local
+            AddUniqueUser(serverUsers[i], oldUser);
         }
 
     }
 
+    [ContextMenu("CompareLocalAndServerData")]
+    public void CompareLocalAndServerData()
+    {
+        SetUpDb();
+
+        foreach (UserEntity u in serverUsers)
+        {
+            RemoveDuplicateUser(u, unSyncUsers);
+            userDb.UpdateSyncUser(u);
+        }
+
+        userDb.Close();
+    }
+
+
     public void AddUniqueUser(UserEntity user, List<UserEntity> users)
     {
-
         UserEntity foundUser = users.FirstOrDefault(i => i.email == user.email);
         if (foundUser == null)
         {
             users.Add(user);
         }
-        else
-            Debug.Log("email : " + user.email + "already existed");
+      //  else
+      //      Debug.Log("email : " + user.email + "already existed");
     }
 
+    public void RemoveDuplicateUser(UserEntity user, List<UserEntity> users)
+    {
+        UserEntity foundUser = users.FirstOrDefault(i => i.email == user.email);
+        if (foundUser != null)
+        {
+            users.Remove(user);
+            Debug.LogWarning("Remove duplicate user with email " + user.email );
+        }
+        //  else
+        //      Debug.Log("email : " + user.email + "already existed");
+    }
+
+    #endregion
+
 }
 
-[System.Serializable]
-public class JSONResponse
-{
-    public string result;
-    public UserEntity[] users;
-}
+    [System.Serializable]
+    public class JSONResponse
+    {
+        public string result;
+        public UserEntity[] users;
+    }

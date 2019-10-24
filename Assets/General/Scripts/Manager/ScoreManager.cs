@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour {
     public GameObject minusScoreEffectPrefab;
 
     [ReadOnly]
-    public string scoreName = "score";
+    public string scoreName = "game_score";
 
     void Awake()
     {

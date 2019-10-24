@@ -23,8 +23,8 @@ public class StockManager : RewardFeature {
     public GameObject errorHandler;
 
     [Header("Stock setting")]
-    public int numberToPopulate = 35;
-    public int numberPerLane = 3;
+    public int numberOfMotor = 35;
+    public int numberOfGiftPerMotor = 3;
     public int laneOccupyPerMotor = 1;
     public bool resetOnPopulate = true;
     public bool showAllOnPopulate = true;
@@ -201,6 +201,7 @@ public class StockManager : RewardFeature {
         catch(System.Exception ex)
         {
             Debug.LogError("Vending Machine error " +ex.Message);
+            return;
         }
 
         stock.number--;
@@ -221,7 +222,7 @@ public class StockManager : RewardFeature {
 
         if (resetOnPopulate) ClearData();
 
-        SaveStockMultiple(numberToPopulate, numberPerLane, laneOccupyPerMotor);
+        SaveStockMultiple(numberOfMotor, numberOfGiftPerMotor, laneOccupyPerMotor);
 
         if(showAllOnPopulate) GetAllStock();
         if(showAvailableOnPopulate) GetAvailableStocks();

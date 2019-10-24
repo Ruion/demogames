@@ -108,7 +108,7 @@ public class OnlineServerModel : GameSettingEntity
     {
         DoGetDataFromServer();
 
-        Debug.Log("Fetching user");
+     //   Debug.Log("Fetching user");
 
         while (isFetchingData)
         {

@@ -27,6 +27,11 @@ public class DataManagerEditor : Editor
             dm.ClearData();
         }
 
+        if (GUILayout.Button("Sync Data"))
+        {
+            dm.SendDataToDatabase();
+        }
+
         if (GUILayout.Button("Load Master Setting"))
         {
             dm.LoadGameSettingFromMaster();

@@ -34,8 +34,8 @@ public class SqliteController : MonoBehaviour
             UserEntity entity = new UserEntity();
             entity.name = reader[1].ToString();
             entity.email = reader[2].ToString();
-            entity.phone = reader[3].ToString();
-            entity.score = reader[4].ToString();
+            entity.contact = reader[3].ToString();
+            entity.game_score = reader[4].ToString();
             entity.register_datetime = reader[5].ToString();
             entity.is_submitted = reader[6].ToString();
 
@@ -49,11 +49,11 @@ public class SqliteController : MonoBehaviour
             TextMeshProUGUI emailT = newR.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
             emailT.text = entity.email;
 
-            TextMeshProUGUI phoneT = newR.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-            phoneT.text = entity.phone;
+            TextMeshProUGUI contactT = newR.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+            contactT.text = entity.contact;
 
             TextMeshProUGUI scoreT = newR.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-            scoreT.text = entity.score;
+            scoreT.text = entity.game_score;
 
             TextMeshProUGUI registerT = newR.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
             registerT.text = entity.register_datetime;

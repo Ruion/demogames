@@ -57,7 +57,7 @@ public class ScoreVisualizer : MonoBehaviour {
         GameSettingEntity dm = GameObject.Find("GameSettingEntity_DoNotChangeName").GetComponent<GameSettingEntity>();
         dm.LoadSetting();
 
-        string scoreName = "score";
+        string scoreName = "game_score";
 
         if (dm == null)
         {
