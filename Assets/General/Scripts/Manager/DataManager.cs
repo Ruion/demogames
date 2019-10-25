@@ -48,10 +48,13 @@ public class DataManager : GameSettingEntity {
         HideAllHandler();
 
         oldUser = new List<UserEntity>();
-        UserDB userDb = new UserDB(gameSettings.dbName, gameSettings.tableName);
-        oldUser = userDb.GetAllUser();
-        userDb.Close();
+        SetUpDb();
 
+      //  oldUser = userDb.GetAllUser();
+
+        // only get email and contact for faster loading and occupy less memory
+        oldUser = userDb.GetAllUserEmailAndContact();
+        userDb.Close();
     }
 
     private void SetUpDb()
@@ -75,7 +78,8 @@ public class DataManager : GameSettingEntity {
         LoadSetting();
         SetUpDb();
 
-        List<UserEntity> entities = userDb.GetAllUser();
+       // List<UserEntity> entities = userDb.GetAllUser();
+        List<UserEntity> entities = userDb.GetAllUserEmailAndContact();
         userDb.Close();
 
         if (entities.Count < 1)
@@ -88,11 +92,17 @@ public class DataManager : GameSettingEntity {
         foreach (UserEntity e in entities)
         {
             n++;
-            Debug.Log(n + " name is " + e.name);
-            Debug.Log(n + " email is " + e.email);
-            Debug.Log(n + " contact is " + e.contact);
-            Debug.Log(n + " score is " + e.game_score);
-            Debug.Log(n + " register_datetime is " + e.register_datetime);
+            Debug.Log(
+                n + " name : " + e.name 
+                + " email : " + e.email 
+                + " contact : " + e.contact 
+                + " age : " + e.age 
+                + " dob : " + e.dob 
+                + " gender : " + e.gender 
+                + " game_result : " + e.game_result 
+                + " game_score : " + e.game_score 
+                + " voucher_id : " + e.voucher_id 
+                + " register_datetime : " + e.register_datetime);
         }
     }
 
@@ -192,19 +202,24 @@ public class DataManager : GameSettingEntity {
     }
 
     public void Populate()
-    {
-     for (int i = 0; i < numberToPopulate; i++)
-     {
-         SetUpDb();
-          UserEntity user = new UserEntity();
-         user.name = "p" + i.ToString();
-         user.email = "p" + i.ToString() + "@gmail.com";
-         user.contact = "01" + i.ToString() + "2244213";
-         user.game_score = i.ToString();
-         user.is_submitted = "false";
+    {        
+        for (int i = 0; i < numberToPopulate; i++)
+        {
+            SetUpDb();
+            UserEntity user = new UserEntity();
+             user.name = "p" + i.ToString();
+             user.email = "p" + i.ToString() + "@gmail.com";
+             user.contact = "01" + i.ToString() + "2244213";
+             user.age = i.ToString();
+             user.dob = i.ToString();
+             user.gender = "male";
+             user.game_result = "win";
+             user.game_score = i.ToString();
+             user.voucher_id = i.ToString();
+             user.is_submitted = "false";
 
-         userDb.AddData(user);
-     }
+             userDb.AddData(user);
+        }
 
      userDb.Close();
     }
@@ -303,9 +318,10 @@ public class DataManager : GameSettingEntity {
             yield break;
         }
 
-        // Get unSync user
+
         SetUpDb();
 
+        // Get unSync user
         List<UserEntity> unSyncUsers = new List<UserEntity>();
         unSyncUsers.Clear();
 

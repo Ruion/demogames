@@ -5,7 +5,7 @@ using System.Data.Common;
 
 namespace DataBank
 {
-    public class SqliteHelper : MonoBehaviour
+    public class SqliteHelper
     {
         private const string CodistanTag = "Codistan: SqliteHelper:\t";
 
@@ -30,6 +30,7 @@ namespace DataBank
             db_connection = new SqliteConnection(db_connection_string);
             db_connection.Open();
         }
+
 
         //vitual functions
         public virtual IDataReader GetDataById(int id)

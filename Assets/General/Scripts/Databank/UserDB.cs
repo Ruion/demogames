@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 using Mono.Data.Sqlite;
 using System.Data.Common;
@@ -182,6 +180,12 @@ namespace DataBank{
                 + KEY_NAME + ", "
                 + KEY_EMAIL + ", "
                 + KEY_CONTACT + ", "
+                + KEY_AGE + ", "
+                + KEY_DOB + ", "
+                + KEY_GENDER + ", "
+                + KEY_GAME_RESULT + ", "
+                + KEY_GAME_SCORE + ", "
+                + KEY_VOUCHER_ID + ", "
                 + KEY_DATE + ", "
                 + KEY_SYNC  + " ) "
 
@@ -189,6 +193,12 @@ namespace DataBank{
                 + user.name + "', '"
                 + user.email + "', '"
                 + user.contact + "', '"
+                + user.age + "', '"
+                + user.dob + "', '"
+                + user.gender + "', '"
+                + user.game_result + "', '"
+                + user.game_score + "', '"
+                + user.voucher_id + "', '"
                 + user.register_datetime + "', '"
                 + user.is_submitted + "' )";
 
@@ -284,13 +294,13 @@ namespace DataBank{
             return base.GetDataById(id);
         }
 
-        public override IDataReader GetDataByString(string condiotionlowercase, string str)
+        public override IDataReader GetDataByString(string conditionlowercase, string str)
         {
             Debug.Log(CodistanTag + "Getting data: " + str);
 
             IDbCommand dbcmd = GetDbCommand();
             dbcmd.CommandText =
-                "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_CONTACT + " = '" + str + "'";
+                "SELECT * FROM " + TABLE_NAME + " WHERE " + conditionlowercase + " = '" + str + "'";
             return dbcmd.ExecuteReader();
         }
 
@@ -334,15 +344,45 @@ namespace DataBank{
                 entity.name = reader[1].ToString();
                 entity.email = reader[2].ToString();
                 entity.contact = reader[3].ToString();
-                entity.game_score = reader[4].ToString();
-                entity.register_datetime = reader[5].ToString();
-                entity.is_submitted = reader[6].ToString();
+                entity.age = reader[4].ToString();
+                entity.dob = reader[5].ToString();
+                entity.gender = reader[6].ToString();
+                entity.game_result = reader[7].ToString();
+                entity.game_score = reader[8].ToString();
+                entity.voucher_id = reader[9].ToString();
+                entity.register_datetime = reader[10].ToString();
+                entity.is_submitted = reader[11].ToString();
 
                 entities.Add(entity);
             }
 
             return entities;
         }
+
+        public List<UserEntity> GetAllUserEmailAndContact()
+        {
+            List<UserEntity> entities = new List<UserEntity>();
+
+            IDbCommand dbcmd = GetDbCommand();
+
+            string command = "SELECT email, contact FROM " + TABLE_NAME;
+
+            Debug.Log(command);
+            dbcmd.CommandText = command;
+            
+            IDataReader reader = dbcmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                UserEntity entity = new UserEntity();
+                entity.email = reader[0].ToString();
+                entity.contact = reader[1].ToString();
+                entities.Add(entity);
+            }
+
+            return entities;
+        }
+
 
         public List<UserEntity> GetAllUnSyncUser()
         {
@@ -382,12 +422,13 @@ namespace DataBank{
             col.Add("is_submitted");
             con.Add("true");
 
-            string condition = "email = '"+ userEntity.email + "'";
+            string condition = KEY_EMAIL + " = '"+ userEntity.email + "'";
 
-            UpdateData(col, con, condition);
-
-            Debug.Log("Update user "+ userEntity.email + " to submitted");
-
+            try { UpdateData(col, con, condition); Debug.Log("Update user " + userEntity.email + " to submitted"); }
+            catch(Exception ex)
+            {
+                Debug.LogError(ex.Message);
+            }
         }
 
         public IDataReader GetLatestTimeStamp()

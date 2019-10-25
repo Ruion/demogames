@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.Networking;
@@ -33,6 +34,10 @@ public class StockManager : RewardFeature {
     public VendingMachine vm;
 
     #endregion
+
+    public InputField truckAmount;
+    public InputField truckAmountOccupyByGift;
+    public InputField giftPerTruck;
 
     public override void GiveReward()
     {
@@ -214,6 +219,13 @@ public class StockManager : RewardFeature {
 
     }
    
+    public void BuildStock()
+    {
+        gameSettings.numberToPopulate = System.Int32.Parse(truckAmount.text);
+        gameSettings.laneOccupyPerMotor = System.Int32.Parse(truckAmountOccupyByGift.text);
+        gameSettings.numberPerLane = System.Int32.Parse(giftPerTruck.text);
+    }
+
     public void Populate()
     {
         Debug.ClearDeveloperConsole();

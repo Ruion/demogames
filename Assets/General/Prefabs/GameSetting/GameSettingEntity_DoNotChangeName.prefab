@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 833590868594879295}
   - component: {fileID: 3880680860983199461}
-  - component: {fileID: 1052533967521847613}
-  - component: {fileID: 194650397521978807}
+  - component: {fileID: 3047241544416176463}
   m_Layer: 0
   m_Name: OnlineServerModel
   m_TagString: Untagged
@@ -52,6 +51,7 @@ MonoBehaviour:
     tableName: user
     serverAddress: http://192.168.0.28/honda/submit-data.php
     serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
+    scoreToWin: 3
     rewardType: 0
     stockDbName: http://192.168.0.28/honda/submit-data.php
     stockTableName: http://192.168.0.28/honda/submit-data.php
@@ -65,8 +65,7 @@ MonoBehaviour:
   isFetchingData: 0
   TextPath: Application.stremingAssetsPath/local/LocalData.txt
   serverUsers: []
-  emailList: []
---- !u!114 &1052533967521847613
+--- !u!114 &3047241544416176463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,65 +74,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2847692801241020772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c4b0fa41e3f84c4483504d6babaaff1, type: 3}
+  m_Script: {fileID: 11500000, guid: fe7599476a802904e9cac5366c1cd98f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  second: 600
-  isRealtime: 1
-  countDownTexts: []
-  countdownEndEvents:
+  addEventsOnce: 1
+  eventsAdded: 0
+  ExecuteEventsOnSpecifiedScene: 1
+  sceneNameToRunEvent: HOME
+  sceneIndexToRunEvent: 0
+  EventOnSceneLoaded:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3880680860983199461}
         m_MethodName: DoGetDataFromServer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1052533967521847613}
-        m_MethodName: StartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &194650397521978807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2847692801241020772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 571c04249d3eb754096dafc97ee440fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventsOEnable:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3880680860983199461}
-        m_MethodName: DoGetDataFromServer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1052533967521847613}
-        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -195,6 +148,7 @@ MonoBehaviour:
     tableName: user
     serverAddress: http://localhost/honda/honda/submit-data.php
     serverGetDataAddress: http://localhost/honda/honda/get-data.php
+    scoreToWin: 3
     rewardType: 0
     stockDbName: stockDb_honda
     stockTableName: stockTable_honda

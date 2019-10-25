@@ -14,6 +14,7 @@ public class DontDestroy : MonoBehaviour
 
     void Awake()
     {
+        gameObject.tag = tagName;
         GameObject[] objs = GameObject.FindGameObjectsWithTag(tagName);
 
         if (objs.Length > 1)

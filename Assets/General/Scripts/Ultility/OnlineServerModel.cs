@@ -52,7 +52,6 @@ public class OnlineServerModel : GameSettingEntity
         {
             //No connection
             Debug.LogError("no internet connection");
-            yield return serverUsers;
             isFetchingData = false;
             yield break;
         }
@@ -65,6 +64,8 @@ public class OnlineServerModel : GameSettingEntity
                 if (www.isNetworkError || www.isHttpError)
                 {
                     Debug.LogError(www.error);
+                    isFetchingData = false;
+                    yield break;
                 }
                 else
                 {
@@ -115,7 +116,7 @@ public class OnlineServerModel : GameSettingEntity
             yield return null;
         }
 
-        newUsersList.Clear(); // clear list
+        newUsersList = new List<UserEntity>();
         newUsersList.AddRange(serverUsers); // add server users into list
 
     }

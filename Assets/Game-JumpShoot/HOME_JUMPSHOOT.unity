@@ -1116,12 +1116,12 @@ PrefabInstance:
     - target: {fileID: 3880680860983199461, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: isFetchingData
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3880680860983199461, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: TextPath
-      value: C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/LocalData.txt
+      value: C:/UID_Honda/demogames/Assets/StreamingAssets/LocalData.txt
       objectReference: {fileID: 0}
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
@@ -2866,11 +2866,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Set_Interactable_SubmitButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 3519200246895411581, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 991491826558010633, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
