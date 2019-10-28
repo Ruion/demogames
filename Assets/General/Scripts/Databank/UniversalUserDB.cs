@@ -177,6 +177,8 @@ namespace DataBank
                     val[i] = col[i] + ((n+1).ToString());
                 }
 
+                val[val.Count - 1] = "false";
+
                 AddData(col, val);
             }
 
@@ -312,7 +314,7 @@ namespace DataBank
                   
                 for (int i = 1; i < reader.FieldCount; i++)
                 {
-                    fieldInfo[i].SetValue(userInstance, reader[i].ToString());
+                   if(i<reader.FieldCount-1) fieldInfo[i].SetValue(userInstance, reader[i].ToString());
                     Debug.Log(fieldInfo[i].Name + " : " + userInstance.GetType().GetField(fieldInfo[i].Name).GetValue(userInstance));
                 }
 
@@ -403,6 +405,8 @@ namespace DataBank
 
         public void UpdateSyncUser(UniversalUserEntity userEntity)
         {
+            ConnectDbCustom();
+
             List<string> col = new List<string>();
             List<string> con = new List<string>();
 
@@ -416,6 +420,8 @@ namespace DataBank
             {
                 Debug.LogError(ex.Message);
             }
+
+            Close();
         }
 
         public override void DeleteAllData(string table_name)

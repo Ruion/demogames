@@ -15,11 +15,6 @@ public class UniversalUserDBEditor : GameSettingEntityEditor
             u.GetAllData(u.gameSettings.sQliteDBSettings.UniversalUserClassName);
         }
 
-        if (GUILayout.Button("GetAllUser"))
-        {
-            u.GetAllUser();
-        }
-
         if (GUILayout.Button("Populate"))
         {
             u.Populate();

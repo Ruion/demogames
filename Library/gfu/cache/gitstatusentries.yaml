@@ -13,18 +13,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2019-10-28T22:33:36.013+08:00
-  initializedAtString: 2019-10-28T22:25:45.201+08:00
+  lastUpdatedAtString: 2019-10-28T23:19:44.020+08:00
+  initializedAtString: 2019-10-28T22:54:58.974+08:00
   entries:
-  - path: Assets\Game-JumpShoot\GAME_TEST.unity
-    fullPath: C:\UID_Honda\demogames\Assets\Game-JumpShoot\GAME_TEST.unity
-    projectPath: Assets\Game-JumpShoot\GAME_TEST.unity
+  - path: .vs\demogames\v16\.suo
+    fullPath: C:\UID_Honda\demogames\.vs\demogames\v16\.suo
+    projectPath: .vs\demogames\v16\.suo
     originalPath: 
     status: 3
     staged: 0
-  - path: Assets\General\Scripts\Manager\ScoreVisualizer.cs
-    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Manager\ScoreVisualizer.cs
-    projectPath: Assets\General\Scripts\Manager\ScoreVisualizer.cs
+  - path: .vs\demogames\v16\Server\sqlite3\storage.ide
+    fullPath: C:\UID_Honda\demogames\.vs\demogames\v16\Server\sqlite3\storage.ide
+    projectPath: .vs\demogames\v16\Server\sqlite3\storage.ide
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Prefabs\HOME_Prefab.prefab
+    fullPath: C:\UID_Honda\demogames\Assets\General\Prefabs\HOME_Prefab.prefab
+    projectPath: Assets\General\Prefabs\HOME_Prefab.prefab
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Scripts\Databank\UniversalUserDB.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Databank\UniversalUserDB.cs
+    projectPath: Assets\General\Scripts\Databank\UniversalUserDB.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Scripts\Editor\UniversalUserDBEditor.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Editor\UniversalUserDBEditor.cs
+    projectPath: Assets\General\Scripts\Editor\UniversalUserDBEditor.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Scripts\ServerModel\UserServerModel.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\ServerModel\UserServerModel.cs
+    projectPath: Assets\General\Scripts\ServerModel\UserServerModel.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\StreamingAssets\user_db_test
+    fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\user_db_test
+    projectPath: Assets\StreamingAssets\user_db_test
     originalPath: 
     status: 3
     staged: 0
@@ -64,9 +94,9 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\metadata\bc\bca38cfc2e5d02544a789a9612368db6
-    fullPath: C:\UID_Honda\demogames\Library\metadata\bc\bca38cfc2e5d02544a789a9612368db6
-    projectPath: Library\metadata\bc\bca38cfc2e5d02544a789a9612368db6
+  - path: Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2
+    fullPath: C:\UID_Honda\demogames\Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2
+    projectPath: Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2
     originalPath: 
     status: 3
     staged: 0
@@ -91,6 +121,12 @@ MonoBehaviour:
   - path: Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
     fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
     projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\ScriptAssemblies\Assembly-CSharp-Editor.pdb
+    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Assembly-CSharp-Editor.pdb
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor.pdb
     originalPath: 
     status: 3
     staged: 0

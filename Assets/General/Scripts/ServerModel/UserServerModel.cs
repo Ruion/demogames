@@ -167,13 +167,17 @@ public class UserServerModel : ServerModelMaster
 
             for (int i = 0; i < colToSend.Count; i++)
             {
-                
-                form.AddField(gameSettings.sQliteDBSettings.columns[i],
+                Debug.Log(colToSend[i] + " : " + unSyncUsers[u].GetType()
+                    .GetField(colToSend[i])
+                    .GetValue(unSyncUsers[u])
+                    .ToString()); 
+
+                form.AddField(colToSend[i],
                     unSyncUsers[u].GetType()
-                    .GetField(gameSettings.sQliteDBSettings.columns[i])
+                    .GetField(colToSend[i])
                     .GetValue(unSyncUsers[u])
                     .ToString());
-            }
+            }           
 
             using (UnityWebRequest www = UnityWebRequest.Post(gameSettings.serverAddress, form))
             {
