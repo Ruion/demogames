@@ -112,6 +112,7 @@
     <Compile Include="Assets\General\Scripts\Databank\StockDB.cs" />
     <Compile Include="Assets\General\Scripts\Databank\UniversalDB.cs" />
     <Compile Include="Assets\General\Scripts\Databank\UniversalUserDB.cs" />
+    <Compile Include="Assets\General\Scripts\Databank\UniversalUserEntity.cs" />
     <Compile Include="Assets\General\Scripts\Databank\UserDB.cs" />
     <Compile Include="Assets\General\Scripts\Databank\UserEntity.cs" />
     <Compile Include="Assets\General\Scripts\EditorUtility\ObjectReposition.cs" />
@@ -131,7 +132,11 @@
     <Compile Include="Assets\General\Scripts\Rewards\RewardManager.cs" />
     <Compile Include="Assets\General\Scripts\Rewards\StockManager.cs" />
     <Compile Include="Assets\General\Scripts\Rewards\VendingMachine.cs" />
+    <Compile Include="Assets\General\Scripts\SaveSystem\PlayerPrefsSaver.cs" />
     <Compile Include="Assets\General\Scripts\ScriptableObject\ScriptableScore.cs" />
+    <Compile Include="Assets\General\Scripts\ServerModel\JSONResponse.cs" />
+    <Compile Include="Assets\General\Scripts\ServerModel\ServerModelMaster.cs" />
+    <Compile Include="Assets\General\Scripts\ServerModel\UserServerModel.cs" />
     <Compile Include="Assets\General\Scripts\Ultility\ActivateObjectOnDelay.cs" />
     <Compile Include="Assets\General\Scripts\Ultility\AutoCanvasResolution.cs" />
     <Compile Include="Assets\General\Scripts\Ultility\DontDestroy.cs" />
@@ -147,6 +152,7 @@
     <Compile Include="Assets\General\Scripts\Ultility\SwipeDetector.cs" />
     <Compile Include="Assets\General\Scripts\Ultility\TimerDestroyer.cs" />
     <Compile Include="Assets\General\Scripts\Validation\AdminValidation.cs" />
+    <Compile Include="Assets\General\Scripts\Validation\FormValidator.cs" />
     <Compile Include="Assets\General\Scripts\Validation\LicenseValidation.cs" />
     <Compile Include="Assets\General\Scripts\Validation\Registration.cs" />
     <Compile Include="Assets\OSK\Assets\Scripts\ButtonFeedback.cs" />

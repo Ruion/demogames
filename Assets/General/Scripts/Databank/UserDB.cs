@@ -165,7 +165,7 @@ namespace DataBank{
                 catch (DbException ex)
                 {
                     string msg = string.Format("ErrorCode: {0}", ex.Message);
-                    Debug.Log(msg);
+                    Debug.LogError(msg);
                     return msg;
                 }
             }

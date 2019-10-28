@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2019-10-25T09:46:02.150+08:00
-  initializedAtString: 2019-10-25T08:52:32.854+08:00
+  lastUpdatedAtString: 2019-10-28T21:56:04.614+08:00
+  initializedAtString: 2019-10-28T21:00:28.625+08:00
   entries:
   - path: .vs\demogames\v16\.suo
     fullPath: C:\UID_Honda\demogames\.vs\demogames\v16\.suo
@@ -40,27 +40,45 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Assembly-CSharp-Editor-firstpass.csproj
-    fullPath: C:\UID_Honda\demogames\Assembly-CSharp-Editor-firstpass.csproj
-    projectPath: Assembly-CSharp-Editor-firstpass.csproj
+  - path: Assets\Game-JumpShoot\GAME_JUMPSHOOT.unity
+    fullPath: C:\UID_Honda\demogames\Assets\Game-JumpShoot\GAME_JUMPSHOOT.unity
+    projectPath: Assets\Game-JumpShoot\GAME_JUMPSHOOT.unity
     originalPath: 
     status: 3
     staged: 0
-  - path: Assets\FormSubmissionHandler.cs
-    fullPath: C:\UID_Honda\demogames\Assets\FormSubmissionHandler.cs
-    projectPath: Assets\FormSubmissionHandler.cs
+  - path: Assets\Game-JumpShoot\GAME_TEST.unity
+    fullPath: C:\UID_Honda\demogames\Assets\Game-JumpShoot\GAME_TEST.unity
+    projectPath: Assets\Game-JumpShoot\GAME_TEST.unity
     originalPath: 
-    status: 5
+    status: 1
     staged: 0
-  - path: Assets\FormSubmissionHandler.cs.meta
-    fullPath: C:\UID_Honda\demogames\Assets\FormSubmissionHandler.cs.meta
-    projectPath: Assets\FormSubmissionHandler.cs.meta
+  - path: Assets\Game-JumpShoot\GAME_TEST.unity.meta
+    fullPath: C:\UID_Honda\demogames\Assets\Game-JumpShoot\GAME_TEST.unity.meta
+    projectPath: Assets\Game-JumpShoot\GAME_TEST.unity.meta
     originalPath: 
-    status: 5
+    status: 1
     staged: 0
   - path: Assets\Game-JumpShoot\HOME_JUMPSHOOT.unity
     fullPath: C:\UID_Honda\demogames\Assets\Game-JumpShoot\HOME_JUMPSHOOT.unity
     projectPath: Assets\Game-JumpShoot\HOME_JUMPSHOOT.unity
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\Game-JumpShoot\HOME_TEST.unity
+    fullPath: C:\UID_Honda\demogames\Assets\Game-JumpShoot\HOME_TEST.unity
+    projectPath: Assets\Game-JumpShoot\HOME_TEST.unity
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\Game-JumpShoot\HOME_TEST.unity.meta
+    fullPath: C:\UID_Honda\demogames\Assets\Game-JumpShoot\HOME_TEST.unity.meta
+    projectPath: Assets\Game-JumpShoot\HOME_TEST.unity.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\Game-JumpShoot\Resources\Score.asset
+    fullPath: C:\UID_Honda\demogames\Assets\Game-JumpShoot\Resources\Score.asset
+    projectPath: Assets\Game-JumpShoot\Resources\Score.asset
     originalPath: 
     status: 3
     staged: 0
@@ -70,15 +88,15 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Assets\General\Prefabs\HOME_Prefab.prefab
-    fullPath: C:\UID_Honda\demogames\Assets\General\Prefabs\HOME_Prefab.prefab
-    projectPath: Assets\General\Prefabs\HOME_Prefab.prefab
+  - path: Assets\General\Scripts\Databank\GameSetting.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Databank\GameSetting.cs
+    projectPath: Assets\General\Scripts\Databank\GameSetting.cs
     originalPath: 
     status: 3
     staged: 0
-  - path: Assets\General\Scripts\Databank\SqliteHelper.cs
-    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Databank\SqliteHelper.cs
-    projectPath: Assets\General\Scripts\Databank\SqliteHelper.cs
+  - path: Assets\General\Scripts\Databank\SqliteController.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Databank\SqliteController.cs
+    projectPath: Assets\General\Scripts\Databank\SqliteController.cs
     originalPath: 
     status: 3
     staged: 0
@@ -86,23 +104,23 @@ MonoBehaviour:
     fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Databank\UniversalDB.cs
     projectPath: Assets\General\Scripts\Databank\UniversalDB.cs
     originalPath: 
-    status: 1
-    staged: 0
-  - path: Assets\General\Scripts\Databank\UniversalDB.cs.meta
-    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Databank\UniversalDB.cs.meta
-    projectPath: Assets\General\Scripts\Databank\UniversalDB.cs.meta
-    originalPath: 
-    status: 1
+    status: 3
     staged: 0
   - path: Assets\General\Scripts\Databank\UniversalUserDB.cs
     fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Databank\UniversalUserDB.cs
     projectPath: Assets\General\Scripts\Databank\UniversalUserDB.cs
     originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Scripts\Databank\UniversalUserEntity.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Databank\UniversalUserEntity.cs
+    projectPath: Assets\General\Scripts\Databank\UniversalUserEntity.cs
+    originalPath: 
     status: 1
     staged: 0
-  - path: Assets\General\Scripts\Databank\UniversalUserDB.cs.meta
-    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Databank\UniversalUserDB.cs.meta
-    projectPath: Assets\General\Scripts\Databank\UniversalUserDB.cs.meta
+  - path: Assets\General\Scripts\Databank\UniversalUserEntity.cs.meta
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Databank\UniversalUserEntity.cs.meta
+    projectPath: Assets\General\Scripts\Databank\UniversalUserEntity.cs.meta
     originalPath: 
     status: 1
     staged: 0
@@ -111,6 +129,24 @@ MonoBehaviour:
     projectPath: Assets\General\Scripts\Databank\UserDB.cs
     originalPath: 
     status: 3
+    staged: 0
+  - path: Assets\General\Scripts\Editor\GameSettingEntityEditor.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Editor\GameSettingEntityEditor.cs
+    projectPath: Assets\General\Scripts\Editor\GameSettingEntityEditor.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Scripts\Editor\UniversalUserDBEditor.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Editor\UniversalUserDBEditor.cs
+    projectPath: Assets\General\Scripts\Editor\UniversalUserDBEditor.cs
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\Editor\UniversalUserDBEditor.cs.meta
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Editor\UniversalUserDBEditor.cs.meta
+    projectPath: Assets\General\Scripts\Editor\UniversalUserDBEditor.cs.meta
+    originalPath: 
+    status: 1
     staged: 0
   - path: Assets\General\Scripts\Manager\DataManager.cs
     fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Manager\DataManager.cs
@@ -124,15 +160,81 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
+  - path: Assets\General\Scripts\Rewards\VendingMachine.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Rewards\VendingMachine.cs
+    projectPath: Assets\General\Scripts\Rewards\VendingMachine.cs
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Assets\General\Scripts\SaveSystem.meta
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\SaveSystem.meta
+    projectPath: Assets\General\Scripts\SaveSystem.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\SaveSystem\PlayerPrefsSaver.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\SaveSystem\PlayerPrefsSaver.cs
+    projectPath: Assets\General\Scripts\SaveSystem\PlayerPrefsSaver.cs
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\SaveSystem\PlayerPrefsSaver.cs.meta
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\SaveSystem\PlayerPrefsSaver.cs.meta
+    projectPath: Assets\General\Scripts\SaveSystem\PlayerPrefsSaver.cs.meta
+    originalPath: 
+    status: 1
+    staged: 0
   - path: Assets\General\Scripts\SaveSystemTest.meta
     fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\SaveSystemTest.meta
     projectPath: Assets\General\Scripts\SaveSystemTest.meta
     originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\General\Scripts\ServerModel.meta
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\ServerModel.meta
+    projectPath: Assets\General\Scripts\ServerModel.meta
+    originalPath: 
     status: 1
     staged: 0
-  - path: Assets\General\Scripts\Ultility\DontDestroy.cs
-    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Ultility\DontDestroy.cs
-    projectPath: Assets\General\Scripts\Ultility\DontDestroy.cs
+  - path: Assets\General\Scripts\ServerModel\JSONResponse.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\ServerModel\JSONResponse.cs
+    projectPath: Assets\General\Scripts\ServerModel\JSONResponse.cs
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\ServerModel\JSONResponse.cs.meta
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\ServerModel\JSONResponse.cs.meta
+    projectPath: Assets\General\Scripts\ServerModel\JSONResponse.cs.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\ServerModel\ServerModelMaster.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\ServerModel\ServerModelMaster.cs
+    projectPath: Assets\General\Scripts\ServerModel\ServerModelMaster.cs
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\ServerModel\ServerModelMaster.cs.meta
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\ServerModel\ServerModelMaster.cs.meta
+    projectPath: Assets\General\Scripts\ServerModel\ServerModelMaster.cs.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\ServerModel\UserServerModel.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\ServerModel\UserServerModel.cs
+    projectPath: Assets\General\Scripts\ServerModel\UserServerModel.cs
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\ServerModel\UserServerModel.cs.meta
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\ServerModel\UserServerModel.cs.meta
+    projectPath: Assets\General\Scripts\ServerModel\UserServerModel.cs.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\General\Scripts\Ultility\GameSettingEntity.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Ultility\GameSettingEntity.cs
+    projectPath: Assets\General\Scripts\Ultility\GameSettingEntity.cs
     originalPath: 
     status: 3
     staged: 0
@@ -142,27 +244,81 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Assets\General\Scripts\Ultility\StartEventsOnSceneLoaded.cs
-    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Ultility\StartEventsOnSceneLoaded.cs
-    projectPath: Assets\General\Scripts\Ultility\StartEventsOnSceneLoaded.cs
+  - path: Assets\General\Scripts\Validation\FormValidator.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Validation\FormValidator.cs
+    projectPath: Assets\General\Scripts\Validation\FormValidator.cs
     originalPath: 
     status: 1
     staged: 0
-  - path: Assets\General\Scripts\Ultility\StartEventsOnSceneLoaded.cs.meta
-    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Ultility\StartEventsOnSceneLoaded.cs.meta
-    projectPath: Assets\General\Scripts\Ultility\StartEventsOnSceneLoaded.cs.meta
+  - path: Assets\General\Scripts\Validation\FormValidator.cs.meta
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Validation\FormValidator.cs.meta
+    projectPath: Assets\General\Scripts\Validation\FormValidator.cs.meta
     originalPath: 
     status: 1
+    staged: 0
+  - path: Assets\StreamingAssets\db_stock
+    fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\db_stock
+    projectPath: Assets\StreamingAssets\db_stock
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\StreamingAssets\db_stock.meta
+    fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\db_stock.meta
+    projectPath: Assets\StreamingAssets\db_stock.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\StreamingAssets\game_celcom.setting
+    fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\game_celcom.setting
+    projectPath: Assets\StreamingAssets\game_celcom.setting
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\StreamingAssets\game_celcom.setting.meta
+    fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\game_celcom.setting.meta
+    projectPath: Assets\StreamingAssets\game_celcom.setting.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\StreamingAssets\game_jumpshoot.setting
+    fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\game_jumpshoot.setting
+    projectPath: Assets\StreamingAssets\game_jumpshoot.setting
+    originalPath: 
+    status: 3
     staged: 0
   - path: Assets\StreamingAssets\game_maxis.setting
     fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\game_maxis.setting
     projectPath: Assets\StreamingAssets\game_maxis.setting
     originalPath: 
-    status: 1
+    status: 5
     staged: 0
   - path: Assets\StreamingAssets\game_maxis.setting.meta
     fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\game_maxis.setting.meta
     projectPath: Assets\StreamingAssets\game_maxis.setting.meta
+    originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\StreamingAssets\game_test.setting
+    fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\game_test.setting
+    projectPath: Assets\StreamingAssets\game_test.setting
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\StreamingAssets\game_test.setting.meta
+    fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\game_test.setting.meta
+    projectPath: Assets\StreamingAssets\game_test.setting.meta
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\StreamingAssets\user_db_celcom
+    fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\user_db_celcom
+    projectPath: Assets\StreamingAssets\user_db_celcom
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Assets\StreamingAssets\user_db_celcom.meta
+    fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\user_db_celcom.meta
+    projectPath: Assets\StreamingAssets\user_db_celcom.meta
     originalPath: 
     status: 1
     staged: 0
@@ -176,25 +332,25 @@ MonoBehaviour:
     fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\user_db_maxis
     projectPath: Assets\StreamingAssets\user_db_maxis
     originalPath: 
-    status: 1
+    status: 5
     staged: 0
   - path: Assets\StreamingAssets\user_db_maxis.meta
     fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\user_db_maxis.meta
     projectPath: Assets\StreamingAssets\user_db_maxis.meta
     originalPath: 
+    status: 5
+    staged: 0
+  - path: Assets\StreamingAssets\user_db_test
+    fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\user_db_test
+    projectPath: Assets\StreamingAssets\user_db_test
+    originalPath: 
     status: 1
     staged: 0
-  - path: demogames.sln
-    fullPath: C:\UID_Honda\demogames\demogames.sln
-    projectPath: demogames.sln
+  - path: Assets\StreamingAssets\user_db_test.meta
+    fullPath: C:\UID_Honda\demogames\Assets\StreamingAssets\user_db_test.meta
+    projectPath: Assets\StreamingAssets\user_db_test.meta
     originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\APIUpdater\project-dependencies.graph
-    fullPath: C:\UID_Honda\demogames\Library\APIUpdater\project-dependencies.graph
-    projectPath: Library\APIUpdater\project-dependencies.graph
-    originalPath: 
-    status: 3
+    status: 1
     staged: 0
   - path: Library\assetDatabase3
     fullPath: C:\UID_Honda\demogames\Library\assetDatabase3
@@ -250,333 +406,9 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\metadata\00\00f762d28715063418d483f0541d74ce.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\00\00f762d28715063418d483f0541d74ce.info
-    projectPath: Library\metadata\00\00f762d28715063418d483f0541d74ce.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\01\01f74df2e70370d4a9ff53fe30d325d7.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\01\01f74df2e70370d4a9ff53fe30d325d7.info
-    projectPath: Library\metadata\01\01f74df2e70370d4a9ff53fe30d325d7.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\02\022b73d4a66713647a887f197b5b99ec.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\02\022b73d4a66713647a887f197b5b99ec.info
-    projectPath: Library\metadata\02\022b73d4a66713647a887f197b5b99ec.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\02\029eea3bfbbf4124ea3273c5419abf2c.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\02\029eea3bfbbf4124ea3273c5419abf2c.info
-    projectPath: Library\metadata\02\029eea3bfbbf4124ea3273c5419abf2c.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\05\0585820f59ab8db4a996267a5b3fdbc5.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\05\0585820f59ab8db4a996267a5b3fdbc5.info
-    projectPath: Library\metadata\05\0585820f59ab8db4a996267a5b3fdbc5.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\05\05fdaefb9aea2564ea51d44cb8a7b374
-    fullPath: C:\UID_Honda\demogames\Library\metadata\05\05fdaefb9aea2564ea51d44cb8a7b374
-    projectPath: Library\metadata\05\05fdaefb9aea2564ea51d44cb8a7b374
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\05\05fdaefb9aea2564ea51d44cb8a7b374.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\05\05fdaefb9aea2564ea51d44cb8a7b374.info
-    projectPath: Library\metadata\05\05fdaefb9aea2564ea51d44cb8a7b374.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\08\08a0ae415afc1144884d662feb817428.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\08\08a0ae415afc1144884d662feb817428.info
-    projectPath: Library\metadata\08\08a0ae415afc1144884d662feb817428.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\09\099e31b0e901df2469d1e7f7a87ac0d3.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\09\099e31b0e901df2469d1e7f7a87ac0d3.info
-    projectPath: Library\metadata\09\099e31b0e901df2469d1e7f7a87ac0d3.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\0a\0a8b748a04e520342b876ed5ed04bd29.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\0a\0a8b748a04e520342b876ed5ed04bd29.info
-    projectPath: Library\metadata\0a\0a8b748a04e520342b876ed5ed04bd29.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\0d\0d5be381dbec6314c86f13bca8679e4a
-    fullPath: C:\UID_Honda\demogames\Library\metadata\0d\0d5be381dbec6314c86f13bca8679e4a
-    projectPath: Library\metadata\0d\0d5be381dbec6314c86f13bca8679e4a
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\0d\0d5be381dbec6314c86f13bca8679e4a.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\0d\0d5be381dbec6314c86f13bca8679e4a.info
-    projectPath: Library\metadata\0d\0d5be381dbec6314c86f13bca8679e4a.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\0e\0e585359d94337747ade6a2912aa81b2
-    fullPath: C:\UID_Honda\demogames\Library\metadata\0e\0e585359d94337747ade6a2912aa81b2
-    projectPath: Library\metadata\0e\0e585359d94337747ade6a2912aa81b2
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\0e\0e585359d94337747ade6a2912aa81b2.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\0e\0e585359d94337747ade6a2912aa81b2.info
-    projectPath: Library\metadata\0e\0e585359d94337747ade6a2912aa81b2.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\13\1328958dd1d6a5c47bd9977e25b3df61
-    fullPath: C:\UID_Honda\demogames\Library\metadata\13\1328958dd1d6a5c47bd9977e25b3df61
-    projectPath: Library\metadata\13\1328958dd1d6a5c47bd9977e25b3df61
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\13\1328958dd1d6a5c47bd9977e25b3df61.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\13\1328958dd1d6a5c47bd9977e25b3df61.info
-    projectPath: Library\metadata\13\1328958dd1d6a5c47bd9977e25b3df61.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\13\135c02635a0785b4292c14bb89f706d0
-    fullPath: C:\UID_Honda\demogames\Library\metadata\13\135c02635a0785b4292c14bb89f706d0
-    projectPath: Library\metadata\13\135c02635a0785b4292c14bb89f706d0
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\13\135c02635a0785b4292c14bb89f706d0.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\13\135c02635a0785b4292c14bb89f706d0.info
-    projectPath: Library\metadata\13\135c02635a0785b4292c14bb89f706d0.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\16\16f5d7bd9f6f024419fed1f9f48c2d92.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\16\16f5d7bd9f6f024419fed1f9f48c2d92.info
-    projectPath: Library\metadata\16\16f5d7bd9f6f024419fed1f9f48c2d92.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\17\17f40b58e265f6d4b93c0854eee58498
-    fullPath: C:\UID_Honda\demogames\Library\metadata\17\17f40b58e265f6d4b93c0854eee58498
-    projectPath: Library\metadata\17\17f40b58e265f6d4b93c0854eee58498
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\17\17f40b58e265f6d4b93c0854eee58498.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\17\17f40b58e265f6d4b93c0854eee58498.info
-    projectPath: Library\metadata\17\17f40b58e265f6d4b93c0854eee58498.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\19\191ac153c1b7c7b4c9ccf59b664809a3
-    fullPath: C:\UID_Honda\demogames\Library\metadata\19\191ac153c1b7c7b4c9ccf59b664809a3
-    projectPath: Library\metadata\19\191ac153c1b7c7b4c9ccf59b664809a3
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\19\191ac153c1b7c7b4c9ccf59b664809a3.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\19\191ac153c1b7c7b4c9ccf59b664809a3.info
-    projectPath: Library\metadata\19\191ac153c1b7c7b4c9ccf59b664809a3.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\1b\1b54a51725e9d644aa23eb782dfe6ff9.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\1b\1b54a51725e9d644aa23eb782dfe6ff9.info
-    projectPath: Library\metadata\1b\1b54a51725e9d644aa23eb782dfe6ff9.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\1b\1b69838b175c5a34e8a77633b7a6e2c0
-    fullPath: C:\UID_Honda\demogames\Library\metadata\1b\1b69838b175c5a34e8a77633b7a6e2c0
-    projectPath: Library\metadata\1b\1b69838b175c5a34e8a77633b7a6e2c0
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\1b\1b69838b175c5a34e8a77633b7a6e2c0.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\1b\1b69838b175c5a34e8a77633b7a6e2c0.info
-    projectPath: Library\metadata\1b\1b69838b175c5a34e8a77633b7a6e2c0.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\1d\1d070fdfa0231654789220b1b8dd1ecd
-    fullPath: C:\UID_Honda\demogames\Library\metadata\1d\1d070fdfa0231654789220b1b8dd1ecd
-    projectPath: Library\metadata\1d\1d070fdfa0231654789220b1b8dd1ecd
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\1d\1d070fdfa0231654789220b1b8dd1ecd.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\1d\1d070fdfa0231654789220b1b8dd1ecd.info
-    projectPath: Library\metadata\1d\1d070fdfa0231654789220b1b8dd1ecd.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\1d\1d44fdf04d7a90b4c8e541f95c6d7831.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\1d\1d44fdf04d7a90b4c8e541f95c6d7831.info
-    projectPath: Library\metadata\1d\1d44fdf04d7a90b4c8e541f95c6d7831.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\1f\1f40b59e167fa644589d59774b573625.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\1f\1f40b59e167fa644589d59774b573625.info
-    projectPath: Library\metadata\1f\1f40b59e167fa644589d59774b573625.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\21\214193ff3cdefaf4cab310101ad6f40f.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\21\214193ff3cdefaf4cab310101ad6f40f.info
-    projectPath: Library\metadata\21\214193ff3cdefaf4cab310101ad6f40f.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\22\22de8e306766e5e4dac03b34d1be369a
-    fullPath: C:\UID_Honda\demogames\Library\metadata\22\22de8e306766e5e4dac03b34d1be369a
-    projectPath: Library\metadata\22\22de8e306766e5e4dac03b34d1be369a
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\22\22de8e306766e5e4dac03b34d1be369a.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\22\22de8e306766e5e4dac03b34d1be369a.info
-    projectPath: Library\metadata\22\22de8e306766e5e4dac03b34d1be369a.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\22\22ee972d538081b45bb23de0dc2f4cb6
-    fullPath: C:\UID_Honda\demogames\Library\metadata\22\22ee972d538081b45bb23de0dc2f4cb6
-    projectPath: Library\metadata\22\22ee972d538081b45bb23de0dc2f4cb6
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\22\22ee972d538081b45bb23de0dc2f4cb6.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\22\22ee972d538081b45bb23de0dc2f4cb6.info
-    projectPath: Library\metadata\22\22ee972d538081b45bb23de0dc2f4cb6.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\24\247cef4f22593274c91fec3c49655834.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\24\247cef4f22593274c91fec3c49655834.info
-    projectPath: Library\metadata\24\247cef4f22593274c91fec3c49655834.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\24\24a024bc1928ded40bb22fe6c100585b.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\24\24a024bc1928ded40bb22fe6c100585b.info
-    projectPath: Library\metadata\24\24a024bc1928ded40bb22fe6c100585b.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\25\25754bf4021045248899b9bf0f72215c.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\25\25754bf4021045248899b9bf0f72215c.info
-    projectPath: Library\metadata\25\25754bf4021045248899b9bf0f72215c.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\27\2760e95983158d94d95b44a9e72ee95c
-    fullPath: C:\UID_Honda\demogames\Library\metadata\27\2760e95983158d94d95b44a9e72ee95c
-    projectPath: Library\metadata\27\2760e95983158d94d95b44a9e72ee95c
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\27\2760e95983158d94d95b44a9e72ee95c.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\27\2760e95983158d94d95b44a9e72ee95c.info
-    projectPath: Library\metadata\27\2760e95983158d94d95b44a9e72ee95c.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\2a\2adc0e7e468aba54295f75ed36471388
-    fullPath: C:\UID_Honda\demogames\Library\metadata\2a\2adc0e7e468aba54295f75ed36471388
-    projectPath: Library\metadata\2a\2adc0e7e468aba54295f75ed36471388
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\2a\2adc0e7e468aba54295f75ed36471388.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\2a\2adc0e7e468aba54295f75ed36471388.info
-    projectPath: Library\metadata\2a\2adc0e7e468aba54295f75ed36471388.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\2c\2c15ca8d985ab5d48b03dbf33c1e63f6
-    fullPath: C:\UID_Honda\demogames\Library\metadata\2c\2c15ca8d985ab5d48b03dbf33c1e63f6
-    projectPath: Library\metadata\2c\2c15ca8d985ab5d48b03dbf33c1e63f6
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\2c\2c15ca8d985ab5d48b03dbf33c1e63f6.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\2c\2c15ca8d985ab5d48b03dbf33c1e63f6.info
-    projectPath: Library\metadata\2c\2c15ca8d985ab5d48b03dbf33c1e63f6.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\2e\2e83a89f4110c5142a42a599abf005d8
-    fullPath: C:\UID_Honda\demogames\Library\metadata\2e\2e83a89f4110c5142a42a599abf005d8
-    projectPath: Library\metadata\2e\2e83a89f4110c5142a42a599abf005d8
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\2e\2e83a89f4110c5142a42a599abf005d8.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\2e\2e83a89f4110c5142a42a599abf005d8.info
-    projectPath: Library\metadata\2e\2e83a89f4110c5142a42a599abf005d8.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\31\31a6f24079d442c4e89d52941ce9ca06.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\31\31a6f24079d442c4e89d52941ce9ca06.info
-    projectPath: Library\metadata\31\31a6f24079d442c4e89d52941ce9ca06.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\32\32b86befa32f3ec49a543bb6db71d4e3
-    fullPath: C:\UID_Honda\demogames\Library\metadata\32\32b86befa32f3ec49a543bb6db71d4e3
-    projectPath: Library\metadata\32\32b86befa32f3ec49a543bb6db71d4e3
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\32\32b86befa32f3ec49a543bb6db71d4e3.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\32\32b86befa32f3ec49a543bb6db71d4e3.info
-    projectPath: Library\metadata\32\32b86befa32f3ec49a543bb6db71d4e3.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\36\36a53abc42e73974bb8d69edda369b11
-    fullPath: C:\UID_Honda\demogames\Library\metadata\36\36a53abc42e73974bb8d69edda369b11
-    projectPath: Library\metadata\36\36a53abc42e73974bb8d69edda369b11
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\36\36a53abc42e73974bb8d69edda369b11.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\36\36a53abc42e73974bb8d69edda369b11.info
-    projectPath: Library\metadata\36\36a53abc42e73974bb8d69edda369b11.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\36\36fa505a521d5ac4eacbe5964a9927e3
-    fullPath: C:\UID_Honda\demogames\Library\metadata\36\36fa505a521d5ac4eacbe5964a9927e3
-    projectPath: Library\metadata\36\36fa505a521d5ac4eacbe5964a9927e3
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\36\36fa505a521d5ac4eacbe5964a9927e3.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\36\36fa505a521d5ac4eacbe5964a9927e3.info
-    projectPath: Library\metadata\36\36fa505a521d5ac4eacbe5964a9927e3.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\38\3872c3627087d0d42b685d9282e7ad89
-    fullPath: C:\UID_Honda\demogames\Library\metadata\38\3872c3627087d0d42b685d9282e7ad89
-    projectPath: Library\metadata\38\3872c3627087d0d42b685d9282e7ad89
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\38\3872c3627087d0d42b685d9282e7ad89.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\38\3872c3627087d0d42b685d9282e7ad89.info
-    projectPath: Library\metadata\38\3872c3627087d0d42b685d9282e7ad89.info
+  - path: Library\metadata\0f\0f71d08747a356245ac9cd5bc923b7a3
+    fullPath: C:\UID_Honda\demogames\Library\metadata\0f\0f71d08747a356245ac9cd5bc923b7a3
+    projectPath: Library\metadata\0f\0f71d08747a356245ac9cd5bc923b7a3
     originalPath: 
     status: 3
     staged: 0
@@ -586,225 +418,9 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\metadata\39\398f5520ddf51c749a2939c0f8c5d87a
-    fullPath: C:\UID_Honda\demogames\Library\metadata\39\398f5520ddf51c749a2939c0f8c5d87a
-    projectPath: Library\metadata\39\398f5520ddf51c749a2939c0f8c5d87a
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\39\398f5520ddf51c749a2939c0f8c5d87a.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\39\398f5520ddf51c749a2939c0f8c5d87a.info
-    projectPath: Library\metadata\39\398f5520ddf51c749a2939c0f8c5d87a.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\39\39ccede71bf1dc04ab012b4bf3f51605
-    fullPath: C:\UID_Honda\demogames\Library\metadata\39\39ccede71bf1dc04ab012b4bf3f51605
-    projectPath: Library\metadata\39\39ccede71bf1dc04ab012b4bf3f51605
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\39\39ccede71bf1dc04ab012b4bf3f51605.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\39\39ccede71bf1dc04ab012b4bf3f51605.info
-    projectPath: Library\metadata\39\39ccede71bf1dc04ab012b4bf3f51605.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\39\39d9ab7572e10c34f9827d659cfe588a
-    fullPath: C:\UID_Honda\demogames\Library\metadata\39\39d9ab7572e10c34f9827d659cfe588a
-    projectPath: Library\metadata\39\39d9ab7572e10c34f9827d659cfe588a
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\39\39d9ab7572e10c34f9827d659cfe588a.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\39\39d9ab7572e10c34f9827d659cfe588a.info
-    projectPath: Library\metadata\39\39d9ab7572e10c34f9827d659cfe588a.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\3a\3a2493b3f6864c542915a811c50ffad7.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\3a\3a2493b3f6864c542915a811c50ffad7.info
-    projectPath: Library\metadata\3a\3a2493b3f6864c542915a811c50ffad7.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2
-    fullPath: C:\UID_Honda\demogames\Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2
-    projectPath: Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2.info
-    projectPath: Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\3e\3e9d5ba29526aee4985cf686f3c5a5c8
-    fullPath: C:\UID_Honda\demogames\Library\metadata\3e\3e9d5ba29526aee4985cf686f3c5a5c8
-    projectPath: Library\metadata\3e\3e9d5ba29526aee4985cf686f3c5a5c8
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\3e\3e9d5ba29526aee4985cf686f3c5a5c8.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\3e\3e9d5ba29526aee4985cf686f3c5a5c8.info
-    projectPath: Library\metadata\3e\3e9d5ba29526aee4985cf686f3c5a5c8.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\3e\3ee23790322dfe3478b9c049b97cf294
-    fullPath: C:\UID_Honda\demogames\Library\metadata\3e\3ee23790322dfe3478b9c049b97cf294
-    projectPath: Library\metadata\3e\3ee23790322dfe3478b9c049b97cf294
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\3e\3ee23790322dfe3478b9c049b97cf294.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\3e\3ee23790322dfe3478b9c049b97cf294.info
-    projectPath: Library\metadata\3e\3ee23790322dfe3478b9c049b97cf294.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\40\4022a7f8c5da8e247b4771ed4d134d9a.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\40\4022a7f8c5da8e247b4771ed4d134d9a.info
-    projectPath: Library\metadata\40\4022a7f8c5da8e247b4771ed4d134d9a.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\41\412979b4584962e4194f9b60ddfdee9d.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\41\412979b4584962e4194f9b60ddfdee9d.info
-    projectPath: Library\metadata\41\412979b4584962e4194f9b60ddfdee9d.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\43\439e1377addebcc46b04e2932d18580e
-    fullPath: C:\UID_Honda\demogames\Library\metadata\43\439e1377addebcc46b04e2932d18580e
-    projectPath: Library\metadata\43\439e1377addebcc46b04e2932d18580e
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\43\439e1377addebcc46b04e2932d18580e.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\43\439e1377addebcc46b04e2932d18580e.info
-    projectPath: Library\metadata\43\439e1377addebcc46b04e2932d18580e.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\44\44d7a6f25e5b0f14eac98dced6580d77
-    fullPath: C:\UID_Honda\demogames\Library\metadata\44\44d7a6f25e5b0f14eac98dced6580d77
-    projectPath: Library\metadata\44\44d7a6f25e5b0f14eac98dced6580d77
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\44\44d7a6f25e5b0f14eac98dced6580d77.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\44\44d7a6f25e5b0f14eac98dced6580d77.info
-    projectPath: Library\metadata\44\44d7a6f25e5b0f14eac98dced6580d77.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\45\450df1c6a58228140a4e1f4ee7fdec25.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\45\450df1c6a58228140a4e1f4ee7fdec25.info
-    projectPath: Library\metadata\45\450df1c6a58228140a4e1f4ee7fdec25.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\46\461694b9a175a3f40a1de2978cdec250
-    fullPath: C:\UID_Honda\demogames\Library\metadata\46\461694b9a175a3f40a1de2978cdec250
-    projectPath: Library\metadata\46\461694b9a175a3f40a1de2978cdec250
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\46\461694b9a175a3f40a1de2978cdec250.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\46\461694b9a175a3f40a1de2978cdec250.info
-    projectPath: Library\metadata\46\461694b9a175a3f40a1de2978cdec250.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\48\4809513f8603de64c8a933591745ee14
-    fullPath: C:\UID_Honda\demogames\Library\metadata\48\4809513f8603de64c8a933591745ee14
-    projectPath: Library\metadata\48\4809513f8603de64c8a933591745ee14
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\48\4809513f8603de64c8a933591745ee14.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\48\4809513f8603de64c8a933591745ee14.info
-    projectPath: Library\metadata\48\4809513f8603de64c8a933591745ee14.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\4a\4a25b949894a0e944888a5ae2ae4ee1d.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\4a\4a25b949894a0e944888a5ae2ae4ee1d.info
-    projectPath: Library\metadata\4a\4a25b949894a0e944888a5ae2ae4ee1d.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\4a\4a8c49254850953478e9a0665fa11298.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\4a\4a8c49254850953478e9a0665fa11298.info
-    projectPath: Library\metadata\4a\4a8c49254850953478e9a0665fa11298.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\4a\4abd2d4260f72c641ac8c85433bcf993.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\4a\4abd2d4260f72c641ac8c85433bcf993.info
-    projectPath: Library\metadata\4a\4abd2d4260f72c641ac8c85433bcf993.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\4b\4ba60628dce473a409924e0f484cdd58.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\4b\4ba60628dce473a409924e0f484cdd58.info
-    projectPath: Library\metadata\4b\4ba60628dce473a409924e0f484cdd58.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\4d\4d863669fee6bf04f82ce138b0ebe52c
-    fullPath: C:\UID_Honda\demogames\Library\metadata\4d\4d863669fee6bf04f82ce138b0ebe52c
-    projectPath: Library\metadata\4d\4d863669fee6bf04f82ce138b0ebe52c
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\4d\4d863669fee6bf04f82ce138b0ebe52c.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\4d\4d863669fee6bf04f82ce138b0ebe52c.info
-    projectPath: Library\metadata\4d\4d863669fee6bf04f82ce138b0ebe52c.info
-    originalPath: 
-    status: 3
-    staged: 0
   - path: Library\metadata\4e\4e3c8a8d07255da48ac74aa42c168a11
     fullPath: C:\UID_Honda\demogames\Library\metadata\4e\4e3c8a8d07255da48ac74aa42c168a11
     projectPath: Library\metadata\4e\4e3c8a8d07255da48ac74aa42c168a11
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\4e\4ebd570723935574e8177710f9b9da4e
-    fullPath: C:\UID_Honda\demogames\Library\metadata\4e\4ebd570723935574e8177710f9b9da4e
-    projectPath: Library\metadata\4e\4ebd570723935574e8177710f9b9da4e
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\4e\4ebd570723935574e8177710f9b9da4e.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\4e\4ebd570723935574e8177710f9b9da4e.info
-    projectPath: Library\metadata\4e\4ebd570723935574e8177710f9b9da4e.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\4f\4f5fe326bbb216440a8cbd748241df87
-    fullPath: C:\UID_Honda\demogames\Library\metadata\4f\4f5fe326bbb216440a8cbd748241df87
-    projectPath: Library\metadata\4f\4f5fe326bbb216440a8cbd748241df87
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\4f\4f5fe326bbb216440a8cbd748241df87.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\4f\4f5fe326bbb216440a8cbd748241df87.info
-    projectPath: Library\metadata\4f\4f5fe326bbb216440a8cbd748241df87.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\50\503e3487545b7cd4389d88cc98ab34d2.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\50\503e3487545b7cd4389d88cc98ab34d2.info
-    projectPath: Library\metadata\50\503e3487545b7cd4389d88cc98ab34d2.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\50\508a78a32dd136f4d82306fe303b993e.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\50\508a78a32dd136f4d82306fe303b993e.info
-    projectPath: Library\metadata\50\508a78a32dd136f4d82306fe303b993e.info
     originalPath: 
     status: 3
     staged: 0
@@ -814,291 +430,15 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\metadata\55\553957611d5d0214499ff8049b9eaccc.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\55\553957611d5d0214499ff8049b9eaccc.info
-    projectPath: Library\metadata\55\553957611d5d0214499ff8049b9eaccc.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\56\560769de32940994f8a6e819e6169a75
-    fullPath: C:\UID_Honda\demogames\Library\metadata\56\560769de32940994f8a6e819e6169a75
-    projectPath: Library\metadata\56\560769de32940994f8a6e819e6169a75
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\56\560769de32940994f8a6e819e6169a75.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\56\560769de32940994f8a6e819e6169a75.info
-    projectPath: Library\metadata\56\560769de32940994f8a6e819e6169a75.info
-    originalPath: 
-    status: 3
-    staged: 0
   - path: Library\metadata\57\57fbe84e1ef6ea245b1595406f70d225
     fullPath: C:\UID_Honda\demogames\Library\metadata\57\57fbe84e1ef6ea245b1595406f70d225
     projectPath: Library\metadata\57\57fbe84e1ef6ea245b1595406f70d225
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\metadata\58\5845fc46cde58de4f866e967e96396d5.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\58\5845fc46cde58de4f866e967e96396d5.info
-    projectPath: Library\metadata\58\5845fc46cde58de4f866e967e96396d5.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\58\589e43b6dd6a98246b8c7d86cc85df70.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\58\589e43b6dd6a98246b8c7d86cc85df70.info
-    projectPath: Library\metadata\58\589e43b6dd6a98246b8c7d86cc85df70.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\59\591a7a379eae2bf4e81836ece1d8aacc
-    fullPath: C:\UID_Honda\demogames\Library\metadata\59\591a7a379eae2bf4e81836ece1d8aacc
-    projectPath: Library\metadata\59\591a7a379eae2bf4e81836ece1d8aacc
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\59\591a7a379eae2bf4e81836ece1d8aacc.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\59\591a7a379eae2bf4e81836ece1d8aacc.info
-    projectPath: Library\metadata\59\591a7a379eae2bf4e81836ece1d8aacc.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\59\598e3ac0f30d176459178c1bfd6ee648
-    fullPath: C:\UID_Honda\demogames\Library\metadata\59\598e3ac0f30d176459178c1bfd6ee648
-    projectPath: Library\metadata\59\598e3ac0f30d176459178c1bfd6ee648
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\59\598e3ac0f30d176459178c1bfd6ee648.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\59\598e3ac0f30d176459178c1bfd6ee648.info
-    projectPath: Library\metadata\59\598e3ac0f30d176459178c1bfd6ee648.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\5a\5a45dc3a45098174b83fdaf40b59bb24
-    fullPath: C:\UID_Honda\demogames\Library\metadata\5a\5a45dc3a45098174b83fdaf40b59bb24
-    projectPath: Library\metadata\5a\5a45dc3a45098174b83fdaf40b59bb24
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\5a\5a7c0a47457e88344b1d44ec827193a5
-    fullPath: C:\UID_Honda\demogames\Library\metadata\5a\5a7c0a47457e88344b1d44ec827193a5
-    projectPath: Library\metadata\5a\5a7c0a47457e88344b1d44ec827193a5
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\5a\5a7c0a47457e88344b1d44ec827193a5.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\5a\5a7c0a47457e88344b1d44ec827193a5.info
-    projectPath: Library\metadata\5a\5a7c0a47457e88344b1d44ec827193a5.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\5b\5b3054928f3f5c0488b1d47cbedd1f44.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\5b\5b3054928f3f5c0488b1d47cbedd1f44.info
-    projectPath: Library\metadata\5b\5b3054928f3f5c0488b1d47cbedd1f44.info
-    originalPath: 
-    status: 3
-    staged: 0
   - path: Library\metadata\5d\5d0409ce0ca1c1747be1296f8d3a3436
     fullPath: C:\UID_Honda\demogames\Library\metadata\5d\5d0409ce0ca1c1747be1296f8d3a3436
     projectPath: Library\metadata\5d\5d0409ce0ca1c1747be1296f8d3a3436
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\5f\5f764b6c855280a4895326fbb121e1cb.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\5f\5f764b6c855280a4895326fbb121e1cb.info
-    projectPath: Library\metadata\5f\5f764b6c855280a4895326fbb121e1cb.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\64\64de8b41efdddc244944ad5eb7baee33.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\64\64de8b41efdddc244944ad5eb7baee33.info
-    projectPath: Library\metadata\64\64de8b41efdddc244944ad5eb7baee33.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\65\65566c0b9e6a1aa4e8e75eafe9f5b580.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\65\65566c0b9e6a1aa4e8e75eafe9f5b580.info
-    projectPath: Library\metadata\65\65566c0b9e6a1aa4e8e75eafe9f5b580.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\69\6924e8d8ef2d2084da45546365dde9ed
-    fullPath: C:\UID_Honda\demogames\Library\metadata\69\6924e8d8ef2d2084da45546365dde9ed
-    projectPath: Library\metadata\69\6924e8d8ef2d2084da45546365dde9ed
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\69\6924e8d8ef2d2084da45546365dde9ed.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\69\6924e8d8ef2d2084da45546365dde9ed.info
-    projectPath: Library\metadata\69\6924e8d8ef2d2084da45546365dde9ed.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\69\699cc6a05f695434bb987ffded9790fe.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\69\699cc6a05f695434bb987ffded9790fe.info
-    projectPath: Library\metadata\69\699cc6a05f695434bb987ffded9790fe.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\6b\6bb174caffdba3c4e8044050dcdbdf3e.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\6b\6bb174caffdba3c4e8044050dcdbdf3e.info
-    projectPath: Library\metadata\6b\6bb174caffdba3c4e8044050dcdbdf3e.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\6f\6f42391dfc023c9409fbebc59bdb1302.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\6f\6f42391dfc023c9409fbebc59bdb1302.info
-    projectPath: Library\metadata\6f\6f42391dfc023c9409fbebc59bdb1302.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\72\721a876108c655344ab471da3ff06113.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\72\721a876108c655344ab471da3ff06113.info
-    projectPath: Library\metadata\72\721a876108c655344ab471da3ff06113.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\73\73c198ff442862444ad881b010998db3
-    fullPath: C:\UID_Honda\demogames\Library\metadata\73\73c198ff442862444ad881b010998db3
-    projectPath: Library\metadata\73\73c198ff442862444ad881b010998db3
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\73\73c198ff442862444ad881b010998db3.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\73\73c198ff442862444ad881b010998db3.info
-    projectPath: Library\metadata\73\73c198ff442862444ad881b010998db3.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\74\74d4c966292bede4b9caabd422018c36.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\74\74d4c966292bede4b9caabd422018c36.info
-    projectPath: Library\metadata\74\74d4c966292bede4b9caabd422018c36.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\75\7532e366184383845827cd93f75f852a
-    fullPath: C:\UID_Honda\demogames\Library\metadata\75\7532e366184383845827cd93f75f852a
-    projectPath: Library\metadata\75\7532e366184383845827cd93f75f852a
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\75\7532e366184383845827cd93f75f852a.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\75\7532e366184383845827cd93f75f852a.info
-    projectPath: Library\metadata\75\7532e366184383845827cd93f75f852a.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\76\767a32db148e25846b9c521af7185500
-    fullPath: C:\UID_Honda\demogames\Library\metadata\76\767a32db148e25846b9c521af7185500
-    projectPath: Library\metadata\76\767a32db148e25846b9c521af7185500
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\76\767a32db148e25846b9c521af7185500.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\76\767a32db148e25846b9c521af7185500.info
-    projectPath: Library\metadata\76\767a32db148e25846b9c521af7185500.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\79\79b0ce2990c871b4497f765c673a345e.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\79\79b0ce2990c871b4497f765c673a345e.info
-    projectPath: Library\metadata\79\79b0ce2990c871b4497f765c673a345e.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\7c\7ce4ac1d0e82027409361dfd65f2e1c4.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\7c\7ce4ac1d0e82027409361dfd65f2e1c4.info
-    projectPath: Library\metadata\7c\7ce4ac1d0e82027409361dfd65f2e1c4.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\7f\7f782e491fc727644b969c78030d01ae
-    fullPath: C:\UID_Honda\demogames\Library\metadata\7f\7f782e491fc727644b969c78030d01ae
-    projectPath: Library\metadata\7f\7f782e491fc727644b969c78030d01ae
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\7f\7f782e491fc727644b969c78030d01ae.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\7f\7f782e491fc727644b969c78030d01ae.info
-    projectPath: Library\metadata\7f\7f782e491fc727644b969c78030d01ae.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\81\81596077891f1854a9cc1621d5a7ce2b
-    fullPath: C:\UID_Honda\demogames\Library\metadata\81\81596077891f1854a9cc1621d5a7ce2b
-    projectPath: Library\metadata\81\81596077891f1854a9cc1621d5a7ce2b
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\81\81596077891f1854a9cc1621d5a7ce2b.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\81\81596077891f1854a9cc1621d5a7ce2b.info
-    projectPath: Library\metadata\81\81596077891f1854a9cc1621d5a7ce2b.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\82\82421b0cd6880874eaf717d0abc7fb4c.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\82\82421b0cd6880874eaf717d0abc7fb4c.info
-    projectPath: Library\metadata\82\82421b0cd6880874eaf717d0abc7fb4c.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\82\829e853924b514747bddcc2ed6b5609c.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\82\829e853924b514747bddcc2ed6b5609c.info
-    projectPath: Library\metadata\82\829e853924b514747bddcc2ed6b5609c.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\84\847fa2e5728f55b449aee55c003e85a6.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\84\847fa2e5728f55b449aee55c003e85a6.info
-    projectPath: Library\metadata\84\847fa2e5728f55b449aee55c003e85a6.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\85\854b0b863b9df1c4c9389e16ab3616ba
-    fullPath: C:\UID_Honda\demogames\Library\metadata\85\854b0b863b9df1c4c9389e16ab3616ba
-    projectPath: Library\metadata\85\854b0b863b9df1c4c9389e16ab3616ba
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\85\854b0b863b9df1c4c9389e16ab3616ba.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\85\854b0b863b9df1c4c9389e16ab3616ba.info
-    projectPath: Library\metadata\85\854b0b863b9df1c4c9389e16ab3616ba.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\85\85d98c574ddbfd042a187e3b67df34f5.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\85\85d98c574ddbfd042a187e3b67df34f5.info
-    projectPath: Library\metadata\85\85d98c574ddbfd042a187e3b67df34f5.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\86\86428e24505e69d41861aee0e35d7076.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\86\86428e24505e69d41861aee0e35d7076.info
-    projectPath: Library\metadata\86\86428e24505e69d41861aee0e35d7076.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\86\86b3438347d5ed84995a4e1ad18c75db.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\86\86b3438347d5ed84995a4e1ad18c75db.info
-    projectPath: Library\metadata\86\86b3438347d5ed84995a4e1ad18c75db.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\87\874e53fa3c867af4fac6249b6d30267b.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\87\874e53fa3c867af4fac6249b6d30267b.info
-    projectPath: Library\metadata\87\874e53fa3c867af4fac6249b6d30267b.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\88\8880c66b05c6d4c4abe4ed9bf02a0a1d.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\88\8880c66b05c6d4c4abe4ed9bf02a0a1d.info
-    projectPath: Library\metadata\88\8880c66b05c6d4c4abe4ed9bf02a0a1d.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\8b\8bbf09f87a9175940851ae87cd24b95a.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\8b\8bbf09f87a9175940851ae87cd24b95a.info
-    projectPath: Library\metadata\8b\8bbf09f87a9175940851ae87cd24b95a.info
     originalPath: 
     status: 3
     staged: 0
@@ -1114,999 +454,21 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\metadata\8d\8d191d69d3dcf41458a336acac0c77d6.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\8d\8d191d69d3dcf41458a336acac0c77d6.info
-    projectPath: Library\metadata\8d\8d191d69d3dcf41458a336acac0c77d6.info
+  - path: Library\metadata\a0\a0b24e8867e9e7b42aa524380c126176
+    fullPath: C:\UID_Honda\demogames\Library\metadata\a0\a0b24e8867e9e7b42aa524380c126176
+    projectPath: Library\metadata\a0\a0b24e8867e9e7b42aa524380c126176
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\metadata\8d\8d99c795f464ce749b3b9648dc1e2538
-    fullPath: C:\UID_Honda\demogames\Library\metadata\8d\8d99c795f464ce749b3b9648dc1e2538
-    projectPath: Library\metadata\8d\8d99c795f464ce749b3b9648dc1e2538
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\8d\8d99c795f464ce749b3b9648dc1e2538.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\8d\8d99c795f464ce749b3b9648dc1e2538.info
-    projectPath: Library\metadata\8d\8d99c795f464ce749b3b9648dc1e2538.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\8e\8eea1dbe9bd0edf4aa0235cfe5385b2b.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\8e\8eea1dbe9bd0edf4aa0235cfe5385b2b.info
-    projectPath: Library\metadata\8e\8eea1dbe9bd0edf4aa0235cfe5385b2b.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\90\90cbc76ba6577974b8634bee39a42044
-    fullPath: C:\UID_Honda\demogames\Library\metadata\90\90cbc76ba6577974b8634bee39a42044
-    projectPath: Library\metadata\90\90cbc76ba6577974b8634bee39a42044
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\90\90cbc76ba6577974b8634bee39a42044.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\90\90cbc76ba6577974b8634bee39a42044.info
-    projectPath: Library\metadata\90\90cbc76ba6577974b8634bee39a42044.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\91\915ac4f6b0e32aa43acc2f6e09a57f0c
-    fullPath: C:\UID_Honda\demogames\Library\metadata\91\915ac4f6b0e32aa43acc2f6e09a57f0c
-    projectPath: Library\metadata\91\915ac4f6b0e32aa43acc2f6e09a57f0c
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\91\915ac4f6b0e32aa43acc2f6e09a57f0c.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\91\915ac4f6b0e32aa43acc2f6e09a57f0c.info
-    projectPath: Library\metadata\91\915ac4f6b0e32aa43acc2f6e09a57f0c.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\92\929ff0e211afbe349bad4c8d3fd9aeb0.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\92\929ff0e211afbe349bad4c8d3fd9aeb0.info
-    projectPath: Library\metadata\92\929ff0e211afbe349bad4c8d3fd9aeb0.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\93\9386a88379e43404992f0d4f685015bd
-    fullPath: C:\UID_Honda\demogames\Library\metadata\93\9386a88379e43404992f0d4f685015bd
-    projectPath: Library\metadata\93\9386a88379e43404992f0d4f685015bd
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\93\9386a88379e43404992f0d4f685015bd.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\93\9386a88379e43404992f0d4f685015bd.info
-    projectPath: Library\metadata\93\9386a88379e43404992f0d4f685015bd.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\95\956e4233131ebc5408796d9474a58c3c.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\95\956e4233131ebc5408796d9474a58c3c.info
-    projectPath: Library\metadata\95\956e4233131ebc5408796d9474a58c3c.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\95\95b47a02131da374e8674d6c2ff5c763.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\95\95b47a02131da374e8674d6c2ff5c763.info
-    projectPath: Library\metadata\95\95b47a02131da374e8674d6c2ff5c763.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\95\95f1832b9c0c54f4985b76351f213c47.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\95\95f1832b9c0c54f4985b76351f213c47.info
-    projectPath: Library\metadata\95\95f1832b9c0c54f4985b76351f213c47.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\96\96272d848cf3bfb4fbb56942f6cbf8ba.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\96\96272d848cf3bfb4fbb56942f6cbf8ba.info
-    projectPath: Library\metadata\96\96272d848cf3bfb4fbb56942f6cbf8ba.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\97\973989d8f0fab3d4aac2056a31b1abef
-    fullPath: C:\UID_Honda\demogames\Library\metadata\97\973989d8f0fab3d4aac2056a31b1abef
-    projectPath: Library\metadata\97\973989d8f0fab3d4aac2056a31b1abef
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\97\973989d8f0fab3d4aac2056a31b1abef.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\97\973989d8f0fab3d4aac2056a31b1abef.info
-    projectPath: Library\metadata\97\973989d8f0fab3d4aac2056a31b1abef.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\97\97723a196768d104d8ac44e00a44a8a9
-    fullPath: C:\UID_Honda\demogames\Library\metadata\97\97723a196768d104d8ac44e00a44a8a9
-    projectPath: Library\metadata\97\97723a196768d104d8ac44e00a44a8a9
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\97\97723a196768d104d8ac44e00a44a8a9.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\97\97723a196768d104d8ac44e00a44a8a9.info
-    projectPath: Library\metadata\97\97723a196768d104d8ac44e00a44a8a9.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\97\97a87445cc281f941ae12c290c71e7e8
-    fullPath: C:\UID_Honda\demogames\Library\metadata\97\97a87445cc281f941ae12c290c71e7e8
-    projectPath: Library\metadata\97\97a87445cc281f941ae12c290c71e7e8
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\97\97a87445cc281f941ae12c290c71e7e8.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\97\97a87445cc281f941ae12c290c71e7e8.info
-    projectPath: Library\metadata\97\97a87445cc281f941ae12c290c71e7e8.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\99\99088fd241789a64f93fd01e6d38f415.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\99\99088fd241789a64f93fd01e6d38f415.info
-    projectPath: Library\metadata\99\99088fd241789a64f93fd01e6d38f415.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\9b\9b10804df0c51f64b959c7c241846293
-    fullPath: C:\UID_Honda\demogames\Library\metadata\9b\9b10804df0c51f64b959c7c241846293
-    projectPath: Library\metadata\9b\9b10804df0c51f64b959c7c241846293
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\9b\9b10804df0c51f64b959c7c241846293.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\9b\9b10804df0c51f64b959c7c241846293.info
-    projectPath: Library\metadata\9b\9b10804df0c51f64b959c7c241846293.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\9b\9b36c8812ef0a664494f1642ef045147.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\9b\9b36c8812ef0a664494f1642ef045147.info
-    projectPath: Library\metadata\9b\9b36c8812ef0a664494f1642ef045147.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\9b\9b965ec76928f4b4288bc510d94a08ba.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\9b\9b965ec76928f4b4288bc510d94a08ba.info
-    projectPath: Library\metadata\9b\9b965ec76928f4b4288bc510d94a08ba.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\9c\9c1030e5c4b8c5343a2a491cc0fe1012.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\9c\9c1030e5c4b8c5343a2a491cc0fe1012.info
-    projectPath: Library\metadata\9c\9c1030e5c4b8c5343a2a491cc0fe1012.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\9c\9c3b7605ee77be44fa918bc8bc3ea4c3.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\9c\9c3b7605ee77be44fa918bc8bc3ea4c3.info
-    projectPath: Library\metadata\9c\9c3b7605ee77be44fa918bc8bc3ea4c3.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\9d\9dc8baa21f91fac4d9be2ecc70dc8e6c.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\9d\9dc8baa21f91fac4d9be2ecc70dc8e6c.info
-    projectPath: Library\metadata\9d\9dc8baa21f91fac4d9be2ecc70dc8e6c.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\9d\9dea7314ddb8552419723e83c46bf4ed.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\9d\9dea7314ddb8552419723e83c46bf4ed.info
-    projectPath: Library\metadata\9d\9dea7314ddb8552419723e83c46bf4ed.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\9e\9e65fa07496c6054b8e1a19927aed40d
-    fullPath: C:\UID_Honda\demogames\Library\metadata\9e\9e65fa07496c6054b8e1a19927aed40d
-    projectPath: Library\metadata\9e\9e65fa07496c6054b8e1a19927aed40d
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\9e\9e65fa07496c6054b8e1a19927aed40d.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\9e\9e65fa07496c6054b8e1a19927aed40d.info
-    projectPath: Library\metadata\9e\9e65fa07496c6054b8e1a19927aed40d.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\9f\9f772bc0ab8a33b44ac11312051da506.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\9f\9f772bc0ab8a33b44ac11312051da506.info
-    projectPath: Library\metadata\9f\9f772bc0ab8a33b44ac11312051da506.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\9f\9fec955857e7fa14986679c707c41118
-    fullPath: C:\UID_Honda\demogames\Library\metadata\9f\9fec955857e7fa14986679c707c41118
-    projectPath: Library\metadata\9f\9fec955857e7fa14986679c707c41118
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\9f\9fec955857e7fa14986679c707c41118.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\9f\9fec955857e7fa14986679c707c41118.info
-    projectPath: Library\metadata\9f\9fec955857e7fa14986679c707c41118.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a0\a084c42ec162a344680b6bb03b36f71e
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a0\a084c42ec162a344680b6bb03b36f71e
-    projectPath: Library\metadata\a0\a084c42ec162a344680b6bb03b36f71e
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a0\a084c42ec162a344680b6bb03b36f71e.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a0\a084c42ec162a344680b6bb03b36f71e.info
-    projectPath: Library\metadata\a0\a084c42ec162a344680b6bb03b36f71e.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a1\a1551da012711a645af74580c9a60eff
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a1\a1551da012711a645af74580c9a60eff
-    projectPath: Library\metadata\a1\a1551da012711a645af74580c9a60eff
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a1\a1551da012711a645af74580c9a60eff.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a1\a1551da012711a645af74580c9a60eff.info
-    projectPath: Library\metadata\a1\a1551da012711a645af74580c9a60eff.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a2\a27aa2b79633bd343b8ed6bd2e8b62ef.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a2\a27aa2b79633bd343b8ed6bd2e8b62ef.info
-    projectPath: Library\metadata\a2\a27aa2b79633bd343b8ed6bd2e8b62ef.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a3\a3c69a3c65c582b4ca3566d33a82c3b4
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a3\a3c69a3c65c582b4ca3566d33a82c3b4
-    projectPath: Library\metadata\a3\a3c69a3c65c582b4ca3566d33a82c3b4
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a3\a3c69a3c65c582b4ca3566d33a82c3b4.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a3\a3c69a3c65c582b4ca3566d33a82c3b4.info
-    projectPath: Library\metadata\a3\a3c69a3c65c582b4ca3566d33a82c3b4.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a4\a475be2afdabcdd439c2e7db9fbf4436.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a4\a475be2afdabcdd439c2e7db9fbf4436.info
-    projectPath: Library\metadata\a4\a475be2afdabcdd439c2e7db9fbf4436.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a5\a509515d06bef734ebaa1c019727f6ce
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a5\a509515d06bef734ebaa1c019727f6ce
-    projectPath: Library\metadata\a5\a509515d06bef734ebaa1c019727f6ce
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a5\a509515d06bef734ebaa1c019727f6ce.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a5\a509515d06bef734ebaa1c019727f6ce.info
-    projectPath: Library\metadata\a5\a509515d06bef734ebaa1c019727f6ce.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a5\a5b249ade0179574e92e43b24a5afbcd
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a5\a5b249ade0179574e92e43b24a5afbcd
-    projectPath: Library\metadata\a5\a5b249ade0179574e92e43b24a5afbcd
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a5\a5b249ade0179574e92e43b24a5afbcd.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a5\a5b249ade0179574e92e43b24a5afbcd.info
-    projectPath: Library\metadata\a5\a5b249ade0179574e92e43b24a5afbcd.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a6\a66ec9f2a6702044bbf892d7571dc372.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a6\a66ec9f2a6702044bbf892d7571dc372.info
-    projectPath: Library\metadata\a6\a66ec9f2a6702044bbf892d7571dc372.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a6\a6c94824e7e25044d90fd32acfb48531.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a6\a6c94824e7e25044d90fd32acfb48531.info
-    projectPath: Library\metadata\a6\a6c94824e7e25044d90fd32acfb48531.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a7\a72fc57cfb6a76445b0b3ef84589f4e6.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a7\a72fc57cfb6a76445b0b3ef84589f4e6.info
-    projectPath: Library\metadata\a7\a72fc57cfb6a76445b0b3ef84589f4e6.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a7\a752de9e30fa7aa4db5e2bc518c1ea7d
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a7\a752de9e30fa7aa4db5e2bc518c1ea7d
-    projectPath: Library\metadata\a7\a752de9e30fa7aa4db5e2bc518c1ea7d
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a7\a752de9e30fa7aa4db5e2bc518c1ea7d.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a7\a752de9e30fa7aa4db5e2bc518c1ea7d.info
-    projectPath: Library\metadata\a7\a752de9e30fa7aa4db5e2bc518c1ea7d.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\a7\a77a26835e0b86d4b85f7dbbef0da51f
-    fullPath: C:\UID_Honda\demogames\Library\metadata\a7\a77a26835e0b86d4b85f7dbbef0da51f
-    projectPath: Library\metadata\a7\a77a26835e0b86d4b85f7dbbef0da51f
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\aa\aab2a068496cd874f9cd11a3b63a2a32.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\aa\aab2a068496cd874f9cd11a3b63a2a32.info
-    projectPath: Library\metadata\aa\aab2a068496cd874f9cd11a3b63a2a32.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\aa\aaeb3f9de1249c64bafe06d20bcc63af.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\aa\aaeb3f9de1249c64bafe06d20bcc63af.info
-    projectPath: Library\metadata\aa\aaeb3f9de1249c64bafe06d20bcc63af.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\ab\abc3861d7c6207647a62e5def5a2884f
-    fullPath: C:\UID_Honda\demogames\Library\metadata\ab\abc3861d7c6207647a62e5def5a2884f
-    projectPath: Library\metadata\ab\abc3861d7c6207647a62e5def5a2884f
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\ab\abc3861d7c6207647a62e5def5a2884f.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\ab\abc3861d7c6207647a62e5def5a2884f.info
-    projectPath: Library\metadata\ab\abc3861d7c6207647a62e5def5a2884f.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\af\af184b841d4213e44bdb4d613a8af240.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\af\af184b841d4213e44bdb4d613a8af240.info
-    projectPath: Library\metadata\af\af184b841d4213e44bdb4d613a8af240.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\af\afb5c74716e95ad4f926860807badbaa
-    fullPath: C:\UID_Honda\demogames\Library\metadata\af\afb5c74716e95ad4f926860807badbaa
-    projectPath: Library\metadata\af\afb5c74716e95ad4f926860807badbaa
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\af\afb5c74716e95ad4f926860807badbaa.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\af\afb5c74716e95ad4f926860807badbaa.info
-    projectPath: Library\metadata\af\afb5c74716e95ad4f926860807badbaa.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\af\afda830c3ea16b5439d06ae17fa09389.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\af\afda830c3ea16b5439d06ae17fa09389.info
-    projectPath: Library\metadata\af\afda830c3ea16b5439d06ae17fa09389.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\b2\b25cd5d63a7ed324ab2067885a9ba498
-    fullPath: C:\UID_Honda\demogames\Library\metadata\b2\b25cd5d63a7ed324ab2067885a9ba498
-    projectPath: Library\metadata\b2\b25cd5d63a7ed324ab2067885a9ba498
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\b2\b25cd5d63a7ed324ab2067885a9ba498.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\b2\b25cd5d63a7ed324ab2067885a9ba498.info
-    projectPath: Library\metadata\b2\b25cd5d63a7ed324ab2067885a9ba498.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\b3\b3108ec98869ea041bdc907ffb61f1b4
-    fullPath: C:\UID_Honda\demogames\Library\metadata\b3\b3108ec98869ea041bdc907ffb61f1b4
-    projectPath: Library\metadata\b3\b3108ec98869ea041bdc907ffb61f1b4
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\b3\b3108ec98869ea041bdc907ffb61f1b4.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\b3\b3108ec98869ea041bdc907ffb61f1b4.info
-    projectPath: Library\metadata\b3\b3108ec98869ea041bdc907ffb61f1b4.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\b3\b34f1c380aadec94f9a7f4a780d57b64
-    fullPath: C:\UID_Honda\demogames\Library\metadata\b3\b34f1c380aadec94f9a7f4a780d57b64
-    projectPath: Library\metadata\b3\b34f1c380aadec94f9a7f4a780d57b64
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\b3\b34f1c380aadec94f9a7f4a780d57b64.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\b3\b34f1c380aadec94f9a7f4a780d57b64.info
-    projectPath: Library\metadata\b3\b34f1c380aadec94f9a7f4a780d57b64.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\b3\b3b6bde89bb4fb6418662ac5e573ac98.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\b3\b3b6bde89bb4fb6418662ac5e573ac98.info
-    projectPath: Library\metadata\b3\b3b6bde89bb4fb6418662ac5e573ac98.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\b5\b5643a86ddd3afc4e9469de6f703765d.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\b5\b5643a86ddd3afc4e9469de6f703765d.info
-    projectPath: Library\metadata\b5\b5643a86ddd3afc4e9469de6f703765d.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\b8\b8d9afd076a1c63488988269abe90ed0.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\b8\b8d9afd076a1c63488988269abe90ed0.info
-    projectPath: Library\metadata\b8\b8d9afd076a1c63488988269abe90ed0.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\b9\b928e02bf20c11042a311ec6fc164312.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\b9\b928e02bf20c11042a311ec6fc164312.info
-    projectPath: Library\metadata\b9\b928e02bf20c11042a311ec6fc164312.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\b9\b9f80efb968c8314ab63309a387e1ccd
-    fullPath: C:\UID_Honda\demogames\Library\metadata\b9\b9f80efb968c8314ab63309a387e1ccd
-    projectPath: Library\metadata\b9\b9f80efb968c8314ab63309a387e1ccd
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\b9\b9f80efb968c8314ab63309a387e1ccd.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\b9\b9f80efb968c8314ab63309a387e1ccd.info
-    projectPath: Library\metadata\b9\b9f80efb968c8314ab63309a387e1ccd.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\ba\baff98cf5f5e6b04c9f8c85e76d0106f
-    fullPath: C:\UID_Honda\demogames\Library\metadata\ba\baff98cf5f5e6b04c9f8c85e76d0106f
-    projectPath: Library\metadata\ba\baff98cf5f5e6b04c9f8c85e76d0106f
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\ba\baff98cf5f5e6b04c9f8c85e76d0106f.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\ba\baff98cf5f5e6b04c9f8c85e76d0106f.info
-    projectPath: Library\metadata\ba\baff98cf5f5e6b04c9f8c85e76d0106f.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\bb\bb3dd47069c95c8448fe4912a9ec56f5.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\bb\bb3dd47069c95c8448fe4912a9ec56f5.info
-    projectPath: Library\metadata\bb\bb3dd47069c95c8448fe4912a9ec56f5.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\bb\bbc6fc2926d253447863012bafab9620.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\bb\bbc6fc2926d253447863012bafab9620.info
-    projectPath: Library\metadata\bb\bbc6fc2926d253447863012bafab9620.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\bc\bc42515c43e1dae4b86d2cc3108e563c
-    fullPath: C:\UID_Honda\demogames\Library\metadata\bc\bc42515c43e1dae4b86d2cc3108e563c
-    projectPath: Library\metadata\bc\bc42515c43e1dae4b86d2cc3108e563c
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\bc\bc42515c43e1dae4b86d2cc3108e563c.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\bc\bc42515c43e1dae4b86d2cc3108e563c.info
-    projectPath: Library\metadata\bc\bc42515c43e1dae4b86d2cc3108e563c.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\bd\bd0d1f6392c246848a172bed31859331.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\bd\bd0d1f6392c246848a172bed31859331.info
-    projectPath: Library\metadata\bd\bd0d1f6392c246848a172bed31859331.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\bd\bd3a166b587086e4da4e0c5045c0d634
-    fullPath: C:\UID_Honda\demogames\Library\metadata\bd\bd3a166b587086e4da4e0c5045c0d634
-    projectPath: Library\metadata\bd\bd3a166b587086e4da4e0c5045c0d634
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\bd\bd3a166b587086e4da4e0c5045c0d634.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\bd\bd3a166b587086e4da4e0c5045c0d634.info
-    projectPath: Library\metadata\bd\bd3a166b587086e4da4e0c5045c0d634.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\be\be92d24cd6f1a8048be40ebb3d7e1487
-    fullPath: C:\UID_Honda\demogames\Library\metadata\be\be92d24cd6f1a8048be40ebb3d7e1487
-    projectPath: Library\metadata\be\be92d24cd6f1a8048be40ebb3d7e1487
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\be\be92d24cd6f1a8048be40ebb3d7e1487.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\be\be92d24cd6f1a8048be40ebb3d7e1487.info
-    projectPath: Library\metadata\be\be92d24cd6f1a8048be40ebb3d7e1487.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\c0\c0e4571a98ad6c049932c450aedaf3d8.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\c0\c0e4571a98ad6c049932c450aedaf3d8.info
-    projectPath: Library\metadata\c0\c0e4571a98ad6c049932c450aedaf3d8.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\c2\c23d043c59f27af49869a8d5ebfeab4c
-    fullPath: C:\UID_Honda\demogames\Library\metadata\c2\c23d043c59f27af49869a8d5ebfeab4c
-    projectPath: Library\metadata\c2\c23d043c59f27af49869a8d5ebfeab4c
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\c2\c23d043c59f27af49869a8d5ebfeab4c.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\c2\c23d043c59f27af49869a8d5ebfeab4c.info
-    projectPath: Library\metadata\c2\c23d043c59f27af49869a8d5ebfeab4c.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\c2\c2988eb63cdfb0849a8ef66c62f38c2d
-    fullPath: C:\UID_Honda\demogames\Library\metadata\c2\c2988eb63cdfb0849a8ef66c62f38c2d
-    projectPath: Library\metadata\c2\c2988eb63cdfb0849a8ef66c62f38c2d
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\c2\c2988eb63cdfb0849a8ef66c62f38c2d.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\c2\c2988eb63cdfb0849a8ef66c62f38c2d.info
-    projectPath: Library\metadata\c2\c2988eb63cdfb0849a8ef66c62f38c2d.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\c2\c2c4f6b71e1eb9d4eaac12796d91becd.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\c2\c2c4f6b71e1eb9d4eaac12796d91becd.info
-    projectPath: Library\metadata\c2\c2c4f6b71e1eb9d4eaac12796d91becd.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\c3\c3e6feb3be771a34b9cfa28bafe48ecc.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\c3\c3e6feb3be771a34b9cfa28bafe48ecc.info
-    projectPath: Library\metadata\c3\c3e6feb3be771a34b9cfa28bafe48ecc.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\c4\c46a54662ebc9c5499789731ccd07d22
-    fullPath: C:\UID_Honda\demogames\Library\metadata\c4\c46a54662ebc9c5499789731ccd07d22
-    projectPath: Library\metadata\c4\c46a54662ebc9c5499789731ccd07d22
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\c4\c46a54662ebc9c5499789731ccd07d22.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\c4\c46a54662ebc9c5499789731ccd07d22.info
-    projectPath: Library\metadata\c4\c46a54662ebc9c5499789731ccd07d22.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\c4\c4c9bc679b9fbff49bc561a4fbde878f
-    fullPath: C:\UID_Honda\demogames\Library\metadata\c4\c4c9bc679b9fbff49bc561a4fbde878f
-    projectPath: Library\metadata\c4\c4c9bc679b9fbff49bc561a4fbde878f
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\c4\c4c9bc679b9fbff49bc561a4fbde878f.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\c4\c4c9bc679b9fbff49bc561a4fbde878f.info
-    projectPath: Library\metadata\c4\c4c9bc679b9fbff49bc561a4fbde878f.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\c6\c62c652d498cf494895cbae518a1afa5.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\c6\c62c652d498cf494895cbae518a1afa5.info
-    projectPath: Library\metadata\c6\c62c652d498cf494895cbae518a1afa5.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\c9\c977c1d4e19673d4c89b3ae5c7841367.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\c9\c977c1d4e19673d4c89b3ae5c7841367.info
-    projectPath: Library\metadata\c9\c977c1d4e19673d4c89b3ae5c7841367.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\ce\ced7b51056b49f34ca83848c6617cf97.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\ce\ced7b51056b49f34ca83848c6617cf97.info
-    projectPath: Library\metadata\ce\ced7b51056b49f34ca83848c6617cf97.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\cf\cf705b2fc352c444eae4aee4c0a0134b.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\cf\cf705b2fc352c444eae4aee4c0a0134b.info
-    projectPath: Library\metadata\cf\cf705b2fc352c444eae4aee4c0a0134b.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\d2\d29b606e3deb4874aa10f3e4b101cd67
-    fullPath: C:\UID_Honda\demogames\Library\metadata\d2\d29b606e3deb4874aa10f3e4b101cd67
-    projectPath: Library\metadata\d2\d29b606e3deb4874aa10f3e4b101cd67
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\d2\d29b606e3deb4874aa10f3e4b101cd67.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\d2\d29b606e3deb4874aa10f3e4b101cd67.info
-    projectPath: Library\metadata\d2\d29b606e3deb4874aa10f3e4b101cd67.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\d2\d29b7f8274575e546837811dec9eac79
-    fullPath: C:\UID_Honda\demogames\Library\metadata\d2\d29b7f8274575e546837811dec9eac79
-    projectPath: Library\metadata\d2\d29b7f8274575e546837811dec9eac79
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\d2\d29b7f8274575e546837811dec9eac79.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\d2\d29b7f8274575e546837811dec9eac79.info
-    projectPath: Library\metadata\d2\d29b7f8274575e546837811dec9eac79.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\d3\d3b66abff4be28c4199a15b0de1f4aff.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\d3\d3b66abff4be28c4199a15b0de1f4aff.info
-    projectPath: Library\metadata\d3\d3b66abff4be28c4199a15b0de1f4aff.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\d4\d490290c63b5b1545ad1bda15cbb382e
-    fullPath: C:\UID_Honda\demogames\Library\metadata\d4\d490290c63b5b1545ad1bda15cbb382e
-    projectPath: Library\metadata\d4\d490290c63b5b1545ad1bda15cbb382e
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\d4\d490290c63b5b1545ad1bda15cbb382e.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\d4\d490290c63b5b1545ad1bda15cbb382e.info
-    projectPath: Library\metadata\d4\d490290c63b5b1545ad1bda15cbb382e.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\d6\d65929611d5f9164f9a7313d3fe01437.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\d6\d65929611d5f9164f9a7313d3fe01437.info
-    projectPath: Library\metadata\d6\d65929611d5f9164f9a7313d3fe01437.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\d7\d74ae3f585e0fe34e97f1badc694af54.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\d7\d74ae3f585e0fe34e97f1badc694af54.info
-    projectPath: Library\metadata\d7\d74ae3f585e0fe34e97f1badc694af54.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\d8\d8e7d5a1526910444ad308c252f0228d
-    fullPath: C:\UID_Honda\demogames\Library\metadata\d8\d8e7d5a1526910444ad308c252f0228d
-    projectPath: Library\metadata\d8\d8e7d5a1526910444ad308c252f0228d
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\d8\d8e7d5a1526910444ad308c252f0228d.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\d8\d8e7d5a1526910444ad308c252f0228d.info
-    projectPath: Library\metadata\d8\d8e7d5a1526910444ad308c252f0228d.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\db\db9cf37fd2e196e489554a0e3e7c393f.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\db\db9cf37fd2e196e489554a0e3e7c393f.info
-    projectPath: Library\metadata\db\db9cf37fd2e196e489554a0e3e7c393f.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\db\dbf0c232b89ff404fb48928226c5f971
-    fullPath: C:\UID_Honda\demogames\Library\metadata\db\dbf0c232b89ff404fb48928226c5f971
-    projectPath: Library\metadata\db\dbf0c232b89ff404fb48928226c5f971
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\db\dbf0c232b89ff404fb48928226c5f971.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\db\dbf0c232b89ff404fb48928226c5f971.info
-    projectPath: Library\metadata\db\dbf0c232b89ff404fb48928226c5f971.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\dd\dd282d89b30ca2b4fba768faf6a318ac
-    fullPath: C:\UID_Honda\demogames\Library\metadata\dd\dd282d89b30ca2b4fba768faf6a318ac
-    projectPath: Library\metadata\dd\dd282d89b30ca2b4fba768faf6a318ac
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\df\df904fa74563a3e47bb35eb7e678bc7b.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\df\df904fa74563a3e47bb35eb7e678bc7b.info
-    projectPath: Library\metadata\df\df904fa74563a3e47bb35eb7e678bc7b.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\e0\e00a4a3f8b7c4964aaaaac8752384444.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\e0\e00a4a3f8b7c4964aaaaac8752384444.info
-    projectPath: Library\metadata\e0\e00a4a3f8b7c4964aaaaac8752384444.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\e1\e142d362a5c9db74d8381a394506e082
-    fullPath: C:\UID_Honda\demogames\Library\metadata\e1\e142d362a5c9db74d8381a394506e082
-    projectPath: Library\metadata\e1\e142d362a5c9db74d8381a394506e082
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\e1\e142d362a5c9db74d8381a394506e082.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\e1\e142d362a5c9db74d8381a394506e082.info
-    projectPath: Library\metadata\e1\e142d362a5c9db74d8381a394506e082.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\e3\e3ca32ecea615d144ba04f0449c8bfa4.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\e3\e3ca32ecea615d144ba04f0449c8bfa4.info
-    projectPath: Library\metadata\e3\e3ca32ecea615d144ba04f0449c8bfa4.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\e5\e53e44de284c46e41a047f5dd5e0bdc7
-    fullPath: C:\UID_Honda\demogames\Library\metadata\e5\e53e44de284c46e41a047f5dd5e0bdc7
-    projectPath: Library\metadata\e5\e53e44de284c46e41a047f5dd5e0bdc7
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\e5\e53e44de284c46e41a047f5dd5e0bdc7.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\e5\e53e44de284c46e41a047f5dd5e0bdc7.info
-    projectPath: Library\metadata\e5\e53e44de284c46e41a047f5dd5e0bdc7.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\e6\e6f11a40f3f2b8a48a8c9b8439bd7af1
-    fullPath: C:\UID_Honda\demogames\Library\metadata\e6\e6f11a40f3f2b8a48a8c9b8439bd7af1
-    projectPath: Library\metadata\e6\e6f11a40f3f2b8a48a8c9b8439bd7af1
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\e6\e6f11a40f3f2b8a48a8c9b8439bd7af1.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\e6\e6f11a40f3f2b8a48a8c9b8439bd7af1.info
-    projectPath: Library\metadata\e6\e6f11a40f3f2b8a48a8c9b8439bd7af1.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\e7\e70dbedc252968f40879a45d0e64e65f
-    fullPath: C:\UID_Honda\demogames\Library\metadata\e7\e70dbedc252968f40879a45d0e64e65f
-    projectPath: Library\metadata\e7\e70dbedc252968f40879a45d0e64e65f
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\e7\e70dbedc252968f40879a45d0e64e65f.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\e7\e70dbedc252968f40879a45d0e64e65f.info
-    projectPath: Library\metadata\e7\e70dbedc252968f40879a45d0e64e65f.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\eb\ebdd2ba02f07c5e4fb048d2fc4792858
-    fullPath: C:\UID_Honda\demogames\Library\metadata\eb\ebdd2ba02f07c5e4fb048d2fc4792858
-    projectPath: Library\metadata\eb\ebdd2ba02f07c5e4fb048d2fc4792858
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\eb\ebdd2ba02f07c5e4fb048d2fc4792858.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\eb\ebdd2ba02f07c5e4fb048d2fc4792858.info
-    projectPath: Library\metadata\eb\ebdd2ba02f07c5e4fb048d2fc4792858.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\eb\ebe4a87cac5c9044c9a43f33f4b495f6.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\eb\ebe4a87cac5c9044c9a43f33f4b495f6.info
-    projectPath: Library\metadata\eb\ebe4a87cac5c9044c9a43f33f4b495f6.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\ec\ece915e697a870340848cb059ea8a49e
-    fullPath: C:\UID_Honda\demogames\Library\metadata\ec\ece915e697a870340848cb059ea8a49e
-    projectPath: Library\metadata\ec\ece915e697a870340848cb059ea8a49e
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\ec\ece915e697a870340848cb059ea8a49e.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\ec\ece915e697a870340848cb059ea8a49e.info
-    projectPath: Library\metadata\ec\ece915e697a870340848cb059ea8a49e.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\ed\edf236d40001ad24f9ec7117008da707
-    fullPath: C:\UID_Honda\demogames\Library\metadata\ed\edf236d40001ad24f9ec7117008da707
-    projectPath: Library\metadata\ed\edf236d40001ad24f9ec7117008da707
+  - path: Library\metadata\c6\c615edb96c1cdab43b8274e1b65aca51
+    fullPath: C:\UID_Honda\demogames\Library\metadata\c6\c615edb96c1cdab43b8274e1b65aca51
+    projectPath: Library\metadata\c6\c615edb96c1cdab43b8274e1b65aca51
     originalPath: 
     status: 3
     staged: 0
   - path: Library\metadata\ee\eeb9154cf370ebc4e905461a35eb9bdb
     fullPath: C:\UID_Honda\demogames\Library\metadata\ee\eeb9154cf370ebc4e905461a35eb9bdb
     projectPath: Library\metadata\ee\eeb9154cf370ebc4e905461a35eb9bdb
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f0\f0bbda8ca6dfcc2468c36037adda3133
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f0\f0bbda8ca6dfcc2468c36037adda3133
-    projectPath: Library\metadata\f0\f0bbda8ca6dfcc2468c36037adda3133
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f0\f0bbda8ca6dfcc2468c36037adda3133.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f0\f0bbda8ca6dfcc2468c36037adda3133.info
-    projectPath: Library\metadata\f0\f0bbda8ca6dfcc2468c36037adda3133.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f1\f13c0cdbbf81d1549921c0f10ca6728c
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f1\f13c0cdbbf81d1549921c0f10ca6728c
-    projectPath: Library\metadata\f1\f13c0cdbbf81d1549921c0f10ca6728c
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f1\f13c0cdbbf81d1549921c0f10ca6728c.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f1\f13c0cdbbf81d1549921c0f10ca6728c.info
-    projectPath: Library\metadata\f1\f13c0cdbbf81d1549921c0f10ca6728c.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f2\f207340c497011141a17c538e6950678
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f2\f207340c497011141a17c538e6950678
-    projectPath: Library\metadata\f2\f207340c497011141a17c538e6950678
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f2\f207340c497011141a17c538e6950678.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f2\f207340c497011141a17c538e6950678.info
-    projectPath: Library\metadata\f2\f207340c497011141a17c538e6950678.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f2\f2aea903da003ca4fb9a0456cd9bf2f3.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f2\f2aea903da003ca4fb9a0456cd9bf2f3.info
-    projectPath: Library\metadata\f2\f2aea903da003ca4fb9a0456cd9bf2f3.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f4\f4518bc4b96a2af409259b6cbad09c6c
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f4\f4518bc4b96a2af409259b6cbad09c6c
-    projectPath: Library\metadata\f4\f4518bc4b96a2af409259b6cbad09c6c
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f4\f4518bc4b96a2af409259b6cbad09c6c.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f4\f4518bc4b96a2af409259b6cbad09c6c.info
-    projectPath: Library\metadata\f4\f4518bc4b96a2af409259b6cbad09c6c.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f5\f54a5ef1ad51fd9408b61608b1a1df10
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f5\f54a5ef1ad51fd9408b61608b1a1df10
-    projectPath: Library\metadata\f5\f54a5ef1ad51fd9408b61608b1a1df10
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: Library\metadata\f5\f54a5ef1ad51fd9408b61608b1a1df10.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f5\f54a5ef1ad51fd9408b61608b1a1df10.info
-    projectPath: Library\metadata\f5\f54a5ef1ad51fd9408b61608b1a1df10.info
-    originalPath: 
-    status: 5
-    staged: 0
-  - path: Library\metadata\f5\f5f5d8f57583bb64383dfd6871153975.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f5\f5f5d8f57583bb64383dfd6871153975.info
-    projectPath: Library\metadata\f5\f5f5d8f57583bb64383dfd6871153975.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f6\f63ff67106d47a34cafad553cedc2832.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f6\f63ff67106d47a34cafad553cedc2832.info
-    projectPath: Library\metadata\f6\f63ff67106d47a34cafad553cedc2832.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f6\f68761afff248544ab0b8bcbb83c4aee.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f6\f68761afff248544ab0b8bcbb83c4aee.info
-    projectPath: Library\metadata\f6\f68761afff248544ab0b8bcbb83c4aee.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f6\f6b3035795ddd5b44bd0392d1f75d7a8.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f6\f6b3035795ddd5b44bd0392d1f75d7a8.info
-    projectPath: Library\metadata\f6\f6b3035795ddd5b44bd0392d1f75d7a8.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f7\f7a3ebcd156f3bd4b9c307fcc52bf310.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f7\f7a3ebcd156f3bd4b9c307fcc52bf310.info
-    projectPath: Library\metadata\f7\f7a3ebcd156f3bd4b9c307fcc52bf310.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f7\f7bb1d79ca2850c46975a85030e03cc4.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f7\f7bb1d79ca2850c46975a85030e03cc4.info
-    projectPath: Library\metadata\f7\f7bb1d79ca2850c46975a85030e03cc4.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f7\f7cb30bc9ec52c7468546c907151882d
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f7\f7cb30bc9ec52c7468546c907151882d
-    projectPath: Library\metadata\f7\f7cb30bc9ec52c7468546c907151882d
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f7\f7cb30bc9ec52c7468546c907151882d.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f7\f7cb30bc9ec52c7468546c907151882d.info
-    projectPath: Library\metadata\f7\f7cb30bc9ec52c7468546c907151882d.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f7\f7df586df58f16243bac77a47953c838.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f7\f7df586df58f16243bac77a47953c838.info
-    projectPath: Library\metadata\f7\f7df586df58f16243bac77a47953c838.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f8\f8115f5382eaf374587a95fed677bde7
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f8\f8115f5382eaf374587a95fed677bde7
-    projectPath: Library\metadata\f8\f8115f5382eaf374587a95fed677bde7
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f8\f8115f5382eaf374587a95fed677bde7.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f8\f8115f5382eaf374587a95fed677bde7.info
-    projectPath: Library\metadata\f8\f8115f5382eaf374587a95fed677bde7.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f9\f9a8cd4e38c9a4d49a908ef6f5cefe2e
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f9\f9a8cd4e38c9a4d49a908ef6f5cefe2e
-    projectPath: Library\metadata\f9\f9a8cd4e38c9a4d49a908ef6f5cefe2e
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f9\f9a8cd4e38c9a4d49a908ef6f5cefe2e.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f9\f9a8cd4e38c9a4d49a908ef6f5cefe2e.info
-    projectPath: Library\metadata\f9\f9a8cd4e38c9a4d49a908ef6f5cefe2e.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f9\f9b460cb1072cb74a8ff61d8c040031f.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f9\f9b460cb1072cb74a8ff61d8c040031f.info
-    projectPath: Library\metadata\f9\f9b460cb1072cb74a8ff61d8c040031f.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f9\f9b791d14d87f494b80d9cb853e25a1b
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f9\f9b791d14d87f494b80d9cb853e25a1b
-    projectPath: Library\metadata\f9\f9b791d14d87f494b80d9cb853e25a1b
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\f9\f9b791d14d87f494b80d9cb853e25a1b.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\f9\f9b791d14d87f494b80d9cb853e25a1b.info
-    projectPath: Library\metadata\f9\f9b791d14d87f494b80d9cb853e25a1b.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\fa\fa8eea5f2155d334d8e714d4068521a9.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\fa\fa8eea5f2155d334d8e714d4068521a9.info
-    projectPath: Library\metadata\fa\fa8eea5f2155d334d8e714d4068521a9.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\fc\fcbe17828e4cb2b43bd1f176155a5d91
-    fullPath: C:\UID_Honda\demogames\Library\metadata\fc\fcbe17828e4cb2b43bd1f176155a5d91
-    projectPath: Library\metadata\fc\fcbe17828e4cb2b43bd1f176155a5d91
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\fc\fcbe17828e4cb2b43bd1f176155a5d91.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\fc\fcbe17828e4cb2b43bd1f176155a5d91.info
-    projectPath: Library\metadata\fc\fcbe17828e4cb2b43bd1f176155a5d91.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\fd\fd2bdad185404ff4a81e7bcfef2a8afb
-    fullPath: C:\UID_Honda\demogames\Library\metadata\fd\fd2bdad185404ff4a81e7bcfef2a8afb
-    projectPath: Library\metadata\fd\fd2bdad185404ff4a81e7bcfef2a8afb
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\fd\fd2bdad185404ff4a81e7bcfef2a8afb.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\fd\fd2bdad185404ff4a81e7bcfef2a8afb.info
-    projectPath: Library\metadata\fd\fd2bdad185404ff4a81e7bcfef2a8afb.info
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\ff\ff3fa12d2a33c504d82ccddbdb34e78b
-    fullPath: C:\UID_Honda\demogames\Library\metadata\ff\ff3fa12d2a33c504d82ccddbdb34e78b
-    projectPath: Library\metadata\ff\ff3fa12d2a33c504d82ccddbdb34e78b
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\metadata\ff\ff3fa12d2a33c504d82ccddbdb34e78b.info
-    fullPath: C:\UID_Honda\demogames\Library\metadata\ff\ff3fa12d2a33c504d82ccddbdb34e78b.info
-    projectPath: Library\metadata\ff\ff3fa12d2a33c504d82ccddbdb34e78b.info
     originalPath: 
     status: 3
     staged: 0
@@ -2146,21 +508,9 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.pdb
-    projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.pdb
-    originalPath: 
-    status: 3
-    staged: 0
   - path: Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.dll
     fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.dll
     projectPath: Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.dll
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.pdb
-    projectPath: Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.pdb
     originalPath: 
     status: 3
     staged: 0
@@ -2170,21 +520,9 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Runtime.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Runtime.pdb
-    projectPath: Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Runtime.pdb
-    originalPath: 
-    status: 3
-    staged: 0
   - path: Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.dll
     fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.dll
     projectPath: Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.dll
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.pdb
-    projectPath: Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.pdb
     originalPath: 
     status: 3
     staged: 0
@@ -2206,21 +544,9 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.pdb
-    projectPath: Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.pdb
-    originalPath: 
-    status: 3
-    staged: 0
   - path: Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
     fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
     projectPath: Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\ScriptAssemblies\Unity.CollabProxy.Editor.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Unity.CollabProxy.Editor.pdb
-    projectPath: Library\ScriptAssemblies\Unity.CollabProxy.Editor.pdb
     originalPath: 
     status: 3
     staged: 0
@@ -2236,27 +562,9 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\ScriptAssemblies\Unity.Recorder.Editor.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Unity.Recorder.Editor.pdb
-    projectPath: Library\ScriptAssemblies\Unity.Recorder.Editor.pdb
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\ScriptAssemblies\Unity.Recorder.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Unity.Recorder.pdb
-    projectPath: Library\ScriptAssemblies\Unity.Recorder.pdb
-    originalPath: 
-    status: 3
-    staged: 0
   - path: Library\ScriptAssemblies\Unity.Rider.Editor.dll
     fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Unity.Rider.Editor.dll
     projectPath: Library\ScriptAssemblies\Unity.Rider.Editor.dll
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\ScriptAssemblies\Unity.Rider.Editor.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Unity.Rider.Editor.pdb
-    projectPath: Library\ScriptAssemblies\Unity.Rider.Editor.pdb
     originalPath: 
     status: 3
     staged: 0
@@ -2269,18 +577,6 @@ MonoBehaviour:
   - path: Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
     fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
     projectPath: Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\ScriptAssemblies\Unity.TextMeshPro.Editor.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.pdb
-    projectPath: Library\ScriptAssemblies\Unity.TextMeshPro.Editor.pdb
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\ScriptAssemblies\Unity.TextMeshPro.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Unity.TextMeshPro.pdb
-    projectPath: Library\ScriptAssemblies\Unity.TextMeshPro.pdb
     originalPath: 
     status: 3
     staged: 0
@@ -2302,33 +598,15 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\ScriptAssemblies\Unity.VSCode.Editor.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Unity.VSCode.Editor.pdb
-    projectPath: Library\ScriptAssemblies\Unity.VSCode.Editor.pdb
-    originalPath: 
-    status: 3
-    staged: 0
   - path: Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll
     fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll
     projectPath: Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\ScriptAssemblies\UnityEditor.SpatialTracking.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\UnityEditor.SpatialTracking.pdb
-    projectPath: Library\ScriptAssemblies\UnityEditor.SpatialTracking.pdb
-    originalPath: 
-    status: 3
-    staged: 0
   - path: Library\ScriptAssemblies\UnityEditor.TestRunner.dll
     fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
     projectPath: Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\ScriptAssemblies\UnityEditor.TestRunner.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\UnityEditor.TestRunner.pdb
-    projectPath: Library\ScriptAssemblies\UnityEditor.TestRunner.pdb
     originalPath: 
     status: 3
     staged: 0
@@ -2344,33 +622,15 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.pdb
-    projectPath: Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.pdb
-    originalPath: 
-    status: 3
-    staged: 0
   - path: Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll
     fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll
     projectPath: Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\ScriptAssemblies\UnityEngine.SpatialTracking.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\UnityEngine.SpatialTracking.pdb
-    projectPath: Library\ScriptAssemblies\UnityEngine.SpatialTracking.pdb
-    originalPath: 
-    status: 3
-    staged: 0
   - path: Library\ScriptAssemblies\UnityEngine.TestRunner.dll
     fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
     projectPath: Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\ScriptAssemblies\UnityEngine.TestRunner.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\UnityEngine.TestRunner.pdb
-    projectPath: Library\ScriptAssemblies\UnityEngine.TestRunner.pdb
     originalPath: 
     status: 3
     staged: 0
@@ -2386,27 +646,69 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.pdb
-    projectPath: Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.pdb
-    originalPath: 
-    status: 3
-    staged: 0
   - path: obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
     fullPath: C:\UID_Honda\demogames\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
     projectPath: obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
     originalPath: 
     status: 3
     staged: 0
-  - path: obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
-    fullPath: C:\UID_Honda\demogames\obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
-    projectPath: obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
+  - path: obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache
+    fullPath: C:\UID_Honda\demogames\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache
+    projectPath: obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache
     originalPath: 
     status: 3
     staged: 0
-  - path: obj\Debug\Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache
-    fullPath: C:\UID_Honda\demogames\obj\Debug\Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache
-    projectPath: obj\Debug\Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache
+  - path: packages.config
+    fullPath: C:\UID_Honda\demogames\packages.config
+    projectPath: packages.config
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Packages\AutoMapper.9.0.0\.signature.p7s
+    fullPath: C:\UID_Honda\demogames\Packages\AutoMapper.9.0.0\.signature.p7s
+    projectPath: Packages\AutoMapper.9.0.0\.signature.p7s
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Packages\AutoMapper.9.0.0\AutoMapper.9.0.0.nupkg
+    fullPath: C:\UID_Honda\demogames\Packages\AutoMapper.9.0.0\AutoMapper.9.0.0.nupkg
+    projectPath: Packages\AutoMapper.9.0.0\AutoMapper.9.0.0.nupkg
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Packages\AutoMapper.9.0.0\lib\net461\AutoMapper.xml
+    fullPath: C:\UID_Honda\demogames\Packages\AutoMapper.9.0.0\lib\net461\AutoMapper.xml
+    projectPath: Packages\AutoMapper.9.0.0\lib\net461\AutoMapper.xml
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: Packages\AutoMapper.9.0.0\lib\netstandard2.0\AutoMapper.xml
+    fullPath: C:\UID_Honda\demogames\Packages\AutoMapper.9.0.0\lib\netstandard2.0\AutoMapper.xml
+    projectPath: Packages\AutoMapper.9.0.0\lib\netstandard2.0\AutoMapper.xml
+    originalPath: 
+    status: 1
+    staged: 0
+  - path: ProjectSettings\EditorBuildSettings.asset
+    fullPath: C:\UID_Honda\demogames\ProjectSettings\EditorBuildSettings.asset
+    projectPath: ProjectSettings\EditorBuildSettings.asset
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: ProjectSettings\QualitySettings.asset
+    fullPath: C:\UID_Honda\demogames\ProjectSettings\QualitySettings.asset
+    projectPath: ProjectSettings\QualitySettings.asset
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: ProjectSettings\TimeManager.asset
+    fullPath: C:\UID_Honda\demogames\ProjectSettings\TimeManager.asset
+    projectPath: ProjectSettings\TimeManager.asset
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: ProjectSettings\UnityConnectSettings.asset
+    fullPath: C:\UID_Honda\demogames\ProjectSettings\UnityConnectSettings.asset
+    projectPath: ProjectSettings\UnityConnectSettings.asset
     originalPath: 
     status: 3
     staged: 0

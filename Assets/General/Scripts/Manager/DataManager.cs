@@ -59,7 +59,7 @@ public class DataManager : GameSettingEntity {
 
     private void SetUpDb()
     {
-        userDb = new UserDB(gameSettings.dbName, gameSettings.tableName);
+        userDb = new UserDB(gameSettings.DbName, gameSettings.TableName);
     }
 
     [ContextMenu("HideHandler")]
@@ -511,17 +511,8 @@ public class DataManager : GameSettingEntity {
             users.Remove(user);
             Debug.LogWarning("Remove duplicate user with email " + user.email );
         }
-        //  else
-        //      Debug.Log("email : " + user.email + "already existed");
     }
 
     #endregion
 
 }
-
-    [System.Serializable]
-    public class JSONResponse
-    {
-        public string result;
-        public UserEntity[] users;
-    }

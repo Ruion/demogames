@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
 
 public static class GameSetting
 {
@@ -52,49 +53,36 @@ public static class GameSetting
 public class Settings
 {
     public string fileName = "game_setting";
-    public string dbName = "user_db";
+    public string DbName { get { return sQliteDBSettings.dbName; } }
+    public string TableName { get { return sQliteDBSettings.tableName; } }
     public string scoreName = "game_score";
-    public string tableName = "user";
     public string serverAddress = "http://192.168.0.28/honda/submit-data.php";
     public string serverGetDataAddress = "http://192.168.0.28/honda/submit-data.php";
     public int scoreToWin = 3;
+    public string userTypeName;
 
     public RewardType rewardType = RewardType.PrintVoucher;
 
+    public SQliteDBSettings sQliteDBSettings;
+
     [Header("Vending Machine setting, Ignore if not involve vending machine")]
-    public string stockDbName = "http://192.168.0.28/honda/submit-data.php";
-    public string stockTableName = "http://192.168.0.28/honda/submit-data.php";
-    public WriteType VMSerialPortWriteType = WriteType.Byte;
-    public string vmserialPortText;
-    public PortName portname = PortName.COM1;
-    public PortBaudrate portbaudrate = PortBaudrate.pb115200;
-    public int numberToPopulate = 35;
-    public int numberPerLane = 3;
-    public int laneOccupyPerMotor = 1;
+    public VendingStockSettings vendingStockSettings;
+
+    
 
     public Settings(Settings setting)
     {
         fileName = setting.fileName;
-        dbName = setting.dbName;
         scoreName = setting.scoreName;
-        tableName = setting.tableName;
         serverAddress = setting.serverAddress;
         serverGetDataAddress = setting.serverGetDataAddress;
         scoreToWin = setting.scoreToWin;
+        userTypeName = setting.userTypeName;
 
         // stock settings
-        stockDbName = setting.stockDbName;
-        stockTableName = setting.stockTableName;
-        portname = setting.portname;
-        portbaudrate = setting.portbaudrate;
-        VMSerialPortWriteType = setting.VMSerialPortWriteType;
-        vmserialPortText = setting.vmserialPortText;
-        rewardType = setting.rewardType;
+        vendingStockSettings = setting.vendingStockSettings;
 
-        // not yet integrate
-        numberToPopulate = setting.numberToPopulate;
-        numberPerLane = setting.numberPerLane;
-        laneOccupyPerMotor = setting.laneOccupyPerMotor;
+        sQliteDBSettings = setting.sQliteDBSettings;
 }
 
     public Settings(){  }
@@ -105,4 +93,29 @@ public enum WriteType
 {
     Byte,
     String
+}
+
+[System.Serializable]
+public class SQliteDBSettings
+{
+    public string dbName = "db_";
+    public string tableName = "registration";
+    public string UniversalUserClassName = "DataBank.";
+    public List<string> columns;
+    public List<string> attributes;
+    public List<string> columnsToSkipWhenSync;
+}
+
+[System.Serializable]
+public class VendingStockSettings
+{
+    public string stockDbName = "db_stock";
+    public string stockTableName = "table_stock";
+    public WriteType VMSerialPortWriteType = WriteType.Byte;
+    public string vmserialPortText;
+    public PortName portname = PortName.COM1;
+    public PortBaudrate portbaudrate = PortBaudrate.pb115200;
+    public int numberToPopulate = 35;
+    public int numberPerLane = 3;
+    public int laneOccupyPerMotor = 1;
 }

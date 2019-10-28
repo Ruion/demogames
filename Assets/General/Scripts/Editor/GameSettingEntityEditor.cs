@@ -27,5 +27,10 @@ public class GameSettingEntityEditor : Editor
             gme.LoadGameSettingFromMaster();
         }
 
+        if (GUILayout.Button("Refresh"))
+        {
+            gme.Refresh();
+        }
+
     }
 }

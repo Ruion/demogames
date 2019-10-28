@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class GameSettingEntity : MonoBehaviour
@@ -17,6 +19,7 @@ public class GameSettingEntity : MonoBehaviour
     public virtual void LoadSetting()
     {
         gameSettings = GameSetting.LoadSetting(gameSettings.fileName);
+        Refresh();
     }
 
     [ContextMenu("LoadMasterSetting")]
@@ -27,6 +30,35 @@ public class GameSettingEntity : MonoBehaviour
 
         dm.LoadSetting();
         gameSettings = dm.gameSettings;
+
+    }
+
+    public virtual void Refresh()
+    {
+        // get columns name from class fields
+        if (gameSettings.sQliteDBSettings.columns.Count < 1)
+        {
+            try
+            {
+                Type t = Type.GetType(gameSettings.sQliteDBSettings.UniversalUserClassName, true);
+
+                Debug.Log(t.Name);
+
+                var obj = Activator.CreateInstance(t);
+
+                FieldInfo[] fields = t.GetFields();
+
+                foreach (FieldInfo p in fields)
+                {
+                    Debug.Log("column name : " + p.Name);
+                    gameSettings.sQliteDBSettings.columns.Add(p.Name);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError(ex.Message);
+            }
+        }
     }
 
     public virtual void Awake()

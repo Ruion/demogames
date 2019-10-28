@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game-JumpShoot/HOME_JUMPSHOOT.unity
-    guid: ce654b8d8e82a1a4eabd81ad3624e955
+    path: Assets/Game-JumpShoot/HOME_TEST.unity
+    guid: 98ce8565ffdcf4540bfe0b8f1de12f31
   - enabled: 1
-    path: Assets/Game-JumpShoot/GAME_JUMPSHOOT.unity
-    guid: ae8900706fbe4ef4b9ac84d1b7f8437b
+    path: Assets/Game-JumpShoot/GAME_TEST.unity
+    guid: 7c9fdf8f6cb61f44ea021612a9f61e75
   m_configObjects: {}

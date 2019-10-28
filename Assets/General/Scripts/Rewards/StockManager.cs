@@ -1,12 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using UnityEngine.UI;
-using UnityEngine.Networking;
 using DataBank;
 using TMPro;
 
@@ -46,21 +40,21 @@ public class StockManager : RewardFeature {
 
     private void Start()
     {
-        stockDb = new StockDB(gameSettings.stockDbName, gameSettings.stockTableName);
+        stockDb = new StockDB(gameSettings.vendingStockSettings.stockDbName, gameSettings.vendingStockSettings.stockTableName);
         if (stockDb.GetAllStock().Count < 1) Populate(); // create stock list if no list exist
         if (vm == null) { vm = FindObjectOfType<VendingMachine>(); }
 
         HideAllHandler();
 
         stockList = new List<Stock>();
-        stockDb = new StockDB(gameSettings.stockDbName, gameSettings.stockTableName);
+        stockDb = new StockDB(gameSettings.vendingStockSettings.stockDbName, gameSettings.vendingStockSettings.stockTableName);
         stockList = stockDb.GetAllStock();
         stockDb.Close();
     }
 
     private void SetUpDb()
     {
-        stockDb = new StockDB(gameSettings.stockDbName, gameSettings.stockTableName);
+        stockDb = new StockDB(gameSettings.vendingStockSettings.stockDbName, gameSettings.vendingStockSettings.stockTableName);
     }
 
     [ContextMenu("HideHandler")]
@@ -221,9 +215,9 @@ public class StockManager : RewardFeature {
    
     public void BuildStock()
     {
-        gameSettings.numberToPopulate = System.Int32.Parse(truckAmount.text);
-        gameSettings.laneOccupyPerMotor = System.Int32.Parse(truckAmountOccupyByGift.text);
-        gameSettings.numberPerLane = System.Int32.Parse(giftPerTruck.text);
+        gameSettings.vendingStockSettings.numberToPopulate = System.Int32.Parse(truckAmount.text);
+        gameSettings.vendingStockSettings.laneOccupyPerMotor = System.Int32.Parse(truckAmountOccupyByGift.text);
+        gameSettings.vendingStockSettings.numberPerLane = System.Int32.Parse(giftPerTruck.text);
     }
 
     public void Populate()

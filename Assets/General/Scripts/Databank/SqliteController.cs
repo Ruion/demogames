@@ -21,8 +21,8 @@ public class SqliteController : MonoBehaviour
     {
         GameSettingEntity dm = GameObject.Find("GameSettingEntity_DoNotChangeName").GetComponent<GameSettingEntity>();
         dm.LoadSetting();
-        dbName = dm.gameSettings.dbName;
-        tableName = dm.gameSettings.tableName;
+        dbName = dm.gameSettings.DbName;
+        tableName = dm.gameSettings.TableName;
 
         UserDB userDb = new UserDB(dbName, tableName);
 

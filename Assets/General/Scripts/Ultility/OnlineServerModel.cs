@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using DataBank;
 using UnityEngine.Networking;
-using System.Net;
 using System.IO;
 using System.Linq;
-using System;
 
-public class OnlineServerModel : GameSettingEntity
+public class OnlineServerModel : ServerModelMaster
 {
     public bool isFetchingData = false;
 
     public string TextPath = "Application.stremingAssetsPath/local/LocalData.txt";
 
     public List<UserEntity> serverUsers = new List<UserEntity>();
+
+    public List<string> emailList = new List<string>();
 
     private void Start()
     {
@@ -47,6 +47,8 @@ public class OnlineServerModel : GameSettingEntity
 
         serverUsers = new List<UserEntity>();
 
+        emailList = new List<string>();
+
         string HtmlText = GetHtmlFromUri();
         if (HtmlText == "")
         {
@@ -57,7 +59,6 @@ public class OnlineServerModel : GameSettingEntity
         }
         else
         {
-
             using (UnityWebRequest www = UnityWebRequest.Get(gameSettings.serverGetDataAddress))
             {
                 yield return www.SendWebRequest();
@@ -97,6 +98,8 @@ public class OnlineServerModel : GameSettingEntity
                         user.email = line.ToString();
                        // Debug.Log("Server email " + user.email);
                         serverUsers.Add(user);
+
+                        emailList.Add(line.ToString());
                     }
                 }
             }
@@ -121,36 +124,16 @@ public class OnlineServerModel : GameSettingEntity
 
     }
 
-    public string GetHtmlFromUri(string resource = "http://google.com")
+    public IEnumerator FeedEmail(List<string> emailList_)
     {
-        string html = string.Empty;
-        HttpWebRequest req = (HttpWebRequest)WebRequest.Create(resource);
-        try
+        DoGetDataFromServer();
+
+        Debug.Log("Fetching email");
+        
+        while (isFetchingData)
         {
-            using (HttpWebResponse resp = (HttpWebResponse)req.GetResponse())
-            {
-                bool isSuccess = (int)resp.StatusCode < 299 && (int)resp.StatusCode >= 200;
-                if (isSuccess)
-                {
-                    using (StreamReader reader = new StreamReader(resp.GetResponseStream()))
-                    {
-                        //We are limiting the array to 80 so we don't have
-                        //to parse the entire html document feel free to 
-                        //adjust (probably stay under 300)
-                        char[] cs = new char[80];
-                        reader.Read(cs, 0, cs.Length);
-                        foreach (char ch in cs)
-                        {
-                            html += ch;
-                        }
-                    }
-                }
-            }
+            yield return null;
         }
-        catch
-        {
-            return "";
-        }
-        return html;
     }
+
 }

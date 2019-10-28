@@ -3,6 +3,8 @@ using UnityEngine;
 using System.Data;
 using System.Data.Common;
 using System.Collections.Generic;
+using System;
+using System.Reflection;
 
 namespace DataBank
 {
@@ -13,15 +15,9 @@ namespace DataBank
         public string db_connection_string;
         public IDbConnection db_connection;
 
-        public UniversalDB()
-        {
+        public int numberToPopulate = 10;
 
-        }
-
-        ~UniversalDB()
-        {
-            db_connection.Close();
-        }
+        public virtual void SetUpSetting(){}
 
         public virtual void ConnectDb(string dbName)
         {
@@ -30,11 +26,9 @@ namespace DataBank
             db_connection.Open();
         }
 
-        [ContextMenu("Create table")]
-        public void CreateTable()
-        {
-            new UniversalDB();
-        }
+        public virtual void ConnectDbCustom() { }
+
+        public virtual void CreateTable(){ }
 
         //vitual functions
         public virtual IDataReader GetDataById(int id)
@@ -49,6 +43,68 @@ namespace DataBank
             throw null;
         }
 
+        public virtual IDataReader GetAllData()
+        {
+            Debug.Log(CodistanTag + "This function is not implemented");
+            throw null;
+        }
+
+        public virtual List<string> GetDataByStringToList(string singleColumnName, string conditionlowercase = "", string str = "")
+        {
+            ConnectDbCustom();
+
+            IDbCommand dbcmd = GetDbCommand();
+            dbcmd.CommandText =
+                "SELECT " + singleColumnName + " FROM " + gameSettings.sQliteDBSettings.tableName + " WHERE " + conditionlowercase + " = '" + str + "' ";
+
+
+            if (conditionlowercase != "" && str != "") dbcmd.CommandText += " WHERE " + conditionlowercase + " = '" + str + "' ";
+
+            dbcmd.CommandText += ";";
+
+            Debug.Log(dbcmd.CommandText);
+
+            IDataReader reader = dbcmd.ExecuteReader();
+
+            List<string> stringList = new List<string>();
+
+            while (reader.Read())
+            {
+                stringList.Add(reader[0].ToString());
+            }
+
+            Close();
+
+            return stringList;
+        }
+
+        public virtual List<string> GetDataByStringToList(string singleColumnName)
+        {
+            ConnectDbCustom();
+
+            IDbCommand dbcmd = GetDbCommand();
+            dbcmd.CommandText =
+                "SELECT " + singleColumnName + " FROM " + gameSettings.sQliteDBSettings.tableName + " ;";
+
+            Debug.Log(dbcmd.CommandText);
+
+            IDataReader reader = dbcmd.ExecuteReader();
+
+            List<string> stringList = new List<string>();
+
+            while (reader.Read())
+            {
+                stringList.Add(reader[0].ToString());
+            }
+
+            Close();
+
+            return stringList;
+        }
+
+
+        public virtual void Populate(){ CreateTable(); }
+
         public virtual void DeleteDataById(int id)
         {
             Debug.Log(CodistanTag + "This function is not implemented");
@@ -56,12 +112,6 @@ namespace DataBank
         }
 
         public virtual void DeleteDataByString(string id)
-        {
-            Debug.Log(CodistanTag + "This function is not implemented");
-            throw null;
-        }
-
-        public virtual IDataReader GetAllData()
         {
             Debug.Log(CodistanTag + "This function is not implemented");
             throw null;
@@ -85,32 +135,13 @@ namespace DataBank
             return db_connection.CreateCommand();
         }
 
-        public IDataReader GetAllData(string table_name)
-        {
-            try
-            {
-                IDbCommand dbcmd = db_connection.CreateCommand();
-                dbcmd.CommandText =
-                    "SELECT * FROM " + table_name;
-                IDataReader reader = dbcmd.ExecuteReader();
 
-                db_connection.Close();
-
-                return reader;
-            }
-            catch (DbException ex)
-            {
-                Debug.Log("Error : " + ex.Message);
-                db_connection.Close();
-                return null;
-            }
-        }
-
-        public void DeleteAllData(string table_name)
+        public virtual void DeleteAllData(string table_name)
         {
             IDbCommand dbcmd = db_connection.CreateCommand();
             dbcmd.CommandText = "DROP TABLE IF EXISTS " + table_name;
             dbcmd.ExecuteNonQuery();
+            Close();
         }
 
         public IDataReader GetNumOfRows(string table_name)
@@ -126,12 +157,6 @@ namespace DataBank
         {
             db_connection.Close();
         }
-    }
-}
 
-[System.Serializable]
-public class DBTable
-{
-    public List<string> columns;
-    public List<string> properties;
+    }
 }

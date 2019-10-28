@@ -52,6 +52,7 @@ MonoBehaviour:
     serverAddress: http://192.168.0.28/honda/submit-data.php
     serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
     scoreToWin: 3
+    userObject: {fileID: 0}
     rewardType: 0
     stockDbName: http://192.168.0.28/honda/submit-data.php
     stockTableName: http://192.168.0.28/honda/submit-data.php
@@ -106,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8942889261852245931}
   - component: {fileID: 5107244017836863797}
+  - component: {fileID: 2281671072110564244}
   - component: {fileID: 199091733273068208}
   m_Layer: 0
   m_Name: GameSettingEntity_DoNotChangeName
@@ -149,6 +151,7 @@ MonoBehaviour:
     serverAddress: http://localhost/honda/honda/submit-data.php
     serverGetDataAddress: http://localhost/honda/honda/get-data.php
     scoreToWin: 3
+    userObject: {fileID: 2281671072110564244}
     rewardType: 0
     stockDbName: stockDb_honda
     stockTableName: stockTable_honda
@@ -159,6 +162,18 @@ MonoBehaviour:
     numberToPopulate: 35
     numberPerLane: 3
     laneOccupyPerMotor: 1
+--- !u!114 &2281671072110564244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2901172509013719973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291d67241221a2a44b9760ac7c05319e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &199091733273068208
 MonoBehaviour:
   m_ObjectHideFlags: 0

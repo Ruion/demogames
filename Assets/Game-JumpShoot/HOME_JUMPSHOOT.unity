@@ -1125,6 +1125,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columnsToSkipWhenSync.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
       propertyPath: gameSettings.dbName
       value: user_db_honda
       objectReference: {fileID: 0}
@@ -1136,7 +1151,7 @@ PrefabInstance:
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: gameSettings.serverAddress
-      value: http://localhost/honda/honda/submit-data.php
+      value: http://localhost/jumpshoot/jumpshoot/submit-data.php
       objectReference: {fileID: 0}
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
@@ -1146,7 +1161,7 @@ PrefabInstance:
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: gameSettings.rewardType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
@@ -1161,15 +1176,177 @@ PrefabInstance:
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: gameSettings.fileName
-      value: game_jumpshoot
+      value: game_test
       objectReference: {fileID: 0}
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: gameSettings.scoreToWin
-      value: 20
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.userTypeName
+      value: UniversalUserEntity
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.dbName
+      value: user_db_test
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.tableName
+      value: user
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.UniversalUserClassName
+      value: UniversalUserEntity
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[0]
+      value: INTEGER PRIMARY KEY AUTOINCREMENT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[1]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[2]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[3]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columnsToSkipWhenSync.Array.data[0]
+      value: id
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[0]
+      value: id
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[1]
+      value: name
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[2]
+      value: email
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[3]
+      value: game_score
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[4]
+      value: register_datetime
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.columns.Array.data[5]
+      value: is_submitted
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[4]
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.data[5]
+      value: TEXT
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf9bc346bec815448f5896dcc069492, type: 3}
+--- !u!1 &1089652155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1089652157}
+  - component: {fileID: 1089652156}
+  m_Layer: 0
+  m_Name: UniversalUserDb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1089652156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089652155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def043c13eccb1440b46d15843df180e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSettings:
+    fileName: game_test
+    scoreName: game_score
+    serverAddress: http://localhost/jumpshoot/jumpshoot/submit-data.php
+    serverGetDataAddress: http://game-03-dashboard.unicom-interactive-digital.com/api/downloadRegisteredEmailList
+    scoreToWin: 3
+    userTypeName: UniversalUserEntity
+    rewardType: 0
+    sQliteDBSettings:
+      dbName: user_db_test
+      tableName: user
+      UniversalUserClassName: UniversalUserEntity
+      columns: []
+      attributes:
+      - INTEGER PRIMARY KEY AUTOINCREMENT
+      - TEXT
+      - TEXT
+      - TEXT
+      - TEXT
+      - TEXT
+      columnsToSkipWhenSync:
+      - id
+    vendingStockSettings:
+      stockDbName: db_stock
+      stockTableName: table_stock
+      VMSerialPortWriteType: 0
+      vmserialPortText: 
+      portname: 0
+      portbaudrate: 115200
+      numberToPopulate: 35
+      numberPerLane: 3
+      laneOccupyPerMotor: 1
+  db_connection_string: URI = file:C:/UID_Honda/demogames/Assets/StreamingAssets/user_db_test
+  numberToPopulate: 10
+--- !u!4 &1089652157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089652155}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1500042326
 GameObject:
   m_ObjectHideFlags: 0

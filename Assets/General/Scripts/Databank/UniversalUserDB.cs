@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Data;
 using UnityEngine;
 using Mono.Data.Sqlite;
@@ -14,8 +15,6 @@ namespace DataBank
         #region variables
         private const string CodistanTag = "UniversalUserDB:\t";
 
-        private string DB_NAME = "user";
-        private string TABLE_NAME = "user";
         private string KEY_NAME = "name"; // 1
         private string KEY_EMAIL = "email"; // 2
         private string KEY_CONTACT = "contact"; // 3
@@ -28,44 +27,49 @@ namespace DataBank
         private string KEY_DATE = "register_datetime"; // 10
         private string KEY_SYNC = "is_submitted"; // 11
 
-        public DBTable dbTable;
         #endregion
 
-        public UniversalUserDB() : base()
+        [ContextMenu("Create table")]
+        public override void CreateTable()
         {
-            ConnectDb(gameSettings.dbName);
+            LoadGameSettingFromMaster();
 
-            TABLE_NAME = gameSettings.tableName;
+            ConnectDb(gameSettings.sQliteDBSettings.dbName);
 
             IDbCommand dbcmd = GetDbCommand();
 
             // columns for table
-            dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ( " +
-               "id" + " INTEGER PRIMARY KEY, ";
+            dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS " + gameSettings.sQliteDBSettings.tableName + " ( " ;
 
-            for (int i = 0; i < dbTable.columns.Count; i++)
+            for (int i = 0; i < gameSettings.sQliteDBSettings.columns.Count; i++)
             {
 
-                dbcmd.CommandText += dbTable.columns[i] + " " + dbTable.properties[i];
+                dbcmd.CommandText += "'"+ gameSettings.sQliteDBSettings.columns[i] + "' " + gameSettings.sQliteDBSettings.attributes[i];
 
-                if (i != dbTable.columns.Count) dbcmd.CommandText += " , ";
-               else dbcmd.CommandText +=  " ) ; ";
+                if (i != gameSettings.sQliteDBSettings.columns.Count-1) dbcmd.CommandText += " , ";
+                else dbcmd.CommandText += " ) ; ";
             }
 
-            Debug.Log(dbcmd.CommandText);
+            try { dbcmd.ExecuteNonQuery(); Debug.Log("table success created"); }
+            catch (Exception ex) { Debug.LogError(ex.Message); return; }
 
-            try { dbcmd.ExecuteNonQuery(); }
-            catch(Exception ex) { Debug.LogError(ex.Message); return; }
+            db_connection.Close();
+        }
 
+        public override void ConnectDbCustom()
+        {
+            LoadGameSettingFromMaster(); 
+            ConnectDb(gameSettings.sQliteDBSettings.dbName);
         }
 
         public string AddData(List<string> columns_, List<string> values_)
         {
+            ConnectDbCustom();
             #region example
             /*
             IDbCommand dbcmd = GetDbCommand();
             dbcmd.CommandText =
-                "INSERT INTO " + TABLE_NAME
+                "INSERT INTO " + gameSettings.sQliteDBSettings.tableName
                 + " ( "
                 + KEY_NAME + ", "
                 + KEY_EMAIL + ", "
@@ -86,7 +90,7 @@ namespace DataBank
 
             IDbCommand dbcmd2 = GetDbCommand();
             dbcmd2.CommandText =
-                "INSERT INTO " + TABLE_NAME
+                "INSERT INTO " + gameSettings.sQliteDBSettings.tableName
                 + " ( "
                 + KEY_NAME + ", "
                 + KEY_EMAIL + ", "
@@ -104,7 +108,7 @@ namespace DataBank
 
             IDbCommand dbcmd2 = GetDbCommand();
             dbcmd2.CommandText =
-                "INSERT INTO " + TABLE_NAME
+                "INSERT INTO " + gameSettings.sQliteDBSettings.tableName
                 + " ( ";
 
             foreach (var item in columns_)
@@ -132,7 +136,6 @@ namespace DataBank
                 }
             }
 
-
             dbcmd2.CommandText += "')";
 
             using (db_connection)
@@ -145,57 +148,39 @@ namespace DataBank
                 catch (DbException ex)
                 {
                     string msg = string.Format("ErrorCode: {0}", ex.Message);
-                    Debug.Log(msg);
+                    Debug.LogError(msg);
                     return msg;
                 }
             }
         }
 
-        public string AddData(UserEntity user)
+        public override void Populate()
         {
-            IDbCommand dbcmd = GetDbCommand();
-            dbcmd.CommandText =
-                "INSERT INTO " + TABLE_NAME
-                + " ( "
-                + KEY_NAME + ", "
-                + KEY_EMAIL + ", "
-                + KEY_CONTACT + ", "
-                + KEY_AGE + ", "
-                + KEY_DOB + ", "
-                + KEY_GENDER + ", "
-                + KEY_GAME_RESULT + ", "
-                + KEY_GAME_SCORE + ", "
-                + KEY_VOUCHER_ID + ", "
-                + KEY_DATE + ", "
-                + KEY_SYNC + " ) "
+            ConnectDbCustom();
 
-                + "VALUES ( '"
-                + user.name + "', '"
-                + user.email + "', '"
-                + user.contact + "', '"
-                + user.age + "', '"
-                + user.dob + "', '"
-                + user.gender + "', '"
-                + user.game_result + "', '"
-                + user.game_score + "', '"
-                + user.voucher_id + "', '"
-                + user.register_datetime + "', '"
-                + user.is_submitted + "' )";
+            base.Populate();
 
-            using (db_connection)
+            List<string> col = new List<string>();
+            col.AddRange(gameSettings.sQliteDBSettings.columns);
+
+            List<string> val = new List<string>();
+            val.AddRange(gameSettings.sQliteDBSettings.columns);
+
+            col.RemoveAt(0);
+            val.RemoveAt(0);
+
+
+            for (int n = 0; n < numberToPopulate; n++)
             {
-                try
+                for (int i = 0; i < col.Count; i++)
                 {
-                    dbcmd.ExecuteNonQuery();
-                    return "true";
+                    val[i] = col[i] + ((n+1).ToString());
                 }
-                catch (DbException ex)
-                {
-                    string msg = string.Format("ErrorCode: {0}", ex.Message);
-                    Debug.Log(msg);
-                    return msg;
-                }
+
+                AddData(col, val);
             }
+
+            Close();
         }
 
         public void UpdateData(List<string> columns_, List<string> values_, string conditions)
@@ -208,7 +193,7 @@ namespace DataBank
 
             IDbCommand dbcmd2 = GetDbCommand();
             dbcmd2.CommandText =
-                "UPDATE " + TABLE_NAME
+                "UPDATE " + gameSettings.sQliteDBSettings.tableName
                 + " SET ";
 
             foreach (string c in columns_)
@@ -238,37 +223,6 @@ namespace DataBank
             }
         }
 
-        public string UpdateLastDataScore(string score)
-        {
-            IDataReader lastReader = GetLatestTimeStamp();
-            UserEntity lastEntity = new UserEntity();
-
-            while (lastReader.Read())
-            {
-                lastEntity.contact = lastReader[3].ToString();
-                lastEntity.game_score = lastReader[4].ToString();
-            }
-
-            IDbCommand dbcmd2 = GetDbCommand();
-            dbcmd2.CommandText = "UPDATE " + TABLE_NAME + " SET " + KEY_GAME_SCORE + " = '" + score + "' WHERE " + KEY_CONTACT + " = '" + lastEntity.contact + "' ;";
-
-            using (db_connection)
-            {
-                try
-                {
-                    dbcmd2.ExecuteNonQuery();
-                    return "true";
-                }
-                catch (DbException ex)
-                {
-                    string msg = string.Format("ErrorCode: {0}", ex.Message);
-                    Debug.Log(msg);
-                    return msg;
-                }
-            }
-
-        }
-
         public override IDataReader GetDataById(int id)
         {
             return base.GetDataById(id);
@@ -280,17 +234,17 @@ namespace DataBank
 
             IDbCommand dbcmd = GetDbCommand();
             dbcmd.CommandText =
-                "SELECT * FROM " + TABLE_NAME + " WHERE " + conditionlowercase + " = '" + str + "'";
+                "SELECT * FROM " + gameSettings.sQliteDBSettings.tableName + " WHERE " + conditionlowercase + " = '" + str + "'";
             return dbcmd.ExecuteReader();
         }
-
+       
         public override void DeleteDataByString(string id)
         {
             Debug.Log(CodistanTag + "Deleting Location: " + id);
 
             IDbCommand dbcmd = GetDbCommand();
             dbcmd.CommandText =
-                "DELETE FROM " + TABLE_NAME + " WHERE " + KEY_CONTACT + " = '" + id + "'";
+                "DELETE FROM " + gameSettings.sQliteDBSettings.tableName + " WHERE " + KEY_CONTACT + " = '" + id + "'";
             dbcmd.ExecuteNonQuery();
         }
 
@@ -303,81 +257,103 @@ namespace DataBank
         {
             Debug.Log(CodistanTag + "Deleting Table");
 
-            base.DeleteAllData(TABLE_NAME);
+            ConnectDbCustom();
+
+            base.DeleteAllData(gameSettings.sQliteDBSettings.tableName);
+
+            Close();
         }
 
         [ContextMenu("GetAllData")]
         public override IDataReader GetAllData()
         {
-            ConnectDb(gameSettings.dbName);
+            ConnectDbCustom();
 
-            List<UserEntity> entities = new List<UserEntity>();
-            UserEntity user = new UserEntity();
+            List<UniversalUserEntity> entities = new List<UniversalUserEntity>();
 
-            PropertyInfo[] properties = typeof(UserEntity).GetProperties();
-            foreach (PropertyInfo property in properties)
+            IDbCommand dbcommand = db_connection.CreateCommand();
+            dbcommand.CommandText = "SELECT * FROM " + gameSettings.sQliteDBSettings.tableName + " ;";
+
+            IDataReader reader = dbcommand.ExecuteReader();
+
+            if (reader.FieldCount < 1) { Debug.LogError("Empty record"); return null; }
+            else
             {
-                Debug.Log("Property : " + property);
+              //  Debug.Log(reader.FieldCount + " record in table " + gameSettings.sqliteDBSettings.tableName);
             }
 
-            IDataReader reader = base.GetAllData(TABLE_NAME);
-            while (reader.Read())
-            {
-                UserEntity entity = new UserEntity();
-                entity.name = reader[1].ToString();
-                entity.email = reader[2].ToString();
-                entity.contact = reader[3].ToString();
-                entity.age = reader[4].ToString();
-                entity.dob = reader[5].ToString();
-                entity.gender = reader[6].ToString();
-                entity.game_result = reader[7].ToString();
-                entity.game_score = reader[8].ToString();
-                entity.voucher_id = reader[9].ToString();
-                entity.register_datetime = reader[10].ToString();
-                entity.is_submitted = reader[11].ToString();
-
-                entities.Add(entity);
-            }
-           
-
-            return base.GetAllData(TABLE_NAME);
+            return reader;
         }
 
-        public List<UserEntity> GetAllUser()
+        public List<object> GetAllData(string userClassName)
         {
-            List<UserEntity> entities = new List<UserEntity>();
+            ConnectDbCustom();
 
-            IDataReader reader = GetAllData();
-            int fieldCount = reader.FieldCount;
+            Type t = Type.GetType(userClassName);
+
+            List<object> entityObjects = new List<object>();
+            
+            FieldInfo[] fieldInfo = t.GetFields();
+
+            IDbCommand dbcommand = db_connection.CreateCommand();
+            dbcommand.CommandText = "SELECT * FROM " + gameSettings.sQliteDBSettings.tableName + " ;";
+
+            IDataReader reader = dbcommand.ExecuteReader();
+
+            if (reader.FieldCount < 1) { Debug.LogError("Empty record"); return null; }
+            else
+            {
+                  Debug.Log(reader.FieldCount + " columns in table " + gameSettings.sQliteDBSettings.tableName);
+            }
 
             while (reader.Read())
             {
-                UserEntity entity = new UserEntity();
-                entity.name = reader[1].ToString();
-                entity.email = reader[2].ToString();
-                entity.contact = reader[3].ToString();
-                entity.age = reader[4].ToString();
-                entity.dob = reader[5].ToString();
-                entity.gender = reader[6].ToString();
-                entity.game_result = reader[7].ToString();
-                entity.game_score = reader[8].ToString();
-                entity.voucher_id = reader[9].ToString();
-                entity.register_datetime = reader[10].ToString();
-                entity.is_submitted = reader[11].ToString();
+               var userInstance = Activator.CreateInstance(t);
+                  
+                for (int i = 1; i < reader.FieldCount; i++)
+                {
+                    fieldInfo[i].SetValue(userInstance, reader[i].ToString());
+                    Debug.Log(fieldInfo[i].Name + " : " + userInstance.GetType().GetField(fieldInfo[i].Name).GetValue(userInstance));
+                }
+
+                entityObjects.Add(userInstance); 
+            }
+
+            Close();
+
+            return entityObjects;
+        }
+
+        public List<UniversalUserEntity> GetAllUser()
+        {
+            List<UniversalUserEntity> entities = new List<UniversalUserEntity>();
+            FieldInfo[] fieldInfo = Type.GetType(gameSettings.sQliteDBSettings.UniversalUserClassName).GetFields();
+
+            IDataReader reader = GetAllData();
+
+            while (reader.Read())
+            {
+                UniversalUserEntity entity = new UniversalUserEntity();
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    fieldInfo[i].SetValue(entity, reader[i].ToString());
+                }
 
                 entities.Add(entity);
             }
+
+            Close();
 
             return entities;
         }
 
-        public List<UserEntity> GetAllUserEmailAndContact()
+        public List<string> GetAllUserEmail()
         {
-            List<UserEntity> entities = new List<UserEntity>();
+            List<string> entities = new List<string>();
 
             IDbCommand dbcmd = GetDbCommand();
 
-            string command = "SELECT email, contact FROM " + TABLE_NAME;
+            string command = "SELECT email FROM " + gameSettings.sQliteDBSettings.tableName;
 
             Debug.Log(command);
             dbcmd.CommandText = command;
@@ -386,47 +362,46 @@ namespace DataBank
 
             while (reader.Read())
             {
-                UserEntity entity = new UserEntity();
-                entity.email = reader[0].ToString();
-                entity.contact = reader[1].ToString();
-                entities.Add(entity);
+                entities.Add(reader[0].ToString());
             }
 
             return entities;
         }
 
-
-        public List<UserEntity> GetAllUnSyncUser()
+        public List<UniversalUserEntity> GetAllUnSyncUser()
         {
-            List<UserEntity> entities = new List<UserEntity>();
+            List<UniversalUserEntity> entities = new List<UniversalUserEntity>();
 
-            IDbCommand dbcmd = GetDbCommand();
-            dbcmd.CommandText =
-                "SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_SYNC + " = 'false'";
+            ConnectDbCustom();
 
-            IDataReader reader = dbcmd.ExecuteReader();
+            FieldInfo[] fieldInfo = Type.GetType(gameSettings.sQliteDBSettings.UniversalUserClassName).GetFields();
+
+            /*    IDbCommand dbcmd = GetDbCommand();
+                dbcmd.CommandText =
+                    "SELECT * FROM " + gameSettings.sQliteDBSettings.tableName + " WHERE " + KEY_SYNC + " = 'false'";
+
+                IDataReader reader = dbcmd.ExecuteReader();
+            */
+
+            IDataReader reader = GetDataByString(KEY_SYNC, "false");
+
             while (reader.Read())
             {
-                UserEntity entity = new UserEntity();
-                entity.name = reader[1].ToString();
-                entity.email = reader[2].ToString();
-                entity.contact = reader[3].ToString();
-                entity.age = reader[4].ToString();
-                entity.dob = reader[5].ToString();
-                entity.gender = reader[6].ToString();
-                entity.game_result = reader[7].ToString();
-                entity.game_score = reader[8].ToString();
-                entity.voucher_id = reader[9].ToString();
-                entity.register_datetime = reader[10].ToString();
-                entity.is_submitted = reader[11].ToString();
+                UniversalUserEntity entity = new UniversalUserEntity();
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    fieldInfo[i].SetValue(entity, reader[i].ToString());
+                }
 
                 entities.Add(entity);
             }
 
+            Close();
+
             return entities;
         }
 
-        public void UpdateSyncUser(UserEntity userEntity)
+        public void UpdateSyncUser(UniversalUserEntity userEntity)
         {
             List<string> col = new List<string>();
             List<string> con = new List<string>();
@@ -443,20 +418,10 @@ namespace DataBank
             }
         }
 
-        public IDataReader GetLatestTimeStamp()
+        public override void DeleteAllData(string table_name)
         {
-            IDbCommand dbcmd = GetDbCommand();
-            dbcmd.CommandText =
-                "SELECT * FROM " + TABLE_NAME + " ORDER BY id DESC LIMIT 1";
-
-            /*  IDataReader reader = dbcmd.ExecuteReader();
-
-              while (reader.Read())
-              {
-                  Debug.Log(reader[3].ToString());
-              }
-              */
-            return dbcmd.ExecuteReader();
+            ConnectDbCustom();
+            base.DeleteAllData(table_name);
         }
     }
 }
