@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class ScoreVisualizer : MonoBehaviour {
+public class ScoreVisualizer : GameSettingEntity {
 
     public TextMeshProUGUI[] scoreTexts;
     private int score;
@@ -9,8 +9,9 @@ public class ScoreVisualizer : MonoBehaviour {
     [Header("Caution")]
     public bool clearScoreOnNewGame;
 
-    void Awake()
+    public override void Awake()
     {
+        base.Awake();
         score = 0;
         if (clearScoreOnNewGame) { scriptableScore.score = 0; UpdateText(0); }
     }
@@ -54,19 +55,9 @@ public class ScoreVisualizer : MonoBehaviour {
 
     public void SaveScore()
     {
-        GameSettingEntity dm = GameObject.Find("GameSettingEntity_DoNotChangeName").GetComponent<GameSettingEntity>();
-        dm.LoadSetting();
+        LoadGameSettingFromMaster();
 
-        string scoreName = "game_score";
-
-        if (dm == null)
-        {
-            Debug.LogError("DGameSettingEntity not found in scene");
-        }
-        else
-        {
-            scoreName = dm.gameSettings.scoreName;
-        }
+        string scoreName = gameSettings.scoreName;
 
         PlayerPrefs.SetString(scoreName, scriptableScore.score.ToString());
     }

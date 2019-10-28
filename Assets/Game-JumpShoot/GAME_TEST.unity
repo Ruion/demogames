@@ -5113,6 +5113,11 @@ PrefabInstance:
       propertyPath: localScoreNotSaveHandler
       value: 
       objectReference: {fileID: 2080397589}
+    - target: {fileID: 6134143298025417765, guid: d48465a539032b84cb7d9d863dd1dce4,
+        type: 3}
+      propertyPath: gameSettings.fileName
+      value: game_test
+      objectReference: {fileID: 0}
     - target: {fileID: 6105201173067213909, guid: d48465a539032b84cb7d9d863dd1dce4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5270,20 +5275,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings:
-    fileName: game_setting
+    fileName: game_test
     scoreName: game_score
-    serverAddress: http://192.168.0.28/honda/submit-data.php
-    serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
+    serverAddress: http://localhost/jumpshoot/jumpshoot/submit-data.php
+    serverGetDataAddress: http://game-03-dashboard.unicom-interactive-digital.com/api/downloadRegisteredEmailList
     scoreToWin: 3
-    userTypeName: 
+    userTypeName: UniversalUserEntity
     rewardType: 0
     sQliteDBSettings:
-      dbName: db_
-      tableName: registration
-      UniversalUserClassName: DataBank.
-      columns: []
-      attributes: []
-      columnsToSkipWhenSync: []
+      dbName: user_db_test
+      tableName: user
+      UniversalUserClassName: DataBank.UniversalUserEntity
+      columns:
+      - id
+      - name
+      - email
+      - contact
+      - game_score
+      - register_datetime
+      - is_submitted
+      attributes:
+      - INTEGER PRIMARY KEY AUTOINCREMENT
+      - TEXT
+      - TEXT
+      - TEXT
+      - TEXT
+      - TEXT
+      - TEXT
+      columnsToSkipWhenSync:
+      - id
+      - is_submitted
     vendingStockSettings:
       stockDbName: db_stock
       stockTableName: table_stock
