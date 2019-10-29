@@ -106,6 +106,7 @@ public class UserServerModel : ServerModelMaster
     #endregion
 
     #region Sync Data
+    [ContextMenu("Sync")]
     public void SendDataToDatabase()
     {
         StartCoroutine(DataToSend());
@@ -124,25 +125,17 @@ public class UserServerModel : ServerModelMaster
             internetErrorHandler.SetActive(true);
             yield break;
         }
-
-        SetUpDb();
+        
 
         // Get unSync user
         unSyncUsers = new List<UniversalUserEntity>();
 
-        try
-        {
-            unSyncUsers = udb.GetAllUnSyncUser();
+        SetUpDb();
+        unSyncUsers = udb.GetAllUnSyncUser();
 
-            CompareLocalAndServerData();
-            Debug.Log("unsync users : " + unSyncUsers.Count);
-        }
-        catch
-        {
-            HideAllHandler();
-            errorHandler.SetActive(true);
-            yield break;
-        }
+        CompareLocalAndServerData();
+
+        Debug.Log("unsync users : " + unSyncUsers.Count);
 
         if (unSyncUsers == null || unSyncUsers.Count < 1)
         {
@@ -151,6 +144,7 @@ public class UserServerModel : ServerModelMaster
             yield break;
         }
 
+        
         totalSent = 0;
 
         List<string> colToSend = new List<string>();
@@ -291,23 +285,35 @@ public class UserServerModel : ServerModelMaster
 
         foreach (string m in emailList)
         {
-            if (RemoveDuplicateStringItem(m, unSyncUsers))
+            Debug.Log("Comparing Email");
+
+            UniversalUserEntity foundUser = FindDuplicatedStringItem(m, unSyncUsers);
+
+            if (foundUser != null)
             {
                 SetUpDb();
-                IDataReader reader = udb.GetDataByString("email", m);
-                while (reader.Read())
-                {
-                    u = new UniversalUserEntity();
-                    for (int i = 0; i < reader.FieldCount; i++)
-                    {
-                        u.GetType().GetField(fields[i].Name).SetValue(u, reader[i].ToString());
-                    }
-                }
-
-                udb.UpdateSyncUser(u);
+                if(udb.GetDataByString("email", foundUser.email) != null) udb.UpdateSyncUser(foundUser);
+                unSyncUsers.Remove(foundUser);
+                Debug.Log(foundUser.email + " is removed from sync");
             }
         }
+        udb.Close();
+    }
 
+    [ContextMenu("Get UnSync email")]
+    public void GetUnSyncEmail()
+    {
+        SetUpDb();
+        IDataReader reader = udb.GetDataByString("is_submitted", "false");
+        while (reader.Read())
+        {
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
+                Debug.Log(reader[i]);
+            }
+            
+        }
+        udb.Close();
     }
 
     #endregion

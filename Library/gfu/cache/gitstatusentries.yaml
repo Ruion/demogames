@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2019-10-28T23:19:44.020+08:00
-  initializedAtString: 2019-10-28T22:54:58.974+08:00
+  lastUpdatedAtString: 2019-10-29T08:46:58.234+08:00
+  initializedAtString: 2019-10-29T08:44:44.675+08:00
   entries:
   - path: .vs\demogames\v16\.suo
     fullPath: C:\UID_Honda\demogames\.vs\demogames\v16\.suo
@@ -28,9 +28,9 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Assets\General\Prefabs\HOME_Prefab.prefab
-    fullPath: C:\UID_Honda\demogames\Assets\General\Prefabs\HOME_Prefab.prefab
-    projectPath: Assets\General\Prefabs\HOME_Prefab.prefab
+  - path: Assets\Game-JumpShoot\HOME_TEST.unity
+    fullPath: C:\UID_Honda\demogames\Assets\Game-JumpShoot\HOME_TEST.unity
+    projectPath: Assets\Game-JumpShoot\HOME_TEST.unity
     originalPath: 
     status: 3
     staged: 0
@@ -40,9 +40,9 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Assets\General\Scripts\Editor\UniversalUserDBEditor.cs
-    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\Editor\UniversalUserDBEditor.cs
-    projectPath: Assets\General\Scripts\Editor\UniversalUserDBEditor.cs
+  - path: Assets\General\Scripts\ServerModel\ServerModelMaster.cs
+    fullPath: C:\UID_Honda\demogames\Assets\General\Scripts\ServerModel\ServerModelMaster.cs
+    projectPath: Assets\General\Scripts\ServerModel\ServerModelMaster.cs
     originalPath: 
     status: 3
     staged: 0
@@ -61,6 +61,24 @@ MonoBehaviour:
   - path: Library\assetDatabase3
     fullPath: C:\UID_Honda\demogames\Library\assetDatabase3
     projectPath: Library\assetDatabase3
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\CurrentLayout-default.dwlt
+    fullPath: C:\UID_Honda\demogames\Library\CurrentLayout-default.dwlt
+    projectPath: Library\CurrentLayout-default.dwlt
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\CurrentMaximizeLayout.dwlt
+    fullPath: C:\UID_Honda\demogames\Library\CurrentMaximizeLayout.dwlt
+    projectPath: Library\CurrentMaximizeLayout.dwlt
+    originalPath: 
+    status: 3
+    staged: 0
+  - path: Library\expandedItems
+    fullPath: C:\UID_Honda\demogames\Library\expandedItems
+    projectPath: Library\expandedItems
     originalPath: 
     status: 3
     staged: 0
@@ -94,18 +112,6 @@ MonoBehaviour:
     originalPath: 
     status: 3
     staged: 0
-  - path: Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2
-    fullPath: C:\UID_Honda\demogames\Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2
-    projectPath: Library\metadata\3b\3b4d50dd24c7255459098612e26d6ee2
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\SceneVisibilityState.asset
-    fullPath: C:\UID_Honda\demogames\Library\SceneVisibilityState.asset
-    projectPath: Library\SceneVisibilityState.asset
-    originalPath: 
-    status: 3
-    staged: 0
   - path: Library\ScriptAssemblies\Assembly-CSharp.dll
     fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Assembly-CSharp.dll
     projectPath: Library\ScriptAssemblies\Assembly-CSharp.dll
@@ -121,12 +127,6 @@ MonoBehaviour:
   - path: Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
     fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
     projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
-    originalPath: 
-    status: 3
-    staged: 0
-  - path: Library\ScriptAssemblies\Assembly-CSharp-Editor.pdb
-    fullPath: C:\UID_Honda\demogames\Library\ScriptAssemblies\Assembly-CSharp-Editor.pdb
-    projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor.pdb
     originalPath: 
     status: 3
     staged: 0

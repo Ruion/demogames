@@ -175,8 +175,9 @@ namespace DataBank
                 for (int i = 0; i < col.Count; i++)
                 {
                     val[i] = col[i] + ((n+1).ToString());
+                    val[1] = "test00" + n.ToString() + "@gmail.com";
                 }
-
+                
                 val[val.Count - 1] = "false";
 
                 AddData(col, val);
@@ -232,7 +233,7 @@ namespace DataBank
 
         public override IDataReader GetDataByString(string conditionlowercase, string str)
         {
-            Debug.Log(CodistanTag + "Getting data: " + str);
+            Debug.Log(CodistanTag + "Getting data: " + conditionlowercase + " " + str);
 
             IDbCommand dbcmd = GetDbCommand();
             dbcmd.CommandText =

@@ -62,4 +62,17 @@ public class ServerModelMaster : GameSettingEntity
             return false;
         }
     }
+
+    public UniversalUserEntity FindDuplicatedStringItem(string text, List<UniversalUserEntity> users)
+    {
+        UniversalUserEntity foundUser = users.FirstOrDefault(i => i.email == text);
+        if (foundUser != null)
+        {
+            return foundUser;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

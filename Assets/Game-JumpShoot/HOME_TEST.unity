@@ -3890,7 +3890,7 @@ PrefabInstance:
     - target: {fileID: 5027133472231012648, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 218756497835719420, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -4031,6 +4031,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SendDataToDatabase
+      objectReference: {fileID: 0}
+    - target: {fileID: 3519200246895411581, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b4d50dd24c7255459098612e26d6ee2, type: 3}
