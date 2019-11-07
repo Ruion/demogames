@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Linq;
 using System.Collections;
+using TMPro;
 
 public class FormValidator : ServerModelMaster
 {
@@ -18,9 +19,10 @@ public class FormValidator : ServerModelMaster
     public Button Submit;
     public Button virtualSubmit;
 
-    public Text NameText;
-    public Text PhoneText;
-    public Text EmailText;
+
+    public TMP_InputField NameText;
+    public TMP_InputField PhoneText;
+    public TMP_InputField EmailText;
 
     string MailPattern = @"^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$";
 
@@ -94,7 +96,7 @@ public class FormValidator : ServerModelMaster
         Text3OK = Regex.IsMatch(EmailText.text, MailPattern);
     }
 
-    private bool InputNotEmpty(Text text)
+    private bool InputNotEmpty(TMP_InputField text)
     {
         bool notEmpty = true;
 
@@ -159,7 +161,7 @@ public class FormValidator : ServerModelMaster
         return hasSame;
     }
 
-    private bool ValidateDuplicate(List<string> source, Text text_)
+    private bool ValidateDuplicate(List<string> source, TMP_InputField text_)
     {
         bool hasSame = false;
 

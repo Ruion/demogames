@@ -448,6 +448,36 @@ PrefabInstance:
       propertyPath: gameSettings.stockTableName
       value: stockTable_jumpshoot
       objectReference: {fileID: 0}
+    - target: {fileID: 1802186495080113048, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.fileName
+      value: game_jumpshoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045434130529966914, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.fileName
+      value: game_jumpshoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045434130529966914, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.scoreName
+      value: game_score
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045434130529966914, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.serverAddress
+      value: http://localhost/jumpshoot/jumpshoot/submit-data.php
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045434130529966914, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.serverGetDataAddress
+      value: http://game-03-dashboard.unicom-interactive-digital.com/api/downloadRegisteredEmailList
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045434130529966914, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.userTypeName
+      value: DataBank.UniversalUserEntity
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b791d14d87f494b80d9cb853e25a1b, type: 3}
 --- !u!114 &91963818 stripped
@@ -2054,10 +2084,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1199517032197092, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
-      propertyPath: m_Name
-      value: SceneSwitcher__SCENE_CONFIGURATION
-      objectReference: {fileID: 0}
     - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
         type: 3}
       propertyPath: events.Array.size
@@ -2267,6 +2293,10 @@ PrefabInstance:
     - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.0674473
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199517032197092, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
+      propertyPath: m_Name
+      value: SceneSwitcher__SCENE_CONFIGURATION
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
@@ -4344,7 +4374,7 @@ MonoBehaviour:
   animator: {fileID: 1582981129}
   scoreCard: {fileID: 11400000, guid: 87b7d3c47d311ab418ef48b4fa953b6f, type: 2}
   bestScore: 0
-  scoreName: score_jumpshoot
+  scoreName: game_score
 --- !u!114 &1758414981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4357,6 +4387,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca38cfc2e5d02544a789a9612368db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSettings:
+    fileName: game_setting
+    scoreName: game_score
+    serverAddress: http://192.168.0.28/honda/submit-data.php
+    serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
+    scoreToWin: 3
+    userTypeName: 
+    rewardType: 0
+    sQliteDBSettings:
+      dbName: db_
+      tableName: registration
+      UniversalUserClassName: DataBank.
+      columns: []
+      attributes: []
+      columnsToSkipWhenSync: []
+    vendingStockSettings:
+      stockDbName: db_stock
+      stockTableName: table_stock
+      VMSerialPortWriteType: 0
+      vmserialPortText: 
+      portname: 0
+      portbaudrate: 115200
+      numberToPopulate: 35
+      numberPerLane: 3
+      laneOccupyPerMotor: 1
   scoreTexts: []
   scriptableScore: {fileID: 11400000, guid: 87b7d3c47d311ab418ef48b4fa953b6f, type: 2}
   clearScoreOnNewGame: 1
@@ -4424,16 +4479,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6103878458755493612}
     m_Modifications:
-    - target: {fileID: 7348691861585984197, guid: 7f64134ecc634be4bbcab1c212601dac,
-        type: 3}
-      propertyPath: m_Name
-      value: localscorenotsave
-      objectReference: {fileID: 0}
-    - target: {fileID: 7348691861585984197, guid: 7f64134ecc634be4bbcab1c212601dac,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2374780056283710907, guid: 7f64134ecc634be4bbcab1c212601dac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4553,6 +4598,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7348691861585984197, guid: 7f64134ecc634be4bbcab1c212601dac,
+        type: 3}
+      propertyPath: m_Name
+      value: localscorenotsave
+      objectReference: {fileID: 0}
+    - target: {fileID: 7348691861585984197, guid: 7f64134ecc634be4bbcab1c212601dac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370784714772659952, guid: 7f64134ecc634be4bbcab1c212601dac,
+        type: 3}
+      propertyPath: m_text
+      value: data does not saved
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370784714772659952, guid: 7f64134ecc634be4bbcab1c212601dac,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370784714772659952, guid: 7f64134ecc634be4bbcab1c212601dac,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370784714772659952, guid: 7f64134ecc634be4bbcab1c212601dac,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5502795431517737706, guid: 7f64134ecc634be4bbcab1c212601dac,
         type: 3}
@@ -4688,26 +4763,6 @@ PrefabInstance:
         type: 3}
       propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7370784714772659952, guid: 7f64134ecc634be4bbcab1c212601dac,
-        type: 3}
-      propertyPath: m_text
-      value: data does not saved
-      objectReference: {fileID: 0}
-    - target: {fileID: 7370784714772659952, guid: 7f64134ecc634be4bbcab1c212601dac,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7370784714772659952, guid: 7f64134ecc634be4bbcab1c212601dac,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7370784714772659952, guid: 7f64134ecc634be4bbcab1c212601dac,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f64134ecc634be4bbcab1c212601dac, type: 3}
@@ -5116,7 +5171,27 @@ PrefabInstance:
     - target: {fileID: 6134143298025417765, guid: d48465a539032b84cb7d9d863dd1dce4,
         type: 3}
       propertyPath: gameSettings.fileName
-      value: game_test
+      value: game_jumpshoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134143298025417765, guid: d48465a539032b84cb7d9d863dd1dce4,
+        type: 3}
+      propertyPath: gameSettings.serverAddress
+      value: http://localhost/jumpshoot/jumpshoot/submit-data.php
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134143298025417765, guid: d48465a539032b84cb7d9d863dd1dce4,
+        type: 3}
+      propertyPath: gameSettings.serverGetDataAddress
+      value: http://game-03-dashboard.unicom-interactive-digital.com/api/downloadRegisteredEmailList
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134143298025417765, guid: d48465a539032b84cb7d9d863dd1dce4,
+        type: 3}
+      propertyPath: gameSettings.userTypeName
+      value: DataBank.UniversalUserEntity
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134143298025417765, guid: d48465a539032b84cb7d9d863dd1dce4,
+        type: 3}
+      propertyPath: gameSettings.rewardType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6105201173067213909, guid: d48465a539032b84cb7d9d863dd1dce4,
         type: 3}

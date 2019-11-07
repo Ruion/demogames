@@ -14,6 +14,9 @@ public class JumpShootScoreManagerScript : MonoBehaviour {
     public ScriptableScore scoreCard;
 	[ReadOnly] public float bestScore;
 
+    public int JumpAddScore = 10;
+    public int CollectShoeAddScore = 15;
+
     public string scoreName = "score_jumpshoot";
 
     private void Awake()
@@ -32,9 +35,7 @@ public class JumpShootScoreManagerScript : MonoBehaviour {
     }
 
     void Start () {
-		// bestScore = PlayerStateManagerScript.instance.GetBestScore();
-		// totalScore = PlayerStateManagerScript.instance.GetTotalScore();
-		// bestScoreText.text = "Best\n" + bestScore.ToString();
+
 		currentScoreText.text = currentScore.ToString();
 	}
 
@@ -47,17 +48,21 @@ public class JumpShootScoreManagerScript : MonoBehaviour {
 	}
 
 	public void AddScore(){
-        scoreCard.score++;
-        currentScore++;
+        scoreCard.score += JumpAddScore;
+        currentScore = scoreCard.score;
 		currentScoreText.text = currentScore.ToString();
-
-		if(currentScore > bestScore){
-			bestScoreText.text = "Best\n" + currentScore.ToString();
-			PlayerStateManagerScript.instance.SetBestScore(currentScore);
-		}
 
         animator.Play("1");
 	}
+
+    public void AddScoreShoe()
+    {
+        scoreCard.score += CollectShoeAddScore;
+        currentScore = scoreCard.score;
+        currentScoreText.text = currentScore.ToString();
+
+        animator.Play("1");
+    }
 
 	public void ChangeColorToWhite(){
 		bestScoreText.color = Color.white;

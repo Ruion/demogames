@@ -101,7 +101,7 @@ public class DataManager : GameSettingEntity {
                 + " gender : " + e.gender 
                 + " game_result : " + e.game_result 
                 + " game_score : " + e.game_score 
-                + " voucher_id : " + e.voucher_id 
+            //    + " voucher_id : " + e.voucher_id 
                 + " register_datetime : " + e.register_datetime);
         }
     }
@@ -283,25 +283,7 @@ public class DataManager : GameSettingEntity {
 
     public void SendDataToDatabase()
     {
-     /**
-    * Player data submission API
-    * 
-    * 2 possible results response from this player data submission api:
-    * 1. Success
-    * 2. Fail
-    * 
-    * Requires 8 parameters
-    * 1. name
-    * 2. email
-    * 3. contact
-    * 4. age
-    * 5. dob
-    * 6. gender
-    * 7. game_result
-    * 8. game_score
-    * 9. voucher_name
-    */
-            StartCoroutine(DataToSend());
+       StartCoroutine(DataToSend());
      }
 
     IEnumerator DataToSend()
@@ -354,10 +336,10 @@ public class DataManager : GameSettingEntity {
             form.AddField("name", unSyncUsers[i].name); // 1
             form.AddField("email", unSyncUsers[i].email); // 2
             form.AddField("contact", unSyncUsers[i].contact); // 3
-            form.AddField("age", unSyncUsers[i].age); // 4
-            form.AddField("dob", unSyncUsers[i].dob); // 5
-            form.AddField("gender", unSyncUsers[i].gender); // 6
-            form.AddField("game_result", unSyncUsers[i].game_result); // 7
+     //       form.AddField("age", unSyncUsers[i].age); // 4
+     //       form.AddField("dob", unSyncUsers[i].dob); // 5
+      //      form.AddField("gender", unSyncUsers[i].gender); // 6
+      //      form.AddField("game_result", unSyncUsers[i].game_result); // 7
             form.AddField("game_score", unSyncUsers[i].game_score); // 8
             form.AddField("voucher_id", unSyncUsers[i].voucher_id); // 9
             form.AddField("register_datetime", unSyncUsers[i].register_datetime); // 10
