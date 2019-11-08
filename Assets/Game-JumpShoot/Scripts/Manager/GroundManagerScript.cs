@@ -44,7 +44,17 @@ public class GroundManagerScript : MonoBehaviour {
 		groundIndex++;
 	}
 
-	void SetGroundAttribute(GameObject obj){
+    public void GenerateGroundCheckPoint(Vector2 pos)
+    {
+        DifficultyCalculation();
+        Vector2 position = pos;
+        GameObject newGroundObj = Instantiate(groundPrefab, position, Quaternion.identity);
+        newGroundObj.transform.SetParent(groundHolder.transform);
+        SetGroundAttribute(newGroundObj);
+        groundIndex++;
+    }
+
+    void SetGroundAttribute(GameObject obj){
 		// Random Type
 		GroundScript.GroundType groundType = (GroundScript.GroundType)Random.Range(0, 3);
 		float velocity = 0;

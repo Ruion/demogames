@@ -128,7 +128,7 @@ public class OnlineServerModel : ServerModelMaster
     {
         DoGetDataFromServer();
 
-        Debug.Log("Fetching email");
+      //  Debug.Log(methodBase.Name + " : Fetching email");
         
         while (isFetchingData)
         {

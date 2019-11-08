@@ -52,6 +52,7 @@ public static class GameSetting
 [System.Serializable]
 public class Settings
 {
+    public bool DebugMode = false;
     public string fileName = "game_setting";
     public string DbName { get { return sQliteDBSettings.dbName; } }
     public string TableName { get { return sQliteDBSettings.tableName; } }
@@ -72,6 +73,8 @@ public class Settings
 
     public Settings(Settings setting)
     {
+        DebugMode = setting.DebugMode;
+
         fileName = setting.fileName;
         scoreName = setting.scoreName;
         serverAddress = setting.serverAddress;

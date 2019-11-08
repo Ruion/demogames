@@ -23,26 +23,31 @@ public class UserServerModel : ServerModelMaster
     public GameObject loadingHandler;
     public GameObject successSendDataHandler;
     public GameObject blockDataHandler;
+    public GameObject successBar;
+    public TextMeshProUGUI successText;
+    public GameObject failBar;
 
     private UniversalUserDB udb;
     #endregion
 
-    List<UniversalUserEntity> unSyncUsers = new List<UniversalUserEntity>();
+    List<DataBank.UniversalUserEntity> unSyncUsers = new List<DataBank.UniversalUserEntity>();
 
     public List<string> localEmailList = new List<string>();
     public List<string> emailList = new List<string>();
 
     private OnlineServerModel osm;
 
-    private void Start()
+    public void StartUp()
     {
         HideAllHandler();
 
         SetUpDb();
 
-        localEmailList = udb.GetAllUserEmail();
+        #region Function for compare data with server - DISABLED
+        // localEmailList = udb.GetAllUserEmail();
 
-        DoGetDataFromServer();
+        //  DoGetDataFromServer();
+        #endregion
 
         udb.Close();
     }
@@ -72,18 +77,15 @@ public class UserServerModel : ServerModelMaster
         loadingHandler.SetActive(false);
         successSendDataHandler.SetActive(false);
         blockDataHandler.SetActive(false);
-    }
-
-    public void ClearData()
-    {
-        SetUpDb();
-        udb.DeleteAllData();
-        udb.Close();
+        successBar.SetActive(false);
+        failBar.SetActive(false);
     }
 
     #region Save Data
     public override void SaveToLocal()
     {
+        LoadGameSettingFromMaster();
+
         List<string> col = new List<string>();
         col.AddRange(gameSettings.sQliteDBSettings.columns);
         col.RemoveAt(0);
@@ -109,15 +111,48 @@ public class UserServerModel : ServerModelMaster
     [ContextMenu("Sync")]
     public void SendDataToDatabase()
     {
+        LoadGameSettingFromMaster();
+
+        HideAllHandler();
+        GetUnSyncData(false);
         StartCoroutine(DataToSend());
     }
 
-    IEnumerator DataToSend()
+    [ContextMenu("AutoSync")]
+    public void AutoSendDataToDatabase()
     {
-        HideAllHandler();
+        LoadGameSettingFromMaster();
 
+        HideAllHandler();
+        GetUnSyncData(true);
+        StartCoroutine(DataToSend());
+    }
+
+    private void GetUnSyncData(bool limit = false)
+    {
+        // Get unSync user
+        unSyncUsers = new List<UniversalUserEntity>();
+
+        SetUpDb();
+        
+        if (limit) unSyncUsers = udb.GetAllUnSyncUserLimit();
+        else unSyncUsers = udb.GetAllUnSyncUser();
+
+        if (unSyncUsers == null || unSyncUsers.Count < 1)
+        {
+            Debug.Log("unsync users : " + unSyncUsers.Count);
+            HideAllHandler();
+            emptyHandler.SetActive(true);
+            return;
+        }
+    }
+
+    IEnumerator DataToSend()
+    { 
         blockDataHandler.SetActive(true);
 
+        #region Check Internet
+        ///////////// CHECK Internet Connection /////////////
         string HtmlText = GetHtmlFromUri("http://google.com");
         if (HtmlText == "")
         {
@@ -125,28 +160,29 @@ public class UserServerModel : ServerModelMaster
             internetErrorHandler.SetActive(true);
             yield break;
         }
-        
+        #endregion
 
-        // Get unSync user
-        unSyncUsers = new List<UniversalUserEntity>();
+        #region Compare with online server
 
-        SetUpDb();
-        unSyncUsers = udb.GetAllUnSyncUser();
+        // CompareLocalAndServerData // Temporary Disable 
+        /*   yield return StartCoroutine(CompareLocalAndServerData());
 
-        CompareLocalAndServerData();
+           if (unSyncUsers == null || unSyncUsers.Count < 1)
+           {
+               Debug.Log("unsync users : " + unSyncUsers.Count);
+               HideAllHandler();
+               emptyHandler.SetActive(true);
+               yield break;
+           }
+           */
+        #endregion
 
         Debug.Log("unsync users : " + unSyncUsers.Count);
 
-        if (unSyncUsers == null || unSyncUsers.Count < 1)
-        {
-            HideAllHandler();
-            emptyHandler.SetActive(true);
-            yield break;
-        }
-
-        
         totalSent = 0;
 
+        #region using Reflection to send data but DISABLED FOR VERY SLOW 
+        /*
         List<string> colToSend = new List<string>();
         colToSend.AddRange(gameSettings.sQliteDBSettings.columns);
 
@@ -154,24 +190,43 @@ public class UserServerModel : ServerModelMaster
         {
             colToSend.Remove(gameSettings.sQliteDBSettings.columnsToSkipWhenSync[i]);
         }
+        */
+        #endregion
+
+        #region WWWForm & UnityWebRequest send data
+        Debug.Log("Start sync");
 
         for (int u = 0; u < unSyncUsers.Count; u++)
         {
             WWWForm form = new WWWForm();
 
-            for (int i = 0; i < colToSend.Count; i++)
-            {
-                Debug.Log(colToSend[i] + " : " + unSyncUsers[u].GetType()
-                    .GetField(colToSend[i])
-                    .GetValue(unSyncUsers[u])
-                    .ToString()); 
 
-                form.AddField(colToSend[i],
-                    unSyncUsers[u].GetType()
-                    .GetField(colToSend[i])
-                    .GetValue(unSyncUsers[u])
-                    .ToString());
-            }           
+            form.AddField("name", unSyncUsers[u].name);
+            form.AddField("email", unSyncUsers[u].email);
+            form.AddField("contact", unSyncUsers[u].contact);
+
+            form.AddField("age", "0");
+            form.AddField("dob", "0000-00-00");
+            form.AddField("gender", "0");
+
+            form.AddField("game_result", unSyncUsers[u].game_result);
+            form.AddField("game_score", unSyncUsers[u].game_score);
+            form.AddField("created_at", unSyncUsers[u].created_at);
+
+            Debug.Log(unSyncUsers[u].created_at);
+
+            #region Reflection to send object data but SLOW
+            /*  for (int i = 0; i < colToSend.Count; i++)
+              {
+
+                  form.AddField(colToSend[i],
+                      unSyncUsers[u].GetType()
+                      .GetField(colToSend[i])
+                      .GetValue(unSyncUsers[u])
+                      .ToString());
+              }
+          */
+            #endregion
 
             using (UnityWebRequest www = UnityWebRequest.Post(gameSettings.serverAddress, form))
             {
@@ -185,18 +240,23 @@ public class UserServerModel : ServerModelMaster
                     errorCodeText.text = www.error;
 
                     blockDataHandler.SetActive(false);
-
+                    Debug.LogError("try sync but server fail");
+                    Debug.LogError(www.error);
                     StopAllCoroutines();
+
+                    // show red bar on fail
+                    failBar.SetActive(true); failBar.GetComponent<StatusBar>().Finish();
+
                     yield break;
                 }
                 else
                 {
-                    yield return new WaitForEndOfFrame();
+                  //  yield return new WaitForEndOfFrame();
                     var jsonData = JsonUtility.FromJson<JSONResponse>(www.downloadHandler.text);
 
                     Debug.Log(www.downloadHandler.text);
 
-                    if (jsonData.result != "success")
+                    if (jsonData.result != "Success")
                     {
 
                         HideAllHandler();
@@ -206,6 +266,11 @@ public class UserServerModel : ServerModelMaster
                         blockDataHandler.SetActive(false);
 
                         StopAllCoroutines();
+                        Debug.LogError("try sync but fail");
+
+                        // show red bar on fail
+                        failBar.SetActive(true); failBar.GetComponent<StatusBar>().Finish();
+
                         yield break;
                     }
 
@@ -213,38 +278,26 @@ public class UserServerModel : ServerModelMaster
 
                     totalSent++;
                     sentText.text = totalSent.ToString();
+                    successText.text = sentText.text;
+                    successBar.SetActive(true);
 
                     udb.UpdateSyncUser(unSyncUsers[u]);
-
                     successSendDataHandler.SetActive(true);
                 }
             }
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
         }
+        #endregion
 
         udb.Close();
+        successBar.GetComponent<StatusBar>().Finish();
+        failBar.GetComponent<StatusBar>().Finish();
 
         blockDataHandler.SetActive(false);
     }
 
     #endregion
-
-    [ContextMenu("ShowAll")]
-    public void ShowAll()
-    {
-        SetUpDb();
-        IDataReader reader = udb.GetAllData();
-        while (reader.Read())
-        {
-            string text = "";
-            for (int i = 0; i < reader.FieldCount; i++)
-            {
-                text += reader[i] + " ";
-            }
-            Debug.Log(text);
-        }
-    }
 
     #region Get Server Data
     [ContextMenu("GetServerData")]
@@ -252,7 +305,6 @@ public class UserServerModel : ServerModelMaster
     {
         StartCoroutine(GetDataFromServer());
     }
-
     
     // to be configure
     IEnumerator GetDataFromServer()
@@ -276,28 +328,27 @@ public class UserServerModel : ServerModelMaster
 
     }
     
-
-    [ContextMenu("CompareLocalAndServerData")]
-    public void CompareLocalAndServerData()
+    private IEnumerator CompareLocalAndServerData()
     {
-        UniversalUserEntity u = new UniversalUserEntity();
-        FieldInfo[] fields = u.GetType().GetFields();
+        SetUpDb();
 
-        foreach (string m in emailList)
+        DataBank.UniversalUserEntity u = new DataBank.UniversalUserEntity();
+
+        for (int m = 0; m < emailList.Count; m++)
         {
-            Debug.Log("Comparing Email");
-
-            UniversalUserEntity foundUser = FindDuplicatedStringItem(m, unSyncUsers);
-
+            UniversalUserEntity foundUser = FindDuplicatedStringItem(emailList[m], unSyncUsers);
             if (foundUser != null)
             {
-                SetUpDb();
-                if(udb.GetDataByString("email", foundUser.email) != null) udb.UpdateSyncUser(foundUser);
+               // SetUpDb();
+              //  if (udb.GetDataByString("email", foundUser.email) != null) udb.UpdateSyncUser(foundUser);
+
+                yield return new WaitForEndOfFrame();
                 unSyncUsers.Remove(foundUser);
+                
                 Debug.Log(foundUser.email + " is removed from sync");
             }
         }
-        udb.Close();
+
     }
 
     [ContextMenu("Get UnSync email")]
@@ -317,5 +368,10 @@ public class UserServerModel : ServerModelMaster
     }
 
     #endregion
+
+    private void OnDisable()
+    {
+        udb.Close();
+    }
 
 }

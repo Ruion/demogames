@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.Common;
 using System.Collections.Generic;
 using System;
-using System.Reflection;
 
 namespace DataBank
 {
@@ -51,6 +50,8 @@ namespace DataBank
 
         public virtual List<string> GetDataByStringToList(string singleColumnName, string conditionlowercase = "", string str = "")
         {
+            
+
             ConnectDbCustom();
 
             IDbCommand dbcmd = GetDbCommand();
@@ -62,7 +63,7 @@ namespace DataBank
 
             dbcmd.CommandText += ";";
 
-            Debug.Log(dbcmd.CommandText);
+          //  Debug.Log(methodBase.Name + " : " +dbcmd.CommandText);
 
             IDataReader reader = dbcmd.ExecuteReader();
 

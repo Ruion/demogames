@@ -9,7 +9,6 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 		Menu,Playing,Shop
 	};
 	public static GameState gameState;
-	public GameObject menuPanel;
 	public GameObject player;
 	public GameObject groundHolder;
 	public bool lost;
@@ -19,9 +18,11 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 	AudioSource backgroundMusic;
 
     public GameManager GM;
+    public JumpShootScoreManagerScript scoreM;
+    public AudioManagerScript audioM;
 
 
-	void Awake(){
+    void Awake(){
 		lost = false;
 		Time.timeScale = 1f;
 		gameState = GameState.Menu;
@@ -29,11 +30,18 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 		backgroundMusic = GameObject.Find("_BackgroundMusic").GetComponent<AudioSource>();
 	}
 
+    /*
 	void Update(){
 		if (JumpShootGameManagerScript.gameState == GameState.Menu && Input.GetMouseButtonDown(0)){
 			StartCoroutine(StartGame());
 		}
 	}
+    */
+
+    public void DoStartGame()
+    {
+        StartCoroutine(StartGame());
+    }
 
 	IEnumerator StartGame(){
 
@@ -46,6 +54,13 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 		yield break;
 	}
 
+    public void AddScore()
+    {
+        scoreM.AddScore();
+        audioM.PlayCoinSound(); 
+
+    }
+
 	public void Dead(){
 		StartCoroutine(DeadCoroutine());
 	}
@@ -53,44 +68,26 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 	public void GameOver(){
 
         GM.GameOver();
-
-        StartCoroutine(GameOverScreenCoroutine());
-
-        
 	}
 
 	public void Revive(){
-		audioManager.StopDeadSound();
-		backgroundMusic.Play();
-		Time.timeScale = 1f;
+	//	Time.timeScale = 1f;
 		newGround = groundHolder.transform.GetChild(0).gameObject;
 		newGroundScript = newGround.GetComponent<GroundScript>();
-		newGroundScript.velocity = 0;
+		newGroundScript.velocity /= 2;
+		newGroundScript.Stepped();
 
-		player.transform.position = new Vector3(newGround.transform.position.x,newGround.transform.position.y+1,newGround.transform.position.z);
+        player.transform.position = new Vector3(newGround.transform.position.x,newGround.transform.position.y+1,newGround.transform.position.z);
 		player.GetComponent<JumpShootPlayerScript>().RevivePlayer();
 	}
 
 	IEnumerator DeadCoroutine(){
 		audioManager.PlayDeadSound();
 		backgroundMusic.Pause();
-		Time.timeScale = 0.1f;
-		GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().UpdateTotalScore();
+		//Time.timeScale = 0.1f;
 		yield return new WaitForSecondsRealtime(0.5f);		
-		float score = GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().currentScore;
         GM.GameOver();
-	//	GameObject.Find("_PrizeManager").GetComponent<PrizeManagerScript>().GameOver(score);
 		lost = true;
-	}
-
-	IEnumerator GameOverScreenCoroutine(){
-		if(lost == true){
-			GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().SaveScore();
-		}
-		yield return new WaitForSecondsRealtime(0.5f);
-		float score = GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().currentScore;
-		GameObject.Find("_PrizeManager").GetComponent<PrizeManagerScript>().GameOver(score);
-		GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().ChangeColorToWhite();
 	}
 
 	public void RestartGame(){
@@ -109,4 +106,9 @@ public class JumpShootGameManagerScript : MonoBehaviour {
 	public static bool isShop(){
 		return JumpShootGameManagerScript.gameState == JumpShootGameManagerScript.GameState.Shop;
 	}
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1f;
+    }
 }

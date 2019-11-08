@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3935559336842415451
 CanvasRenderer:
@@ -65,8 +65,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 64990bb0a83bbbe4989573c5b71a4fb6, type: 2}
+  m_sharedMaterial: {fileID: 2711876242234988426, guid: 64990bb0a83bbbe4989573c5b71a4fb6,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -91,11 +92,11 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 15.2
+  m_fontSize: 48.9
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 10
+  m_fontSizeMin: 8
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 514
@@ -243,7 +244,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 797, y: 123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5267022040202902887
 CanvasRenderer:
@@ -381,8 +382,8 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_RichText: 1
-  m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_OnFocusSelectAll: 1
+  m_GlobalFontAsset: {fileID: 11400000, guid: 64990bb0a83bbbe4989573c5b71a4fb6, type: 2}
+  m_OnFocusSelectAll: 0
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
   m_isRichTextEditingAllowed: 0
@@ -418,7 +419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1182403889617129337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -436,7 +437,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &637552220870299867
 CanvasRenderer:
@@ -466,8 +467,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter text...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 64990bb0a83bbbe4989573c5b71a4fb6, type: 2}
+  m_sharedMaterial: {fileID: 2711876242234988426, guid: 64990bb0a83bbbe4989573c5b71a4fb6,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -492,11 +494,11 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 15.2
+  m_fontSize: 48.9
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 10
+  m_fontSizeMin: 8
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 514

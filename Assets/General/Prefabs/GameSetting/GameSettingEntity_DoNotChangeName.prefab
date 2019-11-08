@@ -45,27 +45,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings:
+    DebugMode: 0
     fileName: game_setting
-    dbName: user_db
     scoreName: score
-    tableName: user
     serverAddress: http://192.168.0.28/honda/submit-data.php
     serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
     scoreToWin: 3
-    userObject: {fileID: 0}
+    userTypeName: 
     rewardType: 0
-    stockDbName: http://192.168.0.28/honda/submit-data.php
-    stockTableName: http://192.168.0.28/honda/submit-data.php
-    VMSerialPortWriteType: 0
-    vmserialPortText: 
-    portname: 0
-    portbaudrate: 115200
-    numberToPopulate: 35
-    numberPerLane: 3
-    laneOccupyPerMotor: 1
+    sQliteDBSettings:
+      dbName: db_
+      tableName: registration
+      UniversalUserClassName: DataBank.
+      columns: []
+      attributes: []
+      columnsToSkipWhenSync: []
+    vendingStockSettings:
+      stockDbName: db_stock
+      stockTableName: table_stock
+      VMSerialPortWriteType: 0
+      vmserialPortText: 
+      portname: 0
+      portbaudrate: 115200
+      numberToPopulate: 35
+      numberPerLane: 3
+      laneOccupyPerMotor: 1
   isFetchingData: 0
   TextPath: Application.stremingAssetsPath/local/LocalData.txt
   serverUsers: []
+  emailList: []
 --- !u!114 &3047241544416176463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,8 +115,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8942889261852245931}
   - component: {fileID: 5107244017836863797}
-  - component: {fileID: 2281671072110564244}
   - component: {fileID: 199091733273068208}
+  - component: {fileID: 6260709923572918981}
   m_Layer: 0
   m_Name: GameSettingEntity_DoNotChangeName
   m_TagString: GameSettingMaster
@@ -144,36 +152,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings:
+    DebugMode: 0
     fileName: game_honda
-    dbName: user_db_honda
     scoreName: score_honda
-    tableName: user
     serverAddress: http://localhost/honda/honda/submit-data.php
     serverGetDataAddress: http://localhost/honda/honda/get-data.php
     scoreToWin: 3
-    userObject: {fileID: 2281671072110564244}
+    userTypeName: 
     rewardType: 0
-    stockDbName: stockDb_honda
-    stockTableName: stockTable_honda
-    VMSerialPortWriteType: 0
-    vmserialPortText: 
-    portname: 0
-    portbaudrate: 115200
-    numberToPopulate: 35
-    numberPerLane: 3
-    laneOccupyPerMotor: 1
---- !u!114 &2281671072110564244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2901172509013719973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 291d67241221a2a44b9760ac7c05319e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+    sQliteDBSettings:
+      dbName: db_
+      tableName: registration
+      UniversalUserClassName: DataBank.
+      columns: []
+      attributes: []
+      columnsToSkipWhenSync: []
+    vendingStockSettings:
+      stockDbName: db_stock
+      stockTableName: table_stock
+      VMSerialPortWriteType: 0
+      vmserialPortText: 
+      portname: 0
+      portbaudrate: 115200
+      numberToPopulate: 35
+      numberPerLane: 3
+      laneOccupyPerMotor: 1
 --- !u!114 &199091733273068208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,3 +190,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagName: GameSettingMaster
+--- !u!114 &6260709923572918981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2901172509013719973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f1637665a338a40a740cfcb5056430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Text_Color: {r: 1, g: 1, b: 1, a: 1}
+  TextStyle: 1
+  Background_Color: {r: 1, g: 0.24056602, b: 0.32549405, a: 1}
+  Custom_Inactive_Colors: 0
+  Text_Color_Inactive: {r: 0, g: 0, b: 0, a: 1}
+  TextStyle_Inactive: 0
+  Background_Color_Inactive: {r: 0.306, g: 0.396, b: 0.612, a: 1}

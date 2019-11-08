@@ -26,9 +26,12 @@ public class PlayerPrefsSaver : MonoBehaviour
         PlayerPrefs.SetString(name_, scoreCard.score.ToString());
     }
 
+    [ContextMenu("DateTime")]
     public void SaveDateTime()
     {
-        PlayerPrefs.SetString(name_, System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+        PlayerPrefs.SetString(name_, System.DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+        Debug.Log(PlayerPrefs.GetString(name_));
+       // Debug.Log(System.DateTime.UtcNow);
     }
 }
 

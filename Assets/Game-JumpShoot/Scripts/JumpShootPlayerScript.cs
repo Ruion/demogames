@@ -25,7 +25,6 @@ public class JumpShootPlayerScript : MonoBehaviour {
 	[ReadOnly] public bool isDead = false;
 	[ReadOnly] public float previousPosXParent;
 	[ReadOnly] public float ScreenRadiusInWorldX;
-	[ReadOnly] public float hueValue;
 	[ReadOnly] public PlayerState currentPlayerState;
 	[ReadOnly] public GroundScript.GroundType standingGroundType;
 	[ReadOnly] public bool initialCollide;
@@ -34,25 +33,22 @@ public class JumpShootPlayerScript : MonoBehaviour {
 	BoxCollider2D boxCollider2D;
 	Animator animatorComponent;
 
-    [Header("HSV Value")]
-    [Range(0, 1)]
-    public float saturation = .6f;
-    [Range(0, 1)]
-    public float brightness = .7f;
-	
-	void Awake () {
+    public JumpShootGameManagerScript jsGM;
+    public float repositionRatio = 2f;
+    public CameraShake camShake;
+    public float stepDistanceY;
+
+    void Awake () {
 		rigidBody2DComponent = GetComponent<Rigidbody2D>();
 		boxCollider2D = GetComponent<BoxCollider2D>();
 		animatorComponent = GetComponent<Animator>();
 		//currentPlayerState = PlayerState.Jumping;
 		currentPlayerState = PlayerState.Standing;
-		animatorComponent.SetBool("Jumping",true);
+	//	animatorComponent.SetBool("Jumping",true);
 	}
 
 	void Start(){
 		initialCollide = true;
-		hueValue = Random.Range(0.1f,0.8f);
-		ChangeBackgroundColor();
 	}
 	
 	void Update () {
@@ -66,49 +62,69 @@ public class JumpShootPlayerScript : MonoBehaviour {
 		}
 	}
 
+    
 	void OnCollisionEnter2D(Collision2D target){
-		// Get Standing Groud Type
-		GroundScript groundScriptComponent = target.gameObject.GetComponent<GroundScript>();
-		standingGroundType = groundScriptComponent.groundType;
+
+        GroundScript groundScriptComponent = target.gameObject.GetComponent<GroundScript>();
+        if (groundScriptComponent == null) return;
+
+        if (transform.position.y <= target.transform.position.y + stepDistanceY) return;
+
+        SetPositionIntoParentBound(target.transform);
+        // Get Standing Groud Type
+        standingGroundType = groundScriptComponent.groundType;
 
 		rigidBody2DComponent.velocity = Vector2.zero;
+        rigidBody2DComponent.gravityScale = 0;
 		currentPlayerState = PlayerState.Standing;
 		animatorComponent.SetBool("Jumping",false);
 		transform.SetParent(target.gameObject.transform);
-		GetPreviousPositionOfParent();
+        
+        GetPreviousPositionOfParent();
 		if(initialCollide == false){
 			if(groundScriptComponent.GetStepped() == false){
-				groundScriptComponent.Stepped();
-				GameObject.Find("_ScoreManager").GetComponent<JumpShootScoreManagerScript>().AddScore();
-			}
-			
-			GameObject.Find("_AudioManager").GetComponent<AudioManagerScript>().PlayCoinSound();
-			StartCoroutine(target.gameObject.GetComponent<GroundScript>().LandingEffect());
-			GameObject landingEffect = Instantiate(landingEffectPrefab,transform.position, Quaternion.identity);
-			Destroy(landingEffect,0.2f);
+                jsGM.AddScore();
+                groundScriptComponent.Stepped();
+                GameObject landingEffect = Instantiate(landingEffectPrefab, transform.position, Quaternion.identity);
+                Destroy(landingEffect, 0.2f);
 
-            // play circle burst
-            landingEffectPrefab2.Play();
+                // play circle burst
+                landingEffectPrefab2.Play();
+            }
+
+            StartCoroutine(target.gameObject.GetComponent<GroundScript>().LandingEffect());
+			
         }
 		else
 		{
 			initialCollide = false;
 		}
+    }
+
+    IEnumerator OnCollisionExit2D(Collision2D target){
+
+        if (!gameObject.activeSelf) { StopAllCoroutines(); yield break; }
+
+	    yield return new WaitForSeconds(0.1f);
+
+        if (currentPlayerState == PlayerState.Jumping){
+		    GameObject.Find("_GroundManager").GetComponent<GroundManagerScript>().GenerateGround();
+           if( target.collider.GetComponent<GroundScript>()?.GetStepped() == true ) Destroy(target.gameObject, 0.05f) ;
+	    }
 	}
 
-	IEnumerator OnCollisionExit2D(Collision2D target){
-		yield return new WaitForSeconds(0.1f);
-		
-		if(currentPlayerState == PlayerState.Jumping){
-			GameObject.Find("_GroundManager").GetComponent<GroundManagerScript>().GenerateGround();
-			Destroy(target.gameObject,0.05f);
-		}
-		yield break;
-	}
-
-	void GetPreviousPositionOfParent(){
+    void GetPreviousPositionOfParent(){
 		previousPosXParent = transform.parent.transform.position.x;
 	}
+
+    void SetPositionIntoParentBound(Transform parent)
+    {
+        BoxCollider2D parentCollider = GetComponentInParent<BoxCollider2D>();
+
+        if (transform.position.x > (parent.position.x + parentCollider.bounds.extents.x / repositionRatio) ) transform.position = new Vector2(transform.position.x - parentCollider.bounds.extents.x / repositionRatio, transform.position.y);
+        else if (transform.position.x < (parent.position.x - parentCollider.bounds.extents.x / repositionRatio) ) transform.position = new Vector2(transform.position.x + parentCollider.bounds.extents.x / repositionRatio, transform.position.y);
+
+    }
 
 	float ParentVelocity(){
 		return (transform.parent.transform.position.x - previousPosXParent) * throwSpeed / Time.deltaTime;
@@ -137,14 +153,15 @@ public class JumpShootPlayerScript : MonoBehaviour {
 				// StartCoroutine(Fall());
 			}
 			else if(currentPlayerState == PlayerState.Standing){
-				Jump();
+                Jump();
 			}
 		}
 	}
 
 	void Jump(){
 
-        
+        transform.SetParent(playerParent.transform);
+
         GameObject.Find("_AudioManager").GetComponent<AudioManagerScript>().PlayJumpSound();
 		boxCollider2D.enabled = false;
 		currentPlayerState = PlayerState.Jumping;
@@ -157,20 +174,25 @@ public class JumpShootPlayerScript : MonoBehaviour {
 			// rigidBody2DComponent.velocity = new Vector2(ParentVelocity(),jumpSpeed);
 			rigidBody2DComponent.velocity = new Vector2(0,jumpSpeed);
 		}
-		transform.SetParent(playerParent.transform);
+
+        rigidBody2DComponent.gravityScale = 4;
+        
 	}
 
 	void DeadCheck(){
-		if(isDead == false && Camera.main.transform.position.y - transform.position.y > 10){
-			isDead = true;
-			StopPlayer();
-			GameObject.Find("_GameManager").GetComponent<JumpShootGameManagerScript>().Dead();
-		}
+		if(isDead == false && Camera.main.transform.position.y - transform.position.y > 8f){
+            isDead = true;
+            camShake.enabled = true;
+            StopPlayer();
+        	jsGM.Dead();
+        //	jsGM.Revive();
+
+        }
 	}
 
 	void StopPlayer(){
 		rigidBody2DComponent.isKinematic = true;
-		rigidBody2DComponent.velocity = new Vector2(0,0);
+	//	rigidBody2DComponent.velocity = new Vector2(0,0);
 	}
 
 	public void RevivePlayer(){
@@ -214,7 +236,6 @@ public class JumpShootPlayerScript : MonoBehaviour {
 
 	IEnumerator Fall(){
 		GameObject shootEffect = Instantiate(shootEffectPrefab,transform.position, Quaternion.identity);
-		shootEffect.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.HSVToRGB(hueValue,0.6f,0.6f);
 
 		currentPlayerState = PlayerState.Falling;
 		boxCollider2D.enabled = true;
@@ -233,16 +254,7 @@ public class JumpShootPlayerScript : MonoBehaviour {
 		rigidBody2DComponent.isKinematic = false;
 		rigidBody2DComponent.velocity = new Vector2(0,-fallSpeed);
 		Destroy(shootEffect);
-		ChangeBackgroundColor();
 		yield break;
-	}
-
-	void ChangeBackgroundColor(){
-		Camera.main.backgroundColor = Color.HSVToRGB(hueValue, saturation, brightness);
-		//hueValue += Random.Range(0.1f,0.2f);
-		if(hueValue >= 1f){
-			hueValue = 0;
-		}
 	}
 
 }

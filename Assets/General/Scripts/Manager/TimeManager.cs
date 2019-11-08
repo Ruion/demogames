@@ -2,20 +2,22 @@
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using System.Reflection;
 
-public class TimeManager : MonoBehaviour {
+public class TimeManager : MonoBehaviour
+{
 
-    public int countDownSeconds
+    public float countDownSeconds
     {
         get { return second; }
         set { second = value; }
     }
-    public int second = 120;
+    public float second = 120;
 
-    [SerializeField] [ReadOnly]
-    private int initialSecond;
+    [ReadOnly] public float initialSecond;
 
     public bool isRealtime = true;
+    public string stringFormat = "";
 
     [Header("Optional Countdown TextMeshPro")]
     public TextMeshProUGUI[] countDownTexts;
@@ -29,10 +31,9 @@ public class TimeManager : MonoBehaviour {
 
     public void StartGame()
     {
-        Debug.Log("reloading time");
         if (initialSecond == 0) initialSecond = second;
 
-        ResetCountDown();
+        // ResetCountDown();
         StartCoroutine(StartCountdown());
     }
 
@@ -53,9 +54,9 @@ public class TimeManager : MonoBehaviour {
         second--;
 
         // update textmesh text if textmesh components exists
-        if (countDownTexts.Length > 0) { UpdateText(countDownTexts, second); }
+        if (countDownTexts.Length > 0) { UpdateText(countDownTexts, Mathf.RoundToInt(second)); }
 
-        
+
         if (second <= 0)
         {
             // Execute event on countdown ended
@@ -73,7 +74,7 @@ public class TimeManager : MonoBehaviour {
     {
         for (int t = 0; t < texts_.Length; t++)
         {
-            texts_[t].text = number.ToString();
+            texts_[t].text = number.ToString(stringFormat);
         }
     }
 
@@ -81,7 +82,7 @@ public class TimeManager : MonoBehaviour {
     {
         for (int t = 0; t < countDownTexts.Length; t++)
         {
-            countDownTexts[t].text = second.ToString();
+            countDownTexts[t].text = second.ToString(stringFormat);
         }
     }
 

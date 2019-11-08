@@ -3,13 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour {
 
-    [Header("0 - HOME")]
-    public int HOME = 0;
-    [Header("1 - GAME")]
-    public int GAME = 1;
-    [Header("2 - SCORE")]
-    public int SCORE = 2;
-
     public void SwitchScene(int sceneNumber)
     {
         Debug.Log("switch to scene " + sceneNumber);

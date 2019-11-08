@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundScript : MonoBehaviour {
 	public enum GroundType{
-		Normal,JumpHigh,TimeBomb,Static
+		Normal,JumpHigh,TimeBomb,Static, Shoe
 	}
 
 	public float minDistanceFromScreen = 0f;
@@ -16,7 +16,7 @@ public class GroundScript : MonoBehaviour {
 	[ReadOnly] public float distance;
 	[ReadOnly] public float screenWidth;
 	[ReadOnly] public float angle = 0;
-	[ReadOnly] private bool stepped = false;
+	[SerializeField] private bool stepped = false;
 	JumpShootPlayerScript playerScript;
 
 	void Awake(){
@@ -60,6 +60,8 @@ public class GroundScript : MonoBehaviour {
 	}
 
 	public IEnumerator LandingEffect(){
+        if (transform == null) StopAllCoroutines();
+
 		Vector2 originalPosition = transform.position;
 		float yChangeValue = shakeEffect;
 
