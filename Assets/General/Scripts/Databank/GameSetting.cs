@@ -86,6 +86,8 @@ public class Settings
         vendingStockSettings = setting.vendingStockSettings;
 
         sQliteDBSettings = setting.sQliteDBSettings;
+
+        rewardType = setting.rewardType;
 }
 
     public Settings(){  }

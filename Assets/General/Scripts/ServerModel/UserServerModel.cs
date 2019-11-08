@@ -6,7 +6,6 @@ using UnityEngine.Networking;
 using DataBank;
 using TMPro;
 using System.Data;
-using System.Reflection;
 
 [RequireComponent(typeof(UniversalUserDB))]
 public class UserServerModel : ServerModelMaster
@@ -368,10 +367,5 @@ public class UserServerModel : ServerModelMaster
     }
 
     #endregion
-
-    private void OnDisable()
-    {
-        udb.Close();
-    }
 
 }

@@ -322,8 +322,9 @@ GameObject:
   - component: {fileID: 4324381687631738}
   - component: {fileID: 4344332860821843431}
   - component: {fileID: 278134679096204752}
+  - component: {fileID: 9137929944522467931}
   m_Layer: 0
-  m_Name: UserServerModel
+  m_Name: UserModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -434,6 +435,46 @@ MonoBehaviour:
   successBar: {fileID: 0}
   successText: {fileID: 0}
   failBar: {fileID: 0}
+  localEmailList: []
+  emailList: []
+--- !u!114 &9137929944522467931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305985105367576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1853f8b9b8103a49a60055410600231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSettings:
+    DebugMode: 0
+    fileName: game_setting
+    scoreName: game_score
+    serverAddress: http://192.168.0.28/honda/submit-data.php
+    serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
+    scoreToWin: 3
+    userTypeName: 
+    rewardType: 0
+    sQliteDBSettings:
+      dbName: db_
+      tableName: registration
+      UniversalUserClassName: DataBank.
+      columns: []
+      attributes: []
+      columnsToSkipWhenSync: []
+    vendingStockSettings:
+      stockDbName: db_stock
+      stockTableName: table_stock
+      VMSerialPortWriteType: 0
+      vmserialPortText: 
+      portname: 0
+      portbaudrate: 115200
+      numberToPopulate: 35
+      numberPerLane: 3
+      laneOccupyPerMotor: 1
   localEmailList: []
   emailList: []
 --- !u!1 &1109468248716099610
@@ -905,6 +946,7 @@ MonoBehaviour:
   second: 3
   initialSecond: 0
   isRealtime: 1
+  stringFormat: 
   countDownTexts: []
   countdownEndEvents:
     m_PersistentCalls:
@@ -1721,15 +1763,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2535833294125430819}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &271903810057502104 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2374780056283710907, guid: 7f64134ecc634be4bbcab1c212601dac,
-    type: 3}
-  m_PrefabInstance: {fileID: 2535833294125430819}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5101129918148149990 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7348691861585984197, guid: 7f64134ecc634be4bbcab1c212601dac,
+    type: 3}
+  m_PrefabInstance: {fileID: 2535833294125430819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &271903810057502104 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2374780056283710907, guid: 7f64134ecc634be4bbcab1c212601dac,
     type: 3}
   m_PrefabInstance: {fileID: 2535833294125430819}
   m_PrefabAsset: {fileID: 0}

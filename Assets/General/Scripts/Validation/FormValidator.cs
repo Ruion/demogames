@@ -24,6 +24,7 @@ public class FormValidator : ServerModelMaster
     public TMP_InputField PhoneText;
     public TMP_InputField EmailText;
     public TMP_Dropdown contactDropdown;
+    public Toggle consent;
 
     string MailPattern = @"^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$";
 
@@ -56,7 +57,7 @@ public class FormValidator : ServerModelMaster
     // Update is called once per frame
     void Update()
     {
-        if (Text1OK && Text2OK && Text3OK && userIsUnique)
+        if (Text1OK && Text2OK && Text3OK && userIsUnique && consent.isOn)
         {
             Submit.interactable = true;
             virtualSubmit.interactable = true;

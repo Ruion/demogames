@@ -1478,6 +1478,100 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123941860}
   m_Mesh: {fileID: 0}
+--- !u!1001 &124166256
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2901172509013719973, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: m_Name
+      value: GameSettingEntity_DoNotChangeName
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942889261852245931, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942889261852245931, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942889261852245931, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942889261852245931, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942889261852245931, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942889261852245931, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942889261852245931, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942889261852245931, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942889261852245931, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942889261852245931, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942889261852245931, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.scoreName
+      value: score_jumpshoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.serverAddress
+      value: http://localhost/jumpshoot/jumpshoot/submit-data.php
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.serverGetDataAddress
+      value: http://game-03-dashboard.unicom-interactive-digital.com/api/downloadRegisteredEmailList
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.rewardType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.UniversalUserClassName
+      value: DataBank.UniversalUserEntity
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8cf9bc346bec815448f5896dcc069492, type: 3}
 --- !u!1001 &146950548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1586,7 +1680,7 @@ Transform:
   - {fileID: 960677738}
   - {fileID: 477102504}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &163307930
 GameObject:
@@ -1837,7 +1931,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   second: 2
+  initialSecond: 0
   isRealtime: 1
+  stringFormat: 
   countDownTexts: []
   countdownEndEvents:
     m_PersistentCalls:
@@ -3135,7 +3231,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &433401371
 GameObject:
@@ -3522,6 +3618,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca38cfc2e5d02544a789a9612368db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSettings:
+    DebugMode: 0
+    fileName: game_setting
+    scoreName: game_score
+    serverAddress: http://192.168.0.28/honda/submit-data.php
+    serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
+    scoreToWin: 3
+    userTypeName: 
+    rewardType: 0
+    sQliteDBSettings:
+      dbName: db_
+      tableName: registration
+      UniversalUserClassName: DataBank.
+      columns: []
+      attributes: []
+      columnsToSkipWhenSync: []
+    vendingStockSettings:
+      stockDbName: db_stock
+      stockTableName: table_stock
+      VMSerialPortWriteType: 0
+      vmserialPortText: 
+      portname: 0
+      portbaudrate: 115200
+      numberToPopulate: 35
+      numberPerLane: 3
+      laneOccupyPerMotor: 1
   scoreTexts:
   - {fileID: 664651632}
   - {fileID: 1143701767}
@@ -3966,12 +4088,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498293900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -3.878, z: 0}
+  m_LocalPosition: {x: -0, y: -1.78, z: 0}
   m_LocalScale: {x: 0.52, y: 0.52, z: 0.52}
   m_Children:
   - {fileID: 1868381041}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &498293903
 Rigidbody:
@@ -4148,7 +4270,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &647110354
 GameObject:
@@ -4449,7 +4571,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   second: 5
+  initialSecond: 0
   isRealtime: 1
+  stringFormat: 
   countDownTexts:
   - {fileID: 647110356}
   countdownEndEvents:
@@ -6726,7 +6850,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   second: 2
+  initialSecond: 0
   isRealtime: 1
+  stringFormat: 
   countDownTexts: []
   countdownEndEvents:
     m_PersistentCalls:
@@ -7222,6 +7348,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca38cfc2e5d02544a789a9612368db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSettings:
+    DebugMode: 0
+    fileName: game_setting
+    scoreName: game_score
+    serverAddress: http://192.168.0.28/honda/submit-data.php
+    serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
+    scoreToWin: 3
+    userTypeName: 
+    rewardType: 0
+    sQliteDBSettings:
+      dbName: db_
+      tableName: registration
+      UniversalUserClassName: DataBank.
+      columns: []
+      attributes: []
+      columnsToSkipWhenSync: []
+    vendingStockSettings:
+      stockDbName: db_stock
+      stockTableName: table_stock
+      VMSerialPortWriteType: 0
+      vmserialPortText: 
+      portname: 0
+      portbaudrate: 115200
+      numberToPopulate: 35
+      numberPerLane: 3
+      laneOccupyPerMotor: 1
   scoreTexts:
   - {fileID: 980719042}
   - {fileID: 1221963314}
@@ -7547,7 +7699,7 @@ Transform:
   - {fileID: 1737522988}
   - {fileID: 163307931}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1182976113
 MonoBehaviour:
@@ -7702,7 +7854,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   second: 1
+  initialSecond: 0
   isRealtime: 1
+  stringFormat: 
   countDownTexts: []
   countdownEndEvents:
     m_PersistentCalls:
@@ -7764,7 +7918,7 @@ Transform:
   - {fileID: 1586892462}
   - {fileID: 8655676693641962394}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1221963312
 GameObject:
@@ -7999,7 +8153,7 @@ Transform:
   - {fileID: 304693201}
   - {fileID: 1867208071}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1234819145
 GameObject:
@@ -9380,7 +9534,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   second: 2
+  initialSecond: 0
   isRealtime: 1
+  stringFormat: 
   countDownTexts: []
   countdownEndEvents:
     m_PersistentCalls:
@@ -10178,7 +10334,7 @@ RectTransform:
   - {fileID: 1427746909}
   - {fileID: 1372018489}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10874,7 +11030,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   second: 2
+  initialSecond: 0
   isRealtime: 1
+  stringFormat: 
   countDownTexts: []
   countdownEndEvents:
     m_PersistentCalls:
@@ -11913,31 +12071,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DataManager
       objectReference: {fileID: 0}
-    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: settingFileName
-      value: game_honda
-      objectReference: {fileID: 0}
-    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: dbName
-      value: user_db_honda
-      objectReference: {fileID: 0}
-    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: scoreName
-      value: score_honda
-      objectReference: {fileID: 0}
-    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: serverAddress
-      value: http://localhost/honda/honda/submit-data.php
-      objectReference: {fileID: 0}
-    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: serverGetDataAddress
-      value: http://localhost/honda/honda/submit-data.php
-      objectReference: {fileID: 0}
     - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11968,7 +12101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11986,6 +12119,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
+        type: 3}
+      propertyPath: settingFileName
+      value: game_honda
+      objectReference: {fileID: 0}
+    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
+        type: 3}
+      propertyPath: dbName
+      value: user_db_honda
+      objectReference: {fileID: 0}
+    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
+        type: 3}
+      propertyPath: scoreName
+      value: score_honda
+      objectReference: {fileID: 0}
+    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
+        type: 3}
+      propertyPath: serverAddress
+      value: http://localhost/honda/honda/submit-data.php
+      objectReference: {fileID: 0}
+    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
+        type: 3}
+      propertyPath: serverGetDataAddress
+      value: http://localhost/honda/honda/submit-data.php
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23946b9a687056943befb60085aa9de1, type: 3}
@@ -12081,7 +12239,7 @@ RectTransform:
   m_Children:
   - {fileID: 1633089190}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12542,9 +12700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509dae1d78e36814aa460e2402a596fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HOME: 0
-  GAME: 1
-  SCORE: 2
 --- !u!4 &2146937176
 Transform:
   m_ObjectHideFlags: 0
@@ -13200,6 +13355,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716899434343471304, guid: 38f263c6eca236944929d933ea2b91a9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f263c6eca236944929d933ea2b91a9, type: 3}

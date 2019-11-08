@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Game-JumpShoot/HOME_JUMPSHOOT.unity
-    guid: ce654b8d8e82a1a4eabd81ad3624e955
+    path: Assets/Game-Honda/HOME.unity
+    guid: dd6b293254d4e7f488dbf2e1f468eec8
   - enabled: 1
-    path: Assets/Game-JumpShoot/GAME_JUMPSHOOT.unity
-    guid: ae8900706fbe4ef4b9ac84d1b7f8437b
+    path: Assets/Game-Honda/GAME.unity
+    guid: 46a4e19f8b9890945b47a045db2cf918
+  - enabled: 1
+    path: Assets/Game-Honda/SCORE.unity
+    guid: 0f15b6c718cea604ea06c77d17197ec7
   m_configObjects: {}

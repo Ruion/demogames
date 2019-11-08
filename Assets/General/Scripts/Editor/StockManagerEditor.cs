@@ -5,7 +5,7 @@ using UnityEngine;
 using DataBank;
 
 [CustomEditor(typeof(StockManager))]
-public class StockManagerEditor : Editor
+public class StockManagerEditor : GameSettingEntityEditor
 {
     StockManager sm;
 
