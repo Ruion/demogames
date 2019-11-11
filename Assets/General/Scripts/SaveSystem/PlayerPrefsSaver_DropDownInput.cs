@@ -10,6 +10,6 @@ public class PlayerPrefsSaver_DropDownInput : PlayerPrefsSaver
 
     public void SaveCombineField()
     {
-        PlayerPrefs.SetString(name_, prefix + dropDown.value + inputField.text);
+        PlayerPrefs.SetString(name_, prefix + dropDown.options[dropDown.value].text + inputField.text);
     }
 }

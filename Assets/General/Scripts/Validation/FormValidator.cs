@@ -42,6 +42,7 @@ public class FormValidator : ServerModelMaster
 
     private int oskID;
     public float validateFrequency;
+    public string contactPrefix = "+6";
     #endregion
 
     private void Start()
@@ -57,7 +58,7 @@ public class FormValidator : ServerModelMaster
     // Update is called once per frame
     void Update()
     {
-        if (Text1OK && Text2OK && Text3OK && userIsUnique && consent.isOn)
+        if (Text1OK && Text2OK && Text3OK && consent.isOn)
         {
             Submit.interactable = true;
             virtualSubmit.interactable = true;
@@ -86,7 +87,6 @@ public class FormValidator : ServerModelMaster
         T1Change();
         T2Change();
         T3Change();
-        CheckUserExists();
     }
 
     public void T1Change()
@@ -101,14 +101,16 @@ public class FormValidator : ServerModelMaster
     {
         string contact = contactDropdown.options[contactDropdown.value].text + PhoneText.text;
         Text2OK = Regex.IsMatch(contact, PhonePattern);
-        if (!Text2OK) { ChangeHint(1, false); }
+
+        if (!Text2OK || ToogleWarning(PhoneText.text, contactList, phoneWarning)) { ChangeHint(1, false); }
         else { ChangeHint(1, true); }
     }
 
     public void T3Change()
     {
         Text3OK = Regex.IsMatch(EmailText.text, MailPattern);
-        if (!Text3OK) { ChangeHint(2, false); }
+
+        if (!Text3OK || ToogleWarning(EmailText.text, emailList, emailWarning)) { ChangeHint(2, false); }
         else { ChangeHint(2, true); }
     }
 
@@ -121,77 +123,26 @@ public class FormValidator : ServerModelMaster
         return notEmpty;
     }
 
-    public void CheckUserExists()
-    {
-        userIsUnique = ToggleWarnings();
-     //  if(!userIsUnique) Debug.Log("user not unique");
-    }
-
     private void ChangeHint(int InputIndex, bool isPass = false)
     {
         Ok_Markers[InputIndex].SetActive(isPass);
         NotOk_Markers[InputIndex].SetActive(!isPass);
     }
 
-    private bool ToggleWarnings()
+    private bool ToogleWarning(string text, List<string> list, GameObject warningObject)
     {
-        bool isUnique = true;
+        if (text == "") return false;
 
-        bool emailIsUnique = ToggleEmailWarning();
-        bool phoneIsUnique = TogglePhoneWarning();
-
-        if (emailIsUnique || phoneIsUnique)
+        if(ValidateDuplicate(list, text))
         {
-            isUnique = false;
+            warningObject.SetActive(true);
+            return true;
+        }
+        else
+        {
+            return false;
         }
 
-        return isUnique;
-    }
-
-    private bool ToggleEmailWarning()
-    {
-        bool hasSame = false;
-
-        if (EmailText.text != "")
-        {
-            if (ValidateDuplicate(emailList, EmailText.text))
-            {
-                emailWarning.SetActive(true);
-                hasSame = true;
-                //   Debug.Log("email not unique");
-            }
-            else
-            {
-                emailWarning.SetActive(false);
-                hasSame = false;
-
-            }
-        }
-
-        return hasSame;
-    }
-
-    private bool TogglePhoneWarning()
-    {
-        bool hasSame = false;
-
-        if (PhoneText.text != "")
-        {
-            if (ValidateDuplicate(contactList, contactDropdown.value + PhoneText.text))
-            {
-                phoneWarning.SetActive(true);
-                hasSame = true;
-                //  Debug.Log("phone not unique");
-            }
-            else
-            {
-                phoneWarning.SetActive(false);
-                hasSame = false;
-
-            }
-        }
-
-        return hasSame;
     }
 
     private bool ValidateDuplicate(List<string> source, string text_)

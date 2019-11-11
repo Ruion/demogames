@@ -56,6 +56,9 @@ public class Encryption : MonoBehaviour
 
     const string glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     const string passwords_encryption = "Unicom_UID_2019";
+    /// <summary>
+    /// Change this URL
+    /// </summary>
     const string urlstage2_Register = "http://api-test.unicom-interactive-digital.com/activate-key.php";
 
     void Awake()

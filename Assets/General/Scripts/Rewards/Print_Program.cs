@@ -16,7 +16,7 @@ class Print_Program : RewardFeature
 
     public void Print()
     {
-
+        /*
        // string init_path = Application.dataPath + "/PDFtoPrinter.exe";
         string init_path = Application.streamingAssetsPath + "/PDFtoPrinter.exe";
        // string init_path2 = Application.dataPath + "/test.pdf";
@@ -58,17 +58,20 @@ class Print_Program : RewardFeature
         Debug.Log(final_path);
         Debug.Log(final_path2);
 
+    */
         var proc = new System.Diagnostics.Process();
         proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
         proc.StartInfo.Verb = "print";
 
         // Using PDFtoPrinter
-        //   proc.StartInfo.FileName = @"C:\Unity_Print\PDFtoPrinter.exe";
-        //   
-        //  proc.StartInfo.Arguments = string.Format(@"c:\Unity_Print\test.pdf");
+           proc.StartInfo.FileName = @"C:\Unity_Print\PDFtoPrinter.exe";
          
+          proc.StartInfo.Arguments = string.Format(@"c:\Unity_Print\test.pdf");
+
+        /*
         proc.StartInfo.FileName = final_path;
         proc.StartInfo.Arguments = final_path2;
+        */
 
         proc.StartInfo.UseShellExecute = false;
         proc.StartInfo.CreateNoWindow = true;

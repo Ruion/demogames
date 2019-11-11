@@ -3333,6 +3333,7 @@ GameObject:
   - component: {fileID: 1446155829}
   - component: {fileID: 1446155827}
   - component: {fileID: 1446155830}
+  - component: {fileID: 1446155831}
   m_Layer: 0
   m_Name: EventConditional_OnScorePass_PRINTVOUCHER
   m_TagString: Untagged
@@ -3381,6 +3382,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1446155831}
+        m_MethodName: Save
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: win
+          m_BoolArgument: 0
+        m_CallState: 2
   OnScoreCardNotPass:
     m_PersistentCalls:
       m_Calls:
@@ -3393,6 +3405,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1446155831}
+        m_MethodName: Save
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: lose
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!4 &1446155828
@@ -3500,6 +3523,19 @@ MonoBehaviour:
   - 3.5
   - 3
   isRealtime: 1
+--- !u!114 &1446155831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446155826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b27475fcbc14b4c93801e8d3ac69a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name_: game_result
 --- !u!1 &1495768488
 GameObject:
   m_ObjectHideFlags: 0
@@ -4844,6 +4880,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropGift__place second
       objectReference: {fileID: 0}
+    - target: {fileID: 6163627676838076568, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163627676838076568, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1920
+      objectReference: {fileID: 0}
     - target: {fileID: 3228529012777826608, guid: f9b791d14d87f494b80d9cb853e25a1b,
         type: 3}
       propertyPath: gameSettings.fileName
@@ -4908,16 +4954,6 @@ PrefabInstance:
         type: 3}
       propertyPath: gameSettings.rewardType
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6163627676838076568, guid: f9b791d14d87f494b80d9cb853e25a1b,
-        type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 6163627676838076568, guid: f9b791d14d87f494b80d9cb853e25a1b,
-        type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1920
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b791d14d87f494b80d9cb853e25a1b, type: 3}

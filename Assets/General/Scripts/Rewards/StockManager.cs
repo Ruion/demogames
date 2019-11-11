@@ -33,6 +33,8 @@ public class StockManager : RewardFeature {
     public InputField truckAmountOccupyByGift;
     public InputField giftPerTruck;
 
+    public TextMeshProUGUI text_;
+
     public override void GiveReward()
     {
         DropGift();
@@ -204,6 +206,8 @@ public class StockManager : RewardFeature {
         }
 
         stock.number--;
+
+       if(text_ != null) text_.text = stock.lane + " drop 1 gift, " + stock.lane + " stock have " + stock.number + " left";
 
         Debug.Log(stock.lane + " drop 1 gift, " + stock.lane + " stock have " + stock.number + " left");  
 
