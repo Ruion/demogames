@@ -72,5 +72,5 @@ public class LocalDBSetting
     public string dbName;
     public string tableName;
     public List<string> columns;
-    public List<string> type;
+    public List<string> attributes;
 }
