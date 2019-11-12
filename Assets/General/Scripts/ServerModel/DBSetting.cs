@@ -9,7 +9,7 @@ public class DBSetting
     public static void SaveSetting(DBEntitySetting setting)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.streamingAssetsPath + "/" + setting.fileName + ".setting";
+        string path = Application.streamingAssetsPath + "/" + setting.fileName + ".dbsetting";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         DBEntitySetting data = new DBEntitySetting(setting);
@@ -54,8 +54,10 @@ public class DBSetting
 [System.Serializable]
 public class DBEntitySetting
 {
-    public string fileName = "db";
+    public string fileName;
     public string sendURL;
+    public ServerResponses serverResponses;
+
     public LocalDBSetting localDbSetting;
 
     public DBEntitySetting(DBEntitySetting setting)
@@ -63,7 +65,10 @@ public class DBEntitySetting
         fileName = setting.fileName;
         sendURL = setting.sendURL;
         localDbSetting = setting.localDbSetting;
+        serverResponses = setting.serverResponses;
     }
+
+    public DBEntitySetting() { }
 }
 
 [System.Serializable]
@@ -73,4 +78,13 @@ public class LocalDBSetting
     public string tableName;
     public List<string> columns;
     public List<string> attributes;
+    public List<string> columnsToSync;
+}
+
+[System.Serializable]
+public class ServerResponses
+{
+    [Header("First response must be success reponse")]
+    public string[] resultResponses;
+    public string[] resultResponsesMessage;
 }

@@ -11,18 +11,21 @@ public class DBModelMaster : DBSettingEntity
 {
     private const string CodistanTag = "Codistan: SqliteHelper:\t";
 
-    public string database_name = "user_db";
-
     public string db_connection_string;
     public IDbConnection db_connection;
+    public SqliteConnection sqlitedb_connection;
 
     public int numberToPopulate = 10;
     public int TestIndex = 0;
+
+    public List<string> colPrefix;
+
     protected virtual void OnEnable()
     {
         CreateTable();
     }
 
+    #region setUp
     [ContextMenu("Create table")]
     public virtual void CreateTable()
     {
@@ -44,7 +47,11 @@ public class DBModelMaster : DBSettingEntity
             else dbcmd.CommandText += " ) ; ";
         }
 
-        try { dbcmd.ExecuteNonQuery(); Debug.Log("table success created"); }
+        try
+        {
+            dbcmd.ExecuteNonQuery();
+            // Debug.Log("table success created"); }
+        }
         catch (Exception ex) { Debug.LogError(ex.Message); return; }
 
         db_connection.Close();
@@ -62,7 +69,9 @@ public class DBModelMaster : DBSettingEntity
     {
         return db_connection.CreateCommand();
     }
+    #endregion
 
+    #region Insert
     public virtual string AddData(List<string> columns_, List<string> values_)
     {
         ConnectDb();
@@ -146,7 +155,7 @@ public class DBModelMaster : DBSettingEntity
             {
                 dbcmd2.ExecuteNonQuery(); Close();
                 return "true";
-                
+
             }
             catch (DbException ex)
             {
@@ -156,18 +165,40 @@ public class DBModelMaster : DBSettingEntity
             }
         }
     }
+    #endregion
 
-    public virtual IDataReader GetAllData()
+    #region Get
+    [ContextMenu("GetAllInDataTable")]
+    public virtual DataTable GetAllDataInToDataTable()
     {
         ConnectDb();
         try
         {
-            IDbCommand dbcmd = db_connection.CreateCommand();
-            dbcmd.CommandText =
-                "SELECT * FROM " + dbSettings.localDbSetting.tableName;
-            IDataReader reader = dbcmd.ExecuteReader();
+            string query = "SELECT * FROM " + dbSettings.localDbSetting.tableName;
+            sqlitedb_connection = new SqliteConnection(db_connection_string);
+
+            SqliteCommand cmd = new SqliteCommand(query, sqlitedb_connection);
+
+            SqliteDataAdapter da = new SqliteDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow r in dt.Rows)
+            {
+                string record = "";
+
+                foreach (string col in dbSettings.localDbSetting.columns)
+                {
+                    record += r[col].ToString() + " | ";
+                    // Debug.Log(record);
+                }
+                Debug.Log(record);
+            }
+
             Close();
-            return reader;
+            return dt;
+
         }
         catch (DbException ex)
         {
@@ -177,43 +208,51 @@ public class DBModelMaster : DBSettingEntity
         }
     }
 
-    /*
-    public List<UniversalUserEntity> GetAllUnSyncUser()
+    public DataRowCollection GetAllUnSync()
     {
-        List<UniversalUserEntity> entities = new List<UniversalUserEntity>();
-
-        ConnectDbCustom();
-
-        IDataReader reader = GetDataByString(KEY_SYNC, "false");
-        //   Debug.Log("Reader fieldCount : " + reader.FieldCount);
-
-        while (reader.Read())
+        ConnectDb();
+        try
         {
-            UniversalUserEntity entity = new UniversalUserEntity();
-            for (int i = 0; i < reader.FieldCount; i++)
+            string query = "SELECT * FROM " + dbSettings.localDbSetting.tableName + " WHERE is_submitted = 'false'";
+            sqlitedb_connection = new SqliteConnection(db_connection_string);
+
+            SqliteCommand cmd = new SqliteCommand(query, sqlitedb_connection);
+
+            SqliteDataAdapter da = new SqliteDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            /*
+            Debug.Log("Columns : " + dt.Columns.Count);
+            Debug.Log("Rows : " + dt.Rows.Count);
+
+            foreach (DataRow r in dt.Rows)
             {
-                // Debug.Log("Index i : " + i);
-                entity.name = reader[1].ToString();
-                entity.email = reader[2].ToString();
-                entity.contact = reader[3].ToString();
-                //    entity.age = reader[4].ToString();
-                //    entity.dob = reader[5].ToString();
-                //   entity.gender = reader[6].ToString();
-                entity.game_result = reader[7].ToString();
-                entity.game_score = reader[8].ToString();
-                entity.created_at = reader[9].ToString();
-                entity.is_submitted = reader[10].ToString();
+                string record = "";
+
+                foreach (string col in dbSettings.localDbSetting.columns)
+                {
+                    record += r[col].ToString() + " | ";
+                }
+                Debug.Log(record);
             }
+            */
 
-            entities.Add(entity);
+            Close();
+            return dt.Rows;
+
         }
-
-        Close();
-
-        return entities;
+        catch (DbException ex)
+        {
+            Debug.LogError("Error : " + ex.Message);
+            Close();
+            return null;
+        }
     }
-    */
+    #endregion
 
+    #region Delete
     public virtual void DeleteAllData()
     {
         ConnectDb();
@@ -222,6 +261,7 @@ public class DBModelMaster : DBSettingEntity
         dbcmd.ExecuteNonQuery();
         Close();
     }
+    #endregion
 
     #region Update
 
@@ -270,7 +310,7 @@ public class DBModelMaster : DBSettingEntity
         Close();
     }
 
-    public void UpdateSyncData(DataTable dataEntity)
+    public void UpdateSyncData(string id)
     {
         List<string> col = new List<string>();
         List<string> con = new List<string>();
@@ -278,9 +318,9 @@ public class DBModelMaster : DBSettingEntity
         col.Add("is_submitted");
         con.Add("true");
 
-        string condition = "id = '" + dataEntity.Rows[0]["id"].ToString() + "'";
+        string condition = "id = '" + id + "'";
 
-        try { UpdateData(col, con, condition); Debug.Log("Update record " + dataEntity.Rows[dataEntity.Rows.Count]["is_submitted"] + " to true"); }
+        try { UpdateData(col, con, condition); Debug.Log("Update record " + id + " is_submitted to true"); }
         catch (Exception ex)
         {
             Debug.LogError(ex.Message);
@@ -290,6 +330,27 @@ public class DBModelMaster : DBSettingEntity
 
     #endregion
 
+    public virtual void ExecuteCustomQuery(string query)
+    {
+        ConnectDb();
+        try
+        {
+            sqlitedb_connection = new SqliteConnection(db_connection_string);
+
+            SqliteCommand cmd = new SqliteCommand(query, sqlitedb_connection);
+
+            cmd.ExecuteNonQuery();
+
+            Close();
+
+        }
+        catch (DbException ex)
+        {
+            Debug.Log("Error : " + ex.Message);
+            Close();
+        }
+    }
+
     public virtual void Close()
     {
         db_connection.Close();
@@ -297,8 +358,9 @@ public class DBModelMaster : DBSettingEntity
 
     public virtual void Populate()
     {
-        ConnectDb();
+        CreateTable();
 
+        ConnectDb();
         List<string> col = new List<string>();
         col.AddRange(dbSettings.localDbSetting.columns);
 
@@ -313,7 +375,7 @@ public class DBModelMaster : DBSettingEntity
         {
             for (int i = 0; i < col.Count; i++)
             {
-                val[i] = col[i] + ((n + 1).ToString());
+                val[i] = colPrefix[i] + ((n + 1).ToString());
             }
 
             val[val.Count - 1] = "false";
@@ -358,6 +420,30 @@ public class DBModelMaster : DBSettingEntity
         }
         return html;
     }
+
+    #region Save & Sync 
+    public virtual void SaveToLocal()
+    {
+        LoadSetting();
+
+    }
+
+    public virtual void Sync()
+    {
+        LoadSetting();
+        #region Check Internet
+        ///////////// CHECK Internet Connection /////////////
+        string HtmlText = GetHtmlFromUri("http://google.com");
+        if (HtmlText == "")
+        {
+            //No connection
+            Debug.LogError("No internet connection");
+            return;
+        }
+        #endregion
+    }
+
+    #endregion
 }
 
 

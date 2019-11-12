@@ -12,7 +12,7 @@ public class DBSettingEntity : MonoBehaviour
     #region Basics
     public virtual void Awake()
     {
-       // LoadDBSettingFromMaster();
+        LoadSetting();
     }
 
     [ContextMenu("SaveSetting")]
@@ -39,7 +39,4 @@ public class DBSettingEntity : MonoBehaviour
     }
     #endregion
 
-    #region Local DB
-
-    #endregion
 }

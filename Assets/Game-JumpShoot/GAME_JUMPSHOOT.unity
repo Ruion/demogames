@@ -408,46 +408,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
-        type: 3}
-      propertyPath: gameSettings.fileName
-      value: game_jumpshoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
-        type: 3}
-      propertyPath: gameSettings.dbName
-      value: user_db_jumpshoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
-        type: 3}
-      propertyPath: gameSettings.scoreName
-      value: score_jumpshoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
-        type: 3}
-      propertyPath: gameSettings.serverAddress
-      value: http://localhost/jumpshoot/jumpshoot/submit-data.php
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
-        type: 3}
-      propertyPath: gameSettings.serverGetDataAddress
-      value: http://game-03-dashboard.unicom-interactive-digital.com/api/downloadRegisteredEmailList
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
-        type: 3}
-      propertyPath: gameSettings.rewardType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
-        type: 3}
-      propertyPath: gameSettings.stockDbName
-      value: stockDb_jumpshoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
-        type: 3}
-      propertyPath: gameSettings.stockTableName
-      value: stockTable_jumpshoot
-      objectReference: {fileID: 0}
     - target: {fileID: 1802186495080113048, guid: f9b791d14d87f494b80d9cb853e25a1b,
         type: 3}
       propertyPath: gameSettings.sQliteDBSettings.columns.Array.size
@@ -617,6 +577,46 @@ PrefabInstance:
         type: 3}
       propertyPath: gameSettings.sQliteDBSettings.columnsToSkipWhenSync.Array.data[1]
       value: is_submitted
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.fileName
+      value: game_jumpshoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.dbName
+      value: user_db_jumpshoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.scoreName
+      value: score_jumpshoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.serverAddress
+      value: http://localhost/jumpshoot/jumpshoot/submit-data.php
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.serverGetDataAddress
+      value: http://game-03-dashboard.unicom-interactive-digital.com/api/downloadRegisteredEmailList
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.rewardType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.stockDbName
+      value: stockDb_jumpshoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430496413423124727, guid: f9b791d14d87f494b80d9cb853e25a1b,
+        type: 3}
+      propertyPath: gameSettings.stockTableName
+      value: stockTable_jumpshoot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b791d14d87f494b80d9cb853e25a1b, type: 3}
@@ -1484,6 +1484,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4b0fa41e3f84c4483504d6babaaff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &655031104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 655031106}
+  - component: {fileID: 655031105}
+  m_Layer: 0
+  m_Name: DuplicatePlayer_DatabaseModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &655031105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655031104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db476e859c69a7d448df1b2a28465c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dbSettings:
+    fileName: db_jumpshoot_duplicateplayer
+    sendURL: http://game-01-dashboard.unicom-interactive-digital.com/public/api/check-duplicate-player
+    serverResponses:
+      resultResponses:
+      - New
+      - Invalid Request
+      - Duplicate
+      resultResponsesMessage:
+      - new email sent !
+      - invalid request !
+      - duplicated email sent !
+    localDbSetting:
+      dbName: duplicateplayer
+      tableName: duplicateplayer
+      columns:
+      - id
+      - email
+      - is_submitted
+      attributes:
+      - INTEGER PRIMARY KEY
+      - TEXT
+      - TEXT
+      columnsToSync:
+      - email
+  db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/playerdata
+  numberToPopulate: 10
+  TestIndex: 2
+  colPrefix: []
+--- !u!4 &655031106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655031104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 540, y: 1292.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &669078219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1654,6 +1726,94 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 669078219}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &672387097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 672387099}
+  - component: {fileID: 672387098}
+  m_Layer: 0
+  m_Name: PlayerData_DatabaseModel (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &672387098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672387097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db476e859c69a7d448df1b2a28465c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dbSettings:
+    fileName: db_jumpshoot_player
+    sendURL: http://game-01-dashboard.unicom-interactive-digital.com/public/api/submit-player-data
+    serverResponses:
+      resultResponses:
+      - Success
+      - Fail
+      resultResponsesMessage:
+      - sent success
+      - fail although sent
+    localDbSetting:
+      dbName: playerdata
+      tableName: playerdata
+      columns:
+      - id
+      - name
+      - email
+      - contact
+      - age
+      - dob
+      - gender
+      - created_at
+      - is_submitted
+      attributes:
+      - INTEGER PRIMARY KEY
+      - TEXT
+      - TEXT
+      - TEXT
+      - TEXT
+      - TEXT
+      - TEXT
+      - TEXT
+      - TEXT
+      columnsToSync:
+      - name
+      - email
+      - contact
+      - age
+      - dob
+      - gender
+      - created_at
+  db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/playerdata
+  numberToPopulate: 10
+  TestIndex: 2
+  colPrefix: []
+--- !u!4 &672387099
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672387097}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 540, y: 1292.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &676793181 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4528111513170007370, guid: 293ce349e201e674386d5d96676e125c,
@@ -2054,50 +2214,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneSwitcher__SCENE_CONFIGURATION
       objectReference: {fileID: 0}
-    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.40468407
-      objectReference: {fileID: 0}
-    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.0674473
-      objectReference: {fileID: 0}
-    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.0674473
-      objectReference: {fileID: 0}
-    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.0674473
-      objectReference: {fileID: 0}
     - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
         type: 3}
       propertyPath: events.Array.size
@@ -2106,7 +2222,7 @@ PrefabInstance:
     - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
         type: 3}
       propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
         type: 3}
@@ -2263,6 +2379,115 @@ PrefabInstance:
         type: 3}
       propertyPath: events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: HOME_JUMPSHOOT
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
+        type: 3}
+      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1350238776}
+    - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
+        type: 3}
+      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SaveToLocal
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
+        type: 3}
+      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
+        type: 3}
+      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
+        type: 3}
+      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
+        type: 3}
+      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1350238776}
+    - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
+        type: 3}
+      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SaveToLocal
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
+        type: 3}
+      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
+        type: 3}
+      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
+        type: 3}
+      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
+        type: 3}
+      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 1350238776}
+    - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
+        type: 3}
+      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: SaveToLocal
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
+        type: 3}
+      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.40468407
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0674473
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0674473
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284332265760592, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0674473
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ad76668af0784840b64610746b2ef5b, type: 3}
@@ -3025,6 +3250,74 @@ Transform:
   - {fileID: 2081588390}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1350238775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1350238777}
+  - component: {fileID: 1350238776}
+  m_Layer: 0
+  m_Name: PlayerScoreData_DatabaseModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1350238776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350238775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db476e859c69a7d448df1b2a28465c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dbSettings:
+    fileName: db_jumpshoot_playerscoredata
+    sendURL: http://game-01-dashboard.unicom-interactive-digital.com/public/api/submit-score-data
+    serverResponses:
+      resultResponses: []
+      resultResponsesMessage: []
+    localDbSetting:
+      dbName: playerscoredata
+      tableName: playerscoredata
+      columns:
+      - id
+      - email
+      - score
+      - result
+      attributes:
+      - INTEGER PRIMARY KEY
+      - TEXT
+      - TEXT
+      - TEXT
+      columnsToSync:
+      - email
+  db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/playerdata
+  numberToPopulate: 10
+  TestIndex: 2
+  colPrefix: []
+--- !u!4 &1350238777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350238775}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 540, y: 1292.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1438147063
 GameObject:
@@ -4974,21 +5267,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Landing_Effect2_circleburst
       objectReference: {fileID: 0}
-    - target: {fileID: 2549024498194502349, guid: 5fd374f8eb3becf40823fe10caf20783,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2549024498194502349, guid: 5fd374f8eb3becf40823fe10caf20783,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.a
-      value: 0.34901962
-      objectReference: {fileID: 0}
-    - target: {fileID: 2549024498194502349, guid: 5fd374f8eb3becf40823fe10caf20783,
-        type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8050458472939777250, guid: 5fd374f8eb3becf40823fe10caf20783,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5048,6 +5326,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549024498194502349, guid: 5fd374f8eb3becf40823fe10caf20783,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549024498194502349, guid: 5fd374f8eb3becf40823fe10caf20783,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.34901962
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549024498194502349, guid: 5fd374f8eb3becf40823fe10caf20783,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fd374f8eb3becf40823fe10caf20783, type: 3}

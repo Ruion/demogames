@@ -100,7 +100,8 @@ public class PlayerController : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
 
-            float startX = Mathf.Round(transform.position.x);
+          //  float startX = Mathf.Round(transform.position.x);
+            float startX = transform.position.x;
             float endX = startX + horizontalDistance;
 
             if (endX <= 8)
@@ -133,7 +134,8 @@ public class PlayerController : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
 
-            float startX = Mathf.Round(transform.position.x);
+            //  float startX = Mathf.Round(transform.position.x);
+            float startX = transform.position.x;
             float endX = startX - horizontalDistance;
 
             if (endX >= -8)

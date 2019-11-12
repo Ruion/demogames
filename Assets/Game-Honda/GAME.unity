@@ -2462,7 +2462,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   delays:
-  - 1
+  - 0.3
   isRealtime: 1
 --- !u!1 &299923224
 GameObject:
@@ -2757,7 +2757,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1427746910}
-        m_MethodName: Run
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4260,7 +4260,7 @@ MonoBehaviour:
   maxAngularVelocity: 15
   turnTime: 0.2
   horizontalThresholdSwipe: 0.06
-  horizontalDistance: 1
+  horizontalDistance: 0.83
   currentLand: 2
   minLand: 0
   maxLand: 4
@@ -6481,7 +6481,7 @@ GameObject:
   - component: {fileID: 1024442326}
   - component: {fileID: 1024442325}
   - component: {fileID: 1024442324}
-  - component: {fileID: 1024442327}
+  - component: {fileID: 1024442328}
   m_Layer: 5
   m_Name: T3
   m_TagString: Untagged
@@ -6745,7 +6745,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024442322}
   m_CullTransparentMesh: 0
---- !u!114 &1024442327
+--- !u!114 &1024442328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6798,12 +6798,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 883378873}
         m_MethodName: set_countDownSeconds
-        m_Mode: 3
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 90
-          m_FloatArgument: 0
+          m_IntArgument: 0
+          m_FloatArgument: 90
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -8467,7 +8467,7 @@ GameObject:
   - component: {fileID: 1299354418}
   - component: {fileID: 1299354417}
   - component: {fileID: 1299354416}
-  - component: {fileID: 1299354419}
+  - component: {fileID: 1299354420}
   m_Layer: 5
   m_Name: T2
   m_TagString: Untagged
@@ -8731,7 +8731,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1299354414}
   m_CullTransparentMesh: 0
---- !u!114 &1299354419
+--- !u!114 &1299354420
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8746,6 +8746,17 @@ MonoBehaviour:
   OnSwipeLeft:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 498293905}
+        m_MethodName: TurnLeftCommand
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1822606834}
         m_MethodName: DOPause
         m_Mode: 1
@@ -8768,25 +8779,14 @@ MonoBehaviour:
           m_StringArgument: fadeOut2
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 498293905}
-        m_MethodName: TurnLeftCommand
-        m_Mode: 1
+      - m_Target: {fileID: 883378873}
+        m_MethodName: set_countDownSeconds
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 883378873}
-        m_MethodName: set_countDownSeconds
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 90
-          m_FloatArgument: 0
+          m_FloatArgument: 90
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -9521,7 +9521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1427746909
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12191,6 +12191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DataManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1305985105367576, guid: 23946b9a687056943befb60085aa9de1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -12234,6 +12238,31 @@ PrefabInstance:
     - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344332860821843431, guid: 23946b9a687056943befb60085aa9de1,
+        type: 3}
+      propertyPath: gameSettings.fileName
+      value: game_honda
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344332860821843431, guid: 23946b9a687056943befb60085aa9de1,
+        type: 3}
+      propertyPath: gameSettings.scoreName
+      value: score
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344332860821843431, guid: 23946b9a687056943befb60085aa9de1,
+        type: 3}
+      propertyPath: gameSettings.serverAddress
+      value: http://localhost/honda/honda/submit-data.php
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344332860821843431, guid: 23946b9a687056943befb60085aa9de1,
+        type: 3}
+      propertyPath: gameSettings.serverGetDataAddress
+      value: http://localhost/honda/honda/get-data.php
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344332860821843431, guid: 23946b9a687056943befb60085aa9de1,
+        type: 3}
+      propertyPath: gameSettings.sQliteDBSettings.UniversalUserClassName
+      value: DataBank.UniversalUserEntity
       objectReference: {fileID: 0}
     - target: {fileID: 5947868982637947885, guid: 23946b9a687056943befb60085aa9de1,
         type: 3}
@@ -12861,7 +12890,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   delays:
-  - 2
+  - 1
   isRealtime: 1
 --- !u!4 &4070963552400308 stripped
 Transform:
@@ -13371,6 +13400,11 @@ PrefabInstance:
       propertyPath: second
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1716899434343471304, guid: 38f263c6eca236944929d933ea2b91a9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8655676693850056997, guid: 38f263c6eca236944929d933ea2b91a9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13475,11 +13509,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716899434343471304, guid: 38f263c6eca236944929d933ea2b91a9,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f263c6eca236944929d933ea2b91a9, type: 3}

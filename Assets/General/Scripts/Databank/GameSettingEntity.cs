@@ -50,7 +50,7 @@ public class GameSettingEntity : MonoBehaviour
 
                 foreach (FieldInfo p in fields)
                 {
-                    Debug.Log("column name : " + p.Name);
+                   // Debug.Log("column name : " + p.Name);
                     gameSettings.sQliteDBSettings.columns.Add(p.Name);
                 }
             }

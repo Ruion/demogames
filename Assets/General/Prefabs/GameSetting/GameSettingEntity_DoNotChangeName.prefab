@@ -154,7 +154,7 @@ MonoBehaviour:
   gameSettings:
     DebugMode: 0
     fileName: game_honda
-    scoreName: score_honda
+    scoreName: score
     serverAddress: http://localhost/honda/honda/submit-data.php
     serverGetDataAddress: http://localhost/honda/honda/get-data.php
     scoreToWin: 3
