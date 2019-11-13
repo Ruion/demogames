@@ -17,6 +17,7 @@ public class DBModelMaster : DBSettingEntity
 
     public int numberToPopulate = 10;
     public int TestIndex = 0;
+    public string selectCustomCondition = "is_submitted = 'false'";
 
     public List<string> colPrefix;
 
@@ -184,6 +185,8 @@ public class DBModelMaster : DBSettingEntity
             DataTable dt = new DataTable();
             da.Fill(dt);
 
+            Debug.Log("Columns : " + dt.Columns.Count + "| Rows : " + dt.Rows.Count);
+
             foreach (DataRow r in dt.Rows)
             {
                 string record = "";
@@ -208,12 +211,12 @@ public class DBModelMaster : DBSettingEntity
         }
     }
 
-    public DataRowCollection GetAllUnSync()
+    public DataRowCollection GetAllCustomCondition()
     {
         ConnectDb();
         try
         {
-            string query = "SELECT * FROM " + dbSettings.localDbSetting.tableName + " WHERE is_submitted = 'false'";
+            string query = "SELECT * FROM " + dbSettings.localDbSetting.tableName + " WHERE " + selectCustomCondition;
             sqlitedb_connection = new SqliteConnection(db_connection_string);
 
             SqliteCommand cmd = new SqliteCommand(query, sqlitedb_connection);
@@ -223,9 +226,8 @@ public class DBModelMaster : DBSettingEntity
             DataTable dt = new DataTable();
             da.Fill(dt);
 
-            /*
-            Debug.Log("Columns : " + dt.Columns.Count);
-            Debug.Log("Rows : " + dt.Rows.Count);
+            
+            Debug.Log("Columns : " + dt.Columns.Count + "| Rows : " + dt.Rows.Count);
 
             foreach (DataRow r in dt.Rows)
             {
@@ -237,7 +239,7 @@ public class DBModelMaster : DBSettingEntity
                 }
                 Debug.Log(record);
             }
-            */
+            
 
             Close();
             return dt.Rows;
@@ -330,18 +332,21 @@ public class DBModelMaster : DBSettingEntity
 
     #endregion
 
-    public virtual void ExecuteCustomQuery(string query)
+    #region Custom Query
+    public virtual void ExecuteCustomNonQuery(string query)
     {
         ConnectDb();
         try
         {
             sqlitedb_connection = new SqliteConnection(db_connection_string);
-
+            
             SqliteCommand cmd = new SqliteCommand(query, sqlitedb_connection);
 
-            cmd.ExecuteNonQuery();
+           cmd.ExecuteNonQuery();
 
             Close();
+
+            Debug.Log("Custom Query success");
 
         }
         catch (DbException ex)
@@ -350,6 +355,34 @@ public class DBModelMaster : DBSettingEntity
             Close();
         }
     }
+
+    public virtual DataRowCollection ExecuteCustomSelectQuery(string query)
+    {
+        ConnectDb();
+        try
+        {
+            sqlitedb_connection = new SqliteConnection(db_connection_string);
+
+            SqliteCommand cmd = new SqliteCommand(query, sqlitedb_connection);
+
+            SqliteDataAdapter da = new SqliteDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            Close();
+
+            return dt.Rows;
+        }
+        catch (DbException ex)
+        {
+            Debug.Log("Error : " + ex.Message);
+            Close();
+            return null;
+        }
+    }
+    #endregion
 
     public virtual void Close()
     {

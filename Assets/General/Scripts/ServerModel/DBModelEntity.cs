@@ -37,7 +37,7 @@ public class DBModelEntity : DBModelMaster
 
     private IEnumerator SyncToServer()
     {
-        rows = GetAllUnSync();
+        rows = GetAllCustomCondition();
 
         if(rows.Count < 1) { Debug.Log("no data to be sync"); StopAllCoroutines(); yield break; }
 

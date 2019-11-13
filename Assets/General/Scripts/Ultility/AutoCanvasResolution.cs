@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class AutoCanvasResolution : MonoBehaviour
@@ -17,6 +15,7 @@ public class AutoCanvasResolution : MonoBehaviour
         SetReferenceResolution();
     }
 
+    [ContextMenu("SetResolution")]
     void SetReferenceResolution()
     {
         canvasScaler = GetComponent<CanvasScaler>();

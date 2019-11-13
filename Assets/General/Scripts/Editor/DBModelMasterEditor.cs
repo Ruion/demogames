@@ -10,9 +10,12 @@ public class DBModelMasterEditor : DBSettingEntityEditor {
 
     public override void OnInspectorGUI()
     {
+
         db = (DBModelMaster)target;
 
         base.OnInspectorGUI();
+
+        EditorGUILayout.Separator();
 
         if (GUILayout.Button("Populate"))
         {
@@ -24,9 +27,9 @@ public class DBModelMasterEditor : DBSettingEntityEditor {
             db.GetAllDataInToDataTable();
         }
 
-        if (GUILayout.Button("GetAllUnSync"))
+        if (GUILayout.Button("GetAllCustomCondition"))
         {
-            db.GetAllDataInToDataTable();
+            db.GetAllCustomCondition();
         }
 
         if (GUILayout.Button("Delete"))
