@@ -12,8 +12,6 @@ public class OnlineServerModel : ServerModelMaster
 
     public string TextPath = "Application.stremingAssetsPath/local/LocalData.txt";
 
-    public List<UserEntity> serverUsers = new List<UserEntity>();
-
     public List<string> emailList = new List<string>();
 
     private void Start()
@@ -44,8 +42,6 @@ public class OnlineServerModel : ServerModelMaster
     public IEnumerator GetDataFromServer()
     {
         SetUpTextPath();
-
-        serverUsers = new List<UserEntity>();
 
         emailList = new List<string>();
 
@@ -94,11 +90,6 @@ public class OnlineServerModel : ServerModelMaster
 
                     foreach (string line in lines)
                     {
-                        UserEntity user = new UserEntity();
-                        user.email = line.ToString();
-                       // Debug.Log("Server email " + user.email);
-                        serverUsers.Add(user);
-
                         emailList.Add(line.ToString());
                     }
                 }
@@ -106,22 +97,6 @@ public class OnlineServerModel : ServerModelMaster
         }
 
         isFetchingData = false;
-    }
-
-    public IEnumerator FeedUsers(List<UserEntity> newUsersList)
-    {
-        DoGetDataFromServer();
-
-     //   Debug.Log("Fetching user");
-
-        while (isFetchingData)
-        {
-            yield return null;
-        }
-
-        newUsersList = new List<UserEntity>();
-        newUsersList.AddRange(serverUsers); // add server users into list
-
     }
 
     public IEnumerator FeedEmail(List<string> emailList_)

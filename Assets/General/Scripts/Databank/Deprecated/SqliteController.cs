@@ -6,6 +6,7 @@ using System.Data.Common;
 
 public class SqliteController : MonoBehaviour
 {
+    /*
     public Transform list;
     public GameObject prefab;
     public string dbName = "user_db_honda";
@@ -72,5 +73,5 @@ public class SqliteController : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
-
+    */
 }

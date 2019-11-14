@@ -18,7 +18,7 @@ public class AutoCanvasResolution : MonoBehaviour
     [ContextMenu("SetResolution")]
     void SetReferenceResolution()
     {
-        if (!Application.isEditor) return;
+        if (Application.isEditor) return;
 
         canvasScaler = GetComponent<CanvasScaler>();
         canvasScaler.referenceResolution = new Vector2(Screen.width, Screen.height);

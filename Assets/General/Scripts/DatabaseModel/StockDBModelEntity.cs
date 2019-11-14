@@ -33,10 +33,10 @@ public class StockDBModelEntity : DBModelEntity
 
 
     DataRowCollection rows;
-    [ReadOnly] [SerializeField] string item_id;
-    [ReadOnly] [SerializeField] string item_name;
-    [ReadOnly] [SerializeField] int item_quantity;
-    [ReadOnly] [SerializeField] int item_lane;
+    [SerializeField] int item_id;
+    [SerializeField] string item_name;
+    [SerializeField] int item_quantity;
+    [SerializeField] int item_lane;
     [SerializeField] private int laneOccupyPerItem = 1;
     [SerializeField] private int quantityPerLane;
 
@@ -128,18 +128,17 @@ public class StockDBModelEntity : DBModelEntity
         {
             // out of stock
             Debug.LogError("out of stock");
-            if (OnOutOfStock.GetPersistentEventCount() > 0) OnOutOfStock.Invoke();
-
             return;
         }
+        else
+        {
 
-        item_id = drc[0][0].ToString();
-        item_name = drc[0][1].ToString();
-        item_quantity = System.Int32.Parse(drc[0][2].ToString());
-        item_lane = System.Int32.Parse(drc[0][3].ToString());
-
-        if (OnStockGiven.GetPersistentEventCount() > 0) OnStockGiven.Invoke();
-
+            item_id = System.Int32.Parse(drc[0][0].ToString());
+            item_name = drc[0][1].ToString();
+            item_quantity = System.Int32.Parse(drc[0][2].ToString());
+            item_lane = System.Int32.Parse(drc[0][3].ToString());
+            
+        }
     }
 
     [ContextMenu("GiveReward")]
@@ -147,23 +146,42 @@ public class StockDBModelEntity : DBModelEntity
     {
         GetItem();
 
-        item_quantity--;
+        if (item_quantity < 1) { if (OnOutOfStock.GetPersistentEventCount() > 0) OnOutOfStock.Invoke(); Debug.LogError("out of stock"); return; }
+
+        ConnectDb();
 
         try
         {
+            vm.SendToPort(item_lane);
+            if (OnStockGiven.GetPersistentEventCount() > 0) OnStockGiven.Invoke();
+
+            item_quantity--;
+
             List<string> col = new List<string>();
             List<string> val = new List<string>();
 
             col.Add("quantity");
             val.Add(item_quantity.ToString());
 
-            vm.SendToPort(item_lane);
-            UpdateData(col, val, "id = '" + item_id + "'");
-            Debug.Log(item_id + " : " + item_name + " has " + item_quantity + " left");
+            UpdateData(col, val, "lane = '" + item_lane + "'");
+
+            if (item_quantity < 1)
+            {
+                col = new List<string>();
+                val = new List<string>();
+
+                col.Add("is_disabled");
+                val.Add("true");
+
+                UpdateData(col, val, "lane = '" + item_lane + "'");
+            }
+
+            Debug.Log(item_id + " : " + item_name + " has " + item_quantity + " left | Lane : " + item_lane);
             if (text_ != null) text_.text = item_id + " : " + item_name + " has " + item_quantity + " left";
 
             if (transform.GetChild(0).gameObject.activeInHierarchy) ReloadUI();
 
+            Close();
         }
         catch (System.Exception ex)
         {

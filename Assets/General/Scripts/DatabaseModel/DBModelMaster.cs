@@ -253,6 +253,29 @@ public class DBModelMaster : DBSettingEntity
             return null;
         }
     }
+
+    public List<string> GetDataByStringToList(string item)
+    {
+        List<string> list = new List<string>();
+
+        try
+        {
+            ConnectDb();
+            DataRowCollection drc = ExecuteCustomSelectQuery("SELECT " + item + " FROM " + dbSettings.localDbSetting.tableName);
+
+            for (int d = 0; d < drc.Count; d++)
+            {
+                list.Add(drc[0][0].ToString());
+            }
+
+            return list;
+        }catch(Exception ex)
+        {
+            Debug.LogError(ex.Message);
+            return null;
+        }
+
+    }
     #endregion
 
     #region Delete
@@ -301,13 +324,13 @@ public class DBModelMaster : DBSettingEntity
         try
         {
             int result = dbcmd2.ExecuteNonQuery();
-            if (result == 0) Debug.LogWarning("query not successful");
+            if (result == 0) Debug.LogError("query not successful");
         }
         catch (DbException ex)
         {
             string msg = string.Format("ErrorCode: {0}", ex.Message);
-            Debug.LogWarning(dbcmd2.CommandText);
-            Debug.LogWarning(msg);
+            Debug.LogError(dbcmd2.CommandText);
+            Debug.LogError(msg);
         }
 
         Close();

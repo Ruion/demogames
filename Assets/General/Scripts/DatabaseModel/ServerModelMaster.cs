@@ -47,32 +47,4 @@ public class ServerModelMaster : GameSettingEntity
     {
         if (!emailList.Exists(i => i == text)) emailList.Add(text);
     }
-
-    public bool RemoveDuplicateStringItem(string text, List<UniversalUserEntity> users)
-    {
-        UniversalUserEntity foundUser = users.FirstOrDefault(i => i.email == text);
-        if (foundUser != null)
-        {
-            users.Remove(foundUser);
-            Debug.LogWarning("Remove duplicate user with email " + foundUser.email);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public UniversalUserEntity FindDuplicatedStringItem(string text, List<UniversalUserEntity> users)
-    {
-        UniversalUserEntity foundUser = users.FirstOrDefault(i => i.email == text);
-        if (foundUser != null)
-        {
-            return foundUser;
-        }
-        else
-        {
-            return null;
-        }
-    }
 }

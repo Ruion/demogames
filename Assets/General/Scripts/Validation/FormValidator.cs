@@ -14,7 +14,6 @@ public class FormValidator : ServerModelMaster
     bool Text1OK = false;
     bool Text2OK = false;
     bool Text3OK = false;
-    bool userIsUnique = true;
 
     public Button Submit;
     public Button virtualSubmit;
@@ -38,7 +37,7 @@ public class FormValidator : ServerModelMaster
 
     private List<string> emailList;
     private List<string> contactList;
-    public UniversalUserDB udb;
+    public DBModelEntity playerDataDbModelEntity;
 
     private int oskID;
     public float validateFrequency;
@@ -47,12 +46,11 @@ public class FormValidator : ServerModelMaster
 
     private void Start()
     {
-        udb.ConnectDbCustom();
 
-        emailList = udb.GetDataByStringToList("email");
-        contactList = udb.GetDataByStringToList("contact");
+        emailList = playerDataDbModelEntity.GetDataByStringToList("email");
+        contactList = playerDataDbModelEntity.GetDataByStringToList("contact");
 
-        udb.Close();
+        playerDataDbModelEntity.Close();
     }
 
     // Update is called once per frame
