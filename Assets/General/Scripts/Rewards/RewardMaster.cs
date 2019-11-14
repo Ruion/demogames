@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UniversalLocalDB : MonoBehaviour
+public class RewardMaster : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -10,9 +10,5 @@ public class UniversalLocalDB : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public virtual void GiveReward() { }
 }

@@ -39,7 +39,7 @@ public class VoucherDBModelEntity : DBModelMaster
 
     }
 
-    public void GetVoucher()
+    public virtual void GetVoucher()
     {
         LoadSetting();
 

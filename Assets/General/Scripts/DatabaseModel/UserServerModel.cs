@@ -36,6 +36,8 @@ public class UserServerModel : ServerModelMaster
 
     private OnlineServerModel osm;
 
+    private void Start(){}
+
     public void StartUp()
     {
         HideAllHandler();

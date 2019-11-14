@@ -27,10 +27,13 @@ namespace DataBank
         public int TestIndex = 5;
         #endregion
 
-        private void Awake()
+        public override void Awake()
         {
+            base.Awake();
             CreateTable();
         }
+
+        private void Start(){}
 
         [ContextMenu("Create table")]
         public override void CreateTable()
@@ -44,7 +47,7 @@ namespace DataBank
             // columns for table
             dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS " + gameSettings.sQliteDBSettings.tableName + " ( " ;
 
-            for (int i = 0; i < gameSettings.sQliteDBSettings.columns.Count; i++)
+            for (int i = 0; i < gameSettings.sQliteDBSettings.columns.Count ; i++)
             {
 
                 dbcmd.CommandText += "'"+ gameSettings.sQliteDBSettings.columns[i] + "' " + gameSettings.sQliteDBSettings.attributes[i];

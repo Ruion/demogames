@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Linq;
 
-class Print_Program : RewardFeature
+class Print_Program : RewardMaster
 {
     [ReadOnly]
     public string printerExePath;

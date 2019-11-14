@@ -62,14 +62,8 @@ public class Settings
     public int scoreToWin = 3;
     public string userTypeName;
 
-    public RewardType rewardType = RewardType.PrintVoucher;
-
     public SQliteDBSettings sQliteDBSettings;
-
-    [Header("Vending Machine setting, Ignore if not involve vending machine")]
-    public VendingStockSettings vendingStockSettings;
-
-    
+ 
 
     public Settings(Settings setting)
     {
@@ -82,23 +76,13 @@ public class Settings
         scoreToWin = setting.scoreToWin;
         userTypeName = setting.userTypeName;
 
-        // stock settings
-        vendingStockSettings = setting.vendingStockSettings;
-
         sQliteDBSettings = setting.sQliteDBSettings;
-
-        rewardType = setting.rewardType;
 }
 
     public Settings(){  }
 }
 
-[System.Serializable]
-public enum WriteType
-{
-    Byte,
-    String
-}
+
 
 [System.Serializable]
 public class SQliteDBSettings
@@ -109,18 +93,4 @@ public class SQliteDBSettings
     public List<string> columns;
     public List<string> attributes;
     public List<string> columnsToSkipWhenSync;
-}
-
-[System.Serializable]
-public class VendingStockSettings
-{
-    public string stockDbName = "db_stock";
-    public string stockTableName = "table_stock";
-    public WriteType VMSerialPortWriteType = WriteType.Byte;
-    public string vmserialPortText;
-    public PortName portname = PortName.COM1;
-    public PortBaudrate portbaudrate = PortBaudrate.pb115200;
-    public int numberToPopulate = 35;
-    public int numberPerLane = 3;
-    public int laneOccupyPerMotor = 1;
 }

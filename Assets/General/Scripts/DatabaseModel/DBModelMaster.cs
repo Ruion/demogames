@@ -6,6 +6,7 @@ using Mono.Data.Sqlite;
 using System.Data;
 using System.Data.Common;
 using System;
+using System.Linq;
 
 public class DBModelMaster : DBSettingEntity
 {
@@ -452,6 +453,26 @@ public class DBModelMaster : DBSettingEntity
             return "";
         }
         return html;
+    }
+
+    public void AddUniqueDataToStringList(string text, List<string> dataList)
+    {
+        if (!dataList.Exists(i => i == text)) dataList.Add(text);
+    }
+
+    public bool RemoveDuplicateStringItem(string text, List<string> list)
+    {
+        string foundData = list.FirstOrDefault(i => i == text);
+        if (foundData != null)
+        {
+            list.Remove(foundData);
+            Debug.LogWarning("Remove duplicate item with " + foundData);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     #region Save & Sync 
