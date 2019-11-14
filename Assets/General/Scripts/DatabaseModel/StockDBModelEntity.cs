@@ -133,10 +133,10 @@ public class StockDBModelEntity : DBModelEntity
         else
         {
 
-            item_id = System.Int32.Parse(drc[0][0].ToString());
+            item_id = (int)drc[0][0];
             item_name = drc[0][1].ToString();
-            item_quantity = System.Int32.Parse(drc[0][2].ToString());
-            item_lane = System.Int32.Parse(drc[0][3].ToString());
+            item_quantity = (int)drc[0][2];
+            item_lane = (int)drc[0][3];
             
         }
     }

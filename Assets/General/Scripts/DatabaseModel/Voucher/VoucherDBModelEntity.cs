@@ -137,23 +137,6 @@ public class VoucherDBModelEntity : DBModelMaster
                 DeleteAllData();
                 Populate();
             }
-                //given voucher
-                int g_v1 = PlayerPrefs.GetInt("given-TheBackeryRM10", 0);
-                int g_v2 = PlayerPrefs.GetInt("given-MedanSeleraRM20", 0);
-                int g_v3 = PlayerPrefs.GetInt("given-FuHuRM50", 0);
-                int g_v4 = PlayerPrefs.GetInt("given-MoltenChocolateBuy1Free2", 0);
-                int g_v5 = PlayerPrefs.GetInt("given-GongChaFree1", 0);
-                int g_v6 = PlayerPrefs.GetInt("given-SanFranciscoFree1", 0);
-                int g_v7 = PlayerPrefs.GetInt("given-Evian", 0);
-
-                //remaining voucher
-                int r_v1 = PlayerPrefs.GetInt("remaining-TheBackeryRM10", PlayerPrefs.GetInt("TheBackeryRM10", 45));
-                int r_v2 = PlayerPrefs.GetInt("remaining-MedanSeleraRM20", PlayerPrefs.GetInt("MedanSeleraRM20", 12));
-                int r_v3 = PlayerPrefs.GetInt("remaining-FuHuRM50", PlayerPrefs.GetInt("FuHuRM50", 5));
-                int r_v4 = PlayerPrefs.GetInt("remaining-MoltenChocolateBuy1Free2", PlayerPrefs.GetInt("MoltenChocolateBuy1Free2", 50));
-                int r_v5 = PlayerPrefs.GetInt("remaining-GongChaFree1", PlayerPrefs.GetInt("GongChaFree1", 45));
-                int r_v6 = PlayerPrefs.GetInt("remaining-SanFranciscoFree1", PlayerPrefs.GetInt("SanFranciscoFree1", 45));
-                int r_v7 = PlayerPrefs.GetInt("remaining-Evian", PlayerPrefs.GetInt("Evian", 60));
 
                 string todaydate = DateTime.Now.Date.ToString();
                 PlayerPrefs.SetString("TheDate", todaydate);

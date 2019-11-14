@@ -19,13 +19,14 @@ public class RandomFeature : MonoBehaviour
 
     public void MakeRandomProbability()
     {
-        ClearVariable();
-        DataTable dt = vdb.GetAllDataInToDataTable();
+        voucher_probability = new List<ProbabilityCheck>();
+        temp_total = 0;
+
+        DataRowCollection drc = vdb.ExecuteCustomSelectQuery("SELECT * FROM " + vdb.dbSettings.localDbSetting.tableName + " WHERE quantity >= 1");
 
         int count = 0;
-        foreach (DataRow dr in dt.Rows)
+        foreach (DataRow dr in drc)
         {
-            if (System.Int32.Parse(dr["quantity"].ToString()) <= 0) return;
 
             ProbabilityCheck temp = new ProbabilityCheck();
             voucher_probability.Add(temp);
@@ -56,14 +57,6 @@ public class RandomFeature : MonoBehaviour
             vdb.ChosenVoucher = 4;
         }
     }
-
-    public void ClearVariable()
-    {
-        voucher_probability = new List<ProbabilityCheck>();
-        temp_total = 0;
-    }
-    
- 
 }
 
 public class ProbabilityCheck
