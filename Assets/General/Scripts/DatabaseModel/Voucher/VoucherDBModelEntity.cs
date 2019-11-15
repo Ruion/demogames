@@ -31,49 +31,6 @@ public class VoucherDBModelEntity : DBModelMaster
     {
         CheckDay();
     }
-    #endregion
-
-    [ContextMenu("GetVoucher")]
-    public virtual void GetVoucher()
-    {
-        LoadSetting();
-
-        try
-        {
-            ProbabilityCheck pc = rf.CalculateProbability();
-            voucher_id = pc.id;
-            voucher_name = pc.name;
-            voucher_quantity = pc.quantity;
-
-        }catch(Exception ex)
-        {
-            Debug.LogError(ex.Message);
-        }
-        if (OnVoucherPrint.GetPersistentEventCount() > 0) OnVoucherPrint.Invoke();
-
-    }
-
-    [ContextMenu("Print")]
-    public void PrintVoucher()
-    {
-        GetVoucher();
-
-        voucher_quantity--;
-
-        try
-        {
-            printer.Print(voucher_name);
-            // UPDATE voucher quantity
-            ExecuteCustomNonQuery("UPDATE " + dbSettings.localDbSetting.tableName + " SET quantity = " + voucher_quantity + " WHERE name = '" + voucher_name + "'");
-
-            Debug.Log(voucher_id + " : " + voucher_name + " has " + voucher_quantity + " left");
-
-        }
-        catch(System.Exception ex)
-        {
-            Debug.LogError(ex.Message);
-        }
-    }
 
     public override void Populate()
     {
@@ -96,10 +53,12 @@ public class VoucherDBModelEntity : DBModelMaster
             string quantity = vouchersQuantity[n].ToString();
             string dateCreated = System.DateTime.Now.ToString("yyyy - MM - dd hh: mm:ss");
 
+            PlayerPrefs.SetInt(name, vouchersQuantity[n]);
+
             val[0] = name;
             val[1] = quantity;
             val[2] = quantity;
-            val[val.Count-1] = dateCreated;
+            val[val.Count - 1] = dateCreated;
 
             AddData(col, val);
         }
@@ -107,6 +66,37 @@ public class VoucherDBModelEntity : DBModelMaster
         TestIndex++;
 
         Close();
+    }
+
+    #endregion
+
+    [ContextMenu("Print")]
+    public void PrintVoucher()
+    {
+        #region Get Voucher
+        LoadSetting();
+
+        ProbabilityCheck pc = rf.CalculateProbability();
+
+        if (pc == null) { if (OnOutOfStock.GetPersistentEventCount() > 0) OnOutOfStock.Invoke(); Debug.LogError("no more voucher"); return; }
+
+        voucher_id = pc.id;
+        voucher_name = pc.name;
+        voucher_quantity = pc.quantity;
+
+        voucher_quantity--;
+        #endregion
+
+        #region Print Voucher
+        if (OnVoucherPrint.GetPersistentEventCount() > 0) OnVoucherPrint.Invoke();
+
+        printer.Print(voucher_name);
+        // UPDATE voucher quantity
+        ExecuteCustomNonQuery("UPDATE " + dbSettings.localDbSetting.tableName + " SET quantity = " + voucher_quantity + " WHERE name = '" + voucher_name + "'");
+
+        Debug.Log(voucher_id + " : " + voucher_name + " has " + voucher_quantity + " left");
+
+        #endregion
     }
 
     public void CheckDay()

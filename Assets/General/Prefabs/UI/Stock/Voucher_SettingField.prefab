@@ -166,7 +166,6 @@ GameObject:
   - component: {fileID: 7368521819544615481}
   - component: {fileID: 7368521819544615483}
   - component: {fileID: 7368521819544615482}
-  - component: {fileID: 3492909498954504285}
   m_Layer: 5
   m_Name: Voucher_SettingField
   m_TagString: Untagged
@@ -313,19 +312,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3492909498954504285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7368521819544615480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81b27475fcbc14b4c93801e8d3ac69a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name_: 
 --- !u!1 &7368521820154853034
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +480,7 @@ GameObject:
   - component: {fileID: 7368521820362066071}
   - component: {fileID: 7368521820362066070}
   - component: {fileID: 4392598319372086376}
+  - component: {fileID: 8370077413722982946}
   m_Layer: 5
   m_Name: InputField (TMP)_VoucherQuantity
   m_TagString: Untagged
@@ -666,6 +653,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates: []
+--- !u!114 &8370077413722982946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7368521820362066068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b27475fcbc14b4c93801e8d3ac69a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name_: 
 --- !u!1 &7368521820905921187
 GameObject:
   m_ObjectHideFlags: 0

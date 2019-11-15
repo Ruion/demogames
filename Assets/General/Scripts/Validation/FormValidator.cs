@@ -138,6 +138,7 @@ public class FormValidator : ServerModelMaster
         }
         else
         {
+            warningObject.SetActive(false);
             return false;
         }
 
