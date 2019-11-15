@@ -8,7 +8,7 @@ public class VoucherDBModelEntity : DBModelMaster
 {
     #region Fields
     DataRowCollection rows;
-    [ReadOnly]string voucher_id;
+    [ReadOnly]int voucher_id;
     [ReadOnly]string voucher_name;
     [ReadOnly]int voucher_quantity;
     [SerializeField]private int populate_quantity;
@@ -19,42 +19,36 @@ public class VoucherDBModelEntity : DBModelMaster
     public string[] vouchersName;
     public int[] vouchersQuantity;
 
-    public int ChosenVoucher;
     public VoucherEntity ChosenVoucherEntity;
+
+    public RandomFeature rf;
+    public Print_Program printer;
 
     #endregion
 
+    #region SetUp
     protected override void OnEnable()
     {
         CheckDay();
     }
+    #endregion
 
-    public void SetVoucherStock()
-    {
-        LoadSetting();
-
-    }
-
+    [ContextMenu("GetVoucher")]
     public virtual void GetVoucher()
     {
         LoadSetting();
 
-        string query = "SELECT id, name, quantity FROM " + dbSettings.localDbSetting.tableName + " WHERE " + selectCustomCondition;
-        DataRowCollection drc = ExecuteCustomSelectQuery(query);
-
-        if(drc.Count < 1)
+        try
         {
-            // out of stock
-            Debug.LogError("out of stock");
-            if(OnOutOfStock.GetPersistentEventCount() > 0)OnOutOfStock.Invoke();
+            ProbabilityCheck pc = rf.CalculateProbability();
+            voucher_id = pc.id;
+            voucher_name = pc.name;
+            voucher_quantity = pc.quantity;
 
-            return;
+        }catch(Exception ex)
+        {
+            Debug.LogError(ex.Message);
         }
-
-        voucher_id = drc[0][0].ToString();
-        voucher_name = drc[0][1].ToString();
-        voucher_quantity = System.Int32.Parse(drc[0][2].ToString());
-        
         if (OnVoucherPrint.GetPersistentEventCount() > 0) OnVoucherPrint.Invoke();
 
     }
@@ -68,13 +62,10 @@ public class VoucherDBModelEntity : DBModelMaster
 
         try
         {
-            List<string> col = new List<string>();
-            List<string> val = new List<string>();
+            printer.Print(voucher_name);
+            // UPDATE voucher quantity
+            ExecuteCustomNonQuery("UPDATE " + dbSettings.localDbSetting.tableName + " SET quantity = " + voucher_quantity + " WHERE name = '" + voucher_name + "'");
 
-            col.Add("quantity");
-            val.Add(voucher_quantity.ToString());
-
-            UpdateData(col, val, "id = '" + voucher_id + "'");
             Debug.Log(voucher_id + " : " + voucher_name + " has " + voucher_quantity + " left");
 
         }
@@ -103,11 +94,12 @@ public class VoucherDBModelEntity : DBModelMaster
         {
             string name = vouchersName[n];
             string quantity = vouchersQuantity[n].ToString();
-            string dateCreated = System.DateTime.Now.ToString();
+            string dateCreated = System.DateTime.Now.ToString("yyyy - MM - dd hh: mm:ss");
 
-            val[1] = name;
+            val[0] = name;
+            val[1] = quantity;
             val[2] = quantity;
-            val[3] = dateCreated;
+            val[val.Count-1] = dateCreated;
 
             AddData(col, val);
         }

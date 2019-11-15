@@ -359,24 +359,23 @@ public class DBModelMaster : DBSettingEntity
     #region Custom Query
     public virtual void ExecuteCustomNonQuery(string query)
     {
-        ConnectDb();
         try
         {
             sqlitedb_connection = new SqliteConnection(db_connection_string);
-            
+            sqlitedb_connection.Open();
+
             SqliteCommand cmd = new SqliteCommand(query, sqlitedb_connection);
+         //   Debug.Log(cmd.CommandText);
+            cmd.ExecuteNonQuery();
 
-           cmd.ExecuteNonQuery();
-
-            Close();
 
             Debug.Log("Custom Query success");
-
+            sqlitedb_connection.Close();
         }
         catch (DbException ex)
         {
             Debug.Log("Error : " + ex.Message);
-            Close();
+            sqlitedb_connection.Close();
         }
     }
 

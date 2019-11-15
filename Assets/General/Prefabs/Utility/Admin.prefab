@@ -320,10 +320,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4324381687631738}
-  - component: {fileID: 4344332860821843431}
-  - component: {fileID: 278134679096204752}
   m_Layer: 0
-  m_Name: UserModel
+  m_Name: Admin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,76 +342,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4344332860821843431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305985105367576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6bea48c3ea555242907993c74fb4b0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameSettings:
-    DebugMode: 0
-    fileName: game_setting
-    scoreName: game_score
-    serverAddress: http://192.168.0.28/honda/submit-data.php
-    serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
-    scoreToWin: 3
-    userTypeName: 
-    sQliteDBSettings:
-      dbName: db_
-      tableName: registration
-      UniversalUserClassName: DataBank.
-      columns: []
-      attributes: []
-      columnsToSkipWhenSync: []
-  db_connection_string: 
-  numberToPopulate: 10
-  TestIndex: 5
---- !u!114 &278134679096204752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305985105367576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d44f7561f2d73b64e88d2d64b0a72cba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameSettings:
-    DebugMode: 0
-    fileName: game_setting
-    scoreName: game_score
-    serverAddress: http://192.168.0.28/honda/submit-data.php
-    serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
-    scoreToWin: 3
-    userTypeName: 
-    sQliteDBSettings:
-      dbName: db_
-      tableName: registration
-      UniversalUserClassName: DataBank.
-      columns: []
-      attributes: []
-      columnsToSkipWhenSync: []
-  sentText: {fileID: 870525141}
-  emptyHandler: {fileID: 366404679950319145}
-  internetErrorHandler: {fileID: 6829932019406070344}
-  errorHandler: {fileID: 5101129918148149990}
-  errorCodeText: {fileID: 8028821444328576746}
-  loadingHandler: {fileID: 391561522}
-  successSendDataHandler: {fileID: 3909457759572461995}
-  blockDataHandler: {fileID: 391561522}
-  successBar: {fileID: 0}
-  successText: {fileID: 0}
-  failBar: {fileID: 0}
-  localEmailList: []
-  emailList: []
 --- !u!1 &1109468248716099610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,6 +1270,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4760268036684018234, guid: 7f64134ecc634be4bbcab1c212601dac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7370784714772659952, guid: 7f64134ecc634be4bbcab1c212601dac,
         type: 3}
       propertyPath: m_text
@@ -1391,11 +1324,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 4760268036684018234, guid: 7f64134ecc634be4bbcab1c212601dac,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 7.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f64134ecc634be4bbcab1c212601dac, type: 3}
@@ -1706,12 +1634,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2535833294125430819}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5101129918148149990 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7348691861585984197, guid: 7f64134ecc634be4bbcab1c212601dac,
-    type: 3}
-  m_PrefabInstance: {fileID: 2535833294125430819}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3183949485177119039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1994,12 +1916,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f64134ecc634be4bbcab1c212601dac, type: 3}
---- !u!1 &6829932019406070344 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7348691861585984197, guid: 7f64134ecc634be4bbcab1c212601dac,
-    type: 3}
-  m_PrefabInstance: {fileID: 4265760608212818061}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2001831673902669110 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2374780056283710907, guid: 7f64134ecc634be4bbcab1c212601dac,
@@ -2128,15 +2044,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2452114810006785953, guid: c216c4fb684db134c9cdf8441b831f9f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2452114811308096172, guid: c216c4fb684db134c9cdf8441b831f9f,
         type: 3}
       propertyPath: inputTextField
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452114810006785953, guid: c216c4fb684db134c9cdf8441b831f9f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2452114810841171992, guid: c216c4fb684db134c9cdf8441b831f9f,
         type: 3}
@@ -2448,6 +2364,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4760268036684018234, guid: 7f64134ecc634be4bbcab1c212601dac,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7370784714772659952, guid: 7f64134ecc634be4bbcab1c212601dac,
         type: 3}
       propertyPath: m_text
@@ -2488,19 +2409,8 @@ PrefabInstance:
       propertyPath: m_textInfo.wordCount
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4760268036684018234, guid: 7f64134ecc634be4bbcab1c212601dac,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f64134ecc634be4bbcab1c212601dac, type: 3}
---- !u!1 &3909457759572461995 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7348691861585984197, guid: 7f64134ecc634be4bbcab1c212601dac,
-    type: 3}
-  m_PrefabInstance: {fileID: 6033384576474477422}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8308590110630082261 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2374780056283710907, guid: 7f64134ecc634be4bbcab1c212601dac,
@@ -2651,12 +2561,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f64134ecc634be4bbcab1c212601dac, type: 3}
---- !u!1 &366404679950319145 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7348691861585984197, guid: 7f64134ecc634be4bbcab1c212601dac,
-    type: 3}
-  m_PrefabInstance: {fileID: 6984651246268859628}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4619178830863614295 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2374780056283710907, guid: 7f64134ecc634be4bbcab1c212601dac,

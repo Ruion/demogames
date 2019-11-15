@@ -4,6 +4,7 @@ using UnityEngine;
 using DataBank;
 using System;
 using System.Data;
+using System.Linq;
 
 public class RandomFeature : MonoBehaviour
 {
@@ -19,30 +20,59 @@ public class RandomFeature : MonoBehaviour
 
     public void MakeRandomProbability()
     {
-        voucher_probability = new List<ProbabilityCheck>();
-        temp_total = 0;
-
-        DataRowCollection drc = vdb.ExecuteCustomSelectQuery("SELECT * FROM " + vdb.dbSettings.localDbSetting.tableName + " WHERE quantity >= 1");
-
-        int count = 0;
-        foreach (DataRow dr in drc)
+        try
         {
+            voucher_probability = new List<ProbabilityCheck>();
+            temp_total = 0;
 
-            ProbabilityCheck temp = new ProbabilityCheck();
-            voucher_probability.Add(temp);
-            voucher_probability[count].id = (int)dr[0];
-            voucher_probability[count].min_prob = temp_total;
-            temp_total += (int)dr["quantity"];
-            voucher_probability[count].max_prob = temp_total;
-            voucher_probability[count].type = dr["name"].ToString();
-            count += 1;
+            DataRowCollection drc = vdb.ExecuteCustomSelectQuery("SELECT * FROM " + vdb.dbSettings.localDbSetting.tableName + " WHERE quantity >= 1");
+
+            int count = 0;
+            foreach (DataRow dr in drc)
+            {
+                ProbabilityCheck temp = new ProbabilityCheck();
+                voucher_probability.Add(temp);
+                voucher_probability[count].id = System.Int32.Parse(dr[0].ToString());
+                voucher_probability[count].min_prob = temp_total;
+                temp_total += System.Int32.Parse(dr["quantity"].ToString());
+                voucher_probability[count].max_prob = temp_total;
+                voucher_probability[count].name = dr["name"].ToString();
+                voucher_probability[count].quantity = System.Int32.Parse(dr["quantity"].ToString());
+                count += 1;
+            }
+        }catch(Exception ex)
+        {
+            Debug.LogError(ex.Message);
         }
     }
 
-    public void CalculateProbability()
+    [ContextMenu("CalculateProbability")]
+    public ProbabilityCheck CalculateProbability()
     {
-        int rand = UnityEngine.Random.Range(0, temp_total);
+        try
+        {
+            MakeRandomProbability();
+
+            int rand = UnityEngine.Random.Range(0, temp_total);
+
+            ProbabilityCheck pc = voucher_probability
+                .Where(x => rand > x.min_prob && rand < x.max_prob)
+                .First();
+
+            if (pc != null) { Debug.Log("Choosen voucher name : " + pc.name); return pc; }
+            else { Debug.Log("Choosen voucher name : " + pc.name); return voucher_probability.LastOrDefault(); }
+ 
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError(ex.Message);
+            return null;
+        }
+
+        /*
         int dd = 0;
+
+
         foreach (ProbabilityCheck s in voucher_probability)
         {
             if (rand >= s.min_prob && rand < s.max_prob)
@@ -56,6 +86,7 @@ public class RandomFeature : MonoBehaviour
         {
             vdb.ChosenVoucher = 4;
         }
+        */
     }
 }
 
@@ -64,5 +95,6 @@ public class ProbabilityCheck
     public int id;
     public int min_prob;
     public int max_prob;
-    public string type;
+    public string name;
+    public int quantity;
 }

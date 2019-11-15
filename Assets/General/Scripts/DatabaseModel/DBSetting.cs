@@ -45,7 +45,7 @@ public class DBSetting
         }
         else
         {
-            Debug.LogError("Save file not found in " + path);
+            Debug.LogError(" Save file not found in " + path);
             return null;
         }
     }
