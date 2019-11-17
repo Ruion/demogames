@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Data;
+using Sirenix.OdinInspector;
 
 public class VoucherUIEntity : MonoBehaviour
 {
@@ -11,9 +12,11 @@ public class VoucherUIEntity : MonoBehaviour
     public bool is_enabled = false;
 
     public Color32[] colors;
-
-    public Image img_ { set { gameObject.SetActive(true); img = value; SelectPort(value.transform.GetSiblingIndex()); } }
+    public GameObject model;
+    public Image img_ { set { model.SetActive(true); img = value; SelectPort(value.transform.GetSiblingIndex()); } }
     private Image img;
+    public Transform portParent;
+    
 
     public TextMeshProUGUI motorName;
     public TMP_InputField laneField;
@@ -28,28 +31,39 @@ public class VoucherUIEntity : MonoBehaviour
 
     public void ChangeState()
     {
-        img.color = colors[int.Parse(is_enabled.ToString())];
+        img.color = colors[System.Convert.ToInt32(is_enabled)];
     }
 
-    private void SelectPort(int id)
+    private void SelectPort(int lane)
     {
         try
         {
-            DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT name, lane, quantity, is_disabled FROM " + stockDb.dbSettings.localDbSetting.tableName + " WHERE id = " + id);
+            DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT name, lane, quantity, is_disabled FROM " + stockDb.dbSettings.tableName + " WHERE lane = " + lane);
 
             motorName.text = drc[0][0].ToString();
             laneField.text = drc[0][1].ToString();
             quantityField.text = drc[0][2].ToString();
-            tempPortIsEnabled = is_enabled_ = System.Convert.ToBoolean(drc[0][3].ToString());
+            tempPortIsEnabled = is_enabled_ = !bool.Parse(drc[0][3].ToString());
 
-            if (drc[0][3].ToString() == "true") disabledBtn.SetActive(true);
-            else disabledBtn.SetActive(false);
+            if (drc[0][3].ToString() == "false") disabledBtn.SetActive(false);
+            else disabledBtn.SetActive(true);
         }
         catch(System.Exception ex)
         {
             Debug.LogError(ex.Message);
         }
 
+    }
+
+    [Button(ButtonSizes.Medium)]
+    public void SetPorts()
+    {
+        Image[] imgs = portParent.GetComponentsInChildren<Image>();
+        for (int i = 0; i < imgs.Length; i++)
+        {
+            DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT name, lane, quantity, is_disabled FROM " + stockDb.dbSettings.tableName + " WHERE lane = " + i);
+            img_ = imgs[i];
+        }
     }
 
     public void RevertPortInfo()
@@ -62,7 +76,7 @@ public class VoucherUIEntity : MonoBehaviour
         try
         {
             stockDb.ExecuteCustomNonQuery(
-                "UPDATE " + stockDb.dbSettings.localDbSetting.tableName +
+                "UPDATE " + stockDb.dbSettings.tableName +
                 " SET quantity = '" + quantityField.text + "' ," +
                 " lane = '" + laneField.text + "' ," +
                 " is_disabled = '" + is_enabled.ToString() + "'" +
@@ -73,6 +87,7 @@ public class VoucherUIEntity : MonoBehaviour
 
     public void ValidateInput()
     {
-        if (laneField.text == "" || quantityField.text == "" || int.Parse(quantityField.text) < 1) SaveButton.interactable = false;
+        if (laneField.text == "" || quantityField.text == "" || int.Parse(quantityField.text) < 1 || tempPortIsEnabled == is_enabled) SaveButton.interactable = false;
+        else SaveButton.interactable = true;
     }
 }

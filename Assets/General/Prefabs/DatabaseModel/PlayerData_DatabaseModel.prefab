@@ -44,60 +44,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db476e859c69a7d448df1b2a28465c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: db_connection
+      Entry: 6
+      Data: 
+    - Name: sqlitedb_connection
+      Entry: 6
+      Data: 
   dbSettings:
-    fileName: db_jumpshoot_player
-    sendURL: http://game-01-dashboard.unicom-interactive-digital.com/public/api/submit-player-data
-    serverResponses:
-      resultResponses:
-      - Success
-      - Fail
-      resultResponsesMessage:
-      - sent success
-      - fail although sent
-    localDbSetting:
-      dbName: playerdata
-      tableName: playerdata
-      columns:
-      - id
-      - name
-      - email
-      - contact
-      - age
-      - dob
-      - gender
-      - created_at
-      - is_submitted
-      attributes:
-      - INTEGER PRIMARY KEY
-      - TEXT
-      - TEXT
-      - TEXT
-      - TEXT
-      - TEXT
-      - TEXT
-      - TEXT
-      - TEXT
-      columnsToSync:
-      - name
-      - email
-      - contact
-      - age
-      - dob
-      - gender
-      - created_at
+    fileName: player
+    dbName: player
+    tableName: player
+    columns:
+    - name: id
+      attribute: INTEGER PRIMARY KEY
+      sync: 0
+      dummyPrefix: 
+    - name: name
+      attribute: TEXT
+      sync: 1
+      dummyPrefix: ash
+    - name: email
+      attribute: TEXT
+      sync: 1
+      dummyPrefix: a@gmail.com
+    - name: contact
+      attribute: TEXT
+      sync: 1
+      dummyPrefix: 01432323
+    - name: created_at
+      attribute: TEXT
+      sync: 1
+      dummyPrefix: '2019-11-18 11:00:'
+    - name: is_submitted
+      attribute: TEXT
+      sync: 0
+      dummyPrefix: false
+    sendURL: http://game-05-dashboard.unicom-interactive-digital.com/public/api/submit-player-data
+    serverResponsesArray:
+    - resultResponse: Success
+      resultResponseMessage: sync success
+    - resultResponse: Fail
+      resultResponseMessage: sync fail
   db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/playerdata
   numberToPopulate: 0
   TestIndex: 9
-  colPrefix:
-  - 
-  - a
-  - a@gmail.com
-  - +60123243
-  - 1
-  - 2019-11-1
-  - male
-  - 
-  - false
+  selectCustomCondition: is_submitted = 'false'
 --- !u!114 &7497790228101722038
 MonoBehaviour:
   m_ObjectHideFlags: 0

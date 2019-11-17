@@ -20,7 +20,7 @@ public class RandomFeature : MonoBehaviour
         voucher_probability = new List<ProbabilityCheck>();
         temp_total = 0;
 
-        DataRowCollection drc = vdb.ExecuteCustomSelectQuery("SELECT * FROM " + vdb.dbSettings.localDbSetting.tableName + " WHERE quantity > 0");
+        DataRowCollection drc = vdb.ExecuteCustomSelectQuery("SELECT * FROM " + vdb.dbSettings.tableName + " WHERE quantity > 0");
 
         int count = 0;
         foreach (DataRow dr in drc)

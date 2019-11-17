@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Data;
 using System;
-
+using Unity.Collections;
 public class VoucherDBModelEntity : DBModelMaster
 {
     #region Fields
@@ -35,17 +35,16 @@ public class VoucherDBModelEntity : DBModelMaster
     public override void Populate()
     {
         CreateTable();
-        ConnectDb();
 
         List<string> col = new List<string>();
-        col.AddRange(dbSettings.localDbSetting.columns);
-
         List<string> val = new List<string>();
-        val.AddRange(dbSettings.localDbSetting.columns);
 
-        col.RemoveAt(0);
-        val.RemoveAt(0);
+        for (int v = 1; v < dbSettings.columns.Count; v++)
+        {
+            col.Add(dbSettings.columns[v].name);
+        }
 
+        val.AddRange(col);
 
         for (int n = 0; n < vouchersName.Length; n++)
         {
@@ -92,7 +91,7 @@ public class VoucherDBModelEntity : DBModelMaster
 
         printer.Print(voucher_name);
         // UPDATE voucher quantity
-        ExecuteCustomNonQuery("UPDATE " + dbSettings.localDbSetting.tableName + " SET quantity = " + voucher_quantity + " WHERE name = '" + voucher_name + "'");
+        ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET quantity = " + voucher_quantity + " WHERE name = '" + voucher_name + "'");
 
         Debug.Log(voucher_id + " : " + voucher_name + " has " + voucher_quantity + " left");
 

@@ -1,9 +1,11 @@
-﻿using UnityEditor;
+﻿/*
+using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(DBSettingEntity), true)]
 public class DBSettingEntityEditor : Editor
 {
+    
     DBSettingEntity db;
 
     public override void OnInspectorGUI()
@@ -28,4 +30,6 @@ public class DBSettingEntityEditor : Editor
         }
 
     }
+    
 }
+*/

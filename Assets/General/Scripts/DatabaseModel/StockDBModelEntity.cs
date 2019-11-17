@@ -73,7 +73,7 @@ public class StockDBModelEntity : DBModelEntity
         currentlaneAmountOccupyByItem.text = laneOccupyPerItem.ToString();
         currentitemQuantityPerLane.text = quantityPerLane.ToString();
 
-        DataRowCollection drc = ExecuteCustomSelectQuery("SELECT quantity FROM " + dbSettings.localDbSetting.tableName + " WHERE is_disabled = 'false'");
+        DataRowCollection drc = ExecuteCustomSelectQuery("SELECT quantity FROM " + dbSettings.tableName + " WHERE is_disabled = 'false'");
         int total = 0;
         Debug.Log("total lane: " +drc.Count);
         for (int t = 0; t < drc.Count; t++)
@@ -121,7 +121,7 @@ public class StockDBModelEntity : DBModelEntity
     {
         LoadSetting();
 
-        string query = "SELECT * FROM " + dbSettings.localDbSetting.tableName + " WHERE " + selectCustomCondition;
+        string query = "SELECT * FROM " + dbSettings.tableName + " WHERE " + selectCustomCondition;
         DataRowCollection drc = ExecuteCustomSelectQuery(query);
 
         if (drc.Count < 1)
@@ -194,22 +194,23 @@ public class StockDBModelEntity : DBModelEntity
     {
         try
         {
-            for (int i = 0; i < numberToPopulate * laneOccupyPerItem; i++)
+            //for (int i = 0; i < numberToPopulate * laneOccupyPerItem; i++)
+            for (int i = 0; i < numberToPopulate; i++)
             {
                 string name = "Motor_" + (i.ToString());
                 string quantity = quantityPerLane.ToString();
                 string lane = i.ToString();
-                string is_disabled = "true";
+                string is_disabled = "false";
 
-                if (i % (laneOccupyPerItem) == 0) { is_disabled = "false"; Debug.Log(i + "% " + laneOccupyPerItem + " is " + i % laneOccupyPerItem); }
-                if (i == 0) is_disabled = "false";
+               // if (i % (laneOccupyPerItem) == 0) { is_disabled = "false"; Debug.Log(i + "% " + laneOccupyPerItem + " is " + i % laneOccupyPerItem); }
+               // if (i == 0) is_disabled = "false";
 
                 List<string> col = new List<string>();
                 List<string> val = new List<string>();
 
-                for (int v = 1; v < dbSettings.localDbSetting.columns.Count; v++)
+                for (int v = 1; v < dbSettings.columns.Count; v++)
                 {
-                    col.Add(dbSettings.localDbSetting.columns[v]);
+                    col.Add(dbSettings.columns[v].name);
                 }
 
                 val.Add(name);

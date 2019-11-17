@@ -6,21 +6,21 @@ using Mono.Data.Sqlite;
 using System.Data;
 using System.Data.Common;
 using System;
+using System.Text.RegularExpressions;
 using System.Linq;
+using Sirenix.OdinInspector;
 
 public class DBModelMaster : DBSettingEntity
 {
     private const string CodistanTag = "Codistan: SqliteHelper:\t";
 
-    public string db_connection_string;
-    public IDbConnection db_connection;
-    public SqliteConnection sqlitedb_connection;
+    [HideInInspector] public string db_connection_string;
+    [HideInInspector] public IDbConnection db_connection;
+    [HideInInspector] public SqliteConnection sqlitedb_connection;
 
-    public int numberToPopulate = 10;
-    public int TestIndex = 0;
-    public string selectCustomCondition = "is_submitted = 'false'";
-
-    public List<string> colPrefix;
+    [FoldoutGroup("Populate Setting")] public int numberToPopulate = 10;
+    [FoldoutGroup("Populate Setting")] public int TestIndex = 0;
+    [FoldoutGroup("Populate Setting")] public string selectCustomCondition = "is_submitted = 'false'";
 
     protected virtual void OnEnable()
     {
@@ -28,7 +28,7 @@ public class DBModelMaster : DBSettingEntity
     }
 
     #region setUp
-    [ContextMenu("Create table")]
+    [ContextMenu("CreateTable")]
     public virtual void CreateTable()
     {
         LoadSetting();
@@ -38,30 +38,30 @@ public class DBModelMaster : DBSettingEntity
         IDbCommand dbcmd = GetDbCommand();
 
         // columns for table
-        dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS " + dbSettings.localDbSetting.tableName + " ( ";
+        dbcmd.CommandText = "CREATE TABLE IF NOT EXISTS " + dbSettings.tableName + " ( ";
 
-        for (int i = 0; i < dbSettings.localDbSetting.columns.Count; i++)
+        for (int i = 0; i < dbSettings.columns.Count; i++)
         {
 
-            dbcmd.CommandText += "'" + dbSettings.localDbSetting.columns[i] + "' " + dbSettings.localDbSetting.attributes[i];
+            dbcmd.CommandText += "'" + dbSettings.columns[i].name + "' " + dbSettings.columns[i].attribute;
 
-            if (i != dbSettings.localDbSetting.columns.Count - 1) dbcmd.CommandText += " , ";
+            if (i != dbSettings.columns.Count - 1) dbcmd.CommandText += " , ";
             else dbcmd.CommandText += " ) ; ";
         }
 
         try
         {
-            dbcmd.ExecuteNonQuery();
+            dbcmd.ExecuteNonQuery(); Close();
             // Debug.Log("table success created"); }
         }
-        catch (Exception ex) { Debug.LogError(ex.Message); return; }
+        catch (Exception ex) { Close(); Debug.LogError(ex.Message); return; }
 
-        db_connection.Close();
+       
     }
 
     public virtual void ConnectDb()
     {
-        db_connection_string = "URI = file:" + Application.streamingAssetsPath + "/" + dbSettings.localDbSetting.dbName;
+        db_connection_string = "URI = file:" + Application.streamingAssetsPath + "/" + dbSettings.dbName + ".sql";
         db_connection = new SqliteConnection(db_connection_string);
         db_connection.Open();
     }
@@ -81,7 +81,7 @@ public class DBModelMaster : DBSettingEntity
         /*
         IDbCommand dbcmd = GetDbCommand();
         dbcmd.CommandText =
-            "INSERT INTO " + dbSettings.localDbSetting.tableName
+            "INSERT INTO " + dbSettings.tableName
             + " ( "
             + KEY_NAME + ", "
             + KEY_EMAIL + ", "
@@ -102,7 +102,7 @@ public class DBModelMaster : DBSettingEntity
 
         IDbCommand dbcmd2 = GetDbCommand();
         dbcmd2.CommandText =
-            "INSERT INTO " + dbSettings.localDbSetting.tableName
+            "INSERT INTO " + dbSettings.tableName
             + " ( "
             + KEY_NAME + ", "
             + KEY_EMAIL + ", "
@@ -120,7 +120,7 @@ public class DBModelMaster : DBSettingEntity
 
         IDbCommand dbcmd2 = GetDbCommand();
         dbcmd2.CommandText =
-            "INSERT INTO " + dbSettings.localDbSetting.tableName
+            "INSERT INTO " + dbSettings.tableName
             + " ( ";
 
         for (int n = 0; n < columns_.Count; n++)
@@ -151,6 +151,8 @@ public class DBModelMaster : DBSettingEntity
 
         dbcmd2.CommandText += "')";
 
+        
+
         using (db_connection)
         {
             try
@@ -161,7 +163,7 @@ public class DBModelMaster : DBSettingEntity
             }
             catch (DbException ex)
             {
-                string msg = string.Format("ErrorCode: {0}", ex.Message);
+                string msg = string.Format("ErrorCode: {0}", ex.Message + "\n" + dbcmd2.CommandText);
                 Debug.LogError(msg); Close();
                 return msg;
             }
@@ -170,13 +172,14 @@ public class DBModelMaster : DBSettingEntity
     #endregion
 
     #region Get
-    [ContextMenu("GetAllInDataTable")]
+    [ButtonGroup("DBGet")]
+    [Button("Show All", ButtonSizes.Medium)]
     public virtual DataTable GetAllDataInToDataTable()
     {
         ConnectDb();
         try
         {
-            string query = "SELECT * FROM " + dbSettings.localDbSetting.tableName;
+            string query = "SELECT * FROM " + dbSettings.tableName;
             sqlitedb_connection = new SqliteConnection(db_connection_string);
 
             SqliteCommand cmd = new SqliteCommand(query, sqlitedb_connection);
@@ -192,9 +195,9 @@ public class DBModelMaster : DBSettingEntity
             {
                 string record = "";
 
-                foreach (string col in dbSettings.localDbSetting.columns)
+                foreach (TableColumn col in dbSettings.columns)
                 {
-                    record += r[col].ToString() + " | ";
+                    record += col.name + " : " + r[col.name].ToString() + " | ";
                     // Debug.Log(record);
                 }
                 Debug.Log(record);
@@ -212,12 +215,14 @@ public class DBModelMaster : DBSettingEntity
         }
     }
 
+    [ButtonGroup("DBGet")]
+    [Button("Show Custom", ButtonSizes.Medium)]
     public DataRowCollection GetAllCustomCondition()
     {
         ConnectDb();
         try
         {
-            string query = "SELECT * FROM " + dbSettings.localDbSetting.tableName + " WHERE " + selectCustomCondition;
+            string query = "SELECT * FROM " + dbSettings.tableName + " WHERE " + selectCustomCondition;
             sqlitedb_connection = new SqliteConnection(db_connection_string);
 
             SqliteCommand cmd = new SqliteCommand(query, sqlitedb_connection);
@@ -234,9 +239,9 @@ public class DBModelMaster : DBSettingEntity
             {
                 string record = "";
 
-                foreach (string col in dbSettings.localDbSetting.columns)
+                foreach (TableColumn col in dbSettings.columns)
                 {
-                    record += r[col].ToString() + " | ";
+                    record += r[col.name].ToString() + " | ";
                 }
                 Debug.Log(record);
             }
@@ -261,7 +266,7 @@ public class DBModelMaster : DBSettingEntity
         try
         {
             ConnectDb();
-            DataRowCollection drc = ExecuteCustomSelectQuery("SELECT " + item + " FROM " + dbSettings.localDbSetting.tableName);
+            DataRowCollection drc = ExecuteCustomSelectQuery("SELECT " + item + " FROM " + dbSettings.tableName);
 
             for (int d = 0; d < drc.Count; d++)
             {
@@ -279,18 +284,30 @@ public class DBModelMaster : DBSettingEntity
     #endregion
 
     #region Delete
+    [ContextMenu("DropTable")]
     public virtual void DeleteAllData()
     {
         ConnectDb();
         IDbCommand dbcmd = db_connection.CreateCommand();
-        dbcmd.CommandText = "DROP TABLE IF EXISTS " + dbSettings.localDbSetting.tableName;
+        dbcmd.CommandText = "DROP TABLE IF EXISTS " + dbSettings.tableName;
         dbcmd.ExecuteNonQuery();
         Close();
+        TestIndex++;
+    }
+
+    [Button(ButtonSizes.Medium)][FoldoutGroup("Populate Setting")][HorizontalGroup("Populate Setting/Btn")]
+    public virtual void ClearAllData()
+    {
+        ConnectDb();
+        IDbCommand dbcmd = db_connection.CreateCommand();
+        dbcmd.CommandText = "DELETE FROM " + dbSettings.tableName ;
+        dbcmd.ExecuteNonQuery();
+        Close();
+        TestIndex++;
     }
     #endregion
 
     #region Update
-
     public void UpdateData(List<string> columns_, List<string> values_, string conditions)
     {
         /*
@@ -302,7 +319,7 @@ public class DBModelMaster : DBSettingEntity
 
         IDbCommand dbcmd2 = GetDbCommand();
         dbcmd2.CommandText =
-            "UPDATE " + dbSettings.localDbSetting.tableName
+            "UPDATE " + dbSettings.tableName
             + " SET ";
 
 
@@ -412,26 +429,26 @@ public class DBModelMaster : DBSettingEntity
         db_connection.Close();
     }
 
+    [Button(ButtonSizes.Medium)][HorizontalGroup("Populate Setting/Btn")]
     public virtual void Populate()
     {
         CreateTable();
 
-        ConnectDb();
         List<string> col = new List<string>();
-        col.AddRange(dbSettings.localDbSetting.columns);
-
         List<string> val = new List<string>();
-        val.AddRange(dbSettings.localDbSetting.columns);
 
-        col.RemoveAt(0);
-        val.RemoveAt(0);
+        for (int v = 1; v < dbSettings.columns.Count; v++)
+        {
+            col.Add(dbSettings.columns[v].name);
+        }
 
+        val.AddRange(col);
 
         for (int n = 0; n < numberToPopulate; n++)
         {
             for (int i = 0; i < col.Count; i++)
             {
-                val[i] = colPrefix[i] + ((n + 1).ToString());
+                val[i] = dbSettings.columns[i+1].dummyPrefix + ((n + 1).ToString());
             }
 
             val[val.Count - 1] = "false";
@@ -440,8 +457,6 @@ public class DBModelMaster : DBSettingEntity
         }
 
         TestIndex++;
-
-        Close();
     }
 
     protected virtual string GetHtmlFromUri(string resource = "http://google.com")
@@ -501,9 +516,9 @@ public class DBModelMaster : DBSettingEntity
     public virtual void SaveToLocal()
     {
         LoadSetting();
-
     }
 
+    [DisableIf("@String.IsNullOrEmpty(dbSettings.sendURL)")][Button(ButtonSizes.Medium)]
     public virtual void Sync()
     {
         LoadSetting();

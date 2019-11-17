@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿/*
+using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(StockDBModelEntity), true)]
@@ -18,3 +19,4 @@ public class StockDBModelEditor : DBModelMasterEditor
         }
     }
 }
+*/

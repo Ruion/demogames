@@ -30,7 +30,7 @@ public class VoucherStockManager : MonoBehaviour
 
         #region Handler table is empty || not exist
         vdb.CreateTable();
-        int rowCount = vdb.ExecuteCustomSelectQuery("SELECT * FROM " + vdb.dbSettings.localDbSetting.tableName).Count;
+        int rowCount = vdb.ExecuteCustomSelectQuery("SELECT * FROM " + vdb.dbSettings.tableName).Count;
         if (rowCount < 1) vdb.Populate();
         #endregion
 
@@ -61,7 +61,7 @@ public class VoucherStockManager : MonoBehaviour
 
         #region Generate Fields
         // get voucher list
-        DataRowCollection drc = vdb.ExecuteCustomSelectQuery("SELECT * FROM " + vdb.dbSettings.localDbSetting.tableName);
+        DataRowCollection drc = vdb.ExecuteCustomSelectQuery("SELECT * FROM " + vdb.dbSettings.tableName);
 
         fields = new List<TMP_InputField>();
 
@@ -94,7 +94,7 @@ public class VoucherStockManager : MonoBehaviour
             string voucherName = fields[i].GetComponent<PlayerPrefsSaver>().name_;
             PlayerPrefs.SetInt(voucherName, int.Parse(fields[i].text));
             // UPDATE voucher quantity
-            vdb.ExecuteCustomNonQuery("UPDATE " +vdb.dbSettings.localDbSetting.tableName + " SET initial_quantity = " + PlayerPrefs.GetInt(voucherName) + " WHERE name = '" + voucherName + "'");
+            vdb.ExecuteCustomNonQuery("UPDATE " + vdb.dbSettings.tableName + " SET initial_quantity = " + PlayerPrefs.GetInt(voucherName) + " WHERE name = '" + voucherName + "'");
 
         }
     }

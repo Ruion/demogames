@@ -4,6 +4,7 @@ using System.Data;
 using UnityEngine.Networking;
 using System.Collections;
 using System.Linq;
+using Sirenix.OdinInspector;
 
 public class DBModelEntity : DBModelMaster
 {
@@ -13,10 +14,14 @@ public class DBModelEntity : DBModelMaster
         base.SaveToLocal();
 
         List<string> col = new List<string>();
-        col.AddRange(dbSettings.localDbSetting.columns);
-        col.RemoveAt(0);
-
         List<string> val = new List<string>();
+
+        for (int v = 1; v < dbSettings.columns.Count; v++)
+        {
+            col.Add(dbSettings.columns[v].name);
+        }
+
+        val.AddRange(col);
 
         for (int i = 0; i < col.Count; i++)
         {
@@ -50,20 +55,21 @@ public class DBModelEntity : DBModelMaster
         {
             WWWForm form = new WWWForm();
 
-           // Debug.Log("field to sent : " + dbSettings.localDbSetting.columnsToSync.Count);
+           // Debug.Log("field to sent : " + dbSettings.columnsToSync.Count);
 
-            for (int i = 0; i < dbSettings.localDbSetting.columnsToSync.Count; i++)
+            for (int i = 0; i < dbSettings.columns.Count; i++)
             {
-                string value = rows[u][dbSettings.localDbSetting.columnsToSync[i]].ToString();
-                Debug.Log(dbSettings.localDbSetting.columnsToSync[i] + " : " + value);
+                if (!dbSettings.columns[i].sync) continue;
+
+                string value = rows[u][dbSettings.columns[i].name].ToString();
+                Debug.Log(dbSettings.columns[i].name + " : " + value);
 
                 form.AddField(
-                    dbSettings.localDbSetting.columnsToSync[i],
+                    dbSettings.columns[i].name,
                    value);
 
             }
 
-            Debug.Log(dbSettings.sendURL);
             using (UnityWebRequest www = UnityWebRequest.Post(dbSettings.sendURL, form))
             {
 
@@ -73,7 +79,7 @@ public class DBModelEntity : DBModelMaster
                 {
 
                     Debug.LogError("try sync but server fail");
-                    Debug.LogError(www.error);
+                    Debug.LogError(www.error + "\n"+ "send URL " + dbSettings.sendURL);
                     StopAllCoroutines();
 
                     yield break;
@@ -85,14 +91,15 @@ public class DBModelEntity : DBModelMaster
 
                     Debug.Log(www.downloadHandler.text);
 
-                    if (jsonData.result != dbSettings.serverResponses.resultResponses[0])
+                    if (jsonData.result != dbSettings.serverResponsesArray[0].resultResponse)
                     {
                         #region Server Response and Message Feedback
 
-                        string response = dbSettings.serverResponses.resultResponses.FirstOrDefault(r => r == jsonData.result);
-                        int index = System.Array.IndexOf(dbSettings.serverResponses.resultResponses, response);
+                        //  string response = dbSettings.serverResponses.resultResponses.FirstOrDefault(r => r == jsonData.result);
+                        ServerResponses response = dbSettings.serverResponsesArray.FirstOrDefault(r => r.resultResponse == jsonData.result);
+                        int index = System.Array.IndexOf(dbSettings.serverResponsesArray, response);
                         Debug.Log(index);
-                        Debug.LogError(dbSettings.serverResponses.resultResponsesMessage[index]);
+                        Debug.LogError(response.resultResponseMessage);
 
                         #endregion
 
@@ -102,7 +109,7 @@ public class DBModelEntity : DBModelMaster
                         yield break;
                     }
 
-                    Debug.Log(dbSettings.serverResponses.resultResponsesMessage[0]);
+                    Debug.Log(dbSettings.serverResponsesArray[0].resultResponseMessage);
                     UpdateSyncData(rows[0]["id"].ToString());
                     totalSent++;
                 }

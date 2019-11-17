@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
-public class DBSettingEntity : MonoBehaviour
+public class DBSettingEntity : SerializedMonoBehaviour
 {
-    [Header("DBSetting - SAVE setting every new project")]
     public DBEntitySetting dbSettings;
 
     #region Basics
@@ -15,27 +15,17 @@ public class DBSettingEntity : MonoBehaviour
         LoadSetting();
     }
 
-    [ContextMenu("SaveSetting")]
+    [Button(ButtonSizes.Large), GUIColor(.44f, .53f, .98f)][ButtonGroup("Setting")]
     public virtual void SaveSetting()
     {
         DBSetting.SaveSetting(dbSettings);
+        LoadSetting();
     }
 
-    [ContextMenu("LoadSetting")]
+    [Button(ButtonSizes.Large), GUIColor(.44f, .53f, .98f)][ButtonGroup("Setting")]
     public virtual void LoadSetting()
     {
         dbSettings = DBSetting.LoadSetting(dbSettings.fileName);
-    }
-
-    [ContextMenu("LoadMasterSetting")]
-    public virtual void LoadDBSettingFromMaster()
-    {
-        DBSettingEntity dm = GameObject.Find("DBSettingEntityMaster_DoNotChangeName").GetComponent<DBSettingEntity>();
-        if (dm == this) return;
-
-        dm.LoadSetting();
-        dbSettings = dm.dbSettings;
-
     }
     #endregion
 

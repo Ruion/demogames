@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿/*
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -6,7 +7,6 @@ using UnityEditor;
 [CustomEditor(typeof(DBModelMaster), true)]
 public class DBModelMasterEditor : DBSettingEntityEditor { 
     DBModelMaster db;
-
 
     public override void OnInspectorGUI()
     {
@@ -43,4 +43,6 @@ public class DBModelMasterEditor : DBSettingEntityEditor {
         }
 
     }
+    
 }
+*/

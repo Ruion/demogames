@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 using System.Runtime.Serialization.Formatters.Binary;
+using Sirenix.OdinInspector;
 
+#region Save Load Class
 public class DBSetting
 {
+    
     // save the game setting file
     public static void SaveSetting(DBEntitySetting setting)
     {
@@ -12,12 +16,11 @@ public class DBSetting
         string path = Application.streamingAssetsPath + "/" + setting.fileName + ".dbsetting";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        DBEntitySetting data = new DBEntitySetting(setting);
-
+        DBEntitySetting s = new DBEntitySetting(setting);
 
         try
         {
-            formatter.Serialize(stream, data);
+            formatter.Serialize(stream, s);
             stream.Close();
             Debug.Log("Save setting success");
 
@@ -49,42 +52,60 @@ public class DBSetting
             return null;
         }
     }
+
 }
+#endregion
 
 [System.Serializable]
 public class DBEntitySetting
 {
     public string fileName;
-    public string sendURL;
-    public ServerResponses serverResponses;
 
-    public LocalDBSetting localDbSetting;
+    [HideInInspector] public string dbName;
+    [HideInInspector] public string tableName;
+
+    [TabGroup("LocalDB Settings")] [TableList]
+    public List<TableColumn> columns = new List<TableColumn>() { new TableColumn("id", "INTEGER PRIMARY KEY", false) };
+
+    [TabGroup("Server")] public string sendURL;
+    [TabGroup("Server")] public ServerResponses[] serverResponsesArray;
 
     public DBEntitySetting(DBEntitySetting setting)
     {
         fileName = setting.fileName;
+        dbName = setting.fileName;
+        tableName = setting.fileName;
+        columns = setting.columns;
+
         sendURL = setting.sendURL;
-        localDbSetting = setting.localDbSetting;
-        serverResponses = setting.serverResponses;
+        serverResponsesArray = setting.serverResponsesArray;
     }
-
-    public DBEntitySetting() { }
 }
 
-[System.Serializable]
-public class LocalDBSetting
+
+[Serializable]
+public class TableColumn
 {
-    public string dbName;
-    public string tableName;
-    public List<string> columns;
-    public List<string> attributes;
-    public List<string> columnsToSync;
+    [TableColumnWidth(80)] public string name;
+    [TableColumnWidth(150)] public string attribute;
+    
+
+    [TableColumnWidth(30)] public bool sync;
+
+    public string dummyPrefix;
+
+    public TableColumn(string name_, string attribute_, bool sync_)
+    {
+        name = name_;
+        attribute = attribute_;
+        sync = sync_;
+        dummyPrefix = name_;
+    }
 }
 
-[System.Serializable]
+[Serializable]
 public class ServerResponses
 {
-    [Header("First response must be success reponse")]
-    public string[] resultResponses;
-    public string[] resultResponsesMessage;
+    public string resultResponse;
+    public string resultResponseMessage;
 }
