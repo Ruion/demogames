@@ -54,14 +54,14 @@ public class DBModelMaster : DBSettingEntity
             dbcmd.ExecuteNonQuery(); Close();
             // Debug.Log("table success created"); }
         }
-        catch (Exception ex) { Close(); Debug.LogError(ex.Message); return; }
+        catch (Exception ex) { Close(); Debug.LogError(ex.Message + "\n" + dbcmd.CommandText); return; }
 
        
     }
 
     public virtual void ConnectDb()
     {
-        db_connection_string = "URI = file:" + Application.streamingAssetsPath + "/" + dbSettings.dbName + ".sql";
+        db_connection_string = "URI = file:" + Application.streamingAssetsPath + "/" + dbSettings.dbName + ".sqlite";
         db_connection = new SqliteConnection(db_connection_string);
         db_connection.Open();
     }

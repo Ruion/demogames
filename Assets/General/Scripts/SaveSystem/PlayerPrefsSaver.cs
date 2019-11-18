@@ -16,6 +16,11 @@ public class PlayerPrefsSaver : MonoBehaviour
         PlayerPrefs.SetString(name_, inputField.text.ToString());
     }
 
+    public void Save(TextMeshProUGUI text_)
+    {
+        PlayerPrefs.SetString(name_, text_.text.ToString());
+    }
+
     public void Save(string value)
     {
         PlayerPrefs.SetString(name_, value);

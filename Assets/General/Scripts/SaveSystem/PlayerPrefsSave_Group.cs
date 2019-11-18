@@ -10,8 +10,8 @@ public class PlayerPrefsSave_Group : SerializedMonoBehaviour
    // [TableList]
     public DataField[] dataFields;
 
-    [ReadOnly][TableList][DictionaryDrawerSettings(KeyLabel = "Name", ValueLabel = "Value")]
-    public Dictionary<string,string> playerprefs;
+    [TableList][DictionaryDrawerSettings(KeyLabel = "Name", ValueLabel = "Value")]
+    [DisableInEditorMode] public Dictionary<string,string> playerprefs;
 
     [Button(ButtonSizes.Large,ButtonStyle.CompactBox)]
     public void SaveAll()
@@ -44,6 +44,11 @@ public class DataField
 
     [BoxGroup("Field/Parameter")]
     public SaveType savetype = SaveType.InputField_TMP;
+
+    [HideLabel]
+    [BoxGroup("Field/Fields")]
+    [ShowIf("savetype", SaveType.Text, false)]
+    public TextMeshProUGUI textMeshProUGUI;
 
     [HideLabel][BoxGroup("Field/Fields")][HideIf("savetype", SaveType.DateTime, false)][DisableIf("@savetype==SaveType.Manual", false)]
     public TMP_Dropdown dropdown;
@@ -81,6 +86,10 @@ public class DataField
                 value_ = System.DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
                 break;
 
+            case SaveType.Text:
+                value_ = textMeshProUGUI.text;
+                break;
+
             case SaveType.Manual:
                 break;
         }
@@ -95,5 +104,6 @@ public enum SaveType
     InputField_TMP = 1,
     DateTime = 3,
     InputField = 4,
-    Manual = 5
+    Manual = 5,
+    Text = 6
 }

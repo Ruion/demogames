@@ -2423,7 +2423,7 @@ PrefabInstance:
     - target: {fileID: 8387562500859247587, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: db_connection_string
-      value: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/playerscoredata.sql
+      value: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/playerscoredata.sqlite
       objectReference: {fileID: 0}
     - target: {fileID: 8387562500859247587, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -2433,7 +2433,7 @@ PrefabInstance:
     - target: {fileID: 8387562500859247587, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: TestIndex
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3918123047216320922, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -2454,11 +2454,12 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3918123047216320922, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
     - target: {fileID: 3918123047216320922, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: db_connection_string
-      value: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/player.sql
+      value: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/player.sqlite
       objectReference: {fileID: 0}
     - target: {fileID: 3918123047216320922, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -2538,7 +2539,7 @@ PrefabInstance:
     - target: {fileID: 3918123047216320922, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: TestIndex
-      value: 36
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 185014424703867228, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -3236,12 +3237,12 @@ PrefabInstance:
     - target: {fileID: 4753303358053127810, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: db_connection_string
-      value: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/duplicateplayer.sql
+      value: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/duplicateplayer.sqlite
       objectReference: {fileID: 0}
     - target: {fileID: 4753303358053127810, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: TestIndex
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 991491826558010633, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -6864,7 +6865,7 @@ PrefabInstance:
     - target: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
         type: 3}
       propertyPath: TestIndex
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
         type: 3}
@@ -6877,6 +6878,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
         type: 3}
+    - target: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
+        type: 3}
+      propertyPath: db_connection_string
+      value: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/voucher.sqlite
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb319a27717f204daf844586ce8b44a, type: 3}
 --- !u!114 &7760489447118008507 stripped
