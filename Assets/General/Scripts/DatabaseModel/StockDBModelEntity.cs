@@ -19,19 +19,6 @@ public class StockDBModelEntity : DBModelEntity
 
     #endregion
 
-    #region stock
-    public TextMeshProUGUI currentlaneAmount;
-    public TextMeshProUGUI currentlaneAmountOccupyByItem;
-    public TextMeshProUGUI currentitemQuantityPerLane;
-    public TextMeshProUGUI totalItemLeftText;
-
-    public TMP_InputField laneAmount;
-    public TMP_InputField laneAmountOccupyByItem;
-    public TMP_InputField itemQuantityPerLane;
-    public Button setButton;
-    #endregion
-
-
     DataRowCollection rows;
     [SerializeField] int item_id;
     [SerializeField] string item_name;
@@ -48,7 +35,7 @@ public class StockDBModelEntity : DBModelEntity
     {
         base.OnEnable();
         HideAllHandler();
-      //  ReloadUI();
+        ReloadUI();
     }
 
     [ContextMenu("HideHandler")]
@@ -64,56 +51,7 @@ public class StockDBModelEntity : DBModelEntity
     {
         HideAllHandler();
         LoadSetting();
-
-        laneAmount.text = numberToPopulate.ToString();
-        laneAmountOccupyByItem.text = laneOccupyPerItem.ToString();
-        itemQuantityPerLane.text = quantityPerLane.ToString();
-
-        currentlaneAmount.text = numberToPopulate.ToString();
-        currentlaneAmountOccupyByItem.text = laneOccupyPerItem.ToString();
-        currentitemQuantityPerLane.text = quantityPerLane.ToString();
-
-        DataRowCollection drc = ExecuteCustomSelectQuery("SELECT quantity FROM " + dbSettings.tableName + " WHERE is_disabled = 'false'");
-        int total = 0;
-        Debug.Log("total lane: " +drc.Count);
-        for (int t = 0; t < drc.Count; t++)
-        {
-            total += System.Int32.Parse(drc[t][0].ToString());
-        }
-
-        totalItemLeftText.text = total.ToString();
     }
-
-    public void ReSetStock()
-    {
-        LoadSetting();
-
-        DeleteAllData();
-        
-        numberToPopulate = System.Int32.Parse(laneAmount.text);
-        laneOccupyPerItem = System.Int32.Parse(laneAmountOccupyByItem.text);
-        quantityPerLane = System.Int32.Parse(itemQuantityPerLane.text);
-
-        SaveSetting();
-        DeleteAllData();
-        Populate();
-        ReloadUI();
-    }
-
-    #region validation
-    private bool ValidateInput(TMP_InputField field)
-    {
-        if (field.text != "" && System.Int32.Parse(field.text) > 0) { return false; }
-        else return true;
-    }
-
-    public void ValidateInputSettings()
-    {
-        if (!ValidateInput(laneAmount) || !ValidateInput(laneAmountOccupyByItem) || !ValidateInput(laneAmountOccupyByItem)) setButton.interactable = false; 
-        else setButton.interactable = true; 
-    }
-
-    #endregion
 
     #endregion
 
@@ -232,7 +170,7 @@ public class StockDBModelEntity : DBModelEntity
         CreateTable();
         ConnectDb();
         SaveStockMultiple();
-
+        TestIndex++;
     }
     #endregion
 

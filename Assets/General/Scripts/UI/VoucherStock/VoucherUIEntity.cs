@@ -8,6 +8,7 @@ using Sirenix.OdinInspector;
 
 public class VoucherUIEntity : MonoBehaviour
 {
+    #region Fields
     public bool is_enabled_ { get { return is_enabled; } set { is_enabled = value; ChangeState(); } }
     public bool is_enabled = false;
 
@@ -28,6 +29,8 @@ public class VoucherUIEntity : MonoBehaviour
     public bool tempPortIsEnabled;
 
     public StockDBModelEntity stockDb;
+    public TextMeshProUGUI totalText;
+    #endregion
 
     public void ChangeState()
     {
@@ -61,20 +64,22 @@ public class VoucherUIEntity : MonoBehaviour
         Image[] imgs = portParent.GetComponentsInChildren<Image>();
 
         DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT name, lane, quantity, is_disabled FROM " + stockDb.dbSettings.tableName);
-
         for (int i = 0; i < drc.Count; i++)
         {
-
             img_ = imgs[int.Parse(drc[i]["lane"].ToString())];
-           // SelectPort(int.Parse(drc[i]["lane"].ToString()));
+            img.GetComponentInChildren<TextMeshProUGUI>().text = drc[i]["lane"].ToString();
         }
 
         model.SetActive(false);
+
+        drc = stockDb.ExecuteCustomSelectQuery("SELECT SUM(quantity) FROM " + stockDb.dbSettings.tableName + " WHERE is_disabled = 'false'");
+        totalText.text = drc[0][0].ToString();
+
     }
 
     public void RevertPortInfo()
     {
-         is_enabled_ = tempPortIsEnabled;
+        is_enabled_ = tempPortIsEnabled;
     }
 
     public void SavePort()

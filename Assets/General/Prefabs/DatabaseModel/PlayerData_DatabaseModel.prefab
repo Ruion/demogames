@@ -54,10 +54,16 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes:
     - Name: db_connection
-      Entry: 6
+      Entry: 7
+      Data: 0|Mono.Data.Sqlite.SqliteConnection, Mono.Data.Sqlite
+    - Name: 
+      Entry: 8
       Data: 
     - Name: sqlitedb_connection
-      Entry: 6
+      Entry: 7
+      Data: 1|Mono.Data.Sqlite.SqliteConnection, Mono.Data.Sqlite
+    - Name: 
+      Entry: 8
       Data: 
   dbSettings:
     fileName: player
@@ -80,6 +86,18 @@ MonoBehaviour:
       attribute: TEXT
       sync: 1
       dummyPrefix: 01432323
+    - name: age
+      attribute: TEXT
+      sync: 1
+      dummyPrefix: 0
+    - name: dob
+      attribute: TEXT
+      sync: 1
+      dummyPrefix: 2019-11-18
+    - name: gender
+      attribute: TEXT
+      sync: 1
+      dummyPrefix: 0
     - name: created_at
       attribute: TEXT
       sync: 1
@@ -88,15 +106,15 @@ MonoBehaviour:
       attribute: TEXT
       sync: 0
       dummyPrefix: false
-    sendURL: http://game-05-dashboard.unicom-interactive-digital.com/public/api/submit-player-data
+    sendURL: http://game-01-dashboard.unicom-interactive-digital.com/public/api/submit-player-data
     serverResponsesArray:
     - resultResponse: Success
       resultResponseMessage: sync success
     - resultResponse: Fail
       resultResponseMessage: sync fail
-  db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/playerdata
-  numberToPopulate: 0
-  TestIndex: 9
+  db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/player.sql
+  numberToPopulate: 5
+  TestIndex: 16
   selectCustomCondition: is_submitted = 'false'
 --- !u!114 &7497790228101722038
 MonoBehaviour:

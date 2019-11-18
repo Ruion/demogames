@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Data;
 using System;
-using Unity.Collections;
+using Sirenix.OdinInspector;
+
 public class VoucherDBModelEntity : DBModelMaster
 {
     #region Fields
@@ -19,6 +20,7 @@ public class VoucherDBModelEntity : DBModelMaster
     public string[] vouchersName;
     public int[] vouchersQuantity;
 
+    [DisableContextMenu]
     public VoucherEntity ChosenVoucherEntity;
 
     public RandomFeature rf;

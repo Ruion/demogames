@@ -55,20 +55,24 @@ public class DBModelEntity : DBModelMaster
         {
             WWWForm form = new WWWForm();
 
-           // Debug.Log("field to sent : " + dbSettings.columnsToSync.Count);
+            // Debug.Log("field to sent : " + dbSettings.columnsToSync.Count);
+            string values = "";
 
             for (int i = 0; i < dbSettings.columns.Count; i++)
             {
                 if (!dbSettings.columns[i].sync) continue;
 
                 string value = rows[u][dbSettings.columns[i].name].ToString();
-                Debug.Log(dbSettings.columns[i].name + " : " + value);
+
+                values += value + " | ";
 
                 form.AddField(
                     dbSettings.columns[i].name,
                    value);
 
             }
+
+            Debug.Log(values);
 
             using (UnityWebRequest www = UnityWebRequest.Post(dbSettings.sendURL, form))
             {

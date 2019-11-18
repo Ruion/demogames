@@ -9,7 +9,11 @@ public class VendingMachine : MonoBehaviour
     public byte aa;*/
 
     SerialPort VMSerialPort;
-    public VendingStockSettings vendingStockSettings;
+
+    public WriteType VMSerialPortWriteType = WriteType.Byte;
+    public string vmserialPortText;
+    public PortName portname = PortName.COM1;
+    public PortBaudrate portbaudrate = PortBaudrate.pb115200;
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +23,8 @@ public class VendingMachine : MonoBehaviour
 
     public void OpenPort()
     {
-        VMSerialPort.PortName = vendingStockSettings.portname.ToString();
-        VMSerialPort.BaudRate = Convert.ToInt32(vendingStockSettings.portbaudrate);
+        VMSerialPort.PortName = portname.ToString();
+        VMSerialPort.BaudRate = Convert.ToInt32(portbaudrate);
         VMSerialPort.Parity = Parity.None;
         VMSerialPort.DataBits = 8;
         VMSerialPort.Open();
@@ -38,461 +42,461 @@ public class VendingMachine : MonoBehaviour
         {
             Debug.Log("Running motor 1");
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x00, 0x00, 0x35 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 1)
         {
             Debug.Log("Running motor 2");
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x01, 0x00, 0x36 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 2)
         {
             Debug.Log("Running motor 3");
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x02, 0x00, 0x37 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 3)
         {
             Debug.Log("Running motor 4");
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x03, 0x00, 0x38 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 4)
         {
             Debug.Log("Running motor 5");
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x04, 0x00, 0x39 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 5)
         {
             Debug.Log("Running motor 6");
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x05, 0x00, 0x3A };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 6)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x06, 0x00, 0x3B };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 7)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x0A, 0x00, 0x3F };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 8)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x0B, 0x00, 0x40 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 9)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x0C, 0x00, 0x41 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 10)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x0D, 0x00, 0x42 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 11)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x0E, 0x00, 0x43 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 12)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x0F, 0x00, 0x44 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 13)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x10, 0x00, 0x45 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 14)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x14, 0x00, 0x49 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 15)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x15, 0x00, 0x4A };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 16)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x16, 0x00, 0x4B };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 17)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x17, 0x00, 0x4C };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 18)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x18, 0x00, 0x4D };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 19)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x19, 0x00, 0x4E };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 20)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x1A, 0x00, 0x4F };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 21)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x1E, 0x00, 0x53 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 22)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x1F, 0x00, 0x54 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 23)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x20, 0x00, 0x55 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 24)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x21, 0x00, 0x56 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 25)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x22, 0x00, 0x57 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 26)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x23, 0x00, 0x58 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 27)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x24, 0x00, 0x59 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 28)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x28, 0x00, 0x5D };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 29)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x29, 0x00, 0x5E };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 30)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x2A, 0x00, 0x5F };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 31)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x2B, 0x00, 0x60 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 32)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x2C, 0x00, 0x61 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 33)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x2D, 0x00, 0x62 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
         else if (value_ == 34)
         {
             PortReset();
-            if (vendingStockSettings.VMSerialPortWriteType == WriteType.Byte)
+            if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = { 0x01, 0x02, 0x31, 0x01, 0x2E, 0x00, 0x63 };
                 VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
             }
-            else if (vendingStockSettings.VMSerialPortWriteType == WriteType.String)
+            else if (VMSerialPortWriteType == WriteType.String)
             {
-                VMSerialPort.Write(vendingStockSettings.vmserialPortText);
+                VMSerialPort.Write(vmserialPortText);
             }
         }
 
@@ -539,6 +543,14 @@ public enum PortBaudrate
     pb256000 = 256000
 }
 
+[Serializable]
+public enum WriteType
+{
+    Byte,
+    String
+}
+
+/*
 [System.Serializable]
 public class VendingStockSettings
 {
@@ -547,10 +559,5 @@ public class VendingStockSettings
     public PortName portname = PortName.COM1;
     public PortBaudrate portbaudrate = PortBaudrate.pb115200;
 }
+*/
 
-[System.Serializable]
-public enum WriteType
-{
-    Byte,
-    String
-}

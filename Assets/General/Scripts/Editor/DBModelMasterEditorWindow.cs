@@ -11,7 +11,8 @@ using Sirenix.Utilities;
 
 public class DBModelMasterEditorWindow : OdinEditorWindow
 {
-    private DBModelMaster db;
+    private static DBModelMaster db;
+    private static int selectedInstanceId;
 
     [ReadOnly]
     public string[,] line;
@@ -20,10 +21,20 @@ public class DBModelMasterEditorWindow : OdinEditorWindow
     [MenuItem("Tools/Local DB")]
     public static void OpenWindow()
     {
+        if (Selection.activeGameObject == null) return;
+
+        Selection.activeGameObject.TryGetComponent<DBModelMaster>(out db);
+
+        if (db == null) return; 
+
         var window = GetWindow<DBModelMasterEditorWindow>();
 
         // Nifty little trick to quickly position the window in the middle of the editor.
-        window.position = GUIHelper.GetEditorWindowRect().AlignCenter(500, 600);
+        //window.position = GUIHelper.GetEditorWindowRect().AlignCenter(500, 600);
+
+        int maxWidth = 600;
+        int maxheight = 300;
+        window.position = GUIHelper.GetEditorWindowRect().AlignCenter(maxWidth, maxheight);
 
     }
 
@@ -45,11 +56,10 @@ public class DBModelMasterEditorWindow : OdinEditorWindow
 
     protected override IEnumerable<object> GetTargets()
     {
+        Selection.selectionChanged += OpenWindow;
 
-        if (Selection.activeGameObject == null) Close();
-
-        db = Selection.activeGameObject.GetComponent<DBModelMaster>();
-
+        if (db == null) { Close(); yield break; }
+        
         if(testIndex != db.TestIndex)
         {
             Refresh();

@@ -151,8 +151,6 @@ public class DBModelMaster : DBSettingEntity
 
         dbcmd2.CommandText += "')";
 
-        
-
         using (db_connection)
         {
             try
@@ -189,8 +187,12 @@ public class DBModelMaster : DBSettingEntity
             DataTable dt = new DataTable();
             da.Fill(dt);
 
-            Debug.Log("Columns : " + dt.Columns.Count + "| Rows : " + dt.Rows.Count);
+            Debug.Log("Columns : " + dt.Columns.Count + "| Rows : " + dt.Rows.Count + 
+                "\n" +
+                "View in Tools > Local DB (selecting the db gameObject) "
+                );
 
+            /*
             foreach (DataRow r in dt.Rows)
             {
                 string record = "";
@@ -202,6 +204,7 @@ public class DBModelMaster : DBSettingEntity
                 }
                 Debug.Log(record);
             }
+            */
 
             Close();
             return dt;
