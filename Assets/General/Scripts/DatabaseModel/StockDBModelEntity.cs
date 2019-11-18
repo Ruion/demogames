@@ -48,7 +48,7 @@ public class StockDBModelEntity : DBModelEntity
     {
         base.OnEnable();
         HideAllHandler();
-        ReloadUI();
+      //  ReloadUI();
     }
 
     [ContextMenu("HideHandler")]
@@ -200,7 +200,7 @@ public class StockDBModelEntity : DBModelEntity
                 string name = "Motor_" + (i.ToString());
                 string quantity = quantityPerLane.ToString();
                 string lane = i.ToString();
-                string is_disabled = "false";
+                string is_disabled = "true";
 
                // if (i % (laneOccupyPerItem) == 0) { is_disabled = "false"; Debug.Log(i + "% " + laneOccupyPerItem + " is " + i % laneOccupyPerItem); }
                // if (i == 0) is_disabled = "false";

@@ -59,11 +59,17 @@ public class VoucherUIEntity : MonoBehaviour
     public void SetPorts()
     {
         Image[] imgs = portParent.GetComponentsInChildren<Image>();
-        for (int i = 0; i < imgs.Length; i++)
+
+        DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT name, lane, quantity, is_disabled FROM " + stockDb.dbSettings.tableName);
+
+        for (int i = 0; i < drc.Count; i++)
         {
-            DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT name, lane, quantity, is_disabled FROM " + stockDb.dbSettings.tableName + " WHERE lane = " + i);
-            img_ = imgs[i];
+
+            img_ = imgs[int.Parse(drc[i]["lane"].ToString())];
+           // SelectPort(int.Parse(drc[i]["lane"].ToString()));
         }
+
+        model.SetActive(false);
     }
 
     public void RevertPortInfo()
@@ -79,7 +85,7 @@ public class VoucherUIEntity : MonoBehaviour
                 "UPDATE " + stockDb.dbSettings.tableName +
                 " SET quantity = '" + quantityField.text + "' ," +
                 " lane = '" + laneField.text + "' ," +
-                " is_disabled = '" + is_enabled.ToString() + "'" +
+                " is_disabled = '" + (!is_enabled).ToString().ToLower() + "'" +
                 " WHERE name = '" + motorName.text + "'"
                 );
         }catch(System.Exception ex) { Debug.Log(ex.Message); }
@@ -87,7 +93,8 @@ public class VoucherUIEntity : MonoBehaviour
 
     public void ValidateInput()
     {
-        if (laneField.text == "" || quantityField.text == "" || int.Parse(quantityField.text) < 1 || tempPortIsEnabled == is_enabled) SaveButton.interactable = false;
+        if (laneField.text == "" || quantityField.text == "" || int.Parse(quantityField.text) < 1) SaveButton.interactable = false;
+        
         else SaveButton.interactable = true;
     }
 }
