@@ -134,7 +134,6 @@ public class DBModelMaster : DBSettingEntity
             }
         }
 
-
         dbcmd2.CommandText += ")";
         dbcmd2.CommandText += " VALUES ( '";
 

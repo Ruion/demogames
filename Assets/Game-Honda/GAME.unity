@@ -3746,7 +3746,6 @@ MonoBehaviour:
     serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
     scoreToWin: 3
     userTypeName: 
-    rewardType: 0
     sQliteDBSettings:
       dbName: db_
       tableName: registration
@@ -3754,16 +3753,6 @@ MonoBehaviour:
       columns: []
       attributes: []
       columnsToSkipWhenSync: []
-    vendingStockSettings:
-      stockDbName: db_stock
-      stockTableName: table_stock
-      VMSerialPortWriteType: 0
-      vmserialPortText: 
-      portname: 0
-      portbaudrate: 115200
-      numberToPopulate: 35
-      numberPerLane: 3
-      laneOccupyPerMotor: 1
   scoreTexts:
   - {fileID: 664651632}
   - {fileID: 1143701767}
@@ -7476,7 +7465,6 @@ MonoBehaviour:
     serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
     scoreToWin: 3
     userTypeName: 
-    rewardType: 0
     sQliteDBSettings:
       dbName: db_
       tableName: registration
@@ -7484,16 +7472,6 @@ MonoBehaviour:
       columns: []
       attributes: []
       columnsToSkipWhenSync: []
-    vendingStockSettings:
-      stockDbName: db_stock
-      stockTableName: table_stock
-      VMSerialPortWriteType: 0
-      vmserialPortText: 
-      portname: 0
-      portbaudrate: 115200
-      numberToPopulate: 35
-      numberPerLane: 3
-      laneOccupyPerMotor: 1
   scoreTexts:
   - {fileID: 980719042}
   - {fileID: 1221963314}
@@ -12180,122 +12158,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!1001 &1898729523
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1305985105367576, guid: 23946b9a687056943befb60085aa9de1, type: 3}
-      propertyPath: m_Name
-      value: DataManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1305985105367576, guid: 23946b9a687056943befb60085aa9de1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4324381687631738, guid: 23946b9a687056943befb60085aa9de1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4344332860821843431, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: gameSettings.fileName
-      value: game_honda
-      objectReference: {fileID: 0}
-    - target: {fileID: 4344332860821843431, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: gameSettings.scoreName
-      value: score
-      objectReference: {fileID: 0}
-    - target: {fileID: 4344332860821843431, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: gameSettings.serverAddress
-      value: http://localhost/honda/honda/submit-data.php
-      objectReference: {fileID: 0}
-    - target: {fileID: 4344332860821843431, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: gameSettings.serverGetDataAddress
-      value: http://localhost/honda/honda/get-data.php
-      objectReference: {fileID: 0}
-    - target: {fileID: 4344332860821843431, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.UniversalUserClassName
-      value: DataBank.UniversalUserEntity
-      objectReference: {fileID: 0}
-    - target: {fileID: 5947868982637947885, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: settingFileName
-      value: game_honda
-      objectReference: {fileID: 0}
-    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: dbName
-      value: user_db_honda
-      objectReference: {fileID: 0}
-    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: scoreName
-      value: score_honda
-      objectReference: {fileID: 0}
-    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: serverAddress
-      value: http://localhost/honda/honda/submit-data.php
-      objectReference: {fileID: 0}
-    - target: {fileID: 114155463456624394, guid: 23946b9a687056943befb60085aa9de1,
-        type: 3}
-      propertyPath: serverGetDataAddress
-      value: http://localhost/honda/honda/submit-data.php
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 23946b9a687056943befb60085aa9de1, type: 3}
 --- !u!1 &1901403504
 GameObject:
   m_ObjectHideFlags: 0

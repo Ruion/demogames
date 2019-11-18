@@ -25,7 +25,7 @@ public class DBModelEntity : DBModelMaster
 
         for (int i = 0; i < col.Count; i++)
         {
-            val.Add(PlayerPrefs.GetString(col[i]));
+            val[i] = PlayerPrefs.GetString(col[i]);
         }
 
        AddData(col, val);

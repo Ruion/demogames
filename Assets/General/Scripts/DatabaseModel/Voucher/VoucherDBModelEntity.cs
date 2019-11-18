@@ -36,6 +36,7 @@ public class VoucherDBModelEntity : DBModelMaster
 
     public override void Populate()
     {
+        SaveSetting();
         CreateTable();
 
         List<string> col = new List<string>();

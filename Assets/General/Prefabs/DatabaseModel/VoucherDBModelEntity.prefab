@@ -45,32 +45,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5af03ce1cd22c443a47f5faabd1b1e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: db_connection
+      Entry: 7
+      Data: 0|Mono.Data.Sqlite.SqliteConnection, Mono.Data.Sqlite
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: sqlitedb_connection
+      Entry: 7
+      Data: 1|Mono.Data.Sqlite.SqliteConnection, Mono.Data.Sqlite
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ChosenVoucherEntity
+      Entry: 6
+      Data: 
   dbSettings:
-    fileName: db_jumpshoot_voucher
+    fileName: voucher
+    dbName: voucher
+    tableName: voucher
+    columns:
+    - name: id
+      attribute: INTEGER PRIMARY KEY
+      sync: 0
+      dummyPrefix: 
+    - name: name
+      attribute: TEXT
+      sync: 0
+      dummyPrefix: 
+    - name: quantity
+      attribute: INTEGER
+      sync: 0
+      dummyPrefix: 
+    - name: created_at
+      attribute: TEXT
+      sync: 0
+      dummyPrefix: 
     sendURL: 
-    serverResponses:
-      resultResponses: []
-      resultResponsesMessage: []
-    localDbSetting:
-      dbName: db_jumpshoot_voucher
-      tableName: table_jumpshoot_voucher
-      columns:
-      - id
-      - name
-      - quantity
-      - date_created
-      attributes:
-      - INTEGER PRIMARY KEY
-      - TEXT
-      - INTEGER
-      - TEXT
-      columnsToSync: []
-  db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/db_jumpshoot_voucher
-  numberToPopulate: 10
-  TestIndex: 10
+    serverResponsesArray: []
+  db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/voucher.sql
+  numberToPopulate: 5
+  TestIndex: 11
   selectCustomCondition: quantity >= 1
-  colPrefix: []
-  populate_quantity: 0
+  populate_quantity: 2
   OnOutOfStock:
     m_PersistentCalls:
       m_Calls: []
@@ -80,7 +106,7 @@ MonoBehaviour:
   vouchersName:
   - evien
   - gongcha
-  vouchersQuantity: 320000001e000000
+  vouchersQuantity: 1900000019000000
   rf: {fileID: 7760489448440158914}
   printer: {fileID: 7760489448440158925}
 --- !u!114 &7760489448440158925
