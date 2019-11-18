@@ -130,6 +130,14 @@ public class StockDBModelEntity : DBModelEntity
     #region Save
     public void SaveStockMultiple()
     {
+        List<string> col = new List<string>();
+        List<string> val = new List<string>();
+
+        for (int v = 0; v < dbSettings.columns.Count; v++)
+        {
+            col.Add(dbSettings.columns[v].name);
+        }
+
         try
         {
             //for (int i = 0; i < numberToPopulate * laneOccupyPerItem; i++)
@@ -143,14 +151,8 @@ public class StockDBModelEntity : DBModelEntity
                // if (i % (laneOccupyPerItem) == 0) { is_disabled = "false"; Debug.Log(i + "% " + laneOccupyPerItem + " is " + i % laneOccupyPerItem); }
                // if (i == 0) is_disabled = "false";
 
-                List<string> col = new List<string>();
-                List<string> val = new List<string>();
-
-                for (int v = 1; v < dbSettings.columns.Count; v++)
-                {
-                    col.Add(dbSettings.columns[v].name);
-                }
-
+                val = new List<string>();
+                val.Add(i.ToString());
                 val.Add(name);
                 val.Add(quantity);
                 val.Add(lane);

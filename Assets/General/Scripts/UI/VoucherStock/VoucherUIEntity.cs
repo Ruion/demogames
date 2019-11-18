@@ -17,8 +17,8 @@ public class VoucherUIEntity : MonoBehaviour
     public Image img_ { set { model.SetActive(true); img = value; SelectPort(value.transform.GetSiblingIndex()); } }
     private Image img;
     public Transform portParent;
-    
 
+    private int motorId;
     public TextMeshProUGUI motorName;
     public TMP_InputField laneField;
     public TMP_InputField quantityField;
@@ -37,18 +37,19 @@ public class VoucherUIEntity : MonoBehaviour
         img.color = colors[System.Convert.ToInt32(is_enabled)];
     }
 
-    private void SelectPort(int lane)
+    private void SelectPort(int id)
     {
         try
         {
-            DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT name, lane, quantity, is_disabled FROM " + stockDb.dbSettings.tableName + " WHERE lane = " + lane);
+            DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT * FROM " + stockDb.dbSettings.tableName + " WHERE id = " + id);
 
-            motorName.text = drc[0][0].ToString();
-            laneField.text = drc[0][1].ToString();
+            int.TryParse(drc[0]["id"].ToString(), out motorId);
+            motorName.text = drc[0][1].ToString();
             quantityField.text = drc[0][2].ToString();
-            tempPortIsEnabled = is_enabled_ = !bool.Parse(drc[0][3].ToString());
+            laneField.text = drc[0][3].ToString();
+            tempPortIsEnabled = is_enabled_ = !bool.Parse(drc[0][4].ToString());
 
-            if (drc[0][3].ToString() == "false") disabledBtn.SetActive(false);
+            if (drc[0][4].ToString() == "false") disabledBtn.SetActive(false);
             else disabledBtn.SetActive(true);
         }
         catch(System.Exception ex)
@@ -63,7 +64,7 @@ public class VoucherUIEntity : MonoBehaviour
     {
         Image[] imgs = portParent.GetComponentsInChildren<Image>();
 
-        DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT name, lane, quantity, is_disabled FROM " + stockDb.dbSettings.tableName);
+        DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT * FROM " + stockDb.dbSettings.tableName);
         for (int i = 0; i < drc.Count; i++)
         {
             img_ = imgs[int.Parse(drc[i]["lane"].ToString())];
