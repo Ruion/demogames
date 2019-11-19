@@ -66,6 +66,7 @@ public class StockDBModelEntity : DBModelEntity
         {
             // out of stock
             Debug.LogError("out of stock");
+            if (OnOutOfStock.GetPersistentEventCount() > 0) OnOutOfStock.Invoke();
             return;
         }
         else
@@ -73,8 +74,8 @@ public class StockDBModelEntity : DBModelEntity
 
             item_id = (int)drc[0][0];
             item_name = drc[0][1].ToString();
-            item_quantity = (int)drc[0][2];
-            item_lane = (int)drc[0][3];
+            item_quantity = int.Parse(drc[0][2].ToString());
+            item_lane = int.Parse(drc[0][3].ToString()); ;
             
         }
     }
@@ -84,11 +85,11 @@ public class StockDBModelEntity : DBModelEntity
     {
         GetItem();
 
-        if (item_quantity < 1) { if (OnOutOfStock.GetPersistentEventCount() > 0) OnOutOfStock.Invoke(); Debug.LogError("out of stock"); return; }
+        if (item_quantity < 1) return;
 
         ConnectDb();
 
-        try
+       try
         {
             vm.SendToPort(item_lane);
             if (OnStockGiven.GetPersistentEventCount() > 0) OnStockGiven.Invoke();
@@ -101,7 +102,7 @@ public class StockDBModelEntity : DBModelEntity
             col.Add("quantity");
             val.Add(item_quantity.ToString());
 
-            UpdateData(col, val, "lane = '" + item_lane + "'");
+            UpdateData(col, val, "id = " + item_id );
 
             if (item_quantity < 1)
             {
@@ -121,10 +122,11 @@ public class StockDBModelEntity : DBModelEntity
 
             Close();
         }
-        catch (System.Exception ex)
+       catch (System.Exception ex)
         {
             Debug.LogError(ex.Message);
         }
+        
     }
 
     #region Save

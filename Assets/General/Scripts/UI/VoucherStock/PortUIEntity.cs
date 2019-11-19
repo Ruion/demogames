@@ -6,7 +6,7 @@ using TMPro;
 using System.Data;
 using Sirenix.OdinInspector;
 
-public class VoucherUIEntity : MonoBehaviour
+public class PortUIEntity : MonoBehaviour
 {
     #region Fields
     public bool is_enabled_ { get { return is_enabled; } set { is_enabled = value; ChangeState(); } }

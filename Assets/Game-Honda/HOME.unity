@@ -4540,7 +4540,7 @@ PrefabInstance:
     - target: {fileID: 1556465688544172219, guid: cd01b3e299b71ec41b777133ae4c4d1e,
         type: 3}
       propertyPath: TestIndex
-      value: 22
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1556465688544172219, guid: cd01b3e299b71ec41b777133ae4c4d1e,
         type: 3}
@@ -4565,7 +4565,27 @@ PrefabInstance:
     - target: {fileID: 1556465688544172219, guid: cd01b3e299b71ec41b777133ae4c4d1e,
         type: 3}
       propertyPath: db_connection_string
-      value: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/stock.sqlite
+      value: URI = file:C:/UID_Honda/demogames/Assets/StreamingAssets/stock.sqlite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556465688544172219, guid: cd01b3e299b71ec41b777133ae4c4d1e,
+        type: 3}
+      propertyPath: item_id
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556465688544172219, guid: cd01b3e299b71ec41b777133ae4c4d1e,
+        type: 3}
+      propertyPath: item_quantity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556465688544172219, guid: cd01b3e299b71ec41b777133ae4c4d1e,
+        type: 3}
+      propertyPath: item_name
+      value: Motor_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556465688544172219, guid: cd01b3e299b71ec41b777133ae4c4d1e,
+        type: 3}
+      propertyPath: item_lane
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8936311120894992473, guid: cd01b3e299b71ec41b777133ae4c4d1e,
         type: 3}
@@ -4766,6 +4786,11 @@ PrefabInstance:
     - target: {fileID: 4642057530102012427, guid: 17179dbe442f5994d93d3c1cfa142518,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642057530684791397, guid: 17179dbe442f5994d93d3c1cfa142518,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4642057530684791399, guid: 17179dbe442f5994d93d3c1cfa142518,

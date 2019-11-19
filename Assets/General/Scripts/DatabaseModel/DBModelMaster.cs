@@ -5,6 +5,7 @@ using UnityEngine;
 using Mono.Data.Sqlite;
 using System.Data;
 using System.Data.Common;
+using System.Data.Sql;
 using System;
 using System.Text.RegularExpressions;
 using System.Linq;
@@ -430,6 +431,7 @@ public class DBModelMaster : DBSettingEntity
         db_connection.Close();
     }
 
+    
     [Button(ButtonSizes.Medium)][HorizontalGroup("Populate Setting/Btn")]
     public virtual void Populate()
     {
@@ -459,6 +461,7 @@ public class DBModelMaster : DBSettingEntity
 
         TestIndex++;
     }
+    
 
     protected virtual string GetHtmlFromUri(string resource = "http://google.com")
     {
