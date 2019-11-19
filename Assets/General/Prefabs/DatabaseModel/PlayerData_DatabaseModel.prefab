@@ -102,10 +102,10 @@ MonoBehaviour:
       attribute: TEXT
       sync: 1
       dummyPrefix: '2019-11-18 11:00:'
-    - name: is_submitted
+    - name: online_status
       attribute: TEXT
       sync: 0
-      dummyPrefix: false
+      dummyPrefix: new
     sendURL: http://game-01-dashboard.unicom-interactive-digital.com/public/api/submit-player-data
     serverResponsesArray:
     - resultResponse: Success
@@ -115,7 +115,7 @@ MonoBehaviour:
   db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/player.sql
   numberToPopulate: 5
   TestIndex: 16
-  selectCustomCondition: is_submitted = 'false'
+  selectCustomCondition: online_status = 'new'
 --- !u!114 &7497790228101722038
 MonoBehaviour:
   m_ObjectHideFlags: 0

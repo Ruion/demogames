@@ -70,6 +70,12 @@ public class DBEntitySetting
     [TabGroup("Server")] public string sendURL;
     [TabGroup("Server")] public ServerResponses[] serverResponsesArray;
 
+    [ToggleGroup("hasMultipleLocalDB")]
+    public bool hasMultipleLocalDB = false;
+    [ToggleGroup("hasMultipleLocalDB")] public string keyDownloadURL;
+    [ToggleGroup("hasMultipleLocalDB")] public string keyFileName;
+    [ToggleGroup("hasMultipleLocalDB")] [ReadOnly] public string serverEmailFilePath;
+
     public DBEntitySetting(DBEntitySetting setting)
     {
         fileName = setting.fileName;
@@ -79,6 +85,11 @@ public class DBEntitySetting
 
         sendURL = setting.sendURL;
         serverResponsesArray = setting.serverResponsesArray;
+
+        hasMultipleLocalDB = setting.hasMultipleLocalDB;
+        keyDownloadURL = setting.keyDownloadURL;
+        keyFileName = setting.keyFileName;
+        serverEmailFilePath = setting.serverEmailFilePath;
     }
 }
 

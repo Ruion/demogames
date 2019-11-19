@@ -83,7 +83,7 @@ public class DataField
                 break;
 
             case SaveType.DateTime:
-                value_ = System.DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+                value_ = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 break;
 
             case SaveType.Text:

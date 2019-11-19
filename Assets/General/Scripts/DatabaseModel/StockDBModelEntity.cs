@@ -10,8 +10,8 @@ public class StockDBModelEntity : DBModelEntity
     #region fields
 
     [Header("Handler")]
-    public GameObject emptyHandler;
-    public GameObject errorHandler;
+    public GameObject stockEmptyHandler;
+    public GameObject stockErrorHandler;
 
     [Header("Stock setting")]
 
@@ -29,7 +29,6 @@ public class StockDBModelEntity : DBModelEntity
 
     public UnityEvent OnOutOfStock;
     public UnityEvent OnStockGiven;
-    public TextMeshProUGUI text_;
 
     protected override void OnEnable()
     {
@@ -41,8 +40,8 @@ public class StockDBModelEntity : DBModelEntity
     [ContextMenu("HideHandler")]
     public void HideAllHandler()
     {
-        emptyHandler.SetActive(false);
-        errorHandler.SetActive(false);
+        stockEmptyHandler.SetActive(false);
+        stockErrorHandler.SetActive(false);
     }
 
     #region UI
@@ -116,7 +115,6 @@ public class StockDBModelEntity : DBModelEntity
             }
 
             Debug.Log(item_id + " : " + item_name + " has " + item_quantity + " left | Lane : " + item_lane);
-            if (text_ != null) text_.text = item_id + " : " + item_name + " has " + item_quantity + " left";
 
             if (transform.GetChild(0).gameObject.activeInHierarchy) ReloadUI();
 

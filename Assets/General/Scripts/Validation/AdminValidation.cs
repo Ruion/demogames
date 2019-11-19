@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
+using TMPro;
 
 public class AdminValidation : MonoBehaviour
 {
     public string password = "hondaBoss";
-    public InputField passwordInput;
+    public TMP_InputField passwordInput;
 
     public UnityEvent OnPasswordCorrect;
 

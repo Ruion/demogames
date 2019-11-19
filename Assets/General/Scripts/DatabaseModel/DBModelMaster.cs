@@ -5,14 +5,16 @@ using UnityEngine;
 using Mono.Data.Sqlite;
 using System.Data;
 using System.Data.Common;
-using System.Data.Sql;
 using System;
-using System.Text.RegularExpressions;
 using System.Linq;
 using Sirenix.OdinInspector;
+using TMPro;
+using UnityEngine.Networking;
+using System.Collections;
 
 public class DBModelMaster : DBSettingEntity
 {
+    #region fields
     private const string CodistanTag = "Codistan: SqliteHelper:\t";
 
     [HideInInspector] public string db_connection_string;
@@ -21,7 +23,25 @@ public class DBModelMaster : DBSettingEntity
 
     [FoldoutGroup("Populate Setting")] public int numberToPopulate = 10;
     [FoldoutGroup("Populate Setting")] public int TestIndex = 0;
-    [FoldoutGroup("Populate Setting")] public string selectCustomCondition = "is_submitted = 'false'";
+    [FoldoutGroup("Populate Setting")] public string selectCustomCondition = "online_status = 'new'";
+
+    [ToggleGroup("hasSync")]
+    public bool hasSync = false;
+
+    [ShowIfGroup("hasSync", true, false)]
+    [ToggleGroup("hasSync")] public GameObject emptyHandler;
+    [ToggleGroup("hasSync")] public GameObject internetErrorHandler;
+    [ToggleGroup("hasSync")] public GameObject errorHandler;
+    [ToggleGroup("hasSync")] public GameObject blockDataHandler;
+    [ToggleGroup("hasSync")] public GameObject successBar;
+    [ToggleGroup("hasSync")] public GameObject failBar;
+    [ToggleGroup("hasSync")] [ReadOnly] public int entityId;
+
+    [HideInInspector] public List<string> serverEmailList;
+    [ToggleGroup("hasSync")]
+    [ReadOnly] public bool isFetchingData = false;
+
+    #endregion
 
     protected virtual void OnEnable()
     {
@@ -356,23 +376,6 @@ public class DBModelMaster : DBSettingEntity
         Close();
     }
 
-    public void UpdateSyncData(string id)
-    {
-        List<string> col = new List<string>();
-        List<string> con = new List<string>();
-
-        col.Add("is_submitted");
-        con.Add("true");
-
-        string condition = "id = '" + id + "'";
-
-        try { UpdateData(col, con, condition); Debug.Log("Update record " + id + " is_submitted to true"); }
-        catch (Exception ex)
-        {
-            Debug.LogError(ex.Message);
-        }
-
-    }
 
     #endregion
 
@@ -454,7 +457,7 @@ public class DBModelMaster : DBSettingEntity
                 val[i] = dbSettings.columns[i+1].dummyPrefix + ((n + 1).ToString());
             }
 
-            val[val.Count - 1] = "false";
+            val[val.Count - 1] = "new";
 
             AddData(col, val);
         }
@@ -516,6 +519,33 @@ public class DBModelMaster : DBSettingEntity
         }
     }
 
+    #region handler
+    public virtual void HideAllHandler()
+    {
+        emptyHandler.SetActive(false);
+        internetErrorHandler.SetActive(false);
+        errorHandler.SetActive(false);
+        blockDataHandler.SetActive(false); ;
+        successBar.SetActive(false);
+        failBar.SetActive(false);
+    }
+
+    protected virtual void ToogleHandler(GameObject handler, bool state = false)
+    {
+        if (handler == null) return;
+
+        if (handler.transform.parent.gameObject.activeInHierarchy) handler.SetActive(state);
+    }
+
+    protected virtual void ToogleStatusBar(GameObject bar, int total)
+    {
+        if (bar == null) return;
+        ToogleHandler(bar, true);
+        bar.GetComponentInChildren<TextMeshProUGUI>().text = total.ToString();
+    }
+
+    #endregion
+
     #region Save & Sync 
     public virtual void SaveToLocal()
     {
@@ -536,6 +566,105 @@ public class DBModelMaster : DBSettingEntity
             return;
         }
         #endregion
+    }
+
+    #endregion
+
+    #region Online Server Fetching
+    private void SetUpTextPath()
+    {
+        dbSettings.serverEmailFilePath = Application.streamingAssetsPath + "/" + dbSettings.keyFileName + ".txt";
+        if (!File.Exists(dbSettings.serverEmailFilePath))
+        {
+            File.WriteAllText(dbSettings.serverEmailFilePath, "");
+        }
+    }
+
+    public void DoGetDataFromServer()
+    {
+        SetUpTextPath();
+        if (isFetchingData) return;
+
+        isFetchingData = true;
+        StartCoroutine(GetDataFromServer());
+    }
+
+    public IEnumerator GetDataFromServer()
+    {
+        if (!dbSettings.hasMultipleLocalDB) yield break;
+
+        SetUpTextPath();
+
+        serverEmailList = new List<string>();
+
+        string HtmlText = GetHtmlFromUri();
+        if (HtmlText == "")
+        {
+            //No connection
+            Debug.LogError("no internet connection");
+            isFetchingData = false;
+            yield break;
+        }
+        else
+        {
+            using (UnityWebRequest www = UnityWebRequest.Get(dbSettings.keyDownloadURL))
+            {
+                yield return www.SendWebRequest();
+                if (www.isNetworkError || www.isHttpError)
+                {
+                    Debug.LogError(www.error);
+                    isFetchingData = false;
+                    yield break;
+                }
+                else
+                {
+                    while (!www.downloadHandler.isDone) yield return null;
+
+                    string texts = www.downloadHandler.text;
+
+                    // clear text file
+                    File.WriteAllText(dbSettings.serverEmailFilePath, "");
+
+                    // write email list to file
+                    StreamWriter writer = new StreamWriter(dbSettings.serverEmailFilePath, true); //open txt file (doesnt actually open it inside the game)
+                    writer.Write(texts); //write into txt file the string declared above
+                    writer.Close();
+
+                    List<string> lines = new List<string>(
+                     texts
+                     .Split(new string[] { "\r", "\n" },
+                     System.StringSplitOptions.RemoveEmptyEntries));
+
+                    lines = lines
+                        .Where(line => !(line.StartsWith("//")
+                                        || line.StartsWith("#")))
+                        .ToList();
+
+                    foreach (string line in lines)
+                    {
+                        serverEmailList.Add(line.ToString());
+                    }
+                }
+            }
+        }
+
+        isFetchingData = false;
+    }
+
+    public IEnumerator CompareServerData()
+    {
+        yield return StartCoroutine(GetDataFromServer());
+        UpdateEmailExistedOnline();
+    }
+
+    public void UpdateEmailExistedOnline()
+    {
+        if (serverEmailList.Count < 0) return;
+
+        for (int o = 0; o < serverEmailList.Count; o++)
+        {
+            ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET online_status = 'duplicate' WHERE email = '" + serverEmailList[o] + "'");
+        }
     }
 
     #endregion
