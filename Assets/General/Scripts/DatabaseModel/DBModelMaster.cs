@@ -27,8 +27,6 @@ public class DBModelMaster : DBSettingEntity
 
     [ToggleGroup("hasSync")]
     public bool hasSync = false;
-
-    [ShowIfGroup("hasSync", true, false)]
     [ToggleGroup("hasSync")] public GameObject emptyHandler;
     [ToggleGroup("hasSync")] public GameObject internetErrorHandler;
     [ToggleGroup("hasSync")] public GameObject errorHandler;
@@ -434,7 +432,6 @@ public class DBModelMaster : DBSettingEntity
         db_connection.Close();
     }
 
-    
     [Button(ButtonSizes.Medium)][HorizontalGroup("Populate Setting/Btn")]
     public virtual void Populate()
     {
@@ -465,6 +462,58 @@ public class DBModelMaster : DBSettingEntity
         TestIndex++;
     }
     
+    #region handler
+    public virtual void HideAllHandler()
+    {
+        emptyHandler.SetActive(false);
+        internetErrorHandler.SetActive(false);
+        errorHandler.SetActive(false);
+        blockDataHandler.SetActive(false); ;
+        successBar.SetActive(false);
+        failBar.SetActive(false);
+    }
+
+    protected virtual void ToogleHandler(GameObject handler, bool state = false)
+    {
+        if (handler == null) return;
+
+        if (handler.transform.parent.gameObject.activeInHierarchy) handler.SetActive(state);
+    }
+
+    protected virtual void ToogleStatusBar(GameObject bar, int total)
+    {
+        if (bar == null) return;
+        ToogleHandler(bar, true);
+        bar.GetComponentInChildren<TextMeshProUGUI>().text = total.ToString();
+    }
+
+    #endregion
+
+    #region Save & Sync 
+    public virtual void SaveToLocal()
+    {
+        LoadSetting();
+    }
+
+    [DisableIf("@String.IsNullOrEmpty(dbSettings.sendURL)")][Button(ButtonSizes.Medium)]
+    public virtual void Sync()
+    {
+        LoadSetting();
+        #region Check Internet
+        ///////////// CHECK Internet Connection /////////////
+        string HtmlText = GetHtmlFromUri("http://google.com");
+        if (HtmlText == "")
+        {
+            //No connection
+            Debug.LogError("No internet connection");
+            return;
+        }
+        #endregion
+    }
+
+    #endregion
+
+    #region Online Server Fetching
 
     protected virtual string GetHtmlFromUri(string resource = "http://google.com")
     {
@@ -519,58 +568,6 @@ public class DBModelMaster : DBSettingEntity
         }
     }
 
-    #region handler
-    public virtual void HideAllHandler()
-    {
-        emptyHandler.SetActive(false);
-        internetErrorHandler.SetActive(false);
-        errorHandler.SetActive(false);
-        blockDataHandler.SetActive(false); ;
-        successBar.SetActive(false);
-        failBar.SetActive(false);
-    }
-
-    protected virtual void ToogleHandler(GameObject handler, bool state = false)
-    {
-        if (handler == null) return;
-
-        if (handler.transform.parent.gameObject.activeInHierarchy) handler.SetActive(state);
-    }
-
-    protected virtual void ToogleStatusBar(GameObject bar, int total)
-    {
-        if (bar == null) return;
-        ToogleHandler(bar, true);
-        bar.GetComponentInChildren<TextMeshProUGUI>().text = total.ToString();
-    }
-
-    #endregion
-
-    #region Save & Sync 
-    public virtual void SaveToLocal()
-    {
-        LoadSetting();
-    }
-
-    [DisableIf("@String.IsNullOrEmpty(dbSettings.sendURL)")][Button(ButtonSizes.Medium)]
-    public virtual void Sync()
-    {
-        LoadSetting();
-        #region Check Internet
-        ///////////// CHECK Internet Connection /////////////
-        string HtmlText = GetHtmlFromUri("http://google.com");
-        if (HtmlText == "")
-        {
-            //No connection
-            Debug.LogError("No internet connection");
-            return;
-        }
-        #endregion
-    }
-
-    #endregion
-
-    #region Online Server Fetching
     private void SetUpTextPath()
     {
         dbSettings.serverEmailFilePath = Application.streamingAssetsPath + "/" + dbSettings.keyFileName + ".txt";

@@ -67,8 +67,8 @@ public class PortUIEntity : MonoBehaviour
         DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT * FROM " + stockDb.dbSettings.tableName);
         for (int i = 0; i < drc.Count; i++)
         {
-            img_ = imgs[int.Parse(drc[i]["lane"].ToString())];
-            img.GetComponentInChildren<TextMeshProUGUI>().text = drc[i]["lane"].ToString();
+            img_ = imgs[int.Parse(drc[i]["id"].ToString())];
+            img.GetComponentInChildren<TextMeshProUGUI>().text = drc[i]["id"].ToString();
         }
 
         model.SetActive(false);

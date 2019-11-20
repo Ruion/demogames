@@ -34,6 +34,7 @@ public class VendingMachine : MonoBehaviour
         System.Threading.Thread.Sleep(2000);
     }
 
+#region SendToPort (int)
     public void SendToPort(int value_)
     {
         OpenPort();
@@ -502,6 +503,29 @@ public class VendingMachine : MonoBehaviour
 
         ClosePort();
     }
+    #endregion
+
+#region SendToPort (bytes)
+    public void SendToPort(byte[] bytes)
+    {
+        OpenPort();
+
+            Debug.Log("Running motor ");
+            PortReset();
+            if (VMSerialPortWriteType == WriteType.Byte)
+            {
+                byte[] SendingBytes = bytes;
+                VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
+            }
+            else if (VMSerialPortWriteType == WriteType.String)
+            {
+                VMSerialPort.Write(vmserialPortText);
+            }
+
+        ClosePort();
+    }
+    #endregion
+
 
     void ClosePort()
     {
@@ -517,6 +541,7 @@ public class VendingMachine : MonoBehaviour
     }
 }
 
+#region properties class
 [Serializable]
 public enum PortName
 {
@@ -550,14 +575,4 @@ public enum WriteType
     String
 }
 
-/*
-[System.Serializable]
-public class VendingStockSettings
-{
-    public WriteType VMSerialPortWriteType = WriteType.Byte;
-    public string vmserialPortText;
-    public PortName portname = PortName.COM1;
-    public PortBaudrate portbaudrate = PortBaudrate.pb115200;
-}
-*/
-
+#endregion

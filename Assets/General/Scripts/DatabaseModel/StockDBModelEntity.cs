@@ -17,24 +17,24 @@ public class StockDBModelEntity : DBModelEntity
 
     public VendingMachine vm;
 
-    #endregion
+    
 
     DataRowCollection rows;
     [SerializeField] int item_id;
     [SerializeField] string item_name;
     [SerializeField] int item_quantity;
-    [SerializeField] int item_lane;
+    [SerializeField] string item_lane;
     [SerializeField] private int laneOccupyPerItem = 1;
     [SerializeField] private int quantityPerLane;
 
     public UnityEvent OnOutOfStock;
     public UnityEvent OnStockGiven;
+#endregion
 
     protected override void OnEnable()
     {
         base.OnEnable();
         HideAllHandler();
-        ReloadUI();
     }
 
     [ContextMenu("HideHandler")]
@@ -44,18 +44,9 @@ public class StockDBModelEntity : DBModelEntity
         stockErrorHandler.SetActive(false);
     }
 
-    #region UI
-    [ContextMenu("ReloadUI")]
-    public void ReloadUI()
-    {
-        HideAllHandler();
-        LoadSetting();
-    }
-
-    #endregion
-
     public virtual void GetItem()
     {
+        HideAllHandler();
         LoadSetting();
 
         string query = "SELECT * FROM " + dbSettings.tableName + " WHERE " + selectCustomCondition;
@@ -65,7 +56,7 @@ public class StockDBModelEntity : DBModelEntity
         {
             // out of stock
             Debug.LogError("out of stock");
-            if (OnOutOfStock.GetPersistentEventCount() > 0) OnOutOfStock.Invoke();
+            if (OnOutOfStock.GetPersistentEventCount() > 0) {OnOutOfStock.Invoke(); emptyHandler.SetActive(true);}
             return;
         }
         else
@@ -74,7 +65,7 @@ public class StockDBModelEntity : DBModelEntity
             item_id = (int)drc[0][0];
             item_name = drc[0][1].ToString();
             item_quantity = int.Parse(drc[0][2].ToString());
-            item_lane = int.Parse(drc[0][3].ToString()); ;
+            item_lane = drc[0][3].ToString() ;
             
         }
     }
@@ -88,9 +79,43 @@ public class StockDBModelEntity : DBModelEntity
 
         ConnectDb();
 
-       try
-        {
-            vm.SendToPort(item_lane);
+     //  try
+     //   {
+            // vm.SendToPort(item_lane); int
+
+/*
+            #region testing
+
+            byte[] SendingBytes = new byte[]{ 0x01, 0x02, 0x31, 0x01, 0x00, 0x00, 0x35 };
+            System.Text.ASCIIEncoding encodingString = new System.Text.ASCIIEncoding();
+            Debug.Log("string : " + encodingString.GetString(SendingBytes));
+
+            #endregion
+            */
+
+            #region SendToPort by bytes
+            // convert text 0x01, 0x02, 0x31, 0x01, 0x00, 0x00, 0x35 to byte[]
+            // split text by ","
+            // convert to byte[]
+            string[] byteTextArray = item_lane.ToString().Split(new string[] {","}, System.StringSplitOptions.RemoveEmptyEntries);
+            string byteText = "";
+            
+            byte[] bytes = new byte[byteTextArray.Length];
+
+            for (int b = 0; b < byteTextArray.Length; b++)
+                {
+                    byteText = byteTextArray[b].Trim().Replace(" ", string.Empty);
+                   // Debug.Log(byteText);
+                    bytes[b] = System.Convert.ToByte(byteText, 16);
+                }
+
+            System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+            Debug.Log("string from bytes : " + encoding.GetString(bytes));
+
+            vm.SendToPort(bytes); // bytes
+
+            #endregion
+
             if (OnStockGiven.GetPersistentEventCount() > 0) OnStockGiven.Invoke();
 
             item_quantity--;
@@ -111,19 +136,17 @@ public class StockDBModelEntity : DBModelEntity
                 col.Add("is_disabled");
                 val.Add("true");
 
-                UpdateData(col, val, "lane = '" + item_lane + "'");
+                UpdateData(col, val, "id = '" + item_id + "'");
             }
 
             Debug.Log(item_id + " : " + item_name + " has " + item_quantity + " left | Lane : " + item_lane);
 
-            if (transform.GetChild(0).gameObject.activeInHierarchy) ReloadUI();
-
             Close();
-        }
-       catch (System.Exception ex)
-        {
-            Debug.LogError(ex.Message);
-        }
+      //  }
+      // catch (System.Exception ex)
+      //  {
+        //    Debug.LogError(ex.Message);
+      //  }
         
     }
 
