@@ -54,43 +54,16 @@ public class Settings
 {
     public bool DebugMode = false;
     public string fileName = "game_setting";
-    public string DbName { get { return sQliteDBSettings.dbName; } }
-    public string TableName { get { return sQliteDBSettings.tableName; } }
     public string scoreName = "game_score";
-    public string serverAddress = "http://192.168.0.28/honda/submit-data.php";
-    public string serverGetDataAddress = "http://192.168.0.28/honda/submit-data.php";
     public int scoreToWin = 3;
-    public string userTypeName;
-
-    public SQliteDBSettings sQliteDBSettings;
  
-
     public Settings(Settings setting)
     {
         DebugMode = setting.DebugMode;
 
         fileName = setting.fileName;
         scoreName = setting.scoreName;
-        serverAddress = setting.serverAddress;
-        serverGetDataAddress = setting.serverGetDataAddress;
         scoreToWin = setting.scoreToWin;
-        userTypeName = setting.userTypeName;
 
-        sQliteDBSettings = setting.sQliteDBSettings;
-}
-
-    public Settings(){  }
-}
-
-
-
-[System.Serializable]
-public class SQliteDBSettings
-{
-    public string dbName = "db_";
-    public string tableName = "registration";
-    public string UniversalUserClassName = "DataBank.";
-    public List<string> columns;
-    public List<string> attributes;
-    public List<string> columnsToSkipWhenSync;
+    }
 }

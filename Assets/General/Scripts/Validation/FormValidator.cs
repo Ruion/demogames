@@ -161,13 +161,13 @@ public class FormValidator : ServerModelMaster
 
     private IEnumerator CombineServerUsers()
     {
-        OnlineServerModel osm = FindObjectOfType<OnlineServerModel>();
+        yield return StartCoroutine(playerDataDbModelEntity.GetDataFromServer());
 
-        yield return StartCoroutine(osm.GetDataFromServer());
-
-        for (int i = 0; i < osm.emailList.Count; i++)
+        for (int i = 0; i < playerDataDbModelEntity.serverEmailList.Count; i++)
         {
-            AddUniqueUser(osm.emailList[i], emailList);
+            AddUniqueUser(playerDataDbModelEntity.serverEmailList[i], emailList);
         }
+
+        playerDataDbModelEntity.serverEmailList = new List<string>();
     }
 }

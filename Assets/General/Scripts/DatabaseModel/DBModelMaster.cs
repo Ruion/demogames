@@ -662,6 +662,8 @@ public class DBModelMaster : DBSettingEntity
         {
             ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET online_status = 'duplicate' WHERE email = '" + serverEmailList[o] + "'");
         }
+
+        serverEmailList = new List<string>();
     }
 
     #endregion

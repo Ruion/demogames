@@ -9,6 +9,9 @@ public class KeyboardScript : MonoBehaviour
     int selectionEndPost;
     int selectionAmount;
 
+    public Transform destinationPos_{ get{return destinationPos;} set{ destinationPos = value; Reposition();}}
+    private Transform destinationPos;
+
     private void OnEnable()
     {
         if (Application.platform == RuntimePlatform.Android)
@@ -24,6 +27,7 @@ public class KeyboardScript : MonoBehaviour
         {
             inputFieldTMPro = value;
             inputFieldTMPro.onFocusSelectAll = false;
+            gameObject.SetActive(true);
         }
     }
 
@@ -138,6 +142,10 @@ public class KeyboardScript : MonoBehaviour
         CloseAllLayouts();
         SetLayout.SetActive(true);
 
+    }
+
+    private void Reposition(){
+        transform.position = destinationPos.position;
     }
 
 }

@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using System.IO;
 using System.Linq;
 
+/*
 public class OnlineServerModel : ServerModelMaster
 {
     public bool isFetchingData = false;
@@ -111,3 +112,4 @@ public class OnlineServerModel : ServerModelMaster
     }
 
 }
+*/
