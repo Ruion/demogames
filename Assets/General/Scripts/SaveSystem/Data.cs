@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using Sirenix.OdinInspector;
 
     /// Generic Data class
     public static class Data{
@@ -70,5 +71,7 @@ using System.IO;
 public struct DataSettings{
     public string fileName;
     public string extension;
+
+    [HideInInspector]
     public string fileFullName;
 }

@@ -17,16 +17,21 @@ public class EventSetting : MonoBehaviour
     
     public GameObject internetConnectionHandler;
     public GameObject errorHandler;
+    public TMP_Dropdown eventDropdown;
+    public TMP_Dropdown locationDropdown;
+    public TMP_Dropdown sourceIdentifierDropdown;
 
     #endregion
 
     void OnEnable(){
         eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fileFullName);
+        FetchServerOptions();
     }
 
+#region SaveLoad
     [Button(ButtonSizes.Medium)]
     private void SaveSettings(){
-        eventSettings.dataSettings.fileFullName = eventSettings.dataSettings.fileName + eventSettings.dataSettings.extension;
+        eventSettings.dataSettings.fileFullName = eventSettings.dataSettings.fileName + "." + eventSettings.dataSettings.extension;
         Data.SaveData(eventSettings, eventSettings.dataSettings.fileFullName);
     }
 
@@ -34,7 +39,7 @@ public class EventSetting : MonoBehaviour
     private void LoadSettings(){
         eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fileFullName);
     }
-    
+#endregion
     private void FetchServerOptions(){
         string HtmlText = GetHtmlFromUri();
         if (HtmlText == "")
@@ -61,9 +66,28 @@ public class EventSetting : MonoBehaviour
             else
             {
                 while(!www.downloadHandler.isDone) yield return null;
-
+                EventOption options = JsonUtility.FromJson<EventOption>(www.downloadHandler.text);
+                eventSettings.eventOptions.eventOptions = options.eventOptions;
+                eventSettings.eventOptions.locationOptions = options.locationOptions;
+                eventSettings.eventOptions.sourceIdetifierOptions = options.sourceIdetifierOptions;
+                SaveSettings();
             }
         }
+    }
+
+    ///////////// AFTER License Key Verify /////////////
+    private void AddOptionsToAllDropdown()
+    {
+        AddOptionToDropdown(eventSettings.eventOptions.eventOptions, eventDropdown);
+        AddOptionToDropdown(eventSettings.eventOptions.locationOptions, locationDropdown);
+        AddOptionToDropdown(eventSettings.eventOptions.sourceIdetifierOptions, sourceIdentifierDropdown);
+    }
+
+    #region SubMethod
+    private void AddOptionToDropdown(string[] options, TMP_Dropdown dropdown)
+    {
+        dropdown.options.Clear();
+        dropdown.AddOptions(options.ToList());
     }
 
     public string GetHtmlFromUri(string resource = "http://google.com")
@@ -98,19 +122,23 @@ public class EventSetting : MonoBehaviour
         }
         return html;
     }
+    #endregion
+
 }
 
 [Serializable]
 public struct EventSettings
 {
+    [HideInPlayMode]
     public DataSettings dataSettings;
-    public string serverURL;
-    public string licenseKey;
+    [DisableInEditorMode] public string serverURL;
+    [DisableInEditorMode] public string licenseKey;
     public EventOption eventOptions;
     
 }
 
-public class EventOption{
+[Serializable]
+public struct EventOption{
     public string[] eventOptions;
     public string[] locationOptions;
     public string[] sourceIdetifierOptions;

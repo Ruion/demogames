@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.Networking;
 using System;
 using System.IO;
@@ -29,7 +30,7 @@ public class Encryption : MonoBehaviour
 
     [Header("License key Input Field")]
     #region License Key Input Field
-    public Text Lkey;
+    public TMP_InputField Lkey;
     public Button Submit;
     #endregion
 

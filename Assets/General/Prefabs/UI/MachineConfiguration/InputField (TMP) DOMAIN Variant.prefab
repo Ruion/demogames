@@ -287,12 +287,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3398644593446718856, guid: d89de302b4f4a6044b4756813b59d232,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -19.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398644593446718856, guid: d89de302b4f4a6044b4756813b59d232,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -78.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6639418598332705938, guid: d89de302b4f4a6044b4756813b59d232,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 946cde9ef35132b47926fdfe68cd8943,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6639418598332705938, guid: d89de302b4f4a6044b4756813b59d232,
         type: 3}
       propertyPath: m_Type
@@ -483,16 +492,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3398644593446718856, guid: d89de302b4f4a6044b4756813b59d232,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -19.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3398644593446718856, guid: d89de302b4f4a6044b4756813b59d232,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -78.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7649641316720669600, guid: d89de302b4f4a6044b4756813b59d232, type: 3}
