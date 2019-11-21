@@ -195,17 +195,7 @@ MonoBehaviour:
     DebugMode: 0
     fileName: game_setting
     scoreName: game_score
-    serverAddress: http://192.168.0.28/honda/submit-data.php
-    serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
     scoreToWin: 3
-    userTypeName: 
-    sQliteDBSettings:
-      dbName: db_
-      tableName: registration
-      UniversalUserClassName: DataBank.
-      columns: []
-      attributes: []
-      columnsToSkipWhenSync: []
   Submit: {fileID: 218756498239647099}
   virtualSubmit: {fileID: 218756497738917073}
   NameText: {fileID: 8519955087747842347}
@@ -6698,6 +6688,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AdminPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3234626117894237925, guid: e34e918c6104acd4585677433b908226,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1032522998947812784, guid: e34e918c6104acd4585677433b908226,
         type: 3}

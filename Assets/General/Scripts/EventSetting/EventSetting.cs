@@ -12,9 +12,9 @@ using UnityEngine.UI;
 using TMPro;
 using Sirenix.OdinInspector;
 
-public class EventSetting : MonoBehaviour
+public class EventSetting : SerializedMonoBehaviour
 {
-    #region Fields
+    #region Fields & Action
     public EventSettings eventSettings;
     
     public GameObject internetConnectionHandler;
@@ -23,15 +23,14 @@ public class EventSetting : MonoBehaviour
     public TMP_Dropdown locationDropdown;
     public TMP_Dropdown sourceIdentifierDropdown;
 
-    #endregion
-
-    #region InputFields & Action
     public TMP_InputField serverField;
     public TMP_InputField licenseKeyField;
 
     public List<EventFields> eventFields = new List<EventFields>();
-    public List<EventCode> eventCodes = new List<EventCode>();
 
+    [TableList]
+    public Dictionary<string, Button> buttons = new Dictionary<string, Button>();
+    public Dictionary<string, SubmitActions> submitActions = new Dictionary<string, SubmitActions>();
     #endregion
 
     void OnEnable(){
@@ -49,6 +48,15 @@ public class EventSetting : MonoBehaviour
     private void LoadSettings(){
         eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fileFullName);
     }
+
+    public void SaveConfiguration()
+    {
+        eventSettings.selectedEvent = eventDropdown.options[eventDropdown.value].text;
+        eventSettings.selectedLocation = locationDropdown.options[locationDropdown.value].text;
+        eventSettings.selectedSourceIdentifier = sourceIdentifierDropdown.options[sourceIdentifierDropdown.value].text;
+   
+        SaveSettings();
+    }
 #endregion
 
     // verify from server
@@ -61,7 +69,7 @@ public class EventSetting : MonoBehaviour
             internetConnectionHandler.SetActive(true);
             return;
         }
-
+        
         StartCoroutine(FetchServerOptionsRoutine());
     }
 
@@ -73,13 +81,14 @@ public class EventSetting : MonoBehaviour
             {
                 Debug.LogError(www.error);
                 errorHandler.SetActive(true);
+                errorHandler.GetComponentInChildren<TextMeshProUGUI>().text = www.error;
                 yield break;
             }
             else
             {
                 while(!www.downloadHandler.isDone) yield return null;
-                EventCode[] options = JsonUtility.FromJson<EventCode>(www.downloadHandler.text);
-                eventCodes = options.ToList();
+                EventCode[] options = JsonUtility.FromJson<EventCode[]>(www.downloadHandler.text);
+                eventSettings.eventCodes = options;
                 eventSettings.isVerify = true;
                 // Save options to file for local loading
                 SaveSettings();
@@ -90,13 +99,77 @@ public class EventSetting : MonoBehaviour
         }
     }
 
+    public void ResetFields()
+    {
+        foreach (EventFields f in eventFields)
+        {
+            if(f.field != null) f.field.text = "";
+            if(f.dropdownfield != null) f.dropdownfield.ClearOptions();
+        }
+        buttons["url"].interactable = false;
+        buttons["url"].gameObject.SetActive(true);
+
+        buttons["licensekey"].interactable = false;
+        buttons["licensekey"].gameObject.SetActive(true);
+
+        buttons["saveoptions"].gameObject.SetActive(false);
+        buttons["saveoptions"].interactable = false;
+        
+        buttons["done"].interactable = false;
+        buttons["done"].gameObject.SetActive(false);
+    }
     ///////////// AFTER License Key Verify /////////////
 #region Dropdown Manipulation
-    public void EnableDropdown(Dropdown dropdown_)
+
+    public void SubmitDomainReqest(TMP_InputField field)
     {
-        dropdown_.interactable = true;
+        StartCoroutine(SubmitDomainReqestRoutine(field.text));
     }
 
+    private IEnumerator SubmitDomainReqestRoutine(string url)
+    {
+        using (UnityWebRequest www = UnityWebRequest.Get(url)){
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.LogError(www.error);
+                errorHandler.SetActive(true);
+                errorHandler.GetComponentInChildren<TextMeshProUGUI>().text = www.error;
+                yield break;
+            }
+            else
+            {
+                while(!www.downloadHandler.isDone) yield return null;
+                JSONResponse response = JsonUtility.FromJson<JSONResponse>(www.downloadHandler.text);
+
+                if(response.result == "Success"){ submitActions["domain"].successAction.Invoke(); }
+                else{  submitActions["domain"].failAction.Invoke(); }
+            }
+        }
+
+    }
+    private IEnumerator SubmitRequest(string url, TMP_Dropdown dropdown, string[] options_, string firstOption = "Select")
+    {
+        using (UnityWebRequest www = UnityWebRequest.Get(url)){
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.LogError(www.error);
+                errorHandler.SetActive(true);
+                errorHandler.GetComponentInChildren<TextMeshProUGUI>().text = www.error;
+                yield break;
+            }
+            else
+            {
+                while(!www.downloadHandler.isDone) yield return null;
+                string[] options = JsonUtility.FromJson<string[]>(www.downloadHandler.text);
+                options_ = options;
+                AddOptionToDropdown(options_, dropdown, firstOption);
+            }
+        }
+    }
     private void AddOptionsToAllDropdown()
     {
         List<string> eventNames = new List<string>();
@@ -104,25 +177,26 @@ public class EventSetting : MonoBehaviour
         {
             eventNames.Add(e.eventName);
         }
-        AddOptionToDropdown(eventNames.ToArray(), eventDropdown);
-        AddOptionToDropdown(eventSettings.eventCodes[0].locationOptions, locationDropdown);
-        AddOptionToDropdown(eventSettings.eventCodes[0].sourceIdentifierOptions, sourceIdentifierDropdown);
+        AddOptionToDropdown(eventNames.ToArray(), eventDropdown, "Event");
     }
 
     public void ChangeDropdownOption(TMP_Dropdown dropdown)
     {
-        EventCode selectedEvent = eventCodes.FirstOrDefault(
-            e => e.eventName == dropdown.options[dropdown.value].ToString());
-        AddOptionToDropdown(selectedEvent.locationOptions, locationDropdown);
-        AddOptionToDropdown(selectedEvent.sourceIdentifierOptions, sourceIdentifierDropdown);
+        EventCode selectedEvent = new EventCode();
+        selectedEvent = eventSettings.eventCodes.FirstOrDefault(e => e.eventName == dropdown.options[dropdown.value].text);
+        if(selectedEvent == null) return;
+       
+        AddOptionToDropdown(selectedEvent.locationOptions, locationDropdown, "Location");
+        AddOptionToDropdown(selectedEvent.sourceIdentifierOptions, sourceIdentifierDropdown, "Source Identifier");
     }
 
 #endregion
     #region SubMethod
-    private void AddOptionToDropdown(string[] options, TMP_Dropdown dropdown)
+    private void AddOptionToDropdown(string[] options, TMP_Dropdown dropdown, string firstOption = "Select")
     {
         dropdown.options.Clear();
-        dropdown.AddOptions(options.ToList());
+        List<string> newOptions = options.ToList(); newOptions.Insert(0, firstOption);
+        dropdown.AddOptions(newOptions);
     }
 
     public string GetHtmlFromUri(string resource = "http://google.com")
@@ -168,20 +242,17 @@ public class EventSetting : MonoBehaviour
                 if(!string.IsNullOrEmpty(eventFields[fieldIndex].field.text))
                 {
                     isCorrect = Regex.IsMatch(eventFields[fieldIndex].field.text, eventFields[fieldIndex].regexPattern);
-                    
                 }
+                else isCorrect = false;
             }
             else
             {
-                if(eventFields[fieldIndex].dropdownfield.value == 0) { isCorrect = false; return;}
+                if(eventFields[fieldIndex].dropdownfield.value < 1) isCorrect = false;
             }
             
             if(isCorrect && eventFields[fieldIndex].successAction.GetPersistentEventCount() > 0 ) eventFields[fieldIndex].successAction.Invoke();
-            else
-            {
-                if(!isCorrect && eventFields[fieldIndex].failAction.GetPersistentEventCount() > 0 ) eventFields[fieldIndex].failAction.Invoke();
 
-            }
+            if(!isCorrect && eventFields[fieldIndex].failAction.GetPersistentEventCount() > 0 ) eventFields[fieldIndex].failAction.Invoke();
         }
     #endregion
 }
@@ -194,10 +265,13 @@ public struct EventSettings
     public DataSettings dataSettings;
     [DisableInEditorMode] public string serverURL;
     [DisableInEditorMode] public string licenseKey;
-    [HideInInspector] public bool isVerify;
+    public bool isVerify;
 
     public EventCode[] eventCodes;
     
+    public string selectedEvent;
+    public string selectedLocation;
+    public string selectedSourceIdentifier;
 }
 
 [Serializable]
@@ -212,10 +286,17 @@ public class EventFields
 }
 
 [Serializable]
-public struct EventCode
+public class EventCode
 {
     public string eventName;
     public string[] locationOptions;
     public string[] sourceIdentifierOptions;
 }
+
+public class SubmitActions
+{
+    public UnityEvent successAction;
+    public UnityEvent failAction;
+}
+
 #endregion

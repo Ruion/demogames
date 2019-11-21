@@ -1,110 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2847692801241020772
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 833590868594879295}
-  - component: {fileID: 3880680860983199461}
-  - component: {fileID: 3047241544416176463}
-  m_Layer: 0
-  m_Name: OnlineServerModel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &833590868594879295
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2847692801241020772}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8942889261852245931}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3880680860983199461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2847692801241020772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeb9154cf370ebc4e905461a35eb9bdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameSettings:
-    DebugMode: 0
-    fileName: game_setting
-    scoreName: score
-    serverAddress: http://192.168.0.28/honda/submit-data.php
-    serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
-    scoreToWin: 3
-    userTypeName: 
-    rewardType: 0
-    sQliteDBSettings:
-      dbName: db_
-      tableName: registration
-      UniversalUserClassName: DataBank.
-      columns: []
-      attributes: []
-      columnsToSkipWhenSync: []
-    vendingStockSettings:
-      stockDbName: db_stock
-      stockTableName: table_stock
-      VMSerialPortWriteType: 0
-      vmserialPortText: 
-      portname: 0
-      portbaudrate: 115200
-      numberToPopulate: 35
-      numberPerLane: 3
-      laneOccupyPerMotor: 1
-  isFetchingData: 0
-  TextPath: Application.stremingAssetsPath/local/LocalData.txt
-  serverUsers: []
-  emailList: []
---- !u!114 &3047241544416176463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2847692801241020772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe7599476a802904e9cac5366c1cd98f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  addEventsOnce: 1
-  eventsAdded: 0
-  ExecuteEventsOnSpecifiedScene: 1
-  sceneNameToRunEvent: HOME
-  sceneIndexToRunEvent: 0
-  EventOnSceneLoaded:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3880680860983199461}
-        m_MethodName: DoGetDataFromServer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &2901172509013719973
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,8 +29,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 833590868594879295}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -155,28 +49,7 @@ MonoBehaviour:
     DebugMode: 0
     fileName: game_honda
     scoreName: score
-    serverAddress: http://localhost/honda/honda/submit-data.php
-    serverGetDataAddress: http://localhost/honda/honda/get-data.php
     scoreToWin: 3
-    userTypeName: 
-    rewardType: 0
-    sQliteDBSettings:
-      dbName: db_
-      tableName: registration
-      UniversalUserClassName: DataBank.
-      columns: []
-      attributes: []
-      columnsToSkipWhenSync: []
-    vendingStockSettings:
-      stockDbName: db_stock
-      stockTableName: table_stock
-      VMSerialPortWriteType: 0
-      vmserialPortText: 
-      portname: 0
-      portbaudrate: 115200
-      numberToPopulate: 35
-      numberPerLane: 3
-      laneOccupyPerMotor: 1
 --- !u!114 &199091733273068208
 MonoBehaviour:
   m_ObjectHideFlags: 0

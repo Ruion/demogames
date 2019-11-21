@@ -22,7 +22,7 @@ using Sirenix.OdinInspector;
            
             BinaryFormatter bf = new BinaryFormatter();
            
-            try{ bf.Serialize(file,data); }
+            try{ bf.Serialize(file,data); Debug.Log("Save Data success"); }
             catch {
                
                 file.Close();

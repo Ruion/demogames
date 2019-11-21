@@ -126,6 +126,7 @@ public class KeyboardScript : MonoBehaviour
     {
         inputFieldTMPro.text = inputFieldTMPro.text.Remove(selectionStartPost, selectionAmount);
         inputFieldTMPro.stringPosition = selectionStartPost;
+        inputFieldTMPro.onValueChanged.Invoke(inputFieldTMPro.text);
     }
 
     public void CloseAllLayouts()
