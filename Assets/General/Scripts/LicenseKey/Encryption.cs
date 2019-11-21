@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 using UnityEngine.Networking;
 using System;
@@ -54,6 +55,8 @@ public class Encryption : MonoBehaviour
     bool Clean2 = false;
     List<string> temp_checkpoint = new List<string>();
     #endregion
+
+    public UnityEvent OnValidateSuccess;
 
     const string glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     const string passwords_encryption = "Unicom_UID_2019";
@@ -610,6 +613,8 @@ public class Encryption : MonoBehaviour
 
     public void Close_Success_Page()
     {
+        if(OnValidateSuccess.GetPersistentEventCount() > 0) OnValidateSuccess.Invoke();
+
         license_key_page.SetActive(false); // input license key page
         loading_page.SetActive(false); // checking validation page
         error_page1.SetActive(false); // invalid license key error

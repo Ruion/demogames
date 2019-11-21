@@ -3,8 +3,10 @@ using System.Net;
 using System.IO;
 using System.Linq;
 using System.Collections;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
@@ -23,9 +25,17 @@ public class EventSetting : MonoBehaviour
 
     #endregion
 
+    #region InputFields & Action
+    public TMP_InputField serverField;
+    public TMP_InputField licenseKeyField;
+
+    public List<EventFields> eventFields = new List<EventFields>();
+    public List<EventCode> eventCodes = new List<EventCode>();
+
+    #endregion
+
     void OnEnable(){
-        eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fileFullName);
-        FetchServerOptions();
+        if(eventSettings.isVerify) eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fileFullName);
     }
 
 #region SaveLoad
@@ -40,7 +50,9 @@ public class EventSetting : MonoBehaviour
         eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fileFullName);
     }
 #endregion
-    private void FetchServerOptions(){
+
+    // verify from server
+    public void FetchServerOptions(){
         string HtmlText = GetHtmlFromUri();
         if (HtmlText == "")
         {
@@ -66,23 +78,46 @@ public class EventSetting : MonoBehaviour
             else
             {
                 while(!www.downloadHandler.isDone) yield return null;
-                EventOption options = JsonUtility.FromJson<EventOption>(www.downloadHandler.text);
-                eventSettings.eventOptions.eventOptions = options.eventOptions;
-                eventSettings.eventOptions.locationOptions = options.locationOptions;
-                eventSettings.eventOptions.sourceIdetifierOptions = options.sourceIdetifierOptions;
+                EventCode[] options = JsonUtility.FromJson<EventCode>(www.downloadHandler.text);
+                eventCodes = options.ToList();
+                eventSettings.isVerify = true;
+                // Save options to file for local loading
                 SaveSettings();
+
+                // activate license key field
+                licenseKeyField.interactable = true;
             }
         }
     }
 
     ///////////// AFTER License Key Verify /////////////
-    private void AddOptionsToAllDropdown()
+#region Dropdown Manipulation
+    public void EnableDropdown(Dropdown dropdown_)
     {
-        AddOptionToDropdown(eventSettings.eventOptions.eventOptions, eventDropdown);
-        AddOptionToDropdown(eventSettings.eventOptions.locationOptions, locationDropdown);
-        AddOptionToDropdown(eventSettings.eventOptions.sourceIdetifierOptions, sourceIdentifierDropdown);
+        dropdown_.interactable = true;
     }
 
+    private void AddOptionsToAllDropdown()
+    {
+        List<string> eventNames = new List<string>();
+        foreach (EventCode e in eventSettings.eventCodes)
+        {
+            eventNames.Add(e.eventName);
+        }
+        AddOptionToDropdown(eventNames.ToArray(), eventDropdown);
+        AddOptionToDropdown(eventSettings.eventCodes[0].locationOptions, locationDropdown);
+        AddOptionToDropdown(eventSettings.eventCodes[0].sourceIdentifierOptions, sourceIdentifierDropdown);
+    }
+
+    public void ChangeDropdownOption(TMP_Dropdown dropdown)
+    {
+        EventCode selectedEvent = eventCodes.FirstOrDefault(
+            e => e.eventName == dropdown.options[dropdown.value].ToString());
+        AddOptionToDropdown(selectedEvent.locationOptions, locationDropdown);
+        AddOptionToDropdown(selectedEvent.sourceIdentifierOptions, sourceIdentifierDropdown);
+    }
+
+#endregion
     #region SubMethod
     private void AddOptionToDropdown(string[] options, TMP_Dropdown dropdown)
     {
@@ -124,8 +159,34 @@ public class EventSetting : MonoBehaviour
     }
     #endregion
 
+    #region Field validation
+        public void ValidateInputField(int fieldIndex)
+        {
+            bool isCorrect = true;
+            if(eventFields[fieldIndex].isText)
+            {
+                if(!string.IsNullOrEmpty(eventFields[fieldIndex].field.text))
+                {
+                    isCorrect = Regex.IsMatch(eventFields[fieldIndex].field.text, eventFields[fieldIndex].regexPattern);
+                    
+                }
+            }
+            else
+            {
+                if(eventFields[fieldIndex].dropdownfield.value == 0) { isCorrect = false; return;}
+            }
+            
+            if(isCorrect && eventFields[fieldIndex].successAction.GetPersistentEventCount() > 0 ) eventFields[fieldIndex].successAction.Invoke();
+            else
+            {
+                if(!isCorrect && eventFields[fieldIndex].failAction.GetPersistentEventCount() > 0 ) eventFields[fieldIndex].failAction.Invoke();
+
+            }
+        }
+    #endregion
 }
 
+#region Objects
 [Serializable]
 public struct EventSettings
 {
@@ -133,13 +194,28 @@ public struct EventSettings
     public DataSettings dataSettings;
     [DisableInEditorMode] public string serverURL;
     [DisableInEditorMode] public string licenseKey;
-    public EventOption eventOptions;
+    [HideInInspector] public bool isVerify;
+
+    public EventCode[] eventCodes;
     
 }
 
 [Serializable]
-public struct EventOption{
-    public string[] eventOptions;
-    public string[] locationOptions;
-    public string[] sourceIdetifierOptions;
+public class EventFields
+{
+    public bool isText;
+[ShowIf("isText", true)]  public TMP_InputField field;
+[ShowIf("isText", true)]  public string regexPattern;
+[HideIf("isText", true)]  public TMP_Dropdown dropdownfield;
+[HorizontalGroup] public UnityEvent successAction;
+[HorizontalGroup] public UnityEvent failAction;
 }
+
+[Serializable]
+public struct EventCode
+{
+    public string eventName;
+    public string[] locationOptions;
+    public string[] sourceIdentifierOptions;
+}
+#endregion
