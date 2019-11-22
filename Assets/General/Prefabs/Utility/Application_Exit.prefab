@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1549558088221477985}
   - component: {fileID: 8028981716104092380}
   m_Layer: 0
-  m_Name: Application_Manager
+  m_Name: Application_Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   second: 5
+  initialSecond: 0
   isRealtime: 1
+  stringFormat: 
   countDownTexts: []
   countdownEndEvents:
     m_PersistentCalls:

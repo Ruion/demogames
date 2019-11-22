@@ -7,10 +7,8 @@ using System;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using LOG = UnityEngine.Debug;
-#if UNITY_5_3
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
-#endif
 
 [InitializeOnLoad]
 public class AutoSave : EditorWindow
@@ -53,10 +51,14 @@ public class AutoSave : EditorWindow
 				timer = null;
 			}
 		}
-		EditorApplication.hierarchyWindowChanged -= HierarchyChanged;
-		EditorApplication.playmodeStateChanged -= playModeChanged;
-		EditorApplication.hierarchyWindowChanged += HierarchyChanged;
-		EditorApplication.playmodeStateChanged += playModeChanged;
+		//EditorApplication.hierarchyWindowChanged -= HierarchyChanged;
+		EditorApplication.hierarchyChanged -= HierarchyChanged;
+		//EditorApplication.playmodeStateChanged -= playModeChanged;
+		EditorApplication.playModeStateChanged -= playModeChanged;
+		//EditorApplication.hierarchyWindowChanged += HierarchyChanged;
+		EditorApplication.hierarchyChanged += HierarchyChanged;
+		//EditorApplication.playmodeStateChanged += playModeChanged;
+		EditorApplication.playModeStateChanged += playModeChanged;
 
 		if (instance != null) {
 			instance.Repaint ();
@@ -65,7 +67,7 @@ public class AutoSave : EditorWindow
 	}
 
 
-	public static void playModeChanged ()
+	public static void playModeChanged (PlayModeStateChange playModeStateChange)
 	{
 		if (AutoSavePreferences.saveBeforeRun && EditorApplication.isPlayingOrWillChangePlaymode && !savedBeforePlay) {
 			savedBeforePlay = true;
@@ -113,11 +115,9 @@ public class AutoSave : EditorWindow
 		saveAfterPlay = false;
 
 		// save untitled scene?
-#if UNITY_5_3
+
 		string sceneName = SceneManager.GetActiveScene ().name;
-#else
-			string sceneName = EditorApplication.currentScene;
-#endif
+			
 		if ((sceneName == "" || sceneName.StartsWith ("Untitled")) && !AutoSavePreferences.saveUnnamedNewScene) {
 			stw1.Start ();
 			return;
@@ -127,11 +127,9 @@ public class AutoSave : EditorWindow
 		if (AutoSavePreferences.logSaveEvent) {
 			LOG.Log ("Autosave");
 		}
-#if UNITY_5_3
+
 		EditorSceneManager.SaveOpenScenes ();
-#else
-		EditorApplication.SaveScene ();
-#endif
+		
 		if (AutoSavePreferences.saveAssets) {
 			AssetDatabase.SaveAssets ();
 			AssetDatabase.SaveAssets ();

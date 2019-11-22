@@ -11,9 +11,7 @@ public class SpawnerParallel : MonoBehaviour
     public Transform spawnParent;
     public GameObject[] treeEntityPrefab;
     public float spawnInterval;
-
-    int spawnNumber;
-
+    
     public void StartGame()
     {
         StartCoroutine(StartSpawn());
@@ -34,25 +32,15 @@ public class SpawnerParallel : MonoBehaviour
 
         for (int i = 0; i < spawnPoint.Length; i++)
         {
-            newEntity = Instantiate(treeEntityPrefab[GenerateRandomNumber(spawnNumber, treeEntityPrefab)], spawnPoint[i].position, Quaternion.identity, spawnParent);
+            newEntity = Instantiate(treeEntityPrefab[GenerateRandomNumber(treeEntityPrefab)], spawnPoint[i].position, Quaternion.identity, spawnParent);
             AssignDestination(newEntity, destinationPoint[i]);
         }
-        /*
-        //Left tree
-        newEntity = Instantiate(treeEntityPrefab[GenerateRandomNumber(spawnNumber, treeEntityPrefab)], spawnPoint[0].position, Quaternion.identity, spawnParent);
-        AssignDestination(newEntity, destinationPoint[0]);
-
-        //Right tree
-        newEntity = Instantiate(treeEntityPrefab[GenerateRandomNumber(spawnNumber, treeEntityPrefab)], spawnPoint[1].position, Quaternion.identity, spawnParent);
-        AssignDestination(newEntity, destinationPoint[1]);
-        */
-
 
         StartCoroutine(StartSpawn());
 
     }
 
-    int GenerateRandomNumber(int spawnNumber_, Object[] objects)
+    int GenerateRandomNumber(Object[] objects)
     {
         int rand = Random.Range(0, objects.Length);
 

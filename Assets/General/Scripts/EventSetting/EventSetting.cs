@@ -12,6 +12,9 @@ using UnityEngine.UI;
 using TMPro;
 using Sirenix.OdinInspector;
 
+/// <summary>
+/// Configure the machine setting and save to file in streaming assets folder
+/// </summary>
 public class EventSetting : SerializedMonoBehaviour
 {
     #region Fields & Action

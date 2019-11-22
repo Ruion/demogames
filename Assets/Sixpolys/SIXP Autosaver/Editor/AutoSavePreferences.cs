@@ -63,7 +63,8 @@ public class AutoSavePreferences
 	};
 	static int saveIntervalIndex = 0;
 
-	[PreferenceItem("Autosave")]
+	//[PreferenceItem("Autosave")]
+	[SettingsProvider]
 	public static void OnGUI ()
 	{
 		if (!loaded) {

@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using TMPro;
 
+namespace Universal{
 /// <summary>
 /// Class to help debug exported app. It will show error message panel when app encounter error
 /// This class can be toogle by bool gameSettings.DebugMode inherit from GameSettingEntity
 /// Tips: Drag "Debugger" prefab to the first scene of the app and it will persist across scene
 /// </summary>
-public class ErrorHandlePopUp : GameSettingEntity
+public class Debugger : GameSettingEntity
 {
     public GameObject PopUp;
     public TextMeshProUGUI title;
@@ -46,4 +47,5 @@ public class ErrorHandlePopUp : GameSettingEntity
         }
 
     }
+}
 }

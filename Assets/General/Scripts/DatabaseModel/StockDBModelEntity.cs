@@ -28,8 +28,8 @@ public class StockDBModelEntity : DBModelEntity
     [SerializeField] string item_name;
     [SerializeField] int item_quantity;
     [SerializeField] string item_lane;
-    [SerializeField] private int laneOccupyPerItem = 1;
-    [SerializeField] private int quantityPerLane;
+    //[SerializeField] private int laneOccupyPerItem = 1;
+    [SerializeField] private int quantityPerLane = 2;
 
     public UnityEvent OnOutOfStock;
     public UnityEvent OnStockGiven;
@@ -42,7 +42,7 @@ public class StockDBModelEntity : DBModelEntity
     }
 
     [ContextMenu("HideHandler")]
-    public void HideAllHandler()
+    public new void HideAllHandler()
     {
         stockEmptyHandler.SetActive(false);
         stockErrorHandler.SetActive(false);
