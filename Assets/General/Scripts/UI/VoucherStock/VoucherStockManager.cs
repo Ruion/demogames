@@ -7,9 +7,19 @@ using System.Data;
 using TMPro;
 using System.Linq;
 
+/// <summary>
+/// Manage the voucher stock, set and save the daily UI distribution
+/// </summary>
 public class VoucherStockManager : MonoBehaviour
 {
+    /// <summary>
+    /// Parent that will hold the voucher setting InputFields
+    /// </summary>
     public Transform voucherSettingParent;
+
+    /// <summary>
+    /// Prefab of voucher setting inputfield
+    /// </summary>
     public GameObject voucherSettingField;
     public KeyboardScript ks;
     public VoucherDBModelEntity vdb;

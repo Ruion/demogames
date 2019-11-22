@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Change current scene to selected scene index/name
+/// Tips: Attach to a gameObject, drag SwitchScene() function into an UnityEvent and type in scene index/scene name
+/// Notes: You can also call SwitchScene() via script
+/// </summary>
 public class SceneSwitcher : MonoBehaviour {
 
     public void SwitchScene(int sceneNumber)

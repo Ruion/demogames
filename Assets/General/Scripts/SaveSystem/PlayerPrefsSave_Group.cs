@@ -5,6 +5,10 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Collections;
 
+/// <summary>
+/// Save the form field, string value into PlayerPrefs. 
+/// Saving type supported are TMP_InputField, TMP_Dropdown, InputField, TextMeshProUGUI, DateTime, manual set string
+/// </summary>
 public class PlayerPrefsSave_Group : SerializedMonoBehaviour
 {
    // [TableList]
@@ -28,7 +32,7 @@ public class PlayerPrefsSave_Group : SerializedMonoBehaviour
         }
     }
 
-    public void Save(DataField df)
+    private void Save(DataField df)
     {
         PlayerPrefs.SetString(df.name_, df.GetValue());
     }

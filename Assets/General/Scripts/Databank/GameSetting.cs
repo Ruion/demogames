@@ -50,6 +50,10 @@ public static class GameSetting
 }
 
 [System.Serializable]
+/// <summary>
+/// Settings to be used by gameplay objects
+/// add variable like speed, hp, game time and make other class to use those values, to made tweaking and testing easier.
+/// </summary>
 public class Settings
 {
     public bool DebugMode = false;
@@ -64,6 +68,5 @@ public class Settings
         fileName = setting.fileName;
         scoreName = setting.scoreName;
         scoreToWin = setting.scoreToWin;
-
     }
 }

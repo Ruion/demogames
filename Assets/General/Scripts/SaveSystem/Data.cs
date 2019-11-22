@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-using Sirenix.OdinInspector;
 
-    /// Generic Data class
+    /// <summary>
+    /// static class that save and load objects variable into file.
+    /// Tips: Data.SaveData(object, string fileName); | Object = (Type)Data.LoadData(string fileName);
+    /// </summary>
     public static class Data{
        
         /// <summary>Save Generic Data.

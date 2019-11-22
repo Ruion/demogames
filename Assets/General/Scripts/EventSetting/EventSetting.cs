@@ -293,10 +293,11 @@ public class EventCode
     public string[] sourceIdentifierOptions;
 }
 
+[Serializable]
 public class SubmitActions
 {
-    public UnityEvent successAction;
-    public UnityEvent failAction;
+    public UnityEvent successAction = new UnityEvent();
+    public UnityEvent failAction = new UnityEvent();
 }
 
 #endregion

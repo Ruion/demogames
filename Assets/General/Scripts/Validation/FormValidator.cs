@@ -5,8 +5,12 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using System.Collections;
 using TMPro;
-using DataBank;
 
+/// <summary>
+/// Validate the user input in Registration Page.
+/// Validate Type support : text, email.
+/// Notes: By default it get "email" and "contact" list from DBModelEntity to check email, contact duplication
+/// </summary>
 public class FormValidator : ServerModelMaster
 {
 
@@ -49,8 +53,6 @@ public class FormValidator : ServerModelMaster
 
         emailList = playerDataDbModelEntity.GetDataByStringToList("email");
         contactList = playerDataDbModelEntity.GetDataByStringToList("contact");
-
-        playerDataDbModelEntity.Close();
     }
 
     // Update is called once per frame

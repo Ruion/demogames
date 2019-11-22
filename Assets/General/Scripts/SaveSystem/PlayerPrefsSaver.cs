@@ -2,6 +2,14 @@
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Save the value of field / ScriptableScore / DataTime into PlayerPrefs
+/// Tips: set the name_ in inspector, drag this component into UnityEvent 
+/// and select which function to execute, and drop the TMP UI Object into the function field.
+/// You can also call various Save() function via script.
+/// Supported type : TMP_InputField, InputField, TexhMeshProUGUI, ScriptableScore, DateTime, string
+/// Note: DataTime parameter require no parameter.
+/// </summary>
 public class PlayerPrefsSaver : MonoBehaviour
 {
     public string name_;

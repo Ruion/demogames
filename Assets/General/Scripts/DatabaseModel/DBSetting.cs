@@ -6,6 +6,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 using Sirenix.OdinInspector;
 
 #region Save Load Class
+/// <summary>
+/// Hold various local and server database settings
+/// </summary>
 public class DBSetting
 {
     

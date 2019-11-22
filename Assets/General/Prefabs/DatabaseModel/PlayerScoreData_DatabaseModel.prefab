@@ -90,10 +90,24 @@ MonoBehaviour:
       resultResponseMessage: sync success
     - resultResponse: Fail
       resultResponseMessage: sync fail
+    hasMultipleLocalDB: 0
+    keyDownloadURL: 
+    keyFileName: 
+    serverEmailFilePath: 
   db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/playerscoredata
   numberToPopulate: 0
   TestIndex: 5
-  selectCustomCondition: is_submitted = 'false'
+  selectCustomCondition: online_status = 'new'
+  hasSync: 0
+  emptyHandler: {fileID: 0}
+  internetErrorHandler: {fileID: 0}
+  errorHandler: {fileID: 0}
+  blockDataHandler: {fileID: 0}
+  successBar: {fileID: 0}
+  failBar: {fileID: 0}
+  entityId: 0
+  serverEmailList: []
+  isFetchingData: 0
 --- !u!114 &7610391580906879207
 MonoBehaviour:
   m_ObjectHideFlags: 0

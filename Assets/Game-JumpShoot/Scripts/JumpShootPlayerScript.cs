@@ -35,7 +35,7 @@ public class JumpShootPlayerScript : MonoBehaviour {
 
     public JumpShootGameManagerScript jsGM;
     public float repositionRatio = 2f;
-    public CameraShake camShake;
+    public Gameplay.Effects.CameraShake camShake;
     public float stepDistanceY;
 
     void Awake () {

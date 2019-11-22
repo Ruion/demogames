@@ -5,6 +5,10 @@ using System.Data;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Manipulate database for Vending Machine, use with VendingMachine.cs to drop gift
+/// Tips: call GiveReward() to drop gift from vending machine
+/// </summary>
 public class StockDBModelEntity : DBModelEntity
 {
     #region fields

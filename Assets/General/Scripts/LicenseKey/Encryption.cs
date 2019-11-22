@@ -59,11 +59,17 @@ public class Encryption : MonoBehaviour
     public UnityEvent OnValidateSuccess;
 
     const string glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    const string passwords_encryption = "Unicom_UID_2019";
+   // const string passwords_encryption = "Unicom_UID_2019";
+
+
+/// Game-01: 2NALZTD565JR
+/// Game-02: 8VR8DRT9Q7J2
+    const string passwords_encryption = "2NALZTD565JR";
     /// <summary>
     /// Change this URL
     /// </summary>
-    const string urlstage2_Register = "http://api-test.unicom-interactive-digital.com/activate-key.php";
+    const string urlstage2_Register = "http://game-01-dashboard.unicom-interactive-digital.com/public/api/activate-license-key";
+    const string urlstage2_Validate = "http://game-01-dashboard.unicom-interactive-digital.com/public/validate-license-key";
 
     void Awake()
     {
@@ -333,8 +339,8 @@ public class Encryption : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("license_key", licensekey);
         form.AddField("mic", machine_id);
-
-        using (UnityWebRequest www = UnityWebRequest.Post(urlstage2_Register, form))
+        
+        using (UnityWebRequest www = UnityWebRequest.Post(urlstage2_Validate, form))
         {
             yield return www.SendWebRequest();
 
@@ -417,7 +423,9 @@ public class Encryption : MonoBehaviour
         form.AddField("license_key", licensekey);
         form.AddField("mic", machine_id);
 
-        using (UnityWebRequest www = UnityWebRequest.Post(urlstage2_Register, form))
+        //http://www.test.com/index.htm?name1=value1&name2=value2 // FOR GET METHOD {license_key}/mic/{mic}
+        Debug.Log(urlstage2_Register);
+       using (UnityWebRequest www = UnityWebRequest.Post(urlstage2_Register, form)) 
         {
             yield return www.SendWebRequest();
 

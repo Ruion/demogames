@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Activate a target object after a delay on Start()
+/// </summary>
 public class ActivateObjectOnDelay : MonoBehaviour
 {
     public bool activateOnStart = true;

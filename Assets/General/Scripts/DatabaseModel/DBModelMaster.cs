@@ -12,6 +12,14 @@ using TMPro;
 using UnityEngine.Networking;
 using System.Collections;
 
+/// <summary>
+/// Sqlite database master class that hold database settings, methods for manipulating user data \n
+/// Method Utilities : \n
+/// Basic : Get, Insert, Update, Delete \n 
+/// Server : Fetch string list from server \n
+/// Public : Execute custom query on this database with ExecuteCustomNonQuery() and ExecuteCustomQuery() \n
+/// Notes: see usage in DBModelEntity which inherit and extend this class
+/// </summary>
 public class DBModelMaster : DBSettingEntity
 {
     #region fields
@@ -579,11 +587,15 @@ public class DBModelMaster : DBSettingEntity
 
     public void DoGetDataFromServer()
     {
+        try{
         SetUpTextPath();
         if (isFetchingData) return;
 
         isFetchingData = true;
         StartCoroutine(GetDataFromServer());
+        }catch{
+            Debug.LogError(name);
+        }
     }
 
     public IEnumerator GetDataFromServer()
@@ -648,12 +660,20 @@ public class DBModelMaster : DBSettingEntity
         isFetchingData = false;
     }
 
+/// <summary>
+/// call GetDataFromServer() coroutine to get the list of email from server, call UpdateEmailExistedOnline() to
+/// update "online_status = 'duplicate'" of email in local database if the email already exist in server
+/// </summary>
+/// <returns></returns>
     public IEnumerator CompareServerData()
     {
         yield return StartCoroutine(GetDataFromServer());
         UpdateEmailExistedOnline();
     }
 
+/// <summary>
+/// update "online_status = 'duplicate'" of email in local database if the email already exist in server
+/// </summary>
     public void UpdateEmailExistedOnline()
     {
         if (serverEmailList.Count < 0) return;

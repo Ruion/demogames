@@ -2,11 +2,20 @@
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
-using System.Reflection;
 
+/// <summary>
+/// Execute unity event after specific second.
+/// Tips: attach this component to gameObject and assign functions to countdownEndEvents. Call StartGame() to execute events after specific second.
+/// TimeManager normally use to execute event once after specific second. 
+/// For example, call RestartScene() in SceneSwitch to restart scene, after 120 seconds in Registration Page
+/// </summary>
 public class TimeManager : MonoBehaviour
 {
 
+/// <summary>
+/// set this value to change value of "second",
+/// </summary>
+/// <value>second</value>
     public float countDownSeconds
     {
         get { return second; }

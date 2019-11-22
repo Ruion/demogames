@@ -5,10 +5,23 @@ using UnityEngine.Networking;
 using System.Collections;
 using System.Linq;
 
+/// <summary>
+/// Create/delete table, insert/update/delete data, and send data to server \n
+/// Tips: Set the field variable in inspector, use button to help create, delete, update table \n
+/// Local > set fileName in inspector, table columns and attributes \n
+/// Server > set server url, get data url \n
+/// Handler > toogle hasSync and drag message gameObjects into corresponsding field \n
+/// Tips: \n
+/// Insert player data > use PlayerPrefsSaver or PlayerPrefsSave_Group to save the value 
+/// with name same with table column, call SaveToLocal() to insert data into database
+/// </summary>
 public class DBModelEntity : DBModelMaster
 {
     DataRowCollection rows;
 
+/// <summary>
+/// Save PlayerPrefs value into all table column set in inspector
+/// </summary>
     public override void SaveToLocal() {
         base.SaveToLocal();
 
@@ -31,6 +44,9 @@ public class DBModelEntity : DBModelMaster
         Debug.Log(gameObject.name + " Data save to local");
     }
 
+/// <summary>
+/// Load setting like send url and call SyncToServer() coroutine to Send data to server
+/// </summary>
     public override void Sync()
     {
         LoadSetting();
@@ -39,6 +55,10 @@ public class DBModelEntity : DBModelMaster
         StartCoroutine(SyncToServer());
     }
 
+/// <summary>
+/// Make web request and send data to server, data will continue to send regardless of any error encounter
+/// </summary>
+/// <returns></returns>
     private IEnumerator SyncToServer()
     {
         yield return StartCoroutine(CompareServerData());
@@ -123,12 +143,17 @@ public class DBModelEntity : DBModelMaster
         #endregion
 
         ToogleHandler(blockDataHandler, false);
-        failBar.GetComponent<StatusBar>().Finish();
-        successBar.GetComponent<StatusBar>().Finish();
+       if(hasSync) failBar.GetComponent<StatusBar>().Finish();
+       if(hasSync) successBar.GetComponent<StatusBar>().Finish();
         rows.Clear();
         Close();
     }
 
+/// <summary>
+/// Show error message and handler when encounter error sending data to server
+/// </summary>
+/// <param name="www"></param>
+/// <param name="errorMessage"></param>
     private void ErrorAction(UnityWebRequest www, string errorMessage)
     {
         ToogleHandler(blockDataHandler, false);
