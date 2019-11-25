@@ -52,15 +52,6 @@ public class ScoreManager : MonoBehaviour {
         scoreVisualizer.UpdateText(-amount);       
     }
 
-    public void CompareBestScore()
-    {
-        if (scoreVisualizer.scriptableScore.score > bestScoreVisualizer.scriptableScore.score)
-        {
-            bestScoreVisualizer.scriptableScore.score = scoreVisualizer.scriptableScore.score;
-        }
-
-    }
-
     public void SaveScore()
     {
         PlayerPrefs.SetString(scoreName, scoreText.text);

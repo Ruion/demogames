@@ -121,17 +121,44 @@ public class EventSetting : SerializedMonoBehaviour
         buttons["done"].interactable = false;
         buttons["done"].gameObject.SetActive(false);
     }
-    ///////////// AFTER License Key Verify /////////////
-#region Dropdown Manipulation
-
-    public void SubmitDomainReqest(TMP_InputField field)
+    
+    public void SubmitDomainReqest()
     {
-        StartCoroutine(SubmitDomainReqestRoutine(field.text));
+        StartCoroutine(SubmitDomainRoutine(serverField.text));
     }
 
-    private IEnumerator SubmitDomainReqestRoutine(string url)
+    private IEnumerator SubmitDomainRoutine(string url)
     {
         using (UnityWebRequest www = UnityWebRequest.Get(url)){
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.LogError(www.error);
+                errorHandler.SetActive(true);
+                errorHandler.GetComponentInChildren<TextMeshProUGUI>().text = www.error;
+                yield break;
+            }
+            else
+            {
+                while(!www.downloadHandler.isDone) yield return null;
+                JSONResponse response = JsonUtility.FromJson<JSONResponse>(www.downloadHandler.text);
+
+                if(response.result == "Success"){ submitActions["sourceidentifier"].successAction.Invoke(); }
+                else{ submitActions["sourceidentifier"].failAction.Invoke(); }
+            }
+        }
+
+    }
+
+    public void SubmitSourceIdentifier()
+    {
+        StartCoroutine(SubmitSourceIdentifierRoutine(sourceIdentifierDropdown.options[sourceIdentifierDropdown.value].text));
+    }
+
+    private IEnumerator SubmitSourceIdentifierRoutine(string value)
+    {
+        using (UnityWebRequest www = UnityWebRequest.Get(eventSettings.sourceidentifierURL)){
             yield return www.SendWebRequest();
 
             if (www.isNetworkError || www.isHttpError)
@@ -150,29 +177,12 @@ public class EventSetting : SerializedMonoBehaviour
                 else{  submitActions["domain"].failAction.Invoke(); }
             }
         }
-
     }
-    private IEnumerator SubmitRequest(string url, TMP_Dropdown dropdown, string[] options_, string firstOption = "Select")
-    {
-        using (UnityWebRequest www = UnityWebRequest.Get(url)){
-            yield return www.SendWebRequest();
 
-            if (www.isNetworkError || www.isHttpError)
-            {
-                Debug.LogError(www.error);
-                errorHandler.SetActive(true);
-                errorHandler.GetComponentInChildren<TextMeshProUGUI>().text = www.error;
-                yield break;
-            }
-            else
-            {
-                while(!www.downloadHandler.isDone) yield return null;
-                string[] options = JsonUtility.FromJson<string[]>(www.downloadHandler.text);
-                options_ = options;
-                AddOptionToDropdown(options_, dropdown, firstOption);
-            }
-        }
-    }
+
+    ///////////// AFTER License Key Verify /////////////
+#region Dropdown Manipulation
+
     private void AddOptionsToAllDropdown()
     {
         List<string> eventNames = new List<string>();
@@ -267,6 +277,7 @@ public struct EventSettings
     [HideInPlayMode]
     public DataSettings dataSettings;
     [DisableInEditorMode] public string serverURL;
+    [DisableInEditorMode] public string sourceidentifierURL;
     [DisableInEditorMode] public string licenseKey;
     public bool isVerify;
 

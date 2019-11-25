@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
     
 /// <summary>
 /// Class use by EventConditional to compare scriptableScore.score is lower or higher than score to win game.
 /// </summary>
 [System.Serializable]
-public class ScoreCardCondition
+public class ScoreCondition
 {
-    
-    public ScriptableScore scriptableScore;
+    public string scoreName;
+    public int score{ get{return int.Parse(PlayerPrefs.GetString(scoreName));} }
     public int minimumScore;
 }
 
 public class EventConditional : MonoBehaviour {
-    public ScoreCardCondition[] scriptableScoreCard;
+    public ScoreCondition[] scoreConditions;
     public bool conditionIsPass = true;
     public UnityEvent OnScoreCardPass;
     public UnityEvent OnScoreCardNotPass;
@@ -26,9 +27,9 @@ public class EventConditional : MonoBehaviour {
 /// </summary>
 	public void ExecuteScriptableScoreCondition()
     {
-        for (int i = 0; i < scriptableScoreCard.Length; i++)
+        for (int i = 0; i < scoreConditions.Length; i++)
         {
-            if (scriptableScoreCard[i].scriptableScore.score < scriptableScoreCard[i].minimumScore)
+            if (scoreConditions[i].score < scoreConditions[i].minimumScore)
             {
                 conditionIsPass = false;
             }            
