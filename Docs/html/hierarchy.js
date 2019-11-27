@@ -73,13 +73,13 @@ var hierarchy =
       [ "GameManager", "class_game_manager.html", null ],
       [ "Gameplay.Effects.CameraShake", "class_gameplay_1_1_effects_1_1_camera_shake.html", null ],
       [ "GameSettingEntity", "class_game_setting_entity.html", [
-        [ "ErrorHandlePopUp", "class_error_handle_pop_up.html", null ],
         [ "JumpShootScoreManagerScript", "class_jump_shoot_score_manager_script.html", null ],
         [ "ScoreVisualizer", "class_score_visualizer.html", null ],
         [ "ServerModelMaster", "class_server_model_master.html", [
           [ "FormValidator", "class_form_validator.html", null ]
         ] ],
-        [ "TimeScaleController", "class_time_scale_controller.html", null ]
+        [ "TimeScaleController", "class_time_scale_controller.html", null ],
+        [ "Universal.Debugger", "class_universal_1_1_debugger.html", null ]
       ] ],
       [ "GroundManagerScript", "class_ground_manager_script.html", null ],
       [ "GroundScript", "class_ground_script.html", null ],
@@ -148,7 +148,7 @@ var hierarchy =
       [ "ConditionalHidePropertyDrawer", "class_conditional_hide_property_drawer.html", null ],
       [ "ReadOnlyDrawer", "class_read_only_drawer.html", null ]
     ] ],
-    [ "ScoreCardCondition", "class_score_card_condition.html", null ],
+    [ "ScoreCondition", "class_score_condition.html", null ],
     [ "ScriptableObject", null, [
       [ "ScriptableScore", "class_scriptable_score.html", null ]
     ] ],

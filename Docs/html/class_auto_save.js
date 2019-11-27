@@ -6,7 +6,7 @@ var class_auto_save =
     [ "InitAutosave", "class_auto_save.html#a31f75dff13eb6a9eea16c9264cc06f55", null ],
     [ "LoadPreferences", "class_auto_save.html#ac0b47ea11dd87083837e470097422724", null ],
     [ "OnEnable", "class_auto_save.html#a0ea0e7195260719d42f7f0f895538fb1", null ],
-    [ "playModeChanged", "class_auto_save.html#a193ad3693d57e5aa7feec857b7e05da9", null ],
+    [ "playModeChanged", "class_auto_save.html#ad0398ad7c14c4bed41b9bd960731f22e", null ],
     [ "ShowWindow", "class_auto_save.html#aa42798adbdb0c42e4b9793c04139ba3e", null ],
     [ "timerFired", "class_auto_save.html#a1880ac8a64e57755acce1f99b695c1e9", null ],
     [ "_saveNow", "class_auto_save.html#a894906dc2334c596fc214dddb72a76c0", null ],

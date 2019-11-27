@@ -7,5 +7,6 @@ var struct_event_settings =
     [ "selectedEvent", "struct_event_settings.html#af1a3803da99c550dfd6159843027dcbb", null ],
     [ "selectedLocation", "struct_event_settings.html#a371ba198206b4672e1e849b143a67f51", null ],
     [ "selectedSourceIdentifier", "struct_event_settings.html#a8aa821b20c5c1d6278f3472cfede591f", null ],
-    [ "serverURL", "struct_event_settings.html#a79199992113b2bc1b074b5da363b3dd6", null ]
+    [ "serverURL", "struct_event_settings.html#a79199992113b2bc1b074b5da363b3dd6", null ],
+    [ "sourceidentifierURL", "struct_event_settings.html#a767b3d40377b3106655d0d6533611b49", null ]
 ];

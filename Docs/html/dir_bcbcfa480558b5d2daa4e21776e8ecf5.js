@@ -1,7 +1,7 @@
 var dir_bcbcfa480558b5d2daa4e21776e8ecf5 =
 [
     [ "EventConditional.cs", "_event_conditional_8cs.html", [
-      [ "ScoreCardCondition", "class_score_card_condition.html", "class_score_card_condition" ],
+      [ "ScoreCondition", "class_score_condition.html", "class_score_condition" ],
       [ "EventConditional", "class_event_conditional.html", "class_event_conditional" ]
     ] ],
     [ "EventSequencer.cs", "_event_sequencer_8cs.html", [

@@ -1,7 +1,6 @@
 var class_score_manager =
 [
     [ "AddScore", "class_score_manager.html#a61fff541692b354ea8ab0e92ba0590d4", null ],
-    [ "CompareBestScore", "class_score_manager.html#a09df0dba6c56a11fa93f335ebdebe5b6", null ],
     [ "MinusScore", "class_score_manager.html#a074442be28a45147a89139e6593abbf7", null ],
     [ "SaveScore", "class_score_manager.html#a4daebf01e0c28a387698237716062ec0", null ],
     [ "SpawnScoreEffect", "class_score_manager.html#afc3b8312002bb60537489ecc993e304f", null ],

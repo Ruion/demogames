@@ -93,11 +93,13 @@ $(document).ready(function(){initNavTree('class_d_b_model_entity.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Create/delete table, insert/update/delete data, and send data to server Tips: Set the field variable in inspector, use button to help create, delete, update table <br  />
+<p>Create/delete table, insert/update/delete data, and send data to server <br  />
+Tips: Set the field variable in inspector, use button to help create, delete, update table <br  />
 Local &gt; set fileName in inspector, table columns and attributes <br  />
 Server &gt; set server url, get data url <br  />
 Handler &gt; toogle hasSync and drag message gameObjects into corresponsding field <br  />
- 
+Tips: <br  />
+Insert player data &gt; use <a class="el" href="class_player_prefs_saver.html" title="Save the value of field / ScriptableScore / DataTime into PlayerPrefs Tips: set the name_ in inspecto...">PlayerPrefsSaver</a> or <a class="el" href="class_player_prefs_save___group.html" title="Save the form field, string value into PlayerPrefs.">PlayerPrefsSave_Group</a> to save the value with name same with table column, call <a class="el" href="class_d_b_model_entity.html#a5fb1559670e61bce47dabbad9fc420b8" title="Save PlayerPrefs value into all table column set in inspector">SaveToLocal()</a> to insert data into database  
  <a href="class_d_b_model_entity.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for DBModelEntity:</div>
@@ -105,17 +107,19 @@ Inheritance diagram for DBModelEntity:</div>
  <div class="center">
   <img src="class_d_b_model_entity.png" usemap="#DBModelEntity_map" alt=""/>
   <map id="DBModelEntity_map" name="DBModelEntity_map">
-<area href="class_d_b_model_master.html" title="Sqlite database master class that hold database settings, methods for manipulating user data Method U..." alt="DBModelMaster" shape="rect" coords="0,112,158,136"/>
-<area href="class_d_b_setting_entity.html" alt="DBSettingEntity" shape="rect" coords="0,56,158,80"/>
-<area href="class_stock_d_b_model_entity.html" alt="StockDBModelEntity" shape="rect" coords="0,224,158,248"/>
+<area href="class_d_b_model_master.html" title="Sqlite database master class that hold database settings, methods for manipulating user data  Method ..." alt="DBModelMaster" shape="rect" coords="0,112,158,136"/>
+<area href="class_d_b_setting_entity.html" title="Base class for DBModelMaster Tips: Inherit this class to allow accessing database setting" alt="DBSettingEntity" shape="rect" coords="0,56,158,80"/>
+<area href="class_stock_d_b_model_entity.html" title="Manipulate database for Vending Machine, use with VendingMachine.cs to drop gift Tips: call GiveRewar..." alt="StockDBModelEntity" shape="rect" coords="0,224,158,248"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5fb1559670e61bce47dabbad9fc420b8"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_b_model_entity.html#a5fb1559670e61bce47dabbad9fc420b8">SaveToLocal</a> ()</td></tr>
+<tr class="memdesc:a5fb1559670e61bce47dabbad9fc420b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save PlayerPrefs value into all table column set in inspector  <a href="class_d_b_model_entity.html#a5fb1559670e61bce47dabbad9fc420b8">More...</a><br /></td></tr>
 <tr class="separator:a5fb1559670e61bce47dabbad9fc420b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a417cc7586fc17d055b61a4f0a7dfcb46"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_b_model_entity.html#a417cc7586fc17d055b61a4f0a7dfcb46">Sync</a> ()</td></tr>
+<tr class="memdesc:a417cc7586fc17d055b61a4f0a7dfcb46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load setting like send url and call SyncToServer() coroutine to Send data to server  <a href="class_d_b_model_entity.html#a417cc7586fc17d055b61a4f0a7dfcb46">More...</a><br /></td></tr>
 <tr class="separator:a417cc7586fc17d055b61a4f0a7dfcb46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_d_b_model_master"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_d_b_model_master')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_d_b_model_master.html">DBModelMaster</a></td></tr>
 <tr class="memitem:a708c9bd517454810a96f2ca4946a90b1 inherit pub_methods_class_d_b_model_master"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_b_model_master.html#a708c9bd517454810a96f2ca4946a90b1">CreateTable</a> ()</td></tr>
@@ -157,8 +161,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af308482318c752f4a0d21d06348a9fa3 inherit pub_methods_class_d_b_model_master"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_b_model_master.html#af308482318c752f4a0d21d06348a9fa3">GetDataFromServer</a> ()</td></tr>
 <tr class="separator:af308482318c752f4a0d21d06348a9fa3 inherit pub_methods_class_d_b_model_master"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa37953543e82686d5aa601222f5f66e9 inherit pub_methods_class_d_b_model_master"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_b_model_master.html#aa37953543e82686d5aa601222f5f66e9">CompareServerData</a> ()</td></tr>
+<tr class="memdesc:aa37953543e82686d5aa601222f5f66e9 inherit pub_methods_class_d_b_model_master"><td class="mdescLeft">&#160;</td><td class="mdescRight">call <a class="el" href="class_d_b_model_master.html#af308482318c752f4a0d21d06348a9fa3">GetDataFromServer()</a> coroutine to get the list of email from server, call <a class="el" href="class_d_b_model_master.html#a4fe760e958b6b2fa5bf61df390adb5b5" title="update &quot;online_status = &#39;duplicate&#39;&quot; of email in local database if the email already exist in server">UpdateEmailExistedOnline()</a> to update "online_status = 'duplicate'" of email in local database if the email already exist in server  <a href="class_d_b_model_master.html#aa37953543e82686d5aa601222f5f66e9">More...</a><br /></td></tr>
 <tr class="separator:aa37953543e82686d5aa601222f5f66e9 inherit pub_methods_class_d_b_model_master"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fe760e958b6b2fa5bf61df390adb5b5 inherit pub_methods_class_d_b_model_master"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_b_model_master.html#a4fe760e958b6b2fa5bf61df390adb5b5">UpdateEmailExistedOnline</a> ()</td></tr>
+<tr class="memdesc:a4fe760e958b6b2fa5bf61df390adb5b5 inherit pub_methods_class_d_b_model_master"><td class="mdescLeft">&#160;</td><td class="mdescRight">update "online_status = 'duplicate'" of email in local database if the email already exist in server  <a href="class_d_b_model_master.html#a4fe760e958b6b2fa5bf61df390adb5b5">More...</a><br /></td></tr>
 <tr class="separator:a4fe760e958b6b2fa5bf61df390adb5b5 inherit pub_methods_class_d_b_model_master"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_d_b_setting_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_d_b_setting_entity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_d_b_setting_entity.html">DBSettingEntity</a></td></tr>
 <tr class="memitem:a8b9ad9bbe5cf84114867c1ae1333e1e6 inherit pub_methods_class_d_b_setting_entity"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_b_setting_entity.html#a8b9ad9bbe5cf84114867c1ae1333e1e6">Awake</a> ()</td></tr>
@@ -217,11 +223,13 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a3aa156af7834da29d4e5162173e0e148 inherit pro_methods_class_d_b_model_master"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Create/delete table, insert/update/delete data, and send data to server Tips: Set the field variable in inspector, use button to help create, delete, update table <br  />
+<div class="textblock"><p>Create/delete table, insert/update/delete data, and send data to server <br  />
+Tips: Set the field variable in inspector, use button to help create, delete, update table <br  />
 Local &gt; set fileName in inspector, table columns and attributes <br  />
 Server &gt; set server url, get data url <br  />
 Handler &gt; toogle hasSync and drag message gameObjects into corresponsding field <br  />
-</p>
+Tips: <br  />
+Insert player data &gt; use <a class="el" href="class_player_prefs_saver.html" title="Save the value of field / ScriptableScore / DataTime into PlayerPrefs Tips: set the name_ in inspecto...">PlayerPrefsSaver</a> or <a class="el" href="class_player_prefs_save___group.html" title="Save the form field, string value into PlayerPrefs.">PlayerPrefsSave_Group</a> to save the value with name same with table column, call <a class="el" href="class_d_b_model_entity.html#a5fb1559670e61bce47dabbad9fc420b8" title="Save PlayerPrefs value into all table column set in inspector">SaveToLocal()</a> to insert data into database </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5fb1559670e61bce47dabbad9fc420b8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5fb1559670e61bce47dabbad9fc420b8">&#9670;&nbsp;</a></span>SaveToLocal()</h2>
@@ -245,6 +253,8 @@ Handler &gt; toogle hasSync and drag message gameObjects into corresponsding fie
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Save PlayerPrefs value into all table column set in inspector </p>
 
 <p>Reimplemented from <a class="el" href="class_d_b_model_master.html#a6b0dc6a00f9c333b12b2f29a3d7c131c">DBModelMaster</a>.</p>
 
@@ -273,6 +283,8 @@ Handler &gt; toogle hasSync and drag message gameObjects into corresponsding fie
 </table>
 </div><div class="memdoc">
 
+<p>Load setting like send url and call SyncToServer() coroutine to Send data to server </p>
+
 <p>Reimplemented from <a class="el" href="class_d_b_model_master.html#af2bcf766a133d858fe68fa98fbb57fe4">DBModelMaster</a>.</p>
 
 </div>
@@ -286,7 +298,7 @@ Handler &gt; toogle hasSync and drag message gameObjects into corresponsding fie
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_d_b_model_entity.html">DBModelEntity</a></li>
-    <li class="footer">Generated on Fri Nov 22 2019 16:33:31 for GameTemplate by
+    <li class="footer">Generated on Tue Nov 26 2019 12:45:48 for GameTemplate by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>

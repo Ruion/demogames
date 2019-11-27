@@ -46,6 +46,6 @@ var searchData=
   ['autosaveenabled_48',['autosaveEnabled',['../class_auto_save_preferences.html#a6405ccadc38276bb5d4a6dbb0cb16576',1,'AutoSavePreferences']]],
   ['autosavepreferences_49',['AutoSavePreferences',['../class_auto_save_preferences.html',1,'']]],
   ['autosavepreferences_2ecs_50',['AutoSavePreferences.cs',['../_auto_save_preferences_8cs.html',1,'']]],
-  ['awake_51',['Awake',['../class_game_setting_entity.html#a5d889985e42e11c47cbe5ec9053fa980',1,'GameSettingEntity.Awake()'],['../class_d_b_setting_entity.html#a8b9ad9bbe5cf84114867c1ae1333e1e6',1,'DBSettingEntity.Awake()'],['../class_error_handle_pop_up.html#a3eb25b82bb9fdad577337892367d7fb6',1,'ErrorHandlePopUp.Awake()'],['../class_score_visualizer.html#a4c0acd3aec529249d98b67c2ca3eeab9',1,'ScoreVisualizer.Awake()']]],
+  ['awake_51',['Awake',['../class_game_setting_entity.html#a5d889985e42e11c47cbe5ec9053fa980',1,'GameSettingEntity.Awake()'],['../class_d_b_setting_entity.html#a8b9ad9bbe5cf84114867c1ae1333e1e6',1,'DBSettingEntity.Awake()'],['../class_universal_1_1_debugger.html#afc0ccb96c3c046844bbb15e6b952b56c',1,'Universal.Debugger.Awake()'],['../class_score_visualizer.html#a4c0acd3aec529249d98b67c2ca3eeab9',1,'ScoreVisualizer.Awake()']]],
   ['editor_52',['Editor',['../namespace_assets_1_1_editor.html',1,'Assets']]]
 ];

@@ -19,14 +19,14 @@ public class DBSettingEntity : SerializedMonoBehaviour
         LoadSetting();
     }
 
-    [Button(ButtonSizes.Large), GUIColor(.44f, .53f, .98f)][ButtonGroup("Setting")]
+    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
     public virtual void SaveSetting()
     {
         DBSetting.SaveSetting(dbSettings);
         LoadSetting();
     }
 
-    [Button(ButtonSizes.Large), GUIColor(.44f, .53f, .98f)][ButtonGroup("Setting")]
+    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
     public virtual void LoadSetting()
     {
         dbSettings = DBSetting.LoadSetting(dbSettings.fileName);

@@ -5,5 +5,6 @@ var namespaces_dup =
     [ "DG", "namespace_d_g.html", "namespace_d_g" ],
     [ "Gameplay", "namespace_gameplay.html", "namespace_gameplay" ],
     [ "Scripts", "namespace_scripts.html", "namespace_scripts" ],
-    [ "Sirenix", "namespace_sirenix.html", "namespace_sirenix" ]
+    [ "Sirenix", "namespace_sirenix.html", "namespace_sirenix" ],
+    [ "Universal", "namespace_universal.html", null ]
 ];

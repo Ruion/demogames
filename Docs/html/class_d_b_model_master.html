@@ -95,7 +95,12 @@ $(document).ready(function(){initNavTree('class_d_b_model_master.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Sqlite database master class that hold database settings, methods for manipulating user data Method Utilities : Get, Insert, Update, Delete, Fetch string list from server Notes: see usage in <a class="el" href="class_d_b_model_entity.html" title="Create/delete table, insert/update/delete data, and send data to server Tips: Set the field variable ...">DBModelEntity</a> which inherit and extend this class  
+<p>Sqlite database master class that hold database settings, methods for manipulating user data <br  />
+Method Utilities : <br  />
+Basic : Get, Insert, Update, Delete <br  />
+ Server : Fetch string list from server <br  />
+Public : Execute custom query on this database with <a class="el" href="class_d_b_model_master.html#ad1346602b53e871659ba6c645799226f">ExecuteCustomNonQuery()</a> and ExecuteCustomQuery() <br  />
+Notes: see usage in <a class="el" href="class_d_b_model_entity.html" title="Create/delete table, insert/update/delete data, and send data to server  Tips: Set the field variable...">DBModelEntity</a> which inherit and extend this class  
  <a href="class_d_b_model_master.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for DBModelMaster:</div>
@@ -103,10 +108,10 @@ Inheritance diagram for DBModelMaster:</div>
  <div class="center">
   <img src="class_d_b_model_master.png" usemap="#DBModelMaster_map" alt=""/>
   <map id="DBModelMaster_map" name="DBModelMaster_map">
-<area href="class_d_b_setting_entity.html" alt="DBSettingEntity" shape="rect" coords="84,56,242,80"/>
-<area href="class_d_b_model_entity.html" title="Create/delete table, insert/update/delete data, and send data to server Tips: Set the field variable ..." alt="DBModelEntity" shape="rect" coords="0,168,158,192"/>
+<area href="class_d_b_setting_entity.html" title="Base class for DBModelMaster Tips: Inherit this class to allow accessing database setting" alt="DBSettingEntity" shape="rect" coords="84,56,242,80"/>
+<area href="class_d_b_model_entity.html" title="Create/delete table, insert/update/delete data, and send data to server  Tips: Set the field variable..." alt="DBModelEntity" shape="rect" coords="0,168,158,192"/>
 <area href="class_voucher_d_b_model_entity.html" alt="VoucherDBModelEntity" shape="rect" coords="168,168,326,192"/>
-<area href="class_stock_d_b_model_entity.html" alt="StockDBModelEntity" shape="rect" coords="0,224,158,248"/>
+<area href="class_stock_d_b_model_entity.html" title="Manipulate database for Vending Machine, use with VendingMachine.cs to drop gift Tips: call GiveRewar..." alt="StockDBModelEntity" shape="rect" coords="0,224,158,248"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -155,8 +160,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af308482318c752f4a0d21d06348a9fa3"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_b_model_master.html#af308482318c752f4a0d21d06348a9fa3">GetDataFromServer</a> ()</td></tr>
 <tr class="separator:af308482318c752f4a0d21d06348a9fa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa37953543e82686d5aa601222f5f66e9"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_b_model_master.html#aa37953543e82686d5aa601222f5f66e9">CompareServerData</a> ()</td></tr>
+<tr class="memdesc:aa37953543e82686d5aa601222f5f66e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">call <a class="el" href="class_d_b_model_master.html#af308482318c752f4a0d21d06348a9fa3">GetDataFromServer()</a> coroutine to get the list of email from server, call <a class="el" href="class_d_b_model_master.html#a4fe760e958b6b2fa5bf61df390adb5b5" title="update &quot;online_status = &#39;duplicate&#39;&quot; of email in local database if the email already exist in server">UpdateEmailExistedOnline()</a> to update "online_status = 'duplicate'" of email in local database if the email already exist in server  <a href="class_d_b_model_master.html#aa37953543e82686d5aa601222f5f66e9">More...</a><br /></td></tr>
 <tr class="separator:aa37953543e82686d5aa601222f5f66e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fe760e958b6b2fa5bf61df390adb5b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_b_model_master.html#a4fe760e958b6b2fa5bf61df390adb5b5">UpdateEmailExistedOnline</a> ()</td></tr>
+<tr class="memdesc:a4fe760e958b6b2fa5bf61df390adb5b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">update "online_status = 'duplicate'" of email in local database if the email already exist in server  <a href="class_d_b_model_master.html#a4fe760e958b6b2fa5bf61df390adb5b5">More...</a><br /></td></tr>
 <tr class="separator:a4fe760e958b6b2fa5bf61df390adb5b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_d_b_setting_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_d_b_setting_entity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_d_b_setting_entity.html">DBSettingEntity</a></td></tr>
 <tr class="memitem:a8b9ad9bbe5cf84114867c1ae1333e1e6 inherit pub_methods_class_d_b_setting_entity"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_b_setting_entity.html#a8b9ad9bbe5cf84114867c1ae1333e1e6">Awake</a> ()</td></tr>
@@ -216,7 +223,12 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a3aa156af7834da29d4e5162173e0e148"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Sqlite database master class that hold database settings, methods for manipulating user data Method Utilities : Get, Insert, Update, Delete, Fetch string list from server Notes: see usage in <a class="el" href="class_d_b_model_entity.html" title="Create/delete table, insert/update/delete data, and send data to server Tips: Set the field variable ...">DBModelEntity</a> which inherit and extend this class </p>
+<div class="textblock"><p>Sqlite database master class that hold database settings, methods for manipulating user data <br  />
+Method Utilities : <br  />
+Basic : Get, Insert, Update, Delete <br  />
+ Server : Fetch string list from server <br  />
+Public : Execute custom query on this database with <a class="el" href="class_d_b_model_master.html#ad1346602b53e871659ba6c645799226f">ExecuteCustomNonQuery()</a> and ExecuteCustomQuery() <br  />
+Notes: see usage in <a class="el" href="class_d_b_model_entity.html" title="Create/delete table, insert/update/delete data, and send data to server  Tips: Set the field variable...">DBModelEntity</a> which inherit and extend this class </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="addc73ea0409866df00aa056b80ff71e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#addc73ea0409866df00aa056b80ff71e7">&#9670;&nbsp;</a></span>AddData()</h2>
@@ -346,6 +358,9 @@ Protected Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>call <a class="el" href="class_d_b_model_master.html#af308482318c752f4a0d21d06348a9fa3">GetDataFromServer()</a> coroutine to get the list of email from server, call <a class="el" href="class_d_b_model_master.html#a4fe760e958b6b2fa5bf61df390adb5b5" title="update &quot;online_status = &#39;duplicate&#39;&quot; of email in local database if the email already exist in server">UpdateEmailExistedOnline()</a> to update "online_status = 'duplicate'" of email in local database if the email already exist in server </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -636,7 +651,7 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="class_stock_d_b_model_entity.html#a1a1bc36728e8129b0f36a0738c6fa634">StockDBModelEntity</a>.</p>
+<p>Reimplemented in <a class="el" href="class_stock_d_b_model_entity.html#ad2604539ecea57098a1ccdae52967159">StockDBModelEntity</a>.</p>
 
 </div>
 </div>
@@ -897,6 +912,8 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>update "online_status = 'duplicate'" of email in local database if the email already exist in server </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -1133,7 +1150,7 @@ Protected Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_d_b_model_master.html">DBModelMaster</a></li>
-    <li class="footer">Generated on Fri Nov 22 2019 16:33:31 for GameTemplate by
+    <li class="footer">Generated on Tue Nov 26 2019 12:45:48 for GameTemplate by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>
