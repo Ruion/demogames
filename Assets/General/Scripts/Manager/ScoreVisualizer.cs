@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Visualize the score to TextMeshProUGUI text. Use this component
+/// to add/minus score and display score to text
+/// </summary>
 public class ScoreVisualizer : GameSettingEntity {
 
     public TextMeshProUGUI[] scoreTexts;
@@ -27,6 +31,11 @@ public class ScoreVisualizer : GameSettingEntity {
         score += amount;
 
         VisualiseScore();
+    }
+
+    public void GetScoreFromPlayerPrefs()
+    {
+        score = System.Int32.Parse(PlayerPrefs.GetString("game_score"));
     }
 
     public void VisualiseScore()

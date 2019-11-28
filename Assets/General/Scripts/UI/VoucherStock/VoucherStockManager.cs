@@ -30,6 +30,7 @@ public class VoucherStockManager : MonoBehaviour
 
     private void OnEnable()
     {
+       if(vdb == null) vdb = FindObjectOfType<VoucherDBModelEntity>();
         ReloadUI();
     }
 
@@ -130,9 +131,14 @@ public class VoucherStockManager : MonoBehaviour
         ks.ShowLayout(ks.SymbLayout);
     }
 
+/// <summary>
+/// Validate the input field's text is empty or not. 
+/// Enable button click when no empty text in input field,
+/// disable button click when there is empty text in input field
+/// </summary>
     public void ValidateFields()
     {
-        TMP_InputField field_ = fields.Where(i => i.text == "" || i.text == "0").FirstOrDefault();
+        TMP_InputField field_ = fields.Where(i => string.IsNullOrEmpty(i.text)).FirstOrDefault();
 
         if (field_ != null) { saveButton.interactable = setButton.interactable = false; return; }
 

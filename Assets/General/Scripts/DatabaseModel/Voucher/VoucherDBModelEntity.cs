@@ -53,7 +53,7 @@ public class VoucherDBModelEntity : DBModelMaster
         {
             string name = vouchersName[n];
             string quantity = vouchersQuantity[n].ToString();
-            string dateCreated = System.DateTime.Now.ToString("yyyy - MM - dd hh: mm:ss");
+            string dateCreated = System.DateTime.Now.ToString("yyyy - MM - dd HH:mm:ss");
 
             PlayerPrefs.SetInt(name, vouchersQuantity[n]);
 

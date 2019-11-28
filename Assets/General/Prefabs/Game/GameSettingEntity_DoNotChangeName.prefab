@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings:
-    DebugMode: 0
+    DebugMode: 1
     fileName: game_honda
-    scoreName: score
+    scoreName: game_score
     scoreToWin: 3
 --- !u!114 &199091733273068208
 MonoBehaviour:

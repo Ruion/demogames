@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 2452114810006785955}
   - component: {fileID: 1911160526}
   m_Layer: 5
-  m_Name: kb_symb_Number
+  m_Name: kb_number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9261,12 +9261,12 @@ GameObject:
   - component: {fileID: 3640072027973693263}
   - component: {fileID: 1534780673840462062}
   m_Layer: 5
-  m_Name: kb_symb_with_eng
+  m_Name: kb_symb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5475670802243981318
 RectTransform:
   m_ObjectHideFlags: 0

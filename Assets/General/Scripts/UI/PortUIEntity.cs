@@ -33,6 +33,11 @@ public class PortUIEntity : MonoBehaviour
     public TextMeshProUGUI totalText;
     #endregion
 
+    void OnEnable()
+    {
+        if(stockDb == null) stockDb = FindObjectOfType<StockDBModelEntity>();
+    }
+
     public void ChangeState()
     {
         img.color = colors[System.Convert.ToInt32(is_enabled)];

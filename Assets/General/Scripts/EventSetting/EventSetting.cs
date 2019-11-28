@@ -22,8 +22,6 @@ public class EventSetting : SerializedMonoBehaviour
     
     public GameObject internetConnectionHandler;
     public GameObject errorHandler;
-    public TMP_Dropdown eventDropdown;
-    public TMP_Dropdown locationDropdown;
     public TMP_Dropdown sourceIdentifierDropdown;
 
     public TMP_InputField serverField;
@@ -54,8 +52,6 @@ public class EventSetting : SerializedMonoBehaviour
 
     public void SaveConfiguration()
     {
-        eventSettings.selectedEvent = eventDropdown.options[eventDropdown.value].text;
-        eventSettings.selectedLocation = locationDropdown.options[locationDropdown.value].text;
         eventSettings.selectedSourceIdentifier = sourceIdentifierDropdown.options[sourceIdentifierDropdown.value].text;
    
         SaveSettings();
@@ -77,7 +73,7 @@ public class EventSetting : SerializedMonoBehaviour
     }
 
     private IEnumerator FetchServerOptionsRoutine(){
-        using (UnityWebRequest www = UnityWebRequest.Get(eventSettings.serverURL)){
+        using (UnityWebRequest www = UnityWebRequest.Post(serverField.text.Trim().Replace(" ", string.Empty), "requesteventdata")){
             yield return www.SendWebRequest();
 
             if (www.isNetworkError || www.isHttpError)
@@ -91,13 +87,20 @@ public class EventSetting : SerializedMonoBehaviour
             {
                 while(!www.downloadHandler.isDone) yield return null;
                 EventCode[] options = JsonUtility.FromJson<EventCode[]>(www.downloadHandler.text);
-                eventSettings.eventCodes = options;
+               // eventSettings.eventCodes = options;
                 eventSettings.isVerify = true;
                 // Save options to file for local loading
                 SaveSettings();
 
                 // activate license key field
                 licenseKeyField.interactable = true;
+
+                string[] source_identifiers = new string[options.Length];
+                for (int e = 0; e < options.Length; e++)
+                {
+                    source_identifiers[e] = options[e].source_identifier;
+                }
+                AddOptionToDropdown(source_identifiers, sourceIdentifierDropdown, "Source Identifier"); 
             }
         }
     }
@@ -144,8 +147,8 @@ public class EventSetting : SerializedMonoBehaviour
                 while(!www.downloadHandler.isDone) yield return null;
                 JSONResponse response = JsonUtility.FromJson<JSONResponse>(www.downloadHandler.text);
 
-                if(response.result == "Success"){ submitActions["sourceidentifier"].successAction.Invoke(); }
-                else{ submitActions["sourceidentifier"].failAction.Invoke(); }
+                if(response.result == "Success"){ submitActions["source_identifier"].successAction.Invoke(); }
+                else{ submitActions["source_identifier"].failAction.Invoke(); }
             }
         }
 
@@ -171,40 +174,22 @@ public class EventSetting : SerializedMonoBehaviour
             else
             {
                 while(!www.downloadHandler.isDone) yield return null;
-                JSONResponse response = JsonUtility.FromJson<JSONResponse>(www.downloadHandler.text);
+                EventCode[] response = JsonUtility.FromJson<EventCode[]>(www.downloadHandler.text);
 
-                if(response.result == "Success"){ submitActions["domain"].successAction.Invoke(); }
-                else{  submitActions["domain"].failAction.Invoke(); }
+                string[] source_identifiers = new string[response.Length];
+                for (int e = 0; e < response.Length; e++)
+                {
+                    source_identifiers[e] = response[e].source_identifier;
+                }
+                 
             }
         }
     }
 
 
+
     ///////////// AFTER License Key Verify /////////////
-#region Dropdown Manipulation
-
-    private void AddOptionsToAllDropdown()
-    {
-        List<string> eventNames = new List<string>();
-        foreach (EventCode e in eventSettings.eventCodes)
-        {
-            eventNames.Add(e.eventName);
-        }
-        AddOptionToDropdown(eventNames.ToArray(), eventDropdown, "Event");
-    }
-
-    public void ChangeDropdownOption(TMP_Dropdown dropdown)
-    {
-        EventCode selectedEvent = new EventCode();
-        selectedEvent = eventSettings.eventCodes.FirstOrDefault(e => e.eventName == dropdown.options[dropdown.value].text);
-        if(selectedEvent == null) return;
-       
-        AddOptionToDropdown(selectedEvent.locationOptions, locationDropdown, "Location");
-        AddOptionToDropdown(selectedEvent.sourceIdentifierOptions, sourceIdentifierDropdown, "Source Identifier");
-    }
-
-#endregion
-    #region SubMethod
+    #region Private Method
     private void AddOptionToDropdown(string[] options, TMP_Dropdown dropdown, string firstOption = "Select")
     {
         dropdown.options.Clear();
@@ -212,7 +197,7 @@ public class EventSetting : SerializedMonoBehaviour
         dropdown.AddOptions(newOptions);
     }
 
-    public string GetHtmlFromUri(string resource = "http://google.com")
+    private string GetHtmlFromUri(string resource = "http://google.com")
     {
         string html = string.Empty;
         HttpWebRequest req = (HttpWebRequest)WebRequest.Create(resource);
@@ -281,11 +266,10 @@ public struct EventSettings
     [DisableInEditorMode] public string licenseKey;
     public bool isVerify;
 
-    public EventCode[] eventCodes;
+    public EventCode eventCodes;
     
-    public string selectedEvent;
-    public string selectedLocation;
     public string selectedSourceIdentifier;
+    public string mickey;
 }
 
 [Serializable]
@@ -302,9 +286,10 @@ public class EventFields
 [Serializable]
 public class EventCode
 {
-    public string eventName;
-    public string[] locationOptions;
-    public string[] sourceIdentifierOptions;
+    public string event_code;
+    public string location;
+    public string source_identifiers_id;
+    public string source_identifier;
 }
 
 [Serializable]

@@ -7,18 +7,14 @@ namespace Universal{
 /// This class can be toogle by bool gameSettings.DebugMode inherit from GameSettingEntity
 /// Tips: Drag "Debugger" prefab to the first scene of the app and it will persist across scene
 /// </summary>
-public class Debugger : GameSettingEntity
+public class Debugger : MonoBehaviour
 {
     public GameObject PopUp;
     public TextMeshProUGUI title;
     public TextMeshProUGUI msg;
     string error;
 
-    public override void Awake()
-    {
-        base.Awake();
-        if (!gameSettings.DebugMode) gameObject.SetActive(false);
-    }
+    public bool DebugMode = false;
 
     // Use this for initialization
     void Start()
@@ -26,7 +22,7 @@ public class Debugger : GameSettingEntity
 
     void OnEnable()
     {
-        if (!gameSettings.DebugMode) gameObject.SetActive(false);
+        if (!DebugMode) gameObject.SetActive(false);
 
         Application.logMessageReceived += HandleLog;
     }

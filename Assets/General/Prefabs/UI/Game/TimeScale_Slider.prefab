@@ -286,19 +286,7 @@ MonoBehaviour:
     DebugMode: 0
     fileName: game_setting
     scoreName: game_score
-    serverAddress: http://192.168.0.28/honda/submit-data.php
-    serverGetDataAddress: http://192.168.0.28/honda/submit-data.php
     scoreToWin: 3
-    scoreAddAmount: 10
-    scoreShoeAddAmount: 15
-    userTypeName: 
-    sQliteDBSettings:
-      dbName: db_
-      tableName: registration
-      UniversalUserClassName: DataBank.
-      columns: []
-      attributes: []
-      columnsToSkipWhenSync: []
   slider: {fileID: 4576176545284031394}
 --- !u!114 &4576176545284031396
 MonoBehaviour:
@@ -346,7 +334,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4576176545284031392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d23286fbc18c8c545b6c9382088f58e1, type: 3}
+  m_Script: {fileID: 11500000, guid: e7f55d11dc0fa684cb64a19709c45009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text_: {fileID: 433598009331556895}

@@ -108,6 +108,7 @@ public class DBModelEntity : DBModelMaster
                     ErrorAction(www, "server error");
                     totalNotSent++;
                     ToogleStatusBar(failBar, totalNotSent);
+                    ToogleHandler(errorHandler, true);
                 }
                 else
                 {

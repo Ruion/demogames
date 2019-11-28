@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Data;
+using Sirenix.OdinInspector;
 using UnityEngine.UI;
 using TMPro;
 
@@ -14,7 +15,6 @@ public class StockDBModelEntity : DBModelEntity
     #region fields
 
     [Header("Handler")]
-    public GameObject stockEmptyHandler;
     public GameObject stockErrorHandler;
 
     [Header("Stock setting")]
@@ -24,10 +24,10 @@ public class StockDBModelEntity : DBModelEntity
     
 
     DataRowCollection rows;
-    [SerializeField] int item_id;
-    [SerializeField] string item_name;
-    [SerializeField] int item_quantity;
-    [SerializeField] string item_lane;
+    [DisableInEditorMode][SerializeField] int item_id;
+    [DisableInEditorMode][SerializeField] string item_name;
+    [DisableInEditorMode][SerializeField] int item_quantity;
+    [DisableInEditorMode][SerializeField] string item_lane;
     //[SerializeField] private int laneOccupyPerItem = 1;
     [SerializeField] private int quantityPerLane = 2;
 
@@ -44,7 +44,6 @@ public class StockDBModelEntity : DBModelEntity
     [ContextMenu("HideHandler")]
     public new void HideAllHandler()
     {
-        stockEmptyHandler.SetActive(false);
         stockErrorHandler.SetActive(false);
     }
 
@@ -60,7 +59,7 @@ public class StockDBModelEntity : DBModelEntity
         {
             // out of stock
             Debug.LogError("out of stock");
-            if (OnOutOfStock.GetPersistentEventCount() > 0) {OnOutOfStock.Invoke(); emptyHandler.SetActive(true);}
+            if (OnOutOfStock.GetPersistentEventCount() > 0) {OnOutOfStock.Invoke();}
             return;
         }
         else
@@ -83,11 +82,11 @@ public class StockDBModelEntity : DBModelEntity
 
         ConnectDb();
 
-     //  try
-     //   {
+       try
+        {
             // vm.SendToPort(item_lane); int
 
-/*
+            /*
             #region testing
 
             byte[] SendingBytes = new byte[]{ 0x01, 0x02, 0x31, 0x01, 0x00, 0x00, 0x35 };
@@ -107,11 +106,11 @@ public class StockDBModelEntity : DBModelEntity
             byte[] bytes = new byte[byteTextArray.Length];
 
             for (int b = 0; b < byteTextArray.Length; b++)
-                {
-                    byteText = byteTextArray[b].Trim().Replace(" ", string.Empty);
-                   // Debug.Log(byteText);
-                    bytes[b] = System.Convert.ToByte(byteText, 16);
-                }
+            {
+                byteText = byteTextArray[b].Trim().Replace(" ", string.Empty); // .Trim() remove whitespace at start and end | .Replace(" ", string.Empty) remove whitespace between character
+                
+                bytes[b] = System.Convert.ToByte(byteText, 16); // convert text to 16 bit byte 0x01(string) >> 0x01(byte16)
+            }
 
             System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
             Debug.Log("string from bytes : " + encoding.GetString(bytes));
@@ -146,11 +145,11 @@ public class StockDBModelEntity : DBModelEntity
             Debug.Log(item_id + " : " + item_name + " has " + item_quantity + " left | Lane : " + item_lane);
 
             Close();
-      //  }
-      // catch (System.Exception ex)
-      //  {
-        //    Debug.LogError(ex.Message);
-      //  }
+        }
+       catch (System.Exception ex)
+        {
+            Debug.LogError(ex.Message);
+        }
         
     }
 
