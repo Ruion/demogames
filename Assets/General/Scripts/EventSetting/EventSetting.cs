@@ -35,6 +35,8 @@ public class EventSetting : SerializedMonoBehaviour
     #endregion
 
     void OnEnable(){
+        internetConnectionHandler.SetActive(false);
+        errorHandler.SetActive(false);
         if(eventSettings.isVerify) eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fileFullName);
     }
 
@@ -59,6 +61,7 @@ public class EventSetting : SerializedMonoBehaviour
 #endregion
 
     // verify from server
+    [Button(ButtonSizes.Small)]
     public void FetchServerOptions(){
         string HtmlText = GetHtmlFromUri();
         if (HtmlText == "")
@@ -73,7 +76,9 @@ public class EventSetting : SerializedMonoBehaviour
     }
 
     private IEnumerator FetchServerOptionsRoutine(){
-        using (UnityWebRequest www = UnityWebRequest.Post(serverField.text.Trim().Replace(" ", string.Empty), "requesteventdata")){
+      //  using (UnityWebRequest www = UnityWebRequest.Get(serverField.text.Trim().Replace(" ", string.Empty))){
+        using (UnityWebRequest www = UnityWebRequest.Get("http://game-05-dashboard.unicom-interactive-digital.com/public/api/get-source-identifier-list")){
+            Debug.Log(serverField.text.Trim().Replace(" ", string.Empty));
             yield return www.SendWebRequest();
 
             if (www.isNetworkError || www.isHttpError)
@@ -86,6 +91,7 @@ public class EventSetting : SerializedMonoBehaviour
             else
             {
                 while(!www.downloadHandler.isDone) yield return null;
+                Debug.Log(www.downloadHandler.text);
                 EventCode[] options = JsonUtility.FromJson<EventCode[]>(www.downloadHandler.text);
                // eventSettings.eventCodes = options;
                 eventSettings.isVerify = true;

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4573211859900776}
-  - component: {fileID: 114384015546909786}
   - component: {fileID: 114777077682437068}
+  - component: {fileID: 2829698719948509016}
   m_Layer: 0
   m_Name: Coins_Fast
   m_TagString: Untagged
@@ -37,21 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114384015546909786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047575038017222}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eb8d4415e864824b8fda9b1cebf90b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3.4
-  target: {fileID: 0}
-  GM: {fileID: 0}
 --- !u!114 &114777077682437068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,8 +49,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca2a0861cd4efc4d9ccf5f6e27f62a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objMover: {fileID: 114384015546909786}
-  targetInterval: 0.15
+  objMover: {fileID: 2829698719948509016}
+  targetInterval: 0.2
+--- !u!114 &2829698719948509016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047575038017222}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f42ee022af34c41964d520126c655a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3.5
+  target: {fileID: 0}
+  GM: {fileID: 0}
 --- !u!1 &1069150034527576
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,10 +107,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4690412671072532}
   - component: {fileID: 212509470084682792}
-  - component: {fileID: 114136205141108806}
   - component: {fileID: 65057314907221544}
   - component: {fileID: 114330233406099376}
   - component: {fileID: 2364640083174118721}
+  - component: {fileID: 9193135827301882016}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -181,21 +181,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &114136205141108806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1199323127903484}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eb8d4415e864824b8fda9b1cebf90b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  target: {fileID: 0}
-  GM: {fileID: 0}
 --- !u!65 &65057314907221544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -224,7 +209,7 @@ MonoBehaviour:
   eventOnTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114136205141108806}
+      - m_Target: {fileID: 9193135827301882016}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -254,6 +239,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9193135827301882016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199323127903484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f42ee022af34c41964d520126c655a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  target: {fileID: 0}
+  GM: {fileID: 0}
 --- !u!1 &1249876801696912
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,10 +264,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4942435431669294}
   - component: {fileID: 212189273601464862}
-  - component: {fileID: 114258616667024352}
   - component: {fileID: 65865439258306528}
   - component: {fileID: 114054585737685724}
   - component: {fileID: 5320355177133921690}
+  - component: {fileID: 2718037256574669161}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -338,21 +338,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &114258616667024352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249876801696912}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eb8d4415e864824b8fda9b1cebf90b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  target: {fileID: 0}
-  GM: {fileID: 0}
 --- !u!65 &65865439258306528
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -381,7 +366,7 @@ MonoBehaviour:
   eventOnTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114258616667024352}
+      - m_Target: {fileID: 2718037256574669161}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -411,6 +396,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2718037256574669161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249876801696912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f42ee022af34c41964d520126c655a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  target: {fileID: 0}
+  GM: {fileID: 0}
 --- !u!1 &1269318337433566
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,10 +452,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4085422348024492}
   - component: {fileID: 212583815245815562}
-  - component: {fileID: 114175975820634936}
   - component: {fileID: 65740467336204178}
   - component: {fileID: 114214998902298938}
   - component: {fileID: 1229099743703689353}
+  - component: {fileID: 134919187042432778}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -526,21 +526,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &114175975820634936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448856949819408}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eb8d4415e864824b8fda9b1cebf90b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  target: {fileID: 0}
-  GM: {fileID: 0}
 --- !u!65 &65740467336204178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -569,7 +554,7 @@ MonoBehaviour:
   eventOnTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114175975820634936}
+      - m_Target: {fileID: 134919187042432778}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -599,6 +584,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &134919187042432778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448856949819408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f42ee022af34c41964d520126c655a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  target: {fileID: 0}
+  GM: {fileID: 0}
 --- !u!1 &1651468146361600
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,10 +671,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4297296495509410}
   - component: {fileID: 212683726920579306}
-  - component: {fileID: 114402708012137144}
   - component: {fileID: 65028586767566454}
   - component: {fileID: 114820625399494864}
   - component: {fileID: 4579402512693057034}
+  - component: {fileID: 1724717790844288097}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -745,21 +745,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &114402708012137144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843077724066040}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eb8d4415e864824b8fda9b1cebf90b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  target: {fileID: 0}
-  GM: {fileID: 0}
 --- !u!65 &65028586767566454
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -788,7 +773,7 @@ MonoBehaviour:
   eventOnTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114402708012137144}
+      - m_Target: {fileID: 1724717790844288097}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -818,6 +803,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1724717790844288097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843077724066040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f42ee022af34c41964d520126c655a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  target: {fileID: 0}
+  GM: {fileID: 0}
 --- !u!1 &1876790921585004
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,10 +859,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4869289610007464}
   - component: {fileID: 212957882306599364}
-  - component: {fileID: 114037557507656296}
   - component: {fileID: 65872271305662104}
   - component: {fileID: 114067597685753002}
   - component: {fileID: 4669998676501109563}
+  - component: {fileID: 5884993544446440784}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -933,21 +933,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &114037557507656296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1928530015547374}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eb8d4415e864824b8fda9b1cebf90b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  target: {fileID: 0}
-  GM: {fileID: 0}
 --- !u!65 &65872271305662104
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -976,7 +961,7 @@ MonoBehaviour:
   eventOnTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114037557507656296}
+      - m_Target: {fileID: 5884993544446440784}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -1006,3 +991,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5884993544446440784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928530015547374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f42ee022af34c41964d520126c655a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  target: {fileID: 0}
+  GM: {fileID: 0}

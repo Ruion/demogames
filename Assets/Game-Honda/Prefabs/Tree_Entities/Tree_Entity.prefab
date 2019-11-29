@@ -141,9 +141,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9212033316920842803}
   - component: {fileID: 9212033316920842800}
-  - component: {fileID: 4964597001722975580}
   - component: {fileID: 8897969211583217040}
   - component: {fileID: 5566419338906806539}
+  - component: {fileID: 2458714251520998179}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Untagged
@@ -215,21 +215,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4964597001722975580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9212033316920843212}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eb8d4415e864824b8fda9b1cebf90b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1.5
-  target: {fileID: 0}
-  GM: {fileID: 0}
 --- !u!114 &8897969211583217040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,3 +249,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2458714251520998179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9212033316920843212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f42ee022af34c41964d520126c655a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2.5
+  target: {fileID: 0}
+  GM: {fileID: 0}
