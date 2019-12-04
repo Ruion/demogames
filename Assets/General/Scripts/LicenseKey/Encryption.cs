@@ -64,12 +64,12 @@ public class Encryption : MonoBehaviour
 
 /// Game-01: 2NALZTD565JR
 /// Game-02: 8VR8DRT9Q7J2
-    const string passwords_encryption = "2NALZTD565JR";
+    const string passwords_encryption = "8VR8DRT9Q7J2";
     /// <summary>
     /// Change this URL
     /// </summary>
-    const string urlstage2_Register = "http://game-01-dashboard.unicom-interactive-digital.com/public/api/activate-license-key";
-    const string urlstage2_Validate = "http://game-01-dashboard.unicom-interactive-digital.com/public/validate-license-key";
+    const string urlstage2_Register = "http://in-house-game-01-dashboard.uid-staging.com/public/api/activate-license-key";
+    const string urlstage2_Validate = "http://in-house-game-01-dashboard.uid-staging.com/public/validate-license-key";
 
     void Awake()
     {
@@ -380,6 +380,7 @@ public class Encryption : MonoBehaviour
                     lkey_expdate = Stage2jsonData.license_expiry_date;
                     //go to stage 2 error validation
                     Error_Validation_Stage2();
+                    if(OnValidateSuccess.GetPersistentEventCount() > 0) OnValidateSuccess.Invoke();
                 }
             }
         }
@@ -431,7 +432,7 @@ public class Encryption : MonoBehaviour
 
             if (www.isNetworkError || www.isHttpError)
             {
-                Debug.Log(www.error);
+                Debug.LogError(www.error);
                 //show error no internet
                 error_no_internet.SetActive(true);
                 loading_page.SetActive(false);
@@ -503,6 +504,7 @@ public class Encryption : MonoBehaviour
         SetLocal_Checkpoint();
 
         success_page.SetActive(true);
+        
         loading_page.SetActive(false);
     }
     #endregion
@@ -621,8 +623,6 @@ public class Encryption : MonoBehaviour
 
     public void Close_Success_Page()
     {
-        if(OnValidateSuccess.GetPersistentEventCount() > 0) OnValidateSuccess.Invoke();
-
         license_key_page.SetActive(false); // input license key page
         loading_page.SetActive(false); // checking validation page
         error_page1.SetActive(false); // invalid license key error

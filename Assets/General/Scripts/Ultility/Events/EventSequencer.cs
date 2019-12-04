@@ -10,6 +10,7 @@ using UnityEngine.Events;
 /// </summary>
 public class EventSequencer : MonoBehaviour {
 
+    [Header("Make Events and Delays have same sizes")]
     public UnityEvent[] events;
     public float[] delays;
 
@@ -31,10 +32,18 @@ public class EventSequencer : MonoBehaviour {
     {
         for (int e = 0; e < events.Length; e++)
         {
+            if(events.Length == delays.Length)
+            {
+                if(isRealtime) yield return new WaitForSecondsRealtime(delays[e]);
 
-           if(isRealtime) yield return new WaitForSecondsRealtime(delays[e]);
+                else yield return new WaitForSeconds(delays[e]);
+            }
+            else
+            {
+              if(isRealtime) yield return new WaitForSecondsRealtime(delays[0]);
 
-           else yield return new WaitForSeconds(delays[e]);
+                else yield return new WaitForSeconds(delays[0]);  
+            }
 
             events[e].Invoke();
         }

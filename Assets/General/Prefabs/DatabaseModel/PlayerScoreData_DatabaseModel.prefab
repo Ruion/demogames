@@ -61,6 +61,7 @@ MonoBehaviour:
       Data: 
   dbSettings:
     fileName: playerscoredata
+    folderPath: C:\UID-APP\APPS\GAME-01
     dbName: playerscoredata
     tableName: playerscoredata
     columns:
@@ -75,16 +76,20 @@ MonoBehaviour:
     - name: game_result
       attribute: TEXT
       sync: 1
-      dummyPrefix: 
+      dummyPrefix: lose
     - name: game_score
       attribute: TEXT
       sync: 1
+      dummyPrefix: 0
+    - name: source_identifier_code
+      attribute: TEXT
+      sync: 1
       dummyPrefix: 
-    - name: is_submitted
+    - name: online_status
       attribute: TEXT
       sync: 0
-      dummyPrefix: 
-    sendURL: http://game-01-dashboard.unicom-interactive-digital.com/public/api/submit-score-data
+      dummyPrefix: new
+    sendURL: http://in-house-game-01-dashboard.uid-staging.com/public/api/submit-score-data
     serverResponsesArray:
     - resultResponse: Success
       resultResponseMessage: sync success

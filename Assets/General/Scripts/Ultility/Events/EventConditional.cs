@@ -21,6 +21,8 @@ public class EventConditional : MonoBehaviour {
     public UnityEvent OnScoreCardPass;
     public UnityEvent OnScoreCardNotPass;
   
+    public EventSequencer OnWin;
+    public EventSequencer OnLose;
 
 /// <summary>
 /// Execute unity events base on score value of ScroreCardCondition[] objects. The score lower than minimumScore in any ScoreCardCondition count as not pass.
@@ -37,13 +39,15 @@ public class EventConditional : MonoBehaviour {
 
         if (conditionIsPass)
         {
-           if( OnScoreCardPass.GetPersistentEventCount() > 0 ) OnScoreCardPass.Invoke();
+           // if( OnScoreCardPass.GetPersistentEventCount() > 0 ) OnScoreCardPass.Invoke();
+
+           if(OnWin.events.Length > 0) OnWin.Run();
         }
         else
-        {
-            OnScoreCardNotPass.Invoke();
-            
-            if (OnScoreCardNotPass.GetPersistentEventCount() > 0)OnScoreCardNotPass.Invoke();
+        {           
+           // if (OnScoreCardNotPass.GetPersistentEventCount() > 0) OnScoreCardNotPass.Invoke();
+
+            if(OnLose.events.Length > 0) OnLose.Run();
         }
     }
 }

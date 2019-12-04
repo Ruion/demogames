@@ -549,6 +549,7 @@ MonoBehaviour:
       Data: 
   dbSettings:
     fileName: voucher
+    folderPath: C:\UID-APP\APPS\GAME-01
     dbName: voucher
     tableName: voucher
     columns:

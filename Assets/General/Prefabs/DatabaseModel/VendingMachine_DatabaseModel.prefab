@@ -66,7 +66,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
   dbSettings:
-    fileName: db_racing_stock
+    fileName: stock
+    folderPath: C:\UID-APP\APPS\GAME-01
     dbName: db_racing_stock
     tableName: db_racing_stock
     columns:
@@ -92,26 +93,30 @@ MonoBehaviour:
       dummyPrefix: true
     sendURL: 
     serverResponsesArray: []
+    hasMultipleLocalDB: 0
+    keyDownloadURL: 
+    keyFileName: 
+    serverEmailFilePath: 
   db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/db_racing_stock.sql
   numberToPopulate: 35
   TestIndex: 4
   selectCustomCondition: quantity >= 1 AND is_disabled = 'false'
+  hasSync: 0
   emptyHandler: {fileID: 0}
+  internetErrorHandler: {fileID: 0}
   errorHandler: {fileID: 0}
+  blockDataHandler: {fileID: 0}
+  successBar: {fileID: 0}
+  failBar: {fileID: 0}
+  entityId: 0
+  serverEmailList: []
+  isFetchingData: 0
+  stockErrorHandler: {fileID: 0}
   vm: {fileID: 7610391580308212332}
-  currentlaneAmount: {fileID: 0}
-  currentlaneAmountOccupyByItem: {fileID: 0}
-  currentitemQuantityPerLane: {fileID: 0}
-  totalItemLeftText: {fileID: 0}
-  laneAmount: {fileID: 0}
-  laneAmountOccupyByItem: {fileID: 0}
-  itemQuantityPerLane: {fileID: 0}
-  setButton: {fileID: 0}
   item_id: 1
   item_name: Motor_0
   item_quantity: 0
   item_lane: 0
-  laneOccupyPerItem: 2
   quantityPerLane: 2
   OnOutOfStock:
     m_PersistentCalls:
@@ -119,7 +124,6 @@ MonoBehaviour:
   OnStockGiven:
     m_PersistentCalls:
       m_Calls: []
-  text_: {fileID: 0}
 --- !u!114 &7610391580308212332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,8 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f71d08747a356245ac9cd5bc923b7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vendingStockSettings:
-    VMSerialPortWriteType: 0
-    vmserialPortText: 
-    portname: 0
-    portbaudrate: 115200
+  VMSerialPortWriteType: 0
+  vmserialPortText: 
+  portname: 0
+  portbaudrate: 115200

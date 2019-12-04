@@ -32,7 +32,7 @@ public class KeyboardScript : MonoBehaviour
     }
 
     public TMPro.TMP_InputField inputFieldTMPro;
-    public GameObject EngLayoutSml, EngLayoutBig, SymbLayout;
+    public GameObject EngLayoutSml, EngLayoutBig, SymbLayout, DigitLayout;
 
     public void alphabetFunction(string alphabet)
     {
@@ -134,7 +134,7 @@ public class KeyboardScript : MonoBehaviour
         EngLayoutSml.SetActive(false);
         EngLayoutBig.SetActive(false);
         SymbLayout.SetActive(false);
-
+        DigitLayout.SetActive(false);
     }
 
     public void ShowLayout(GameObject SetLayout)
@@ -142,7 +142,6 @@ public class KeyboardScript : MonoBehaviour
         clickSound.Play();
         CloseAllLayouts();
         SetLayout.SetActive(true);
-
     }
 
     private void Reposition(){

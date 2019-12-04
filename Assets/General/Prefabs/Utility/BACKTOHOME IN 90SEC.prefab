@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8655676693850056993}
   - component: {fileID: 6333873898442556396}
   m_Layer: 5
-  m_Name: BACKTOHOME_IN__120SEC
+  m_Name: BACKTOHOME IN 90SEC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   second: 120
+  initialSecond: 0
+  isRealtime: 1
+  stringFormat: 
   countDownTexts: []
   countdownEndEvents:
     m_PersistentCalls:
@@ -61,6 +64,7 @@ MonoBehaviour:
           m_StringArgument: HOME
           m_BoolArgument: 0
         m_CallState: 2
+  useShortcut: 0
 --- !u!114 &8655676693850056993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +103,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509dae1d78e36814aa460e2402a596fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HOME: 0
-  GAME: 1
-  SCORE: 2

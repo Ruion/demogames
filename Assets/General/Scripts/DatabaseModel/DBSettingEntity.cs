@@ -29,7 +29,7 @@ public class DBSettingEntity : SerializedMonoBehaviour
     [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
     public virtual void LoadSetting()
     {
-        dbSettings = DBSetting.LoadSetting(dbSettings.fileName);
+        dbSettings = DBSetting.LoadSetting(dbSettings.folderPath + "\\" + dbSettings.fileName);
     }
     #endregion
 

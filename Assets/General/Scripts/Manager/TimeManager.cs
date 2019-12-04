@@ -32,6 +32,9 @@ public class TimeManager : MonoBehaviour
     public TextMeshProUGUI[] countDownTexts;
     public UnityEvent countdownEndEvents;
 
+    public bool useShortcut = true;
+    private bool counting = false;
+
     void Awake()
     {
         initialSecond = second;
@@ -48,6 +51,8 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
+        if(!useShortcut) return;
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             second = 1;
@@ -56,6 +61,10 @@ public class TimeManager : MonoBehaviour
 
     public IEnumerator StartCountdown()
     {
+        counting = true;
+
+        while(counting){
+        
         if (isRealtime) yield return new WaitForSecondsRealtime(1);
 
         else yield return new WaitForSeconds(1);
@@ -65,18 +74,18 @@ public class TimeManager : MonoBehaviour
         // update textmesh text if textmesh components exists
         if (countDownTexts.Length > 0) { UpdateText(countDownTexts, Mathf.RoundToInt(second)); }
 
-
         if (second <= 0)
         {
             // Execute event on countdown ended
             countdownEndEvents.Invoke();
+            counting = false;
             StopAllCoroutines();
             ResetCountDown();
             yield return null;
         }
-
+        }
         // repeat countdown until time become 0
-        StartCoroutine(StartCountdown());
+        //StartCoroutine(StartCountdown());
 
     }
 

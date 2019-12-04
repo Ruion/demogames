@@ -171,49 +171,26 @@ MonoBehaviour:
       Entry: 8
       Data: 
   dbSettings:
-    fileName: player
+    fileName: player1
+    folderPath: C:\UID-APP\APPS\GAME-01
     dbName: player
     tableName: player
-    columns:
-    - name: id
-      attribute: INTEGER PRIMARY KEY
-      sync: 0
-      dummyPrefix: 
-    - name: name
-      attribute: TEXT
-      sync: 1
-      dummyPrefix: ash
-    - name: email
-      attribute: TEXT
-      sync: 1
-      dummyPrefix: a@gmail.com
-    - name: contact
-      attribute: TEXT
-      sync: 1
-      dummyPrefix: 01432323
-    - name: created_at
-      attribute: TEXT
-      sync: 1
-      dummyPrefix: '2019-11-18 11:00:'
-    - name: online_status
-      attribute: TEXT
-      sync: 1
-      dummyPrefix: new
-    sendURL: http://game-01-dashboard.unicom-interactive-digital.com/public/api/submit-player-data
+    columns: []
+    sendURL: 
     serverResponsesArray:
     - resultResponse: Success
       resultResponseMessage: sync success
     - resultResponse: Fail
       resultResponseMessage: sync fail
     hasMultipleLocalDB: 1
-    keyDownloadURL: http://game-03-dashboard.unicom-interactive-digital.com/api/download-player-email-list
-    keyFileName: playeremail
+    keyDownloadURL: 
+    keyFileName: 
     serverEmailFilePath: C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/playeremail.txt
   db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/player.sqlite
   numberToPopulate: 5
   TestIndex: 7
   selectCustomCondition: online_status = 'new'
-  hasSync: 1
+  hasSync: 0
   emptyHandler: {fileID: 0}
   internetErrorHandler: {fileID: 0}
   errorHandler: {fileID: 0}

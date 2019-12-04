@@ -26,30 +26,33 @@ public class EventSetting : SerializedMonoBehaviour
 
     public TMP_InputField serverField;
     public TMP_InputField licenseKeyField;
-
     public List<EventFields> eventFields = new List<EventFields>();
 
     [TableList]
     public Dictionary<string, Button> buttons = new Dictionary<string, Button>();
     public Dictionary<string, SubmitActions> submitActions = new Dictionary<string, SubmitActions>();
+
+    private EventCode[] options;
+
     #endregion
 
     void OnEnable(){
         internetConnectionHandler.SetActive(false);
         errorHandler.SetActive(false);
-        if(eventSettings.isVerify) eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fileFullName);
+        if(eventSettings.isVerify) eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fullFilePath);
     }
 
 #region SaveLoad
     [Button(ButtonSizes.Medium)]
     private void SaveSettings(){
         eventSettings.dataSettings.fileFullName = eventSettings.dataSettings.fileName + "." + eventSettings.dataSettings.extension;
-        Data.SaveData(eventSettings, eventSettings.dataSettings.fileFullName);
+        eventSettings.dataSettings.fullFilePath = eventSettings.dataSettings.folderPath + "\\" + eventSettings.dataSettings.fileFullName;
+        Data.SaveData(eventSettings, eventSettings.dataSettings.fullFilePath);
     }
 
     [Button(ButtonSizes.Medium)]
     private void LoadSettings(){
-        eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fileFullName);
+        eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fullFilePath);
     }
 
     public void SaveConfiguration()
@@ -77,8 +80,7 @@ public class EventSetting : SerializedMonoBehaviour
 
     private IEnumerator FetchServerOptionsRoutine(){
       //  using (UnityWebRequest www = UnityWebRequest.Get(serverField.text.Trim().Replace(" ", string.Empty))){
-        using (UnityWebRequest www = UnityWebRequest.Get("http://game-05-dashboard.unicom-interactive-digital.com/public/api/get-source-identifier-list")){
-            Debug.Log(serverField.text.Trim().Replace(" ", string.Empty));
+        using (UnityWebRequest www = UnityWebRequest.Get(serverField.text.Trim().Replace(" ", String.Empty))){
             yield return www.SendWebRequest();
 
             if (www.isNetworkError || www.isHttpError)
@@ -92,11 +94,8 @@ public class EventSetting : SerializedMonoBehaviour
             {
                 while(!www.downloadHandler.isDone) yield return null;
                 Debug.Log(www.downloadHandler.text);
-                EventCode[] options = JsonUtility.FromJson<EventCode[]>(www.downloadHandler.text);
-               // eventSettings.eventCodes = options;
+                options = JsonHelper.getJsonArray<EventCode>(www.downloadHandler.text);
                 eventSettings.isVerify = true;
-                // Save options to file for local loading
-                SaveSettings();
 
                 // activate license key field
                 licenseKeyField.interactable = true;
@@ -104,7 +103,7 @@ public class EventSetting : SerializedMonoBehaviour
                 string[] source_identifiers = new string[options.Length];
                 for (int e = 0; e < options.Length; e++)
                 {
-                    source_identifiers[e] = options[e].source_identifier;
+                    source_identifiers[e] = options[e].description;
                 }
                 AddOptionToDropdown(source_identifiers, sourceIdentifierDropdown, "Source Identifier"); 
             }
@@ -160,11 +159,20 @@ public class EventSetting : SerializedMonoBehaviour
 
     }
 
-    public void SubmitSourceIdentifier()
+    public void SaveSourceIdentifier()
     {
-        StartCoroutine(SubmitSourceIdentifierRoutine(sourceIdentifierDropdown.options[sourceIdentifierDropdown.value].text));
+        eventSettings.eventCode = options
+                .FirstOrDefault(o => o.description == sourceIdentifierDropdown.options[sourceIdentifierDropdown.value].text);
+
+        // save the selected 
+        SaveSettings();
+        PlayerPrefs.SetString("source_identifier_code", eventSettings.eventCode.code);
+
+        // submitted selected code to server
+        //StartCoroutine(SubmitSourceIdentifierRoutine(sourceIdentifierDropdown.options[sourceIdentifierDropdown.value].text));
     }
 
+    /*
     private IEnumerator SubmitSourceIdentifierRoutine(string value)
     {
         using (UnityWebRequest www = UnityWebRequest.Get(eventSettings.sourceidentifierURL)){
@@ -180,17 +188,13 @@ public class EventSetting : SerializedMonoBehaviour
             else
             {
                 while(!www.downloadHandler.isDone) yield return null;
-                EventCode[] response = JsonUtility.FromJson<EventCode[]>(www.downloadHandler.text);
 
-                string[] source_identifiers = new string[response.Length];
-                for (int e = 0; e < response.Length; e++)
-                {
-                    source_identifiers[e] = response[e].source_identifier;
-                }
+                
                  
             }
         }
     }
+    */
 
 
 
@@ -267,12 +271,10 @@ public struct EventSettings
 {
     [HideInPlayMode]
     public DataSettings dataSettings;
-    [DisableInEditorMode] public string serverURL;
-    [DisableInEditorMode] public string sourceidentifierURL;
-    [DisableInEditorMode] public string licenseKey;
+    public string sourceidentifierURL;
     public bool isVerify;
 
-    public EventCode eventCodes;
+    public EventCode eventCode;
     
     public string selectedSourceIdentifier;
     public string mickey;
@@ -294,8 +296,8 @@ public class EventCode
 {
     public string event_code;
     public string location;
-    public string source_identifiers_id;
-    public string source_identifier;
+    public string code;
+    public string description;
 }
 
 [Serializable]

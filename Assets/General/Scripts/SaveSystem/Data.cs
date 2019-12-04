@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using Sirenix.OdinInspector;
 
     /// <summary>
     /// static class that save and load objects variable into file.
@@ -9,9 +10,9 @@ using System.IO;
     public static class Data{
        
         /// <summary>Save Generic Data.
-        /// <para>Save file as Object in streaming assets Path. <see cref="UnityEngine.Application.streamingAssetsPath"/> for more information.</para>
+        /// <para>Save file as Object in specified file Path.</para>
         /// </summary>
-        public static bool SaveData(System.Object data,string fileName){ return Save(data,Application.streamingAssetsPath+"/"+fileName); }
+        public static bool SaveData(System.Object data,string fullfilePath){ return Save(data, fullfilePath); }
         /// <summary>Save Generic Data.
         /// <para>Save file as Object in custom Path.</para>
         /// </summary>
@@ -41,13 +42,13 @@ using System.IO;
         /// <summary>Load Generic Data.
         /// <para>Load file as Object from streaming assets Path. <see cref="Application.streamingAssetsPath+fileName"/> for more information.</para>
         /// </summary>
-        public static System.Object LoadData(string fileName){ return Load(Application.streamingAssetsPath+"/"+fileName); }
+        public static System.Object LoadData(string filePath){ return Load(filePath); }
         /// <summary>Load Generic Data.
         /// <para>Load file as Object from custom Path.</para>
         /// </summary>
         public static System.Object Load(string pathFileName){
            
-            if(!File.Exists(pathFileName)) return null;
+            if(!File.Exists(pathFileName)) {  Debug.LogError("file not exists"); return null;}
            
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(pathFileName,FileMode.Open);
@@ -70,10 +71,15 @@ using System.IO;
     }
 
 [System.Serializable]
-public struct DataSettings{
+public class DataSettings{
     public string fileName;
     public string extension;
 
     [HideInInspector]
     public string fileFullName;
+
+    [HideInInspector] public string fullFilePath;
+
+    [FolderPath(UseBackslashes = true, AbsolutePath = true)]
+    public string folderPath;
 }

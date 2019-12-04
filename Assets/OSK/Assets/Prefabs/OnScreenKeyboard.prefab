@@ -6164,7 +6164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2452114811308096173
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6206,7 +6206,8 @@ MonoBehaviour:
   inputFieldTMPro: {fileID: 0}
   EngLayoutSml: {fileID: 2452114811708632261}
   EngLayoutBig: {fileID: 2452114810701978350}
-  SymbLayout: {fileID: 2452114810006785953}
+  SymbLayout: {fileID: 8248058940176031575}
+  DigitLayout: {fileID: 2452114810006785953}
 --- !u!82 &4798139286751130072
 AudioSource:
   m_ObjectHideFlags: 0

@@ -16,14 +16,15 @@ public class DBSetting
     public static void SaveSetting(DBEntitySetting setting)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.streamingAssetsPath + "/" + setting.fileName + ".dbsetting";
+        string path = setting.folderPath + "\\" + setting.fileName + ".dbsetting";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        DBEntitySetting s = new DBEntitySetting(setting);
+       // DBEntitySetting s = new DBEntitySetting(setting);
 
         try
         {
-            formatter.Serialize(stream, s);
+           // formatter.Serialize(stream, s);
+            formatter.Serialize(stream, setting);
             stream.Close();
             Debug.Log("Save setting success");
 
@@ -37,7 +38,7 @@ public class DBSetting
     // load the game setting file
     public static DBEntitySetting LoadSetting(string fileName)
     {
-        string path = Application.streamingAssetsPath + "/" + fileName + ".dbsetting";
+        string path = fileName + ".dbsetting";
 
         if (File.Exists(path))
         {
@@ -63,6 +64,8 @@ public class DBSetting
 public class DBEntitySetting
 {
     public string fileName;
+    [FolderPath(AbsolutePath = true, UseBackslashes = true)]
+    public string folderPath;
 
     [HideInInspector] public string dbName;
     [HideInInspector] public string tableName;
