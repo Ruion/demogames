@@ -6,7 +6,6 @@ using TMPro;
 public class JumpShootScoreManagerScript : GameSettingEntity {
 
 	public Animator animator;
-    public ScriptableScore scoreCard;
     public ScoreVisualizer scoreVisualizer;
 	[ReadOnly] public float bestScore;
 

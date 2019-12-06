@@ -1,6 +1,0 @@
-test001@gmail.com
-test002@gmail.com
-test003@gmail.com
-test004@gmail.com
-test005@gmail.com
-test006@gmail.com

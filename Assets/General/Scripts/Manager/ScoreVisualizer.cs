@@ -9,9 +9,6 @@ public class ScoreVisualizer : GameSettingEntity {
 
     public TextMeshProUGUI[] scoreTexts;
     private int score;
-    [Header("Caution")]
-    public bool clearScoreOnNewGame;
-
     public override void Awake()
     {
         base.Awake();

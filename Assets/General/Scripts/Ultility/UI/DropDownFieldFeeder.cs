@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Sirenix.OdinInspector;
 
 /// <summary>
 /// Add options to TMP_Dropdown field from a file
@@ -14,6 +15,8 @@ public class DropDownFieldFeeder : MonoBehaviour
     [Header("Add options to Dropdown")]
     public TMP_Dropdown dropDown;
     public string phoneCodeFileName;
+    [FilePath(AbsolutePath=true, Extensions="$fileExtension")] public string phoneCodeFile;
+    public string fileExtension = "txt";
 
     private void Start()
     {
@@ -26,9 +29,10 @@ public class DropDownFieldFeeder : MonoBehaviour
     {
         dropDown.ClearOptions();
 
-        string path = Application.streamingAssetsPath + "/" + phoneCodeFileName;
+      //  string path = Application.streamingAssetsPath + "/" + phoneCodeFileName;
 
-        string[] texts = System.IO.File.ReadAllLines(path);
+      //  string[] texts = System.IO.File.ReadAllLines(path);
+        string[] texts = System.IO.File.ReadAllLines(phoneCodeFile);
 
         List<string> options = new List<string>();
 

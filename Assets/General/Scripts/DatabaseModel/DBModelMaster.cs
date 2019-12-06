@@ -88,7 +88,9 @@ public class DBModelMaster : DBSettingEntity
 
     public virtual void ConnectDb()
     {
-        db_connection_string = "URI = file:" + Application.streamingAssetsPath + "/" + dbSettings.dbName + ".sqlite";
+        /// we use StreamingAssets folder in pass, but now use C:\UID-APP\APPS folder now
+       // db_connection_string = "URI = file:" + Application.streamingAssetsPath + "/" + dbSettings.dbName + ".sqlite";
+        db_connection_string = "URI = file:" + dbSettings.folderPath + "\\" + dbSettings.dbName + ".sqlite";
         db_connection = new SqliteConnection(db_connection_string);
         db_connection.Open();
     }

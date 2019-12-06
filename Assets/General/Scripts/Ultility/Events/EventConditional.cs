@@ -17,9 +17,7 @@ public class ScoreCondition
 
 public class EventConditional : MonoBehaviour {
     public ScoreCondition[] scoreConditions;
-    public bool conditionIsPass = true;
-    public UnityEvent OnScoreCardPass;
-    public UnityEvent OnScoreCardNotPass;
+    [ReadOnly]public bool conditionIsPass = true;
   
     public EventSequencer OnWin;
     public EventSequencer OnLose;
@@ -39,14 +37,10 @@ public class EventConditional : MonoBehaviour {
 
         if (conditionIsPass)
         {
-           // if( OnScoreCardPass.GetPersistentEventCount() > 0 ) OnScoreCardPass.Invoke();
-
            if(OnWin.events.Length > 0) OnWin.Run();
         }
         else
         {           
-           // if (OnScoreCardNotPass.GetPersistentEventCount() > 0) OnScoreCardNotPass.Invoke();
-
             if(OnLose.events.Length > 0) OnLose.Run();
         }
     }

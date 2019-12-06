@@ -6,9 +6,6 @@ public class ScoreManager : MonoBehaviour {
     public static ScoreManager instance;
 
     public ScoreVisualizer scoreVisualizer;
-    public ScoreVisualizer bestScoreVisualizer;
-
-    public TextMeshProUGUI scoreText;
 
     public SoundManager soundManager;
     public Transform player;
@@ -52,12 +49,7 @@ public class ScoreManager : MonoBehaviour {
         scoreVisualizer.UpdateText(-amount);       
     }
 
-    public void SaveScore()
-    {
-        PlayerPrefs.SetString(scoreName, scoreText.text);
-    }
-
-        public void SpawnScoreEffect(GameObject effectPrefab)
+    public void SpawnScoreEffect(GameObject effectPrefab)
     {
         Instantiate(effectPrefab, player.position + Vector3.up , Quaternion.identity, scoreEffectContainer);
     }
