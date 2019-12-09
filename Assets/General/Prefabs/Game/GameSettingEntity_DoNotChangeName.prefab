@@ -46,10 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings:
-    DebugMode: 1
+    savePath: C:\UID-APP\APPS\GAME-01
     fileName: game_honda
     scoreName: game_score
-    scoreToWin: 3
+    scoreToWin: 15
+    DebugMode: 1
 --- !u!114 &199091733273068208
 MonoBehaviour:
   m_ObjectHideFlags: 0

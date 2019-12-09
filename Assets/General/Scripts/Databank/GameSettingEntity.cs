@@ -26,7 +26,7 @@ public class GameSettingEntity : MonoBehaviour
     [ContextMenu("LoadSetting")]
     public virtual void LoadSetting()
     {
-        gameSettings = GameSetting.LoadSetting(gameSettings.fileName);
+        gameSettings = GameSetting.LoadSetting(gameSettings);
     }
 
     /// <summary>

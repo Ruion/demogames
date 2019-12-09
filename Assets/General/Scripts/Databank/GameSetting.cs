@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 
 public static class GameSetting
 {
@@ -9,7 +10,7 @@ public static class GameSetting
     public static void SaveSetting(Settings setting)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.streamingAssetsPath + "/" + setting.fileName + ".setting";
+        string path = setting.savePath + "\\" + setting.fileName + ".setting";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         Settings data = new Settings(setting);
@@ -27,9 +28,9 @@ public static class GameSetting
     }
 
     // load the game setting file
-    public static Settings LoadSetting(string fileName)
+    public static Settings LoadSetting(Settings setting_)
     {
-        string path = Application.streamingAssetsPath + "/" + fileName + ".setting";
+        string path = setting_.savePath + "\\" + setting_.fileName + ".setting";
 
         if (File.Exists(path))
         {
@@ -49,20 +50,23 @@ public static class GameSetting
     }
 }
 
-[System.Serializable]
+
 /// <summary>
 /// Settings to be used by gameplay objects
 /// add variable like speed, hp, game time and make other class to use those values, to made tweaking and testing easier.
 /// </summary>
+[System.Serializable]
 public class Settings
 {
-    public bool DebugMode = false;
+    [FolderPath(AbsolutePath=true, UseBackslashes=true)] public string savePath;
     public string fileName = "game_setting";
     public string scoreName = "game_score";
     public int scoreToWin = 3;
+    public bool DebugMode = false;
  
     public Settings(Settings setting)
     {
+        savePath = setting.savePath;
         DebugMode = setting.DebugMode;
 
         fileName = setting.fileName;
