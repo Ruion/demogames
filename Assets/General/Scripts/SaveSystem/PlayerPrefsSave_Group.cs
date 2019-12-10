@@ -70,12 +70,12 @@ public class DataField
     [BoxGroup("Field/Fields")][EnableIf("savetype", SaveType.Manual)]
     public string value_;
 
-
     public string GetValue()
     {
+        
         string dropDownValue = "";
         if (dropdown != null && savetype != SaveType.DateTime && savetype != SaveType.Manual) dropDownValue = dropdown.options[dropdown.value].text;
-
+        
         switch (savetype)
         {
             case SaveType.InputField_TMP:
@@ -96,6 +96,12 @@ public class DataField
 
             case SaveType.Manual:
                 break;
+
+            case SaveType.GlobalSetting:
+             JSONSetter jsonSetter = GameObject.FindObjectOfType<JSONSetter>();
+             jsonSetter.UpdateSettingGlobal(name_, value_);
+
+             break;
         }
 
         return value_;
@@ -109,5 +115,6 @@ public enum SaveType
     DateTime = 3,
     InputField = 4,
     Manual = 5,
-    Text = 6
+    Text = 6,
+    GlobalSetting = 7
 }

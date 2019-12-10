@@ -4061,10 +4061,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings:
-    DebugMode: 1
+    savePath: 
     fileName: game_jumpshoot
     scoreName: game_score
     scoreToWin: 3
+    DebugMode: 1
   animator: {fileID: 1582981129}
   scoreVisualizer: {fileID: 1758414981}
   bestScore: 0
@@ -4083,10 +4084,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings:
-    DebugMode: 1
+    savePath: 
     fileName: game_jumpshoot
     scoreName: game_score
     scoreToWin: 3
+    DebugMode: 1
   scoreTexts:
   - {fileID: 1582981123}
 --- !u!4 &1816460779 stripped
@@ -4363,6 +4365,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423252850537697889, guid: ebe6e84393e2ebd4380c90c8f0f9bcba,
+        type: 3}
+      propertyPath: events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: HOME
       objectReference: {fileID: 0}
     - target: {fileID: 2530575335791515898, guid: ebe6e84393e2ebd4380c90c8f0f9bcba,
         type: 3}

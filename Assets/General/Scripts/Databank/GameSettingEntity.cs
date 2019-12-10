@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 /// <summary>
 /// Master class for Saving and Retrieving gameplay settings.
@@ -10,6 +12,7 @@ public class GameSettingEntity : MonoBehaviour
     
     [Header("GameSetting - SAVE setting every new project")]
     public Settings gameSettings;
+    public JSONSetter jsonSetter;
 
     /// <summary>
     /// Save the settings value in to file. This function eccesible by right click component in inspector and click "SaveSetting"
@@ -18,6 +21,12 @@ public class GameSettingEntity : MonoBehaviour
     public virtual void SaveSetting()
     {
         GameSetting.SaveSetting(gameSettings);
+
+        /// Save to a global json file
+        JProperty[] jProperties = new JProperty[2];
+        jProperties[0] = new JProperty("scoreToWin", gameSettings.scoreToWin);
+        jProperties[1] = new JProperty("DebugMode", gameSettings.DebugMode);
+        jsonSetter.UpdateSetting(jProperties);
     }
 
     /// <summary>
@@ -26,7 +35,12 @@ public class GameSettingEntity : MonoBehaviour
     [ContextMenu("LoadSetting")]
     public virtual void LoadSetting()
     {
+        gameSettings.savePath = jsonSetter.savePath;
         gameSettings = GameSetting.LoadSetting(gameSettings);
+
+        JObject globalSetting = jsonSetter.LoadSetting();
+        gameSettings.scoreToWin = System.Int32.Parse(globalSetting["scoreToWin"].ToString());
+        gameSettings.DebugMode = (bool)globalSetting["DebugMode"];
     }
 
     /// <summary>

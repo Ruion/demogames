@@ -89,7 +89,8 @@ MonoBehaviour:
       attribute: TEXT
       sync: 0
       dummyPrefix: new
-    sendURL: http://in-house-game-01-dashboard.uid-staging.com/public/api/submit-score-data
+    sendURL: http://in-house-game-01-dashboard.uid-staging.com/public/api/
+    sendAPI: submit-score-data
     serverResponsesArray:
     - resultResponse: Success
       resultResponseMessage: sync success

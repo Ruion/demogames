@@ -14,15 +14,13 @@ public class Debugger : MonoBehaviour
     public TextMeshProUGUI msg;
     string error;
 
-    public bool DebugMode = false;
-
-    // Use this for initialization
-    void Start()
-    {}
+    private GameSettingEntity gameSettingEntity; 
 
     void OnEnable()
     {
-        if (!DebugMode) gameObject.SetActive(false);
+        gameSettingEntity = FindObjectOfType<GameSettingEntity>();
+
+        if (!gameSettingEntity.gameSettings.DebugMode) gameObject.SetActive(false);
 
         Application.logMessageReceived += HandleLog;
     }

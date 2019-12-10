@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1556465688544172219}
   - component: {fileID: 7610391580308212332}
   m_Layer: 0
-  m_Name: VendingMachine_DatabaseModel
+  m_Name: StockDBModelEntity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

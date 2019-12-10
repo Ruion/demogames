@@ -67,6 +67,7 @@ MonoBehaviour:
       Data: 
   dbSettings:
     fileName: player
+    folderPath: C:\UID-APP\APPS\GAME-01
     dbName: player
     tableName: player
     columns:
@@ -106,16 +107,31 @@ MonoBehaviour:
       attribute: TEXT
       sync: 0
       dummyPrefix: new
-    sendURL: http://game-01-dashboard.unicom-interactive-digital.com/public/api/submit-player-data
+    sendURL: http://game-01-dashboard.unicom-interactive-digital.com/public/api/
+    sendAPI: submit-player-data
     serverResponsesArray:
     - resultResponse: Success
       resultResponseMessage: sync success
     - resultResponse: Fail
       resultResponseMessage: sync fail
+    hasMultipleLocalDB: 0
+    keyDownloadURL: 
+    keyFileName: 
+    serverEmailFilePath: 
   db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/player.sql
   numberToPopulate: 5
   TestIndex: 16
   selectCustomCondition: online_status = 'new'
+  hasSync: 0
+  emptyHandler: {fileID: 0}
+  internetErrorHandler: {fileID: 0}
+  errorHandler: {fileID: 0}
+  blockDataHandler: {fileID: 0}
+  successBar: {fileID: 0}
+  failBar: {fileID: 0}
+  entityId: 0
+  serverEmailList: []
+  isFetchingData: 0
 --- !u!114 &7497790228101722038
 MonoBehaviour:
   m_ObjectHideFlags: 0

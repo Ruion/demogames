@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
-using TMPro;
+﻿using UnityEngine;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
     
 /// <summary>
 /// Class use by EventConditional to compare scriptableScore.score is lower or higher than score to win game.
@@ -27,12 +25,14 @@ public class EventConditional : MonoBehaviour {
 /// </summary>
 	public void ExecuteScriptableScoreCondition()
     {
+        JSONSetter globalSetting = FindObjectOfType<JSONSetter>();
+        JObject jObject = globalSetting.LoadSetting();
+
         for (int i = 0; i < scoreConditions.Length; i++)
         {
-            if (scoreConditions[i].score < scoreConditions[i].minimumScore)
-            {
-                conditionIsPass = false;
-            }            
+            if(scoreConditions[i].score < System.Int32.Parse(jObject["scoreToWin"].ToString())) conditionIsPass = false;
+
+            //if (scoreConditions[i].score < scoreConditions[i].minimumScore) conditionIsPass = false;        
         }
 
         if (conditionIsPass)

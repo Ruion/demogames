@@ -34,6 +34,8 @@ public class EventSetting : SerializedMonoBehaviour
 
     private EventCode[] options;
 
+    public JSONSetter jsonSetter;
+
     #endregion
 
     void OnEnable(){
@@ -167,6 +169,7 @@ public class EventSetting : SerializedMonoBehaviour
         // save the selected 
         SaveSettings();
         PlayerPrefs.SetString("source_identifier_code", eventSettings.eventCode.code);
+        jsonSetter.UpdateSettingGlobal("source_identifier_code", eventSettings.eventCode.code);
 
         // submitted selected code to server
         //StartCoroutine(SubmitSourceIdentifierRoutine(sourceIdentifierDropdown.options[sourceIdentifierDropdown.value].text));

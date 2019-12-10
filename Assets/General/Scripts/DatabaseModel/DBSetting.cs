@@ -20,7 +20,6 @@ public class DBSetting
         FileStream stream = new FileStream(path, FileMode.Create);
 
        // DBEntitySetting s = new DBEntitySetting(setting);
-
         try
         {
            // formatter.Serialize(stream, s);
@@ -74,6 +73,7 @@ public class DBEntitySetting
     public List<TableColumn> columns = new List<TableColumn>() { new TableColumn("id", "INTEGER PRIMARY KEY", false) };
 
     [TabGroup("Server")] public string sendURL;
+    [TabGroup("Server")] public string sendAPI;
     [TabGroup("Server")] public ServerResponses[] serverResponsesArray;
 
     [TabGroup("Server")]

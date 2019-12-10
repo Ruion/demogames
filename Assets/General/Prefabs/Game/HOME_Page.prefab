@@ -192,10 +192,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings:
-    DebugMode: 0
+    savePath: 
     fileName: game_setting
     scoreName: game_score
     scoreToWin: 3
+    DebugMode: 0
   Submit: {fileID: 0}
   virtualSubmit: {fileID: 218756497738917073}
   NameText: {fileID: 8519955087747842347}
@@ -4304,6 +4305,7 @@ MonoBehaviour:
   dropDown: {fileID: 5747227008793542732}
   phoneCodeFileName: PhoneNumberExtensionMalaysia.txt
   phoneCodeFile: C:/UID-APP/APPS/GAME-01/PhoneNumberExtensionMalaysia.txt
+  fileExtension: txt
 --- !u!1 &5747227008908997577
 GameObject:
   m_ObjectHideFlags: 0
@@ -7145,7 +7147,7 @@ PrefabInstance:
     - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
         type: 3}
       propertyPath: events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: GAME_JUMPSHOOT
+      value: GAME
       objectReference: {fileID: 0}
     - target: {fileID: 114947635171190174, guid: 0ad76668af0784840b64610746b2ef5b,
         type: 3}

@@ -72,7 +72,9 @@ public class DBModelEntity : DBModelMaster
         Debug.Log("Start sync");
         ToogleHandler(blockDataHandler, true);
 
-       
+       // Get global event_code
+       string source_identifier_code = FindObjectOfType<JSONSetter>().LoadSetting(true)["source_identifier_code"].ToString();
+
         for (int u = 0; u < rows.Count; u++)
         {
             #region WWW Form
@@ -81,6 +83,8 @@ public class DBModelEntity : DBModelMaster
             // Debug.Log("field to sent : " + dbSettings.columnsToSync.Count);
             // string values = "";
             entityId = int.Parse(rows[u]["id"].ToString());
+
+            
 
             for (int i = 0; i < dbSettings.columns.Count; i++)
             {
@@ -94,11 +98,13 @@ public class DBModelEntity : DBModelMaster
                     dbSettings.columns[i].name,
                    value);
             }
+
+            rows[u]["source_identifier_code"] = source_identifier_code;
             // Debug.Log(values);
             #endregion
 
             #region WebRequest
-            using (UnityWebRequest www = UnityWebRequest.Post(dbSettings.sendURL, form))
+            using (UnityWebRequest www = UnityWebRequest.Post(dbSettings.sendURL + dbSettings.sendAPI, form))
             {
 
                 yield return www.SendWebRequest();
