@@ -39,12 +39,10 @@ public class VoucherStockManager : MonoBehaviour
     [ContextMenu("Reload UI")]
     public void ReloadUI(Transform scrollViewParent)
     {
-        vdb.LoadSetting();
-
         scrollViewParentTransform = scrollViewParent;
 
         #region Handler table is empty || not exist
-        vdb.CreateTable();
+      //  vdb.CreateTable();
         int rowCount = vdb.ExecuteCustomSelectQuery("SELECT * FROM " + vdb.dbSettings.tableName).Count;
         if (rowCount < 1) vdb.Populate();
         #endregion

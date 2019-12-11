@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 4758777847552199346, guid: 81e5d3fcc15fdf54e966454e6e51f438,
         type: 3}
       propertyPath: m_Name
-      value: SaveButton
+      value: ShadowButton
       objectReference: {fileID: 0}
     - target: {fileID: 4758777847552199347, guid: 81e5d3fcc15fdf54e966454e6e51f438,
         type: 3}

@@ -508,7 +508,7 @@ public class DBModelMaster : DBSettingEntity
     [DisableIf("@String.IsNullOrEmpty(dbSettings.sendURL)")][Button(ButtonSizes.Medium)]
     public virtual void Sync()
     {
-        LoadSetting();
+        //LoadSetting();
         #region Check Internet
         ///////////// CHECK Internet Connection /////////////
         string HtmlText = GetHtmlFromUri("http://google.com");

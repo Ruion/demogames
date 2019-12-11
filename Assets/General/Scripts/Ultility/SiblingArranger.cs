@@ -23,4 +23,9 @@ public class SiblingArranger : MonoBehaviour
     {
         transform.SetSiblingIndex(siblingIndex);
     }
+
+    public void SetLastSibling()
+    {
+        transform.SetAsLastSibling();
+    }
 }

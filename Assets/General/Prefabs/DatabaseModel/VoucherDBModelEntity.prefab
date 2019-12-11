@@ -470,13 +470,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4a89935432c044bbfe93d922be7cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voucherSettingParent: {fileID: 0}
-  voucherSettingField: {fileID: 0}
   ks: {fileID: 0}
   vdb: {fileID: 0}
   fields: []
   setButton: {fileID: 0}
   saveButton: {fileID: 0}
+  voucherNameField: {fileID: 0}
+  voucherDailyQuantityField: {fileID: 0}
 --- !u!1 &7760489448440158926
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +574,7 @@ MonoBehaviour:
       sync: 0
       dummyPrefix: 
     sendURL: 
+    sendAPI: 
     serverResponsesArray: []
     hasMultipleLocalDB: 0
     keyDownloadURL: 

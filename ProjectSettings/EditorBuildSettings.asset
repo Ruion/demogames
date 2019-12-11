@@ -6,12 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game-Racing/HOME.unity
-    guid: dd6b293254d4e7f488dbf2e1f468eec8
+    path: Assets/Game-JumpShoot/HOME.unity
+    guid: ce654b8d8e82a1a4eabd81ad3624e955
   - enabled: 1
-    path: Assets/Game-Racing/GAME.unity
-    guid: 46a4e19f8b9890945b47a045db2cf918
-  - enabled: 1
-    path: Assets/Game-Racing/SCORE.unity
-    guid: af11af0245fa3d74fb05a81ad4667421
+    path: Assets/Game-JumpShoot/GAME.unity
+    guid: ae8900706fbe4ef4b9ac84d1b7f8437b
   m_configObjects: {}

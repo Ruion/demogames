@@ -49,8 +49,6 @@ public class DBModelEntity : DBModelMaster
 /// </summary>
     public override void Sync()
     {
-        LoadSetting();
-
         base.Sync();
         StartCoroutine(SyncToServer());
     }
@@ -73,7 +71,7 @@ public class DBModelEntity : DBModelMaster
         ToogleHandler(blockDataHandler, true);
 
        // Get global event_code
-       string source_identifier_code = FindObjectOfType<JSONSetter>().LoadSetting(true)["source_identifier_code"].ToString();
+       string source_identifier_code = FindObjectOfType<JSONSetter>().LoadSetting()["source_identifier_code"].ToString();
 
         for (int u = 0; u < rows.Count; u++)
         {
@@ -104,7 +102,7 @@ public class DBModelEntity : DBModelMaster
             #endregion
 
             #region WebRequest
-            using (UnityWebRequest www = UnityWebRequest.Post(dbSettings.sendURL + dbSettings.sendAPI, form))
+            using (UnityWebRequest www = UnityWebRequest.Post((dbSettings.sendURL + dbSettings.sendAPI).Replace(" ", string.Empty), form))
             {
 
                 yield return www.SendWebRequest();
@@ -166,7 +164,7 @@ public class DBModelEntity : DBModelMaster
         ToogleHandler(blockDataHandler, false);
         ToogleHandler(failBar, true);
 
-        Debug.LogError(errorMessage + "\n" + www.error + "\n" + " server url: " + dbSettings.sendURL);
+        Debug.LogError(errorMessage + "\n" + www.error + "\n" + " server url: " + dbSettings.sendURL + dbSettings.sendAPI);
     }
 
 

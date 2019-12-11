@@ -52,7 +52,7 @@ MonoBehaviour:
     scoreName: game_score
     scoreToWin: 15
     DebugMode: 1
-  jsonSetter: {fileID: 0}
+  jsonSetter: {fileID: 1661002323923998949}
 --- !u!114 &199091733273068208
 MonoBehaviour:
   m_ObjectHideFlags: 0

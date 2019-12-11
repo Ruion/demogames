@@ -12,16 +12,25 @@ public class JSONSetter : MonoBehaviour
     [FolderPath(AbsolutePath=true, UseBackslashes=true)]
     public string globalSavePath;
 
+    private string fileName = "Setting.json";
+    private string globalFileName = "GlobalSetting.json";
+
     public void SaveSetting(JObject jsonObj, bool global = false)
     {
         string savePath = this.savePath;
-        if(global) savePath = globalSavePath;
-        //FileStream fs = File.Open(filePath + "\\" + "Setting.json", FileMode.OpenOrCreate);
 
-        //File.WriteAllText(JsonfilePath, jsonObj.ToString());
+        string fileName = this.fileName;
+
+        if(global) 
+        {
+            savePath = globalSavePath;
+            fileName = this.globalFileName;
+        }
+ 
+        
 
         // write JSON directly to a file
-        using (StreamWriter file = File.CreateText(savePath + "\\" + "Setting.json"))
+        using (StreamWriter file = File.CreateText(savePath + "\\" + fileName))
         using (JsonTextWriter writer = new JsonTextWriter(file))
         {
             jsonObj.WriteTo(writer);
@@ -99,15 +108,23 @@ public class JSONSetter : MonoBehaviour
         SaveSetting(jsonObj, true);
     }
 
-
     public JObject LoadSetting(bool global = false)
     {
         string savePath = this.savePath;
-        if(global) savePath = globalSavePath;
+        if(global) 
+        {
+            savePath = globalSavePath;
+            fileName = this.globalFileName;
+        }
 
          string json = File.ReadAllText(savePath + "\\" + "Setting.json");
         JObject jsonObj = JObject.Parse(json);
 
         return jsonObj;
+    }
+
+    public void LoadSettingFromGlobal()
+    {
+        
     }
 }

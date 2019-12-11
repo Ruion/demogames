@@ -38,16 +38,16 @@ public class DBSetting
     public static DBEntitySetting LoadSetting(string fileName)
     {
         string path = fileName + ".dbsetting";
-
+        Debug.Log(path);
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
-
-            DBEntitySetting setting = (DBEntitySetting)formatter.Deserialize(stream);
-            stream.Close();
-
-            return setting;
+            using(FileStream stream = new FileStream(path, FileMode.Open))
+            {
+                DBEntitySetting setting = (DBEntitySetting)formatter.Deserialize(stream);
+                stream.Close();
+                return setting;
+            }
         }
         else
         {

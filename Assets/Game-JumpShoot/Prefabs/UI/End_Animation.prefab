@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 3489444413001216435}
   - component: {fileID: 3489444413001216444}
   - component: {fileID: 3489444413001216445}
-  - component: {fileID: 3489444413001216446}
+  - component: {fileID: 4767578585200453280}
   m_Layer: 5
   m_Name: 'TEXT : Try again to win a voucher'
   m_TagString: Untagged
@@ -540,10 +540,10 @@ RectTransform:
   m_Father: {fileID: 3707508184161091948}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -229.00006}
-  m_SizeDelta: {x: -648.3, y: -1723.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -66.1}
+  m_SizeDelta: {x: 1280, y: 99.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &3489444413001216435
 MeshFilter:
@@ -599,7 +599,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3489444413001216440}
   m_CullTransparentMesh: 0
---- !u!114 &3489444413001216446
+--- !u!114 &4767578585200453280
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3489444413001216440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -627,8 +627,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282796586
-  m_fontColor: {r: 0.16691881, g: 0.2924528, b: 0.27487805, a: 1}
+    rgba: 4282269246
+  m_fontColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -646,15 +646,15 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 500
-  m_fontSizeBase: 500
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 100
-  m_fontSizeMax: 700
-  m_fontStyle: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
   m_textAlignment: 514
-  m_characterSpacing: -1.5
+  m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -672,7 +672,7 @@ MonoBehaviour:
   checkPaddingRequired: 0
   m_isRichText: 1
   m_parseCtrlCharacters: 1
-  m_isOrthographic: 0
+  m_isOrthographic: 1
   m_isCullingEnabled: 0
   m_ignoreRectMaskCulling: 0
   m_ignoreCulling: 1
@@ -686,20 +686,19 @@ MonoBehaviour:
   m_pageToDisplay: 1
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
-    textComponent: {fileID: 3489444413001216446}
+    textComponent: {fileID: 4767578585200453280}
     characterCount: 26
     spriteCount: 0
     spaceCount: 5
     wordCount: 6
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 3489444413001216444}
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -709,7 +708,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  m_maskType: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3489444413771219219
 GameObject:
   m_ObjectHideFlags: 0

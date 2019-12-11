@@ -13,7 +13,7 @@ public class DBSettingEntity : SerializedMonoBehaviour
     #region Basics
     public virtual void Awake()
     {
-        LoadSetting();
+       // LoadSetting();
     }
 
     [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
@@ -44,10 +44,13 @@ public class DBSettingEntity : SerializedMonoBehaviour
     [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
     public virtual void LoadSetting()
     {
+        // fetch & Update setting from global JSONSetter
+        JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
+        dbSettings.folderPath = jsonSetter.savePath;
+
         dbSettings = DBSetting.LoadSetting(dbSettings.folderPath + "\\" + dbSettings.fileName);
        
         // fetch & Update setting from global JSONSetter
-        JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
         JObject jObject = jsonSetter.LoadSetting();
         dbSettings.sendURL = jObject["sendURL"].ToString();
 
