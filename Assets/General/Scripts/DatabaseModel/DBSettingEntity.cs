@@ -20,14 +20,14 @@ public class DBSettingEntity : SerializedMonoBehaviour
     public virtual void SaveSetting()
     {
               
-        // fetch & Update setting from global JSONSetter
+        // fetch & Update setting from Setting.json
         JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
         dbSettings.folderPath = jsonSetter.savePath;
 
-        // add url to global setting - sendURL : http://domain.com/public/api
-        jsonSetter.UpdateSetting("sendURL", dbSettings.sendURL);
+        // add url to Setting.json - sendURL : http://domain.com/public/api
+        jsonSetter.UpdateSetting("ServerDomainURL", dbSettings.sendURL);
         
-        // add api to global setting - playerdata_sendAPI : submit-player-data
+        // add api to Setting.json - playerdata_sendAPI : submit-player-data
         DBSettingEntity[] dBSettingEntities = FindObjectsOfType<DBSettingEntity>();
         foreach (DBSettingEntity e in dBSettingEntities)
         {
@@ -52,7 +52,7 @@ public class DBSettingEntity : SerializedMonoBehaviour
        
         // fetch & Update setting from global JSONSetter
         JObject jObject = jsonSetter.LoadSetting();
-        dbSettings.sendURL = jObject["sendURL"].ToString();
+        dbSettings.sendURL = jObject["ServerDomainURL"].ToString();
 
         if(jObject.ContainsKey(dbSettings.fileName+"-API")) dbSettings.sendAPI = jObject[dbSettings.fileName+"-API"].ToString();
     }

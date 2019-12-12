@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 using TMPro;
+using System.Linq;
 
 public class SettingPageManager : MonoBehaviour
 {
+    #region Public Fields
     public JSONSetter jsonSetter;
     public GameObject settingFieldPrefab;
     public Transform settingFieldContainer;
 
     public GameObject popUpModal;
     public Button doneButton;
-
-    private TextMeshProUGUI selectedField;
 
     public TextMeshProUGUI selectedField_
     {
@@ -25,7 +24,7 @@ public class SettingPageManager : MonoBehaviour
             selectedField = value;
             propertyTitle.text = selectedField.text;
             valueField.text = 
-            jsonSetter.LoadSetting()[selectedField.text].ToString();
+            jsonSetter.LoadSetting()[properties.FirstOrDefault( f => f.Equals(selectedField.text, System.StringComparison.InvariantCultureIgnoreCase))].ToString();
             popUpModal.SetActive(true);
         }
     }
@@ -33,12 +32,21 @@ public class SettingPageManager : MonoBehaviour
     public TextMeshProUGUI propertyTitle;
     public TMP_InputField valueField;
 
+    #endregion
+
+    #region Private Fields
+    private TextMeshProUGUI selectedField;
+    private List<string> properties = new List<string>();
+
+    #endregion
+
     [ContextMenu("LoadGlobaSettings")]
     void OnEnable()
     {
-        if(settingFieldContainer.childCount < 1) {
-
         if(jsonSetter == null) jsonSetter = FindObjectOfType<JSONSetter>();
+
+        if(settingFieldContainer.childCount < 1) {
+        
         JObject globalSettings = jsonSetter.LoadSetting();
 
         foreach (JProperty p in globalSettings.Properties())
@@ -47,7 +55,8 @@ public class SettingPageManager : MonoBehaviour
             
             // assign property name
             TextMeshProUGUI property = newField.GetComponent<TextMeshProUGUI>();
-            property.text = p.Name;
+            property.text = StringExtensions.FirstCharToUpper(p.Name);
+            properties.Add(p.Name);
 
             // assign On Click () event ot btn
             Button btn = newField.GetComponentInChildren<Button>();
@@ -68,11 +77,6 @@ public class SettingPageManager : MonoBehaviour
         jsonSetter.UpdateSetting(selectedField.text, valueField.text);
         selectedField.transform.GetChild(0).GetComponentInChildren<TextMeshProUGUI>().text
          = jsonSetter.LoadSetting()[selectedField.text].ToString();
-    }
-
-    private void RefreshField()
-    {
-
     }
 
     public void ValidateField()

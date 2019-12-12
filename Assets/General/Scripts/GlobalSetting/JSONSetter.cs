@@ -27,22 +27,19 @@ public class JSONSetter : MonoBehaviour
             fileName = this.globalFileName;
         }
  
-        
-
         // write JSON directly to a file
         using (StreamWriter file = File.CreateText(savePath + "\\" + fileName))
         using (JsonTextWriter writer = new JsonTextWriter(file))
         {
             jsonObj.WriteTo(writer);
         }
-
     }
 
     public void UpdateSetting(string name, string value)
     {
         JObject jsonObj = LoadSetting();
 
-        if(!jsonObj.ContainsKey(name))
+        if(!jsonObj.ContainsKey(name) && !string.IsNullOrEmpty(value))
         {
             jsonObj.Add(new JProperty(name, value));
         }
@@ -60,7 +57,7 @@ public class JSONSetter : MonoBehaviour
 
         foreach (JProperty p in jProperties)
         {
-            if(!jsonObj.ContainsKey(p.Name))
+            if(!jsonObj.ContainsKey(p.Name)&& !string.IsNullOrEmpty(p.Value.ToString()))
             {
                 jsonObj.Add(p);
                 Debug.Log(p.Name + " is added");
@@ -79,7 +76,7 @@ public class JSONSetter : MonoBehaviour
 
         foreach (JProperty o in jArray)
         {
-            if(!jsonObj.ContainsKey(o.Name))
+            if(!jsonObj.ContainsKey(o.Name) && !string.IsNullOrEmpty(o.Value.ToString()))
             {
                 jsonObj.Add(o);
                 Debug.Log(o.Name + " is added");
@@ -96,7 +93,7 @@ public class JSONSetter : MonoBehaviour
     {
         JObject jsonObj = LoadSetting();
 
-        if(!jsonObj.ContainsKey(name))
+        if(!jsonObj.ContainsKey(name) && !string.IsNullOrEmpty(value))
         {
             jsonObj.Add(new JProperty(name, value));
         }

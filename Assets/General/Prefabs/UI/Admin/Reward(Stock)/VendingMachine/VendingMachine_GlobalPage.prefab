@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1192801296436996860}
   m_Layer: 0
-  m_Name: VendingMachine
+  m_Name: VendingMachine_GlobalPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

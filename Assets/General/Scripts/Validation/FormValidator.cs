@@ -48,14 +48,14 @@ public class FormValidator : ServerModelMaster
     public string contactPrefix = "+6";
     #endregion
 
-    private void Start()
+    private void OnEnable()
     {
 
         emailList = playerDataDbModelEntity.GetDataByStringToList("email");
         contactList = playerDataDbModelEntity.GetDataByStringToList("contact");
     }
 
-    // Update is called once per frame
+    /*
     void Update()
     {
         if (Text1OK && Text2OK && Text3OK && consent.isOn)
@@ -70,6 +70,7 @@ public class FormValidator : ServerModelMaster
         }
 
     }
+    */
 
     public void StartValidateOnFrequency()
     {
@@ -87,6 +88,17 @@ public class FormValidator : ServerModelMaster
         T1Change();
         T2Change();
         T3Change();
+
+        if (Text1OK && Text2OK && Text3OK && consent.isOn)
+        {
+            Submit.interactable = true;
+            virtualSubmit.interactable = true;
+        }
+        else
+        {
+            Submit.interactable = false;
+            virtualSubmit.interactable = false;
+        }
     }
 
     public void T1Change()

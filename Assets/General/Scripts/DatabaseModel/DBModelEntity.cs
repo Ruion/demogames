@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System.Data;
 using UnityEngine.Networking;
 using System.Collections;
@@ -18,6 +19,8 @@ using System.Linq;
 public class DBModelEntity : DBModelMaster
 {
     DataRowCollection rows;
+    public UnityEvent OnSyncStart;
+    public UnityEvent OnSyncEnd;
 
 /// <summary>
 /// Save PlayerPrefs value into all table column set in inspector
@@ -50,6 +53,7 @@ public class DBModelEntity : DBModelMaster
     public override void Sync()
     {
         base.Sync();
+        if(OnSyncStart.GetPersistentEventCount() > 0) OnSyncStart.Invoke();
         StartCoroutine(SyncToServer());
     }
 
@@ -152,6 +156,7 @@ public class DBModelEntity : DBModelMaster
        if(hasSync) successBar.GetComponent<StatusBar>().Finish();
         rows.Clear();
         Close();
+        if(OnSyncEnd.GetPersistentEventCount() > 0) OnSyncEnd.Invoke();
     }
 
 /// <summary>
