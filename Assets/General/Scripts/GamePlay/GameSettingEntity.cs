@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Reflection;
 
 /// <summary>
 /// Master class for Saving and Retrieving gameplay settings.
@@ -14,6 +15,8 @@ public class GameSettingEntity : MonoBehaviour
     public Settings gameSettings;
     public JSONSetter jsonSetter;
 
+    private string fileName = "GameSetting";
+
     /// <summary>
     /// Save the settings value in to file. This function eccesible by right click component in inspector and click "SaveSetting"
     /// </summary>
@@ -22,15 +25,12 @@ public class GameSettingEntity : MonoBehaviour
     {
        // GameSetting.SaveSetting(gameSettings);
 
-        string filePath = gameSettings.savePath + "\\" + gameSettings.fileName;
-        Debug.Log(filePath);
-        JSONExtension.SaveSetting(gameSettings, filePath);
+        string filePath = jsonSetter.savePath + "\\" + "Setting";
 
-        /// Save to a global json file
-        JProperty[] jProperties = new JProperty[2];
-        jProperties[0] = new JProperty("scoreToWin", gameSettings.scoreToWin);
-        jProperties[1] = new JProperty("DebugMode", gameSettings.DebugMode);
-        jsonSetter.UpdateSetting(jProperties);
+        JSONExtension.SaveValues(filePath, gameSettings);
+
+        Debug.Log("Save setting success");
+
     }
 
     /// <summary>
@@ -44,13 +44,9 @@ public class GameSettingEntity : MonoBehaviour
         gameSettings = GameSetting.LoadSetting(gameSettings);
         */
 
-        string filePath = gameSettings.savePath + "\\" + gameSettings.fileName;
-        Debug.Log(filePath);
-        gameSettings = (Settings)JSONExtension.LoadSetting(gameSettings, filePath);
-
-        JObject globalSetting = jsonSetter.LoadSetting();
-        gameSettings.scoreToWin = System.Int32.Parse(globalSetting["scoreToWin"].ToString());
-        gameSettings.DebugMode = (bool)globalSetting["DebugMode"];
+        string filePath = jsonSetter.savePath + "\\" + "Setting";
+       
+        JSONExtension.LoadValues(filePath, gameSettings);
     }
 
     /// <summary>

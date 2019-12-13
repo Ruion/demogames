@@ -70,7 +70,7 @@ public class DBEntitySetting
     [HideInInspector] public string tableName;
 
     [TabGroup("LocalDB Settings")] [TableList]
-    public List<TableColumn> columns = new List<TableColumn>() { new TableColumn("id", "INTEGER PRIMARY KEY", false) };
+    public List<TableColumn> columns = new List<TableColumn>();
 
     [TabGroup("Server")] public string sendURL;
     [TabGroup("Server")] public string sendAPI;
@@ -82,6 +82,7 @@ public class DBEntitySetting
     [TabGroup("Server")][ShowIf("hasMultipleLocalDB", false)] public string keyFileName;
     [TabGroup("Server")][ShowIf("hasMultipleLocalDB", false)] [ReadOnly] public string serverEmailFilePath;
 
+/*
     public DBEntitySetting(DBEntitySetting setting)
     {
         fileName = setting.fileName;
@@ -97,6 +98,7 @@ public class DBEntitySetting
         keyFileName = setting.keyFileName;
         serverEmailFilePath = setting.serverEmailFilePath;
     }
+    */
 }
 
 

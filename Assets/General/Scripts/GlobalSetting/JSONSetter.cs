@@ -51,44 +51,6 @@ public class JSONSetter : MonoBehaviour
         SaveSetting(jsonObj);
     }
 
-    public void UpdateSetting(JProperty[] jProperties)
-    {
-        JObject jsonObj = LoadSetting();
-
-        foreach (JProperty p in jProperties)
-        {
-            if(!jsonObj.ContainsKey(p.Name)&& !string.IsNullOrEmpty(p.Value.ToString()))
-            {
-                jsonObj.Add(p);
-                Debug.Log(p.Name + " is added");
-            }
-            else
-            {
-                jsonObj[p.Name] = p.Value;
-            }
-        }
-        SaveSetting(jsonObj);
-    }
-
-    public void UpdateSetting(JArray jArray)
-    {
-        JObject jsonObj = LoadSetting();
-
-        foreach (JProperty o in jArray)
-        {
-            if(!jsonObj.ContainsKey(o.Name) && !string.IsNullOrEmpty(o.Value.ToString()))
-            {
-                jsonObj.Add(o);
-                Debug.Log(o.Name + " is added");
-            }
-            else
-            {
-                jsonObj[o.Name] = o.Value;
-            }
-        }
-        SaveSetting(jsonObj);
-    }
-
     public void UpdateSettingGlobal(string name, string value)
     {
         JObject jsonObj = LoadSetting();
@@ -114,14 +76,9 @@ public class JSONSetter : MonoBehaviour
             fileName = this.globalFileName;
         }
 
-         string json = File.ReadAllText(savePath + "\\" + "Setting.json");
+        string json = File.ReadAllText(savePath + "\\" + "Setting.json");
         JObject jsonObj = JObject.Parse(json);
 
         return jsonObj;
-    }
-
-    public void LoadSettingFromGlobal()
-    {
-        
     }
 }

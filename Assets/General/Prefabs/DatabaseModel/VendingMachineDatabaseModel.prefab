@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1556465688544172219}
   - component: {fileID: 7610391580308212332}
   m_Layer: 0
-  m_Name: StockDBModelEntity
+  m_Name: VendingMachineDatabaseModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,6 +92,7 @@ MonoBehaviour:
       sync: 0
       dummyPrefix: true
     sendURL: 
+    sendAPI: 
     serverResponsesArray: []
     hasMultipleLocalDB: 0
     keyDownloadURL: 
@@ -111,6 +112,12 @@ MonoBehaviour:
   entityId: 0
   serverEmailList: []
   isFetchingData: 0
+  OnSyncStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSyncEnd:
+    m_PersistentCalls:
+      m_Calls: []
   stockErrorHandler: {fileID: 0}
   vm: {fileID: 7610391580308212332}
   item_id: 1

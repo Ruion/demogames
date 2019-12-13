@@ -8,12 +8,9 @@ using UnityEngine;
 [System.Serializable]
 public class Settings
 {
-    [FolderPath(AbsolutePath=true, UseBackslashes = true)] 
-    public string savePath;
-    public string fileName = "GameSetting";
     public string scoreName = "game_score";
     public int scoreToWin = 3;
-    public bool DebugMode = false;
+    public bool debugMode = false;
  
     public Settings(Settings setting)
     {

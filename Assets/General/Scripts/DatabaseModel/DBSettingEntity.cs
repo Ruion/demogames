@@ -1,6 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.IO;
 
 /// <summary>
 /// Base class for DBModelMaster
@@ -36,9 +37,11 @@ public class DBSettingEntity : SerializedMonoBehaviour
             jsonSetter.UpdateSetting(e.dbSettings.fileName+ "-API", e.dbSettings.sendAPI);
         }
 
+        // legacy binary formatter save method
+        // DBSetting.SaveSetting(dbSettings);
 
-        DBSetting.SaveSetting(dbSettings);
-        LoadSetting();
+        // save to json file
+        JSONExtension.SaveObject(dbSettings.folderPath + "\\" + name, dbSettings);
     }
 
     [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
@@ -48,12 +51,16 @@ public class DBSettingEntity : SerializedMonoBehaviour
         JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
         dbSettings.folderPath = jsonSetter.savePath;
 
-        dbSettings = DBSetting.LoadSetting(dbSettings.folderPath + "\\" + dbSettings.fileName);
+        string filePath = dbSettings.folderPath + "\\" + name;
        
+       // Load from json file
+       dbSettings = JsonConvert.DeserializeObject<DBEntitySetting>(File.ReadAllText(filePath + ".json"));
+
         // fetch & Update setting from global JSONSetter
         JObject jObject = jsonSetter.LoadSetting();
         dbSettings.sendURL = jObject["ServerDomainURL"].ToString();
 
+        // load sendAPI from global setting file
         if(jObject.ContainsKey(dbSettings.fileName+"-API")) dbSettings.sendAPI = jObject[dbSettings.fileName+"-API"].ToString();
     }
     #endregion

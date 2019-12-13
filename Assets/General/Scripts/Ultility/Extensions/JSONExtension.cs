@@ -4,41 +4,90 @@ using UnityEngine;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.IO;
+using System.Reflection;
 
 public static class JSONExtension
 {
-    public static void SaveSetting(System.Object obj, string filePath)
+    public static void SaveObject(string filePath, System.Object Object)
     {
-        try
-            {
-            // Debug.Log(Path.GetDirectoryName(filePath));
-             Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-             var json = JsonConvert.SerializeObject(obj, Formatting.Indented);
-                File.WriteAllText(filePath + ".json", json);
-                Debug.Log("Save setting success");
-            }
-            catch(System.Exception ex)
-            {
-                Debug.LogError(ex.Message);
-            }
+        Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+        File.WriteAllText(filePath + ".json", JsonConvert.SerializeObject(Object, Formatting.Indented));
+
     }
 
-    public static System.Object LoadSetting(System.Object obj, string filePath)
+    public static void SaveSetting(string filePath, string pName, string pValue)
     {
-        string path = filePath + ".json";
-
         Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-
-        if (File.Exists(path))
+        JObject jsonObj = LoadJson(filePath);
+        
+        if(!jsonObj.ContainsKey(pName))
         {
-            System.Object jsonObj = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(path));
-
-            return jsonObj;
+            jsonObj.Add(new JProperty(pName, pValue));
         }
         else
         {
-            Debug.LogError("file not found in " + path);
+            jsonObj[pName] = pValue;
+        }
+       
+        File.WriteAllText(filePath + ".json", JsonConvert.SerializeObject(jsonObj, Formatting.Indented));
+       
+    }
+
+    public static string LoadSetting(string filePath, string pName)
+    {
+        JObject jsonObj = LoadJson(filePath);
+
+        if(!jsonObj.ContainsKey(pName))
+        {
+            Debug.LogError("Property not exist in setting");
             return null;
         }
+        else
+        {
+            return jsonObj[pName].ToString();
+        }
     }
+
+    public static JObject LoadJson(string filePath)
+    {
+        string json = File.ReadAllText(filePath+".json");
+        JObject jsonObj = JObject.Parse(json);
+
+        return jsonObj;
+    }
+
+    #region Utilities
+
+    public static void SaveValues(string filePath, System.Object Object)
+    {
+        FieldInfo[] pros = Object.GetType().GetFields();
+        for (int i = 0; i < pros.Length; i++)
+        {
+            SaveSetting(pros[i].Name, pros[i].GetValue(Object).ToString(), filePath);
+        }
+    }
+
+    public static void LoadValues(string filePath, System.Object Object)
+    {
+        FieldInfo[] fields = Object.GetType().GetFields();
+
+        for (int i = 0; i < fields.Length; i++)
+        {
+            if(fields[i].FieldType == typeof(string))
+            {
+                fields[i].SetValue(Object, LoadSetting(fields[i].Name, filePath));
+            }
+            else if(fields[i].FieldType  == typeof(int))
+            {
+                fields[i].SetValue(Object, System.Int32.Parse(LoadSetting(fields[i].Name, filePath)));
+            }
+            else if(fields[i].FieldType  == typeof(bool))
+            {
+                fields[i].SetValue(Object, bool.Parse(LoadSetting(fields[i].Name, filePath)));
+            }
+           
+        }
+    }
+
+    #endregion
 }

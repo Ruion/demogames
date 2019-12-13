@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 7760489448440158925}
   - component: {fileID: 7760489448440158914}
   m_Layer: 0
-  m_Name: VoucherDBModelEntity
+  m_Name: VoucherDatabaseModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

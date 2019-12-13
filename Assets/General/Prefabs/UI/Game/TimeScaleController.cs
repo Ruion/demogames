@@ -13,7 +13,7 @@ public class TimeScaleController : GameSettingEntity
 
     private void OnEnable()
     {
-        if (!gameSettings.DebugMode) gameObject.SetActive(false);
+        if (!gameSettings.debugMode) gameObject.SetActive(false);
     }
 
     public void ChangeTimeScale()
