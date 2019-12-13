@@ -7,11 +7,13 @@ using System.IO;
 
 public static class JSONExtension
 {
-    public static void SaveJson(System.Object obj, string filePath)
+    public static void SaveSetting(System.Object obj, string filePath)
     {
         try
             {
-                var json = JsonConvert.SerializeObject(obj, Formatting.Indented);
+            // Debug.Log(Path.GetDirectoryName(filePath));
+             Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+             var json = JsonConvert.SerializeObject(obj, Formatting.Indented);
                 File.WriteAllText(filePath + ".json", json);
                 Debug.Log("Save setting success");
             }
@@ -24,6 +26,8 @@ public static class JSONExtension
     public static System.Object LoadSetting(System.Object obj, string filePath)
     {
         string path = filePath + ".json";
+
+        Directory.CreateDirectory(Path.GetDirectoryName(filePath));
 
         if (File.Exists(path))
         {

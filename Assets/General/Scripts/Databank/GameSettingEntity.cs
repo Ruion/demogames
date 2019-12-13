@@ -20,7 +20,11 @@ public class GameSettingEntity : MonoBehaviour
     [ContextMenu("SaveSetting")]
     public virtual void SaveSetting()
     {
-        GameSetting.SaveSetting(gameSettings);
+       // GameSetting.SaveSetting(gameSettings);
+
+        string filePath = gameSettings.savePath + "\\" + gameSettings.fileName;
+        Debug.Log(filePath);
+        JSONExtension.SaveSetting(gameSettings, filePath);
 
         /// Save to a global json file
         JProperty[] jProperties = new JProperty[2];
@@ -35,8 +39,14 @@ public class GameSettingEntity : MonoBehaviour
     [ContextMenu("LoadSetting")]
     public virtual void LoadSetting()
     {
+        /*
         gameSettings.savePath = jsonSetter.savePath;
         gameSettings = GameSetting.LoadSetting(gameSettings);
+        */
+
+        string filePath = gameSettings.savePath + "\\" + gameSettings.fileName;
+        Debug.Log(filePath);
+        gameSettings = (Settings)JSONExtension.LoadSetting(gameSettings, filePath);
 
         JObject globalSetting = jsonSetter.LoadSetting();
         gameSettings.scoreToWin = System.Int32.Parse(globalSetting["scoreToWin"].ToString());

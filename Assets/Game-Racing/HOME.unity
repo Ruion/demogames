@@ -5936,6 +5936,26 @@ PrefabInstance:
       propertyPath: gameSettings.savePath
       value: C:\UID-APP\APPS\GAME-01
       objectReference: {fileID: 0}
+    - target: {fileID: 2419518279826258637, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.fileName
+      value: GameRacing
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419518279826258637, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.scoreName
+      value: game_score
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419518279826258637, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.scoreToWin
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419518279826258637, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: gameSettings.DebugMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8106013693145944861, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: savePath
