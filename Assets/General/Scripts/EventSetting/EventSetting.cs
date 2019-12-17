@@ -11,6 +11,8 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
 using Sirenix.OdinInspector;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 /// <summary>
 /// Configure the machine setting and save to file in streaming assets folder
@@ -41,27 +43,26 @@ public class EventSetting : SerializedMonoBehaviour
     void OnEnable(){
         internetConnectionHandler.SetActive(false);
         errorHandler.SetActive(false);
-        if(eventSettings.isVerify) eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fullFilePath);
+//        if(eventSettings.isVerify) eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fullFilePath);
     }
 
 #region SaveLoad
     [Button(ButtonSizes.Medium)]
     private void SaveSettings(){
-        eventSettings.dataSettings.fileFullName = eventSettings.dataSettings.fileName + "." + eventSettings.dataSettings.extension;
-        eventSettings.dataSettings.fullFilePath = eventSettings.dataSettings.folderPath + "\\" + eventSettings.dataSettings.fileFullName;
-        Data.SaveData(eventSettings, eventSettings.dataSettings.fullFilePath);
+       // eventSettings.dataSettings.fileFullName = eventSettings.dataSettings.fileName + "." + eventSettings.dataSettings.extension;
+      //  eventSettings.dataSettings.fullFilePath = eventSettings.dataSettings.folderPath + "\\" + eventSettings.dataSettings.fileFullName;
+       // Data.SaveData(eventSettings, eventSettings.dataSettings.fullFilePath);
+
+        JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
+        JSONExtension.SaveObject(jsonSetter.savePath + "\\EventSetting", eventSettings);
+        JSONExtension.SaveSetting(jsonSetter.savePath + "\\Setting", "source_identifier_code", eventSettings.eventCode.code);
     }
 
     [Button(ButtonSizes.Medium)]
     private void LoadSettings(){
-        eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fullFilePath);
-    }
-
-    public void SaveConfiguration()
-    {
-        eventSettings.selectedSourceIdentifier = sourceIdentifierDropdown.options[sourceIdentifierDropdown.value].text;
-   
-        SaveSettings();
+       // eventSettings = (EventSettings)Data.LoadData(eventSettings.dataSettings.fullFilePath);
+       JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
+       eventSettings = (EventSettings)JsonConvert.DeserializeObject(File.ReadAllText(jsonSetter.savePath + "\\EventSetting.json"));
     }
 #endregion
 
@@ -90,6 +91,7 @@ public class EventSetting : SerializedMonoBehaviour
                 Debug.LogError(www.error);
                 errorHandler.SetActive(true);
                 errorHandler.GetComponentInChildren<TextMeshProUGUI>().text = www.error;
+                submitActions["domain"].failAction.Invoke();
                 yield break;
             }
             else
@@ -108,6 +110,7 @@ public class EventSetting : SerializedMonoBehaviour
                     source_identifiers[e] = options[e].description;
                 }
                 AddOptionToDropdown(source_identifiers, sourceIdentifierDropdown, "Source Identifier"); 
+                submitActions["domain"].successAction.Invoke();
             }
         }
     }
@@ -154,8 +157,8 @@ public class EventSetting : SerializedMonoBehaviour
                 while(!www.downloadHandler.isDone) yield return null;
                 JSONResponse response = JsonUtility.FromJson<JSONResponse>(www.downloadHandler.text);
 
-                if(response.result == "Success"){ submitActions["source_identifier"].successAction.Invoke(); }
-                else{ submitActions["source_identifier"].failAction.Invoke(); }
+                if(response.result == "Success"){ if(submitActions["domain"].successAction.GetPersistentEventCount() > 0) submitActions["domain"].successAction.Invoke(); }
+                else{ if(submitActions["domain"].failAction.GetPersistentEventCount() > 0) submitActions["domain"].failAction.Invoke(); }
             }
         }
 
@@ -169,8 +172,6 @@ public class EventSetting : SerializedMonoBehaviour
         // save the selected 
         SaveSettings();
         PlayerPrefs.SetString("source_identifier_code", eventSettings.eventCode.code);
-        jsonSetter.UpdateSettingGlobal("source_identifier_code", eventSettings.eventCode.code);
-
         // submitted selected code to server
         //StartCoroutine(SubmitSourceIdentifierRoutine(sourceIdentifierDropdown.options[sourceIdentifierDropdown.value].text));
     }

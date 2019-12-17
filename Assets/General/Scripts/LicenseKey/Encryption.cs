@@ -68,8 +68,11 @@ public class Encryption : MonoBehaviour
     /// <summary>
     /// Change this URL
     /// </summary>
-    const string urlstage2_Register = "http://in-house-game-01-dashboard.uid-staging.com/public/api/activate-license-key";
-    const string urlstage2_Validate = "http://in-house-game-01-dashboard.uid-staging.com/public/validate-license-key";
+    private string urlstage2_Register = "activate-license-key";
+    private string urlstage2_Validate = "validate-license-key";
+
+    private const string urlRegisterAPI = "/public/api/activate-license-key";
+    private const string urlValidateAPI = "/public/api/validate-license-key";
 
     void Awake()
     {
@@ -84,12 +87,15 @@ public class Encryption : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
 
+        JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
+        string folder = "/LicenseKey";
+        Directory.CreateDirectory(Path.GetDirectoryName(jsonSetter.savePath + folder + "/Lkey.txt"));
         //declare local data path
-        pathfile1 = Application.dataPath + "/Lkey.txt";
-        pathfile2 = Application.dataPath + "/key_exp_date.txt";
-        pathfile3 = Application.dataPath + "/Identity.txt";
-        pathfile4 = Application.dataPath + "/session_exp_date.txt";
-        pathfile5 = Application.dataPath + "/checkpoint.txt";
+        pathfile1 = jsonSetter.savePath + folder + "/Lkey.txt";
+        pathfile2 = jsonSetter.savePath + folder  + "/key_exp_date.txt";
+        pathfile3 = jsonSetter.savePath + folder + "/Identity.txt";
+        pathfile4 = jsonSetter.savePath + folder + "/session_exp_date.txt";
+        pathfile5 = jsonSetter.savePath + folder + "/checkpoint.txt";
     }
 
     // Start is called before the first frame update
@@ -110,6 +116,13 @@ public class Encryption : MonoBehaviour
         Debug.Log(timenow);*/
 
         CheckFile();
+    }
+
+    void OnEnable()
+    {
+        JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
+        urlstage2_Register = jsonSetter.LoadSetting()["ServerDomainURL"].ToString() + urlRegisterAPI;
+        urlstage2_Validate = jsonSetter.LoadSetting()["ServerDomainURL"].ToString() + urlValidateAPI;
     }
 
     // Update is called once per frame
@@ -377,10 +390,9 @@ public class Encryption : MonoBehaviour
                 }
                 else if (temp_msg == "Valid License Key")
                 {
-                    lkey_expdate = Stage2jsonData.license_expiry_date;
+                    lkey_expdate = Stage2jsonData.license_key_expiry_date;
                     //go to stage 2 error validation
                     Error_Validation_Stage2();
-                    if(OnValidateSuccess.GetPersistentEventCount() > 0) OnValidateSuccess.Invoke();
                 }
             }
         }
@@ -463,7 +475,8 @@ public class Encryption : MonoBehaviour
                 }
                 else if (temp_msg == "Valid License Key")
                 {
-                    lkey_expdate = Stage2jsonData.license_expiry_date;
+                    Debug.Log(Stage2jsonData.license_key_expiry_date);
+                    lkey_expdate = Stage2jsonData.license_key_expiry_date;
                     //go to stage 3 Registration
                     Stage3Registration();
                 }
@@ -504,6 +517,7 @@ public class Encryption : MonoBehaviour
         SetLocal_Checkpoint();
 
         success_page.SetActive(true);
+        if(OnValidateSuccess.GetPersistentEventCount() > 0) OnValidateSuccess.Invoke();
         
         loading_page.SetActive(false);
     }
@@ -654,6 +668,7 @@ public class Encryption : MonoBehaviour
     public class Stage2Data
     {
         public string result;
-        public string license_expiry_date;
+       // public string license_expiry_date;
+        public string license_key_expiry_date;
     }
 }

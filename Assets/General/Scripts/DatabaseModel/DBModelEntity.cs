@@ -75,7 +75,7 @@ public class DBModelEntity : DBModelMaster
         ToogleHandler(blockDataHandler, true);
 
        // Get global event_code
-       string source_identifier_code = FindObjectOfType<JSONSetter>().LoadSetting()["source_identifier_code"].ToString();
+       string source_identifier_code = JSONExtension.LoadSetting(dbSettings.folderPath + "\\Setting", "source_identifier_code");
 
         for (int u = 0; u < rows.Count; u++)
         {
@@ -94,14 +94,16 @@ public class DBModelEntity : DBModelMaster
 
                 string value = rows[u][dbSettings.columns[i].name].ToString();
 
-               // values += value + " | ";
+                if(dbSettings.columns[i].name == "source_identifier_code") value = source_identifier_code;
+
+              //  values += value + " | ";
 
                 form.AddField(
                     dbSettings.columns[i].name,
                    value);
             }
 
-            rows[u]["source_identifier_code"] = source_identifier_code;
+            
             // Debug.Log(values);
             #endregion
 
@@ -128,8 +130,7 @@ public class DBModelEntity : DBModelMaster
                         //  string response = dbSettings.serverResponses.resultResponses.FirstOrDefault(r => r == jsonData.result);
                         ServerResponses response = dbSettings.serverResponsesArray.FirstOrDefault(r => r.resultResponse == jsonData.result);
                         int index = System.Array.IndexOf(dbSettings.serverResponsesArray, response);
-                        Debug.Log(index);
-                        Debug.LogError(response.resultResponseMessage);
+                        Debug.LogError(name + " - " +response.resultResponseMessage);
 
                         totalNotSent++;
                         ToogleStatusBar(failBar, totalNotSent);

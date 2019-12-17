@@ -24,9 +24,6 @@ public class DBSettingEntity : SerializedMonoBehaviour
         // fetch & Update setting from Setting.json
         JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
         dbSettings.folderPath = jsonSetter.savePath;
-
-        // add url to Setting.json - sendURL : http://domain.com/public/api
-        jsonSetter.UpdateSetting("ServerDomainURL", dbSettings.sendURL);
         
         // add api to Setting.json - playerdata_sendAPI : submit-player-data
         DBSettingEntity[] dBSettingEntities = FindObjectsOfType<DBSettingEntity>();

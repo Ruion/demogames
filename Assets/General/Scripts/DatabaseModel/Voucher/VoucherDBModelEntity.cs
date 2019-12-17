@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Data;
 using System;
+using System.IO;
 using Sirenix.OdinInspector;
 
 public class VoucherDBModelEntity : DBModelMaster
@@ -32,6 +33,10 @@ public class VoucherDBModelEntity : DBModelMaster
     protected override void OnEnable()
     {
         CheckDay();
+        Directory.CreateDirectory(Path.GetDirectoryName(dbSettings.folderPath + "\\Vouchers\\"));
+        DirectoryInfo di = new DirectoryInfo(dbSettings.folderPath + "\\Vouchers\\");
+        if(!di.GetFiles("*.exe*").Any()) 
+            Debug.LogError(String.Format("No voucher pdf files in {0}. Please put Printer.exe & voucher design pdf", dbSettings.folderPath + "\\Vouchers\\"));
     }
 
     public override void Populate()
@@ -92,6 +97,7 @@ public class VoucherDBModelEntity : DBModelMaster
         #region Print Voucher
         if (OnVoucherPrint.GetPersistentEventCount() > 0) OnVoucherPrint.Invoke();
 
+        printer.printerPath = dbSettings.folderPath + "\\Vouchers\\";
         printer.Print(voucher_name);
         // UPDATE voucher quantity
         ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET quantity = " + voucher_quantity + " WHERE name = '" + voucher_name + "'");
