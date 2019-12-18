@@ -91,7 +91,7 @@ MonoBehaviour:
       attribute: TEXT
       sync: 0
       dummyPrefix: true
-    sendURL: 
+    sendURL: http://in-house-game-02-dashboard.uid-staging.com/public/api/
     sendAPI: 
     serverResponsesArray: []
     hasMultipleLocalDB: 0

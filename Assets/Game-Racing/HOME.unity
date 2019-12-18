@@ -4240,11 +4240,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3918123047216320922, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
-      propertyPath: dbSettings.hasMultipleLocalDB
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3918123047216320922, guid: 3b4d50dd24c7255459098612e26d6ee2,
-        type: 3}
       propertyPath: dbSettings.keyFileName
       value: 
       objectReference: {fileID: 0}

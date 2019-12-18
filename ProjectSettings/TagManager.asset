@@ -20,6 +20,7 @@ TagManager:
   - Camera
   - GameSettingMaster
   - LicenseKey
+  - SceneTransition
   layers:
   - Default
   - TransparentFX
