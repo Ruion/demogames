@@ -18,7 +18,8 @@ public class Debugger : MonoBehaviour
 
     void OnEnable()
     {
-        if (!gameSettingEntity.gameSettings.debugMode) gameObject.SetActive(false);
+        gameSettingEntity = FindObjectOfType<GameSettingEntity>();
+        if (!gameSettingEntity.gameSettings.debugMode) Destroy(gameObject);
 
         Application.logMessageReceived += HandleLog;
     }

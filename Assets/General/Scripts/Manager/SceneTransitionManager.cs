@@ -1,26 +1,29 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class SceneTransitionManager : MonoBehaviour
 {
-    public static Animator animator;
- public bool addEventsOnce = true;
+    public static SceneTransitionManager instance;
+    public Animator animator;
+
+    [Range(0f, 10f)]
+    public float fadeInDelay = .5f;
+
+    [Range(0f, 10f)]
+    public float fadeOutDelay = .5f;
+
+    public UnityEvent onFadeIn;
+    public UnityEvent onFadeOut;
+
     private bool eventsAdded = false;
 
-    [Header("Optional")]
-    public bool ExecuteEventsOnSpecifiedScene = false;
-
-/// <summary>
-/// Everytime the scene with this name loaded, EventOnSceneLoaded will be Invoke()
-/// </summary>
-    public string sceneNameToRunEvent = "HOME";
-
-/// <summary>
-/// Everytime the scene with this name loaded, EventOnSceneLoaded will be Invoke()
-/// </summary>
-    public int sceneIndexToRunEvent = 0;
+    void Awake()
+    {
+        if(instance == null)
+        instance = this;
+    }
 
     public void OnEnable()
     {
@@ -31,16 +34,60 @@ public class SceneTransitionManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        FadeOut();       
+        Invoke("FadeOut", fadeOutDelay);
+        Debug.Log("scene loaded");
     }
 
-    public static void FadeIn()
+    public void SwitchScene(int sceneIndex)
     {
-        animator.SetInteger("Fade", 1);
+        FadeIn();
+        StartCoroutine(SwitchSceneIndexCoroutine(sceneIndex));
     }
 
-    public static void FadeOut()
+    public void SwitchScene(string sceneName)
+    {
+        FadeIn();
+        StartCoroutine(SwitchSceneNameCoroutine(sceneName));
+    }
+
+    public void RestartScene()
+    {
+        FadeIn(); 
+        StartCoroutine(RestartSceneCoroutine());
+    }
+
+    public void FadeIn()
+    {
+        animator.gameObject.SetActive(true);
+        animator.SetInteger("Fade", 1);
+        if(onFadeIn.GetPersistentEventCount() > 0) onFadeIn.Invoke();
+    }
+
+    public void FadeOut()
     {
         animator.SetInteger("Fade", 0);
+        if(onFadeOut.GetPersistentEventCount() > 0) onFadeOut.Invoke();
     }
+
+    private IEnumerator SwitchSceneNameCoroutine(string sceneName)
+    {
+         Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        yield return new WaitForSeconds(fadeInDelay + animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        SceneManager.LoadScene(sceneName);
+    }
+
+    private IEnumerator SwitchSceneIndexCoroutine(int sceneIndex)
+    {
+        Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        yield return new WaitForSeconds(fadeInDelay + animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    private IEnumerator RestartSceneCoroutine()
+    {
+        Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        yield return new WaitForSeconds(fadeInDelay + animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    
 }

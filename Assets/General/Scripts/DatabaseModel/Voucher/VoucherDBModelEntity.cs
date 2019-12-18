@@ -10,10 +10,10 @@ public class VoucherDBModelEntity : DBModelMaster
 {
     #region Fields
     DataRowCollection rows;
-    [ReadOnly]int voucher_id;
-    [ReadOnly]string voucher_name;
-    [ReadOnly]int voucher_quantity;
-    [SerializeField]private int populate_quantity;
+    [ReadOnly] int voucher_id;
+    [ReadOnly] string voucher_name;
+    [ReadOnly] int voucher_quantity;
+    [SerializeField] private int populate_quantity;
 
     public UnityEvent OnOutOfStock;
     public UnityEvent OnVoucherPrint;
@@ -35,7 +35,7 @@ public class VoucherDBModelEntity : DBModelMaster
         CheckDay();
         Directory.CreateDirectory(Path.GetDirectoryName(dbSettings.folderPath + "\\Vouchers\\"));
         DirectoryInfo di = new DirectoryInfo(dbSettings.folderPath + "\\Vouchers\\");
-        if(!di.GetFiles("*.exe*").Any()) 
+        if (di.GetFiles("*.exe*").Length < 0)
             Debug.LogError(String.Format("No voucher pdf files in {0}. Please put Printer.exe & voucher design pdf", dbSettings.folderPath + "\\Vouchers\\"));
     }
 
@@ -59,8 +59,6 @@ public class VoucherDBModelEntity : DBModelMaster
             string name = vouchersName[n];
             string quantity = vouchersQuantity[n].ToString();
             string dateCreated = System.DateTime.Now.ToString("yyyy - MM - dd HH:mm:ss");
-
-            PlayerPrefs.SetInt(name, vouchersQuantity[n]);
 
             val[0] = name;
             val[1] = quantity;
@@ -121,20 +119,27 @@ public class VoucherDBModelEntity : DBModelMaster
             DateTime Date2 = DateTime.Now.Date;
 
             int a = DateTime.Compare(Date1, Date2);
-            if (a < 0)
-            {
-                // reset all voucher
-                DeleteAllData();
-                Populate();
-            }
+            if (a < 0) ResetDailyStock();
 
-                string todaydate = DateTime.Now.Date.ToString();
-                PlayerPrefs.SetString("TheDate", todaydate);
-         }
-
+            string todaydate = DateTime.Now.Date.ToString();
+            PlayerPrefs.SetString("TheDate", todaydate);
         }
- }
 
+    }
+
+    [ContextMenu("Reset Daily Stock")]
+    private void ResetDailyStock()
+    {
+        // update all voucher quantity to daily_quantity
+        DataRowCollection drc = ExecuteCustomSelectQuery(string.Format("SELECT * FROM {0}", dbSettings.tableName));
+        foreach (DataRow r in drc)
+        {
+            ExecuteCustomNonQuery(string.Format(
+                "UPDATE {0} SET quantity = {1} WHERE id = {2}",
+                new System.Object[] { dbSettings.tableName, r["daily_quantity"].ToString(), r["id"].ToString() }));
+        }
+    }
+}
 
 
 public class VoucherEntity

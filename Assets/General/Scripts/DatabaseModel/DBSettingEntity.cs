@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.IO;
+using System;
 
 /// <summary>
 /// Base class for DBModelMaster
@@ -56,6 +57,10 @@ public class DBSettingEntity : SerializedMonoBehaviour
         // fetch & Update setting from global JSONSetter
         JObject jObject = jsonSetter.LoadSetting();
         dbSettings.sendURL = jObject["ServerDomainURL"].ToString();
+
+        var substrings = new[] {"api"};
+        if(!dbSettings.sendURL.ContainsAny(substrings, StringComparison.CurrentCultureIgnoreCase))
+            dbSettings.sendURL += "/public/api/";
 
         // load sendAPI from global setting file
         if(jObject.ContainsKey(dbSettings.fileName+"-API")) dbSettings.sendAPI = jObject[dbSettings.fileName+"-API"].ToString();

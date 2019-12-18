@@ -65,6 +65,9 @@ public class GameSettingEntity : MonoBehaviour
 
     public virtual void Awake()
     {
+        if(jsonSetter == null) jsonSetter = FindObjectOfType<JSONSetter>();
+
+        LoadSetting();
         LoadGameSettingFromMaster();
     }
 }
