@@ -44,7 +44,7 @@ public class DBModelEntity : DBModelMaster
         }
 
        AddData(col, val);
-        Debug.Log(gameObject.name + " Data save to local");
+     //   Debug.Log(gameObject.name + " Data save to local");
     }
 
 /// <summary>
@@ -67,7 +67,12 @@ public class DBModelEntity : DBModelMaster
 
         rows = GetAllCustomCondition();
 
-        if(rows.Count < 1) { Debug.Log("no data to be sync"); StopAllCoroutines(); yield break; }
+        if(rows.Count < 1) 
+        { 
+            if(OnSyncEnd.GetPersistentEventCount() > 0) OnSyncEnd.Invoke();
+            StopAllCoroutines(); 
+            yield break; 
+        }
 
         Debug.Log("unsync data : " + rows.Count); int totalSent = 0; int totalNotSent = 0;
 
