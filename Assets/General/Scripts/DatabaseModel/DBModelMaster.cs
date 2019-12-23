@@ -79,7 +79,6 @@ public class DBModelMaster : DBSettingEntity
         try
         {
             dbcmd.ExecuteNonQuery(); Close();
-            // Debug.Log("table success created"); }
         }
         catch (Exception ex) { Close(); Debug.LogError(ex.Message + "\n" + dbcmd.CommandText); return; }
 
@@ -215,10 +214,11 @@ public class DBModelMaster : DBSettingEntity
             DataTable dt = new DataTable();
             da.Fill(dt);
 
-            Debug.Log("Columns : " + dt.Columns.Count + "| Rows : " + dt.Rows.Count + 
+/*            Debug.Log("Columns : " + dt.Columns.Count + "| Rows : " + dt.Rows.Count + 
                 "\n" +
                 "View in Tools > Local DB (selecting the db gameObject) "
                 );
+                */
 
             /*
             foreach (DataRow r in dt.Rows)
@@ -264,8 +264,9 @@ public class DBModelMaster : DBSettingEntity
             da.Fill(dt);
 
             
-            Debug.Log("Columns : " + dt.Columns.Count + "| Rows : " + dt.Rows.Count);
+//            Debug.Log("Columns : " + dt.Columns.Count + "| Rows : " + dt.Rows.Count);
 
+/*
             foreach (DataRow r in dt.Rows)
             {
                 string record = "";
@@ -276,7 +277,7 @@ public class DBModelMaster : DBSettingEntity
                 }
                 Debug.Log(record);
             }
-            
+ */           
 
             Close();
             return dt.Rows;
@@ -390,6 +391,11 @@ public class DBModelMaster : DBSettingEntity
     #region Custom Query
     public virtual void ExecuteCustomNonQuery(string query)
     {
+        #region Usage
+        // Usage
+        // ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET quantity = " + voucher_quantity + " WHERE name = '" + voucher_name + "'");
+        #endregion
+
         sqlitedb_connection = new SqliteConnection(db_connection_string);
         sqlitedb_connection.Open();
 
@@ -411,6 +417,15 @@ public class DBModelMaster : DBSettingEntity
 
     public virtual DataRowCollection ExecuteCustomSelectQuery(string query)
     {
+        #region Usage
+        // Usage
+        // DataRowCollection drc = ExecuteCustomSelectQuery("SELECT " + item + " FROM " + dbSettings.tableName);
+        //    for (int d = 0; d < drc.Count; d++)
+        //    {
+        //        list.Add(drc[0][0].ToString()); drc[0][0] means drc[row0][column0]
+        //    }
+        #endregion
+
         ConnectDb();
         try
         {
