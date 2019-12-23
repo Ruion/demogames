@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using TMPro;
+using System.IO;
+using System;
+using System.Collections.Generic;
 
 namespace Universal{
 /// <summary>
@@ -18,15 +21,15 @@ public class Debugger : MonoBehaviour
 
     void OnEnable()
     {
-        gameSettingEntity = FindObjectOfType<GameSettingEntity>();
-        if (!gameSettingEntity.gameSettings.debugMode) Destroy(gameObject);
-
-        Application.logMessageReceived += HandleLog;
+            gameSettingEntity = FindObjectOfType<GameSettingEntity>();
+            if (gameSettingEntity.gameSettings.debugMode) { Application.logMessageReceived += HandleLog; }
+            else gameObject.SetActive(false); 
     }
 
     void OnDisable()
     {
-        Application.logMessageReceived -= HandleLog;
+        if(gameSettingEntity.gameSettings.debugMode)
+         Application.logMessageReceived -= HandleLog;
     }
 
     void HandleLog(string logString, string stackTrace, LogType type)
@@ -37,8 +40,16 @@ public class Debugger : MonoBehaviour
             PopUp.SetActive(true);
             title.text = "Error";
             msg.text = error;
+
+            JSONExtension.SaveSetting(gameSettingEntity.jsonSetter.savePath + "\\ErrorLog", DateTime.Now.ToString(), logString );
         }
 
     }
 }
+}
+
+[System.Serializable]
+public class ErrorLog
+{
+    public Dictionary<string, string> errorMessage = new Dictionary<string,string>();
 }
