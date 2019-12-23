@@ -55,6 +55,17 @@ public class DBModelMaster : DBSettingEntity
     }
 
     #region setUp
+
+    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
+    protected override void SaveSetting()
+    {
+        base.SaveSetting();
+        CreateTable();
+    }
+
+    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
+    protected override void LoadSetting(){ base.LoadSetting(); }
+
     [ContextMenu("CreateTable")]
     public virtual void CreateTable()
     {

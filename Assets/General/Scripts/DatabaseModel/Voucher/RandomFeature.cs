@@ -31,7 +31,7 @@ public class RandomFeature : MonoBehaviour
             voucher_probability[count].min_prob = temp_total;
             temp_total += System.Int32.Parse(dr["quantity"].ToString());
             voucher_probability[count].max_prob = temp_total;
-            voucher_probability[count].name = dr["name"].ToString();
+            voucher_probability[count].name = dr["voucher_code"].ToString();
             voucher_probability[count].quantity = System.Int32.Parse(dr["quantity"].ToString());
             count += 1;
         }

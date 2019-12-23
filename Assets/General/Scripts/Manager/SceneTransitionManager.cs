@@ -8,13 +8,26 @@ public class SceneTransitionManager : MonoBehaviour
     public static SceneTransitionManager instance;
     public Animator animator;
 
+    /// <summary>
+    /// Delay before fade in the Transition screen
+    /// </summary>
     [Range(0f, 10f)]
     public float fadeInDelay = .5f;
 
+    /// <summary>
+    /// /// Delay before fade out the Transition screen
+    /// </summary>
     [Range(0f, 10f)]
     public float fadeOutDelay = .5f;
 
+    /// <summary>
+    /// Event to execute when the fade in start
+    /// </summary>
     public UnityEvent onFadeIn;
+
+    /// <summary>
+    /// Event to execute when the fade in end
+    /// </summary>
     public UnityEvent onFadeOut;
 
     private bool eventsAdded = false;

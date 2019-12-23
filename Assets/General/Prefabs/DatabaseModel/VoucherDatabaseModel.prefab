@@ -557,7 +557,7 @@ MonoBehaviour:
       attribute: INTEGER PRIMARY KEY
       sync: 0
       dummyPrefix: 
-    - name: name
+    - name: voucher_code
       attribute: TEXT
       sync: 0
       dummyPrefix: 
@@ -630,8 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 946193babccc2b64ab7f3725e382c9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  printerExePath: 
-  printPdfPath: 
+  printerPath: 
 --- !u!114 &7760489448440158914
 MonoBehaviour:
   m_ObjectHideFlags: 0

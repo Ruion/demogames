@@ -132,6 +132,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4b0fa41e3f84c4483504d6babaaff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &48239120
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3723183745067904047, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_Name
+      value: VoucherDistributionDatabaseModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 30fea551c920b624b9fd0c8e148823e5, type: 3}
+--- !u!114 &48239121 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 48239120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db476e859c69a7d448df1b2a28465c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &53560988
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +305,7 @@ PrefabInstance:
     - target: {fileID: 7760489448440158926, guid: 9fb319a27717f204daf844586ce8b44a,
         type: 3}
       propertyPath: m_Name
-      value: VoucherDBModelEntity
+      value: VoucherDatabaseModel
       objectReference: {fileID: 0}
     - target: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
         type: 3}
@@ -219,12 +316,47 @@ PrefabInstance:
     - target: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
         type: 3}
       propertyPath: db_connection_string
-      value: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/voucher.sqlite
+      value: URI = file:C:\UID-APP\APPS\GAME-01\VoucherDatabaseModel.sqlite
       objectReference: {fileID: 0}
     - target: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
         type: 3}
       propertyPath: TestIndex
-      value: 13
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
+        type: 3}
+      propertyPath: voucherDistributionDBModelEntity
+      value: 
+      objectReference: {fileID: 48239121}
+    - target: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
+        type: 3}
+      propertyPath: dbSettings.fileName
+      value: VoucherDatabaseModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
+        type: 3}
+      propertyPath: dbSettings.dbName
+      value: VoucherDatabaseModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
+        type: 3}
+      propertyPath: dbSettings.tableName
+      value: VoucherDatabaseModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[3].name
+      value: daily_quantity
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
+        type: 3}
+      propertyPath: dbSettings.sendURL
+      value: http://in-house-game-02-dashboard.uid-staging.com/public/api/
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760489448440158927, guid: 9fb319a27717f204daf844586ce8b44a,
+        type: 3}
+      propertyPath: dbSettings.keyFileName
+      value: VoucherDatabaseModel Online
       objectReference: {fileID: 0}
     - target: {fileID: 1934924992, guid: 9fb319a27717f204daf844586ce8b44a, type: 3}
       propertyPath: m_IsActive
@@ -4025,11 +4157,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings:
-    savePath: 
-    fileName: game_jumpshoot
     scoreName: game_score
     scoreToWin: 3
-    DebugMode: 1
+    debugMode: 0
+    serverDomainURL: 
+    userPrimaryKeyName: 
   jsonSetter: {fileID: 0}
   animator: {fileID: 1582981129}
   scoreVisualizer: {fileID: 1758414981}
@@ -4049,11 +4181,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings:
-    savePath: 
-    fileName: game_jumpshoot
     scoreName: game_score
     scoreToWin: 3
-    DebugMode: 1
+    debugMode: 0
+    serverDomainURL: 
+    userPrimaryKeyName: 
   jsonSetter: {fileID: 0}
   scoreTexts:
   - {fileID: 1582981123}
@@ -4121,6 +4253,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Landing_Effect2_circleburst
       objectReference: {fileID: 0}
+    - target: {fileID: 2549024498194502349, guid: 5fd374f8eb3becf40823fe10caf20783,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549024498194502349, guid: 5fd374f8eb3becf40823fe10caf20783,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.34901962
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549024498194502349, guid: 5fd374f8eb3becf40823fe10caf20783,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8050458472939777250, guid: 5fd374f8eb3becf40823fe10caf20783,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4180,21 +4327,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 2549024498194502349, guid: 5fd374f8eb3becf40823fe10caf20783,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2549024498194502349, guid: 5fd374f8eb3becf40823fe10caf20783,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.a
-      value: 0.34901962
-      objectReference: {fileID: 0}
-    - target: {fileID: 2549024498194502349, guid: 5fd374f8eb3becf40823fe10caf20783,
-        type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fd374f8eb3becf40823fe10caf20783, type: 3}

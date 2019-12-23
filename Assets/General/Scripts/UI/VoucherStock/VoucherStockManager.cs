@@ -90,7 +90,7 @@ public class VoucherStockManager : MonoBehaviour
             field.text = drc[r]["daily_quantity"].ToString();
             field.onSelect.AddListener(delegate { ToggleKeyboard(field); });
             field.onValueChanged.AddListener(delegate { ValidateFields(); });
-            newField.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = field.GetComponent<PlayerPrefsSaver>().name_ = drc[r]["name"].ToString();
+            newField.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = field.GetComponent<PlayerPrefsSaver>().name_ = drc[r]["voucher_code"].ToString();
             fields.Add(field);
 
             // assign remaining to Daily Quantity
@@ -120,28 +120,28 @@ public class VoucherStockManager : MonoBehaviour
 
     public void SetVoucherStockQuantity()
     {
-        vdb.LoadSetting();
+       // vdb.LoadSetting();
         
         for (int i = 0; i < fields.Count; i++)
         {
             string voucherName = fields[i].GetComponent<PlayerPrefsSaver>().name_;
             PlayerPrefs.SetInt(voucherName, int.Parse(fields[i].text));
             // UPDATE voucher quantity
-            vdb.ExecuteCustomNonQuery("UPDATE " + vdb.dbSettings.tableName + " SET daily_quantity = " + PlayerPrefs.GetInt(voucherName) + " WHERE name = '" + voucherName + "'");
+            vdb.ExecuteCustomNonQuery("UPDATE " + vdb.dbSettings.tableName + " SET daily_quantity = " + PlayerPrefs.GetInt(voucherName) + " WHERE voucher_code = '" + voucherName + "'");
 
         }
     }
 
     public void ResetVoucherStockQuantity()
     {
-        vdb.LoadSetting();
+       // vdb.LoadSetting();
 
         vdb.vouchersQuantity = new int[fields.Count];
         for (int q = 0; q < fields.Count; q++)
         {
             string voucherName = fields[q].GetComponent<PlayerPrefsSaver>().name_;
             vdb.vouchersQuantity[q] = int.Parse(fields[q].text);
-            vdb.ExecuteCustomNonQuery("UPDATE " + vdb.dbSettings.tableName + " SET quantity = " + vdb.vouchersQuantity[q] + " WHERE name = '" + voucherName + "'");
+            vdb.ExecuteCustomNonQuery("UPDATE " + vdb.dbSettings.tableName + " SET quantity = " + vdb.vouchersQuantity[q] + " WHERE voucher_code = '" + voucherName + "'");
         }
 
     }
@@ -151,7 +151,7 @@ public class VoucherStockManager : MonoBehaviour
         List<string> col = new List<string>();
         List<string> val = new List<string>();
         
-        col.Add("name"); val.Add(voucherNameField.text);
+        col.Add("voucher_code"); val.Add(voucherNameField.text);
         col.Add("daily_quantity"); val.Add(voucherDailyQuantityField.text);
         col.Add("quantity"); val.Add(voucherDailyQuantityField.text);
         vdb.AddData(col, val);

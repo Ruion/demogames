@@ -13,14 +13,17 @@ public class DBSettingEntity : SerializedMonoBehaviour
     public DBEntitySetting dbSettings;
 
     #region Basics
-    public virtual void Awake()
+    protected  virtual void Awake()
     {
        // LoadSetting();
     }
 
-    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
-    public virtual void SaveSetting()
+    protected virtual void SaveSetting()
     {
+        dbSettings.fileName = name;
+        dbSettings.tableName = name;
+        dbSettings.dbName = name;
+        dbSettings.keyFileName = name + " Online";
               
         // fetch & Update setting from Setting.json
         JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
@@ -42,8 +45,7 @@ public class DBSettingEntity : SerializedMonoBehaviour
         JSONExtension.SaveObject(dbSettings.folderPath + "\\" + name, dbSettings);
     }
 
-    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
-    public virtual void LoadSetting()
+    protected virtual void LoadSetting()
     {
         // fetch & Update setting from global JSONSetter
         JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
@@ -56,7 +58,7 @@ public class DBSettingEntity : SerializedMonoBehaviour
 
         // fetch & Update setting from global JSONSetter
         JObject jObject = jsonSetter.LoadSetting();
-        dbSettings.sendURL = jObject["ServerDomainURL"].ToString();
+        dbSettings.sendURL = jObject["serverDomainURL"].ToString();
 
         var substrings = new[] {"api"};
         if(!dbSettings.sendURL.ContainsAny(substrings, StringComparison.CurrentCultureIgnoreCase))

@@ -116,5 +116,5 @@ public enum SaveType
     InputField = 4,
     Manual = 5,
     Text = 6,
-    GlobalSetting = 7
+    GlobalSetting = 7,
 }

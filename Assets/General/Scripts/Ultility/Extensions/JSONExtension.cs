@@ -42,7 +42,7 @@ public static class JSONExtension
 
         if (!jsonObj.ContainsKey(pName))
         {
-            Debug.LogError("Property not exist in setting");
+            Debug.LogError("Property not exist in setting : " + pName);
             return null;
         }
         else

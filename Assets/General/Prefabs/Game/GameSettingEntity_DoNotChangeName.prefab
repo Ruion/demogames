@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings:
-    savePath: C:\UID-APP\APPS\GAME-01
-    fileName: game_honda
     scoreName: game_score
-    scoreToWin: 15
-    DebugMode: 1
+    scoreToWin: 30
+    debugMode: 0
+    serverDomainURL: http://in-house-game-02-dashboard.uid-staging.com
+    userPrimaryKeyName: email
   jsonSetter: {fileID: 1661002323923998949}
 --- !u!114 &199091733273068208
 MonoBehaviour:

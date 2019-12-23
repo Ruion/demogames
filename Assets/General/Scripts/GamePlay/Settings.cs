@@ -11,6 +11,9 @@ public class Settings
     public string scoreName = "game_score";
     public int scoreToWin = 3;
     public bool debugMode = false;
+
+    public string serverDomainURL;
+    public string userPrimaryKeyName = "userPrimaryKey";
  
     public Settings(Settings setting)
     {

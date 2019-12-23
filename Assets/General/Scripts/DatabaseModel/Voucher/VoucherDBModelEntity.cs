@@ -26,6 +26,7 @@ public class VoucherDBModelEntity : DBModelMaster
 
     public RandomFeature rf;
     public Print_Program printer;
+    public DBModelEntity voucherDistributionDBModelEntity;
 
     #endregion
 
@@ -98,7 +99,20 @@ public class VoucherDBModelEntity : DBModelMaster
         printer.printerPath = dbSettings.folderPath + "\\Vouchers\\";
         printer.Print(voucher_name);
         // UPDATE voucher quantity
-        ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET quantity = " + voucher_quantity + " WHERE name = '" + voucher_name + "'");
+        ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET quantity = " + voucher_quantity + " WHERE voucher_code = '" + voucher_name + "'");
+
+        // Insert printed voucher data into VoucherDistributionDatabaseModel to be sync to server
+        List<string> col = new List<string>();
+        List<string> val = new List<string>();
+
+        col.Add("user_id");
+        col.Add("voucher_id");
+        col.Add("online_status");
+
+        val.Add(PlayerPrefs.GetString(FindObjectOfType<GameSettingEntity>().gameSettings.userPrimaryKeyName));
+        val.Add(voucher_id.ToString());
+        val.Add("new");
+        voucherDistributionDBModelEntity.AddData(col, val);
 
         Debug.Log(voucher_id + " : " + voucher_name + " has " + voucher_quantity + " left");
 
