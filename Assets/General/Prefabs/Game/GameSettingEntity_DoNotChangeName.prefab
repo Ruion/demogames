@@ -97,5 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32d7a8a212be664ea2dc6d05dfa8d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  savePath: C:\UID-APP\APPS\GAME-01
+  savePath: C:\UID-APP\GameTemplate-01
   globalSavePath: C:\UID-APP\GLOBAL

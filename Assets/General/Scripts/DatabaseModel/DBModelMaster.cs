@@ -31,7 +31,7 @@ public class DBModelMaster : DBSettingEntity
 
     [FoldoutGroup("Populate Setting")] public int numberToPopulate = 10;
     [FoldoutGroup("Populate Setting")] public int TestIndex = 0;
-    [FoldoutGroup("Populate Setting")] public string selectCustomCondition = "online_status = 'new'";
+    [FoldoutGroup("Populate Setting")] public string selectCustomCondition = "is_sync = 'no'";
 
     [ToggleGroup("hasSync")]
     public bool hasSync = false;
@@ -55,17 +55,6 @@ public class DBModelMaster : DBSettingEntity
     }
 
     #region setUp
-
-    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
-    protected override void SaveSetting()
-    {
-        base.SaveSetting();
-        CreateTable();
-    }
-
-    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
-    protected override void LoadSetting(){ base.LoadSetting(); }
-
     [ContextMenu("CreateTable")]
     public virtual void CreateTable()
     {
@@ -100,13 +89,13 @@ public class DBModelMaster : DBSettingEntity
     {
         /// we use StreamingAssets folder in pass, but now use C:\UID-APP\APPS folder now
        // db_connection_string = "URI = file:" + Application.streamingAssetsPath + "/" + dbSettings.dbName + ".sqlite";
-        db_connection_string = "URI = file:" + dbSettings.folderPath + "\\" + dbSettings.dbName + ".sqlite";
+        db_connection_string = "URI = file:" + dbSettings.folderPath + "\\Databases\\"+ dbSettings.dbName + ".sqlite";
         db_connection = new SqliteConnection(db_connection_string);
         db_connection.Open();
     }
 
     //helper functions
-    public IDbCommand GetDbCommand()
+    protected IDbCommand GetDbCommand()
     {
         return db_connection.CreateCommand();
     }
@@ -194,6 +183,7 @@ public class DBModelMaster : DBSettingEntity
             try
             {
                 dbcmd2.ExecuteNonQuery(); Close();
+                Debug.Log(name + " : Inserted new record \n" + dbcmd2.CommandText);
                 return "true";
 
             }
@@ -251,7 +241,7 @@ public class DBModelMaster : DBSettingEntity
         }
         catch (DbException ex)
         {
-            Debug.Log("Error : " + ex.Message);
+            Debug.LogError(name + " : Error : " + ex.Message);
             Close();
             return null;
         }
@@ -296,7 +286,7 @@ public class DBModelMaster : DBSettingEntity
         }
         catch (DbException ex)
         {
-            Debug.LogError("Error : " + ex.Message);
+            Debug.LogError("Error : " + ex.Message + "\n" + dbSettings.folderPath);
             Close();
             return null;
         }
@@ -328,7 +318,7 @@ public class DBModelMaster : DBSettingEntity
 
     #region Delete
     [ContextMenu("DropTable")]
-    public virtual void DeleteAllData()
+    protected virtual void DeleteAllData()
     {
         ConnectDb();
         IDbCommand dbcmd = db_connection.CreateCommand();
@@ -339,7 +329,7 @@ public class DBModelMaster : DBSettingEntity
     }
 
     [Button(ButtonSizes.Medium)][FoldoutGroup("Populate Setting")][HorizontalGroup("Populate Setting/Btn")]
-    public virtual void ClearAllData()
+    protected virtual void ClearAllData()
     {
         ConnectDb();
         IDbCommand dbcmd = db_connection.CreateCommand();
@@ -407,6 +397,10 @@ public class DBModelMaster : DBSettingEntity
         // ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET quantity = " + voucher_quantity + " WHERE name = '" + voucher_name + "'");
         #endregion
 
+        ConnectDb();
+        Close();
+       // db_connection_string = "URI = file:" + dbSettings.folderPath + "\\Databases\\"+ dbSettings.dbName + ".sqlite";
+
         sqlitedb_connection = new SqliteConnection(db_connection_string);
         sqlitedb_connection.Open();
 
@@ -456,8 +450,42 @@ public class DBModelMaster : DBSettingEntity
         }
         catch (DbException ex)
         {
-            Debug.Log("Error : " + ex.Message);
+            Debug.LogError(name + " : Error : " + ex.Message);
             Close();
+            return null;
+        }
+    }
+
+    public virtual SqliteDataReader ExecuteCustomSelectSingle(string query)
+    {
+        #region Usage
+        // Usage
+        // DataRowCollection drc = ExecuteCustomSelectQuery("SELECT " + item + " FROM " + dbSettings.tableName);
+        //    for (int d = 0; d < drc.Count; d++)
+        //    {
+        //        list.Add(drc[0][0].ToString()); drc[0][0] means drc[row0][column0]
+        //    }
+        #endregion
+
+       // ConnectDb();     
+
+        sqlitedb_connection = new SqliteConnection(db_connection_string);
+        sqlitedb_connection.Open();
+
+        SqliteCommand cmd = new SqliteCommand(query, sqlitedb_connection);
+
+        try
+        {
+            SqliteDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
+           // sqlitedb_connection.Close();
+            return reader;
+        }
+        catch (DbException ex)
+        {
+            Debug.LogError(name + " : Error : " + ex.Message);
+            sqlitedb_connection.Close();
             return null;
         }
     }
@@ -469,7 +497,7 @@ public class DBModelMaster : DBSettingEntity
     }
 
     [Button(ButtonSizes.Medium)][HorizontalGroup("Populate Setting/Btn")]
-    public virtual void Populate()
+    protected virtual void Populate()
     {
         CreateTable();
 
@@ -490,7 +518,7 @@ public class DBModelMaster : DBSettingEntity
                 val[i] = dbSettings.columns[i+1].dummyPrefix + ((n + 1).ToString());
             }
 
-            val[val.Count - 1] = "new";
+            val[val.Count - 1] = "no";
 
             AddData(col, val);
         }
@@ -505,8 +533,8 @@ public class DBModelMaster : DBSettingEntity
         internetErrorHandler.SetActive(false);
         errorHandler.SetActive(false);
         blockDataHandler.SetActive(false); ;
-        successBar.SetActive(false);
-        failBar.SetActive(false);
+      //  successBar.SetActive(false);
+      //  failBar.SetActive(false);
     }
 
     protected virtual void ToogleHandler(GameObject handler, bool state = false)
@@ -535,54 +563,12 @@ public class DBModelMaster : DBSettingEntity
     public virtual void Sync()
     {
         //LoadSetting();
-        #region Check Internet
-        ///////////// CHECK Internet Connection /////////////
-        string HtmlText = GetHtmlFromUri("http://google.com");
-        if (HtmlText == "")
-        {
-            //No connection
-            Debug.LogError("No internet connection");
-            return;
-        }
-        #endregion
+        HideAllHandler();
     }
 
     #endregion
 
     #region Online Server Fetching
-
-    protected virtual string GetHtmlFromUri(string resource = "http://google.com")
-    {
-        string html = string.Empty;
-        HttpWebRequest req = (HttpWebRequest)WebRequest.Create(resource);
-        try
-        {
-            using (HttpWebResponse resp = (HttpWebResponse)req.GetResponse())
-            {
-                bool isSuccess = (int)resp.StatusCode < 299 && (int)resp.StatusCode >= 200;
-                if (isSuccess)
-                {
-                    using (StreamReader reader = new StreamReader(resp.GetResponseStream()))
-                    {
-                        //We are limiting the array to 80 so we don't have
-                        //to parse the entire html document feel free to 
-                        //adjust (probably stay under 300)
-                        char[] cs = new char[80];
-                        reader.Read(cs, 0, cs.Length);
-                        foreach (char ch in cs)
-                        {
-                            html += ch;
-                        }
-                    }
-                }
-            }
-        }
-        catch
-        {
-            return "";
-        }
-        return html;
-    }
 
     public void AddUniqueDataToStringList(string text, List<string> dataList)
     {
@@ -604,24 +590,27 @@ public class DBModelMaster : DBSettingEntity
         }
     }
 
+#region Legacy
     private void SetUpTextPath()
     {
-        dbSettings.serverEmailFilePath = Application.streamingAssetsPath + "/" + dbSettings.keyFileName + ".txt";
+        dbSettings.serverEmailFilePath = dbSettings.folderPath + "\\" + dbSettings.keyFileName + ".txt";
         if (!File.Exists(dbSettings.serverEmailFilePath))
         {
             File.WriteAllText(dbSettings.serverEmailFilePath, "");
         }
+
+        isFetchingData = true;
     }
+#endregion
 
     public void DoGetDataFromServer()
     {
         try{
-        SetUpTextPath();
-        if (isFetchingData) return;
-
-        isFetchingData = true;
-        StartCoroutine(GetDataFromServer());
-        }catch{
+            if (isFetchingData) return;
+            StartCoroutine(GetDataFromServer());
+        }
+        catch
+        {
             Debug.LogError(name);
         }
     }
@@ -629,27 +618,26 @@ public class DBModelMaster : DBSettingEntity
     public IEnumerator GetDataFromServer()
     {
         if (!dbSettings.hasMultipleLocalDB) yield break;
+        isFetchingData = true;
 
-        SetUpTextPath();
+        dbSettings.SetUpTextPath();
 
         serverEmailList = new List<string>();
-
-        string HtmlText = GetHtmlFromUri();
-        if (HtmlText == "")
+               
+        if (!NetworkExtension.CheckForInternetConnection()) 
         {
-            //No connection
-            Debug.LogError("no internet connection");
+            //No internet connection, stop this Coroutine
+            Debug.Log(name + " - No internet connection. Stop GetDataFromServer()");
             isFetchingData = false;
             yield break;
         }
-        else
-        {
-            using (UnityWebRequest www = UnityWebRequest.Get(dbSettings.keyDownloadURL))
+        
+        using (UnityWebRequest www = UnityWebRequest.Get(dbSettings.sendURL + dbSettings.keyDownloadAPI))
             {
                 yield return www.SendWebRequest();
                 if (www.isNetworkError || www.isHttpError)
                 {
-                    Debug.LogError(www.error);
+                    Debug.LogError(name + "\n" + www.error + "\n" + dbSettings.sendURL + dbSettings.keyDownloadAPI);
                     isFetchingData = false;
                     yield break;
                 }
@@ -658,6 +646,7 @@ public class DBModelMaster : DBSettingEntity
                     while (!www.downloadHandler.isDone) yield return null;
 
                     string texts = www.downloadHandler.text;
+                    Debug.Log("download used redeem list :\n"+texts);
 
                     // clear text file
                     File.WriteAllText(dbSettings.serverEmailFilePath, "");
@@ -677,20 +666,20 @@ public class DBModelMaster : DBSettingEntity
                                         || line.StartsWith("#")))
                         .ToList();
 
+                    // add emails to list
                     foreach (string line in lines)
                     {
-                        serverEmailList.Add(line.ToString());
+                       serverEmailList.Add(line.ToString());
                     }
                 }
             }
-        }
 
         isFetchingData = false;
     }
 
 /// <summary>
 /// call GetDataFromServer() coroutine to get the list of email from server, call UpdateEmailExistedOnline() to
-/// update "online_status = 'duplicate'" of email in local database if the email already exist in server
+/// update "is_sync = 'duplicate'" of email in local database if the email already exist in server
 /// </summary>
 /// <returns></returns>
     public IEnumerator CompareServerData()
@@ -700,7 +689,7 @@ public class DBModelMaster : DBSettingEntity
     }
 
 /// <summary>
-/// update "online_status = 'duplicate'" of email in local database if the email already exist in server
+/// update "is_sync = 'duplicate'" of email in local database if the email already exist in server
 /// </summary>
     public void UpdateEmailExistedOnline()
     {
@@ -708,7 +697,7 @@ public class DBModelMaster : DBSettingEntity
 
         for (int o = 0; o < serverEmailList.Count; o++)
         {
-            ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET online_status = 'duplicate' WHERE email = '" + serverEmailList[o] + "'");
+            ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'duplicate' WHERE email = '" + serverEmailList[o] + "'");
         }
 
         serverEmailList = new List<string>();

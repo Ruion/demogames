@@ -40,7 +40,7 @@ public class VoucherDBModelEntity : DBModelMaster
             Debug.LogError(String.Format("No voucher pdf files in {0}. Please put Printer.exe & voucher design pdf", dbSettings.folderPath + "\\Vouchers\\"));
     }
 
-    public override void Populate()
+    protected override void Populate()
     {
         SaveSetting();
         CreateTable();

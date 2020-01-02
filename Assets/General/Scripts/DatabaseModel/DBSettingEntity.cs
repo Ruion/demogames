@@ -13,22 +13,28 @@ public class DBSettingEntity : SerializedMonoBehaviour
     public DBEntitySetting dbSettings;
 
     #region Basics
-    protected  virtual void Awake()
+    public virtual void Awake()
     {
        // LoadSetting();
     }
 
-    protected virtual void SaveSetting()
+    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
+    public virtual void SaveSetting()
     {
+            
         dbSettings.fileName = name;
         dbSettings.tableName = name;
         dbSettings.dbName = name;
         dbSettings.keyFileName = name + " Online";
-              
+
         // fetch & Update setting from Setting.json
         JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
         dbSettings.folderPath = jsonSetter.savePath;
-        
+
+        //  dbSettings.keyDownloadURL = dbSettings.sendURL + ;
+
+        Directory.CreateDirectory(Path.GetDirectoryName(dbSettings.folderPath + "\\Databases\\"));
+
         // add api to Setting.json - playerdata_sendAPI : submit-player-data
         DBSettingEntity[] dBSettingEntities = FindObjectsOfType<DBSettingEntity>();
         foreach (DBSettingEntity e in dBSettingEntities)
@@ -41,11 +47,14 @@ public class DBSettingEntity : SerializedMonoBehaviour
         // legacy binary formatter save method
         // DBSetting.SaveSetting(dbSettings);
 
+        
+
         // save to json file
         JSONExtension.SaveObject(dbSettings.folderPath + "\\" + name, dbSettings);
     }
 
-    protected virtual void LoadSetting()
+    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
+    public virtual void LoadSetting()
     {
         // fetch & Update setting from global JSONSetter
         JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();

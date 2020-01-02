@@ -12,9 +12,9 @@ public class SceneSwitcher : MonoBehaviour {
     {
         Debug.Log("switch to scene " + sceneNumber);
         Time.timeScale = 1f;
-        // SceneManager.LoadScene(sceneNumber);
+         SceneManager.LoadScene(sceneNumber);
         
-        SceneTransitionManager.instance.SwitchScene(sceneNumber);
+        //SceneTransitionManager.instance.SwitchScene(sceneNumber);
         // 0 HOME
         // 1 GAME
         // 2 SCORE
@@ -24,9 +24,9 @@ public class SceneSwitcher : MonoBehaviour {
     {
         Debug.Log("switch to scene " + sceneName);
         Time.timeScale = 1f;
-        // SceneManager.LoadScene(sceneName);
+         SceneManager.LoadScene(sceneName);
         
-        SceneTransitionManager.instance.SwitchScene(sceneName);
+       // SceneTransitionManager.instance.SwitchScene(sceneName);
         // 0 HOME
         // 1 GAME
         // 2 SCORE
@@ -35,7 +35,7 @@ public class SceneSwitcher : MonoBehaviour {
     {
         Debug.Log("restarting scene");
         Time.timeScale = 1f;
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        SceneTransitionManager.instance.RestartScene();
+         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneTransitionManager.instance.RestartScene();
     }
 }

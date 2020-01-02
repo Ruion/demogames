@@ -78,9 +78,18 @@ public class DBEntitySetting
 
     [TabGroup("Server")]
     public bool hasMultipleLocalDB = false;
-    [TabGroup("Server")][ShowIf("hasMultipleLocalDB", false)] public string keyDownloadURL;
+    [TabGroup("Server")][ShowIf("hasMultipleLocalDB", false)] public string keyDownloadAPI;
     [TabGroup("Server")][ShowIf("hasMultipleLocalDB", false)] public string keyFileName;
     [TabGroup("Server")][ShowIf("hasMultipleLocalDB", false)] [ReadOnly] public string serverEmailFilePath;
+
+    public void SetUpTextPath()
+    {
+        serverEmailFilePath = folderPath + "\\" + keyFileName + ".txt";
+        if (!File.Exists(serverEmailFilePath))
+        {
+            File.WriteAllText(serverEmailFilePath, "");
+        }
+    }
 
 /*
     public DBEntitySetting(DBEntitySetting setting)

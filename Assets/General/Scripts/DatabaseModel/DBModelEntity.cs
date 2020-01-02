@@ -21,12 +21,21 @@ public class DBModelEntity : DBModelMaster
     DataRowCollection rows;
     public UnityEvent OnSyncStart;
     public UnityEvent OnSyncEnd;
+    private bool Saved = false;
 
-/// <summary>
-/// Save PlayerPrefs value into all table column set in inspector
-/// </summary>
+    /// <summary>
+    /// Save PlayerPrefs value into all table column set in inspector
+    /// </summary>
     public override void SaveToLocal() {
         base.SaveToLocal();
+
+        if (Saved)
+        {
+            Debug.Log(name + " : Data already saved to local");
+            return;
+        }
+
+        Saved = true;
 
         List<string> col = new List<string>();
         List<string> val = new List<string>();
@@ -44,7 +53,6 @@ public class DBModelEntity : DBModelMaster
         }
 
        AddData(col, val);
-     //   Debug.Log(gameObject.name + " Data save to local");
     }
 
 /// <summary>
@@ -53,6 +61,19 @@ public class DBModelEntity : DBModelMaster
     public override void Sync()
     {
         base.Sync();
+
+         #region Check Internet
+        ///////////// CHECK Internet Connection /////////////
+        if (!NetworkExtension.CheckForInternetConnection())
+        {
+            //No connection
+            Debug.Log(name + " : No internet connection. Stop Sync()" );
+            ToogleHandler(blockDataHandler, false);
+            ToogleHandler(internetErrorHandler, false);
+            return;
+        }
+        #endregion
+
         if(OnSyncStart.GetPersistentEventCount() > 0) OnSyncStart.Invoke();
         StartCoroutine(SyncToServer());
     }
@@ -74,9 +95,9 @@ public class DBModelEntity : DBModelMaster
             yield break; 
         }
 
-        Debug.Log("unsync data : " + rows.Count); int totalSent = 0; int totalNotSent = 0;
+        Debug.Log(name + " : unsync data : " + rows.Count); int totalSent = 0; int totalNotSent = 0;
 
-        Debug.Log("Start sync");
+        Debug.Log(name + " : Start sync");
         ToogleHandler(blockDataHandler, true);
 
        // Get global event_code
@@ -88,7 +109,8 @@ public class DBModelEntity : DBModelMaster
             WWWForm form = new WWWForm();
 
             // Debug.Log("field to sent : " + dbSettings.columnsToSync.Count);
-            // string values = "";
+            // show value send to server - 1
+            string values = "";
             entityId = int.Parse(rows[u]["id"].ToString());
 
             
@@ -101,14 +123,15 @@ public class DBModelEntity : DBModelMaster
 
                 if(dbSettings.columns[i].name == "source_identifier_code") value = source_identifier_code;
 
-              //  values += value + " | ";
+                // show value send to server - 2
+                values += value + " | ";
 
                 form.AddField(
                     dbSettings.columns[i].name,
                    value);
             }
 
-            
+            // show value send to server - 3
             // Debug.Log(values);
             #endregion
 
@@ -120,7 +143,7 @@ public class DBModelEntity : DBModelMaster
 
                 if (www.isNetworkError || www.isHttpError)
                 {
-                    ErrorAction(www, "server error");
+                    ErrorAction(www, "server error \n Values : " + values);
                     totalNotSent++;
                     ToogleStatusBar(failBar, totalNotSent);
                     ToogleHandler(errorHandler, true);
@@ -135,17 +158,19 @@ public class DBModelEntity : DBModelMaster
                         //  string response = dbSettings.serverResponses.resultResponses.FirstOrDefault(r => r == jsonData.result);
                         ServerResponses response = dbSettings.serverResponsesArray.FirstOrDefault(r => r.resultResponse == jsonData.result);
                         int index = System.Array.IndexOf(dbSettings.serverResponsesArray, response);
-                        Debug.LogError(name + " - " +response.resultResponseMessage);
+                        Debug.LogError(name + " - " +response.resultResponseMessage + "\n Values : " + values);
 
                         totalNotSent++;
                         ToogleStatusBar(failBar, totalNotSent);
+
+                        ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'fail' WHERE id = " + entityId);
                     }
                     else
                     {
-                        Debug.Log(dbSettings.serverResponsesArray[0].resultResponseMessage);
+                        Debug.Log(name + " : " + dbSettings.serverResponsesArray[0].resultResponseMessage);
 
-                        // update successfully sync online_status to submitted
-                        ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET online_status = 'submitted' WHERE id = " + entityId);
+                        // update successfully sync is_sync to submitted
+                        ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'yes' WHERE id = " + entityId);
 
                         totalSent++;
                         ToogleStatusBar(successBar, totalSent);
@@ -153,7 +178,8 @@ public class DBModelEntity : DBModelMaster
                 }
             }
 
-            yield return new WaitForSeconds(.1f);
+          //  yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(1.2f);
         }
         #endregion
 
@@ -175,7 +201,7 @@ public class DBModelEntity : DBModelMaster
         ToogleHandler(blockDataHandler, false);
         ToogleHandler(failBar, true);
 
-        Debug.LogError(errorMessage + "\n" + www.error + "\n" + " server url: " + dbSettings.sendURL + dbSettings.sendAPI);
+        Debug.LogError(name + " :\n" + errorMessage + "\n" + www.error + "\n" + " server url: " + dbSettings.sendURL + dbSettings.sendAPI);
     }
 
 

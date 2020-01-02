@@ -193,7 +193,7 @@ public class StockDBModelEntity : DBModelEntity
         }
     }
 
-    public override void Populate()
+    protected override void Populate()
     {
         CreateTable();
         ConnectDb();

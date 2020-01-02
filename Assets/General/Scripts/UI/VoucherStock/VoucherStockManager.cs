@@ -41,12 +41,6 @@ public class VoucherStockManager : MonoBehaviour
     {
         scrollViewParentTransform = scrollViewParent;
 
-        #region Handler table is empty || not exist
-      //  vdb.CreateTable();
-        int rowCount = vdb.ExecuteCustomSelectQuery("SELECT * FROM " + vdb.dbSettings.tableName).Count;
-        if (rowCount < 1) vdb.Populate();
-        #endregion
-
         #region Clear fields
         if (scrollViewParent.childCount > 0)
         {
