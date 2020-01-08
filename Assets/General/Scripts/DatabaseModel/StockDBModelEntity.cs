@@ -52,7 +52,11 @@ public class StockDBModelEntity : DBModelEntity
         HideAllHandler();
         LoadSetting();
 
-        string query = "SELECT * FROM " + dbSettings.tableName + " WHERE " + selectCustomCondition;
+        // string query = "SELECT * FROM " + dbSettings.tableName + " WHERE " + selectCustomCondition;
+        string query = 
+        string.Format("SELECT * FROM {0} WHERE is_disabled = 'false' AND quantity > 0 ORDER BY RANDOM() LIMIT 1"
+        // string.Format("SELECT * FROM {0} WHERE is_disabled = 'false' ORDER BY RANDOM() LIMIT 1"
+                        , new System.Object[]{ dbSettings.tableName });
         DataRowCollection drc = ExecuteCustomSelectQuery(query);
 
         if (drc.Count < 1)

@@ -45,8 +45,6 @@ public class PortUIEntity : MonoBehaviour
 
     private void SelectPort(int id)
     {
-        try
-        {
             DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT * FROM " + stockDb.dbSettings.tableName + " WHERE id = " + id);
 
             int.TryParse(drc[0]["id"].ToString(), out motorId);
@@ -57,11 +55,6 @@ public class PortUIEntity : MonoBehaviour
 
             if (drc[0][4].ToString() == "false") disabledBtn.SetActive(false);
             else disabledBtn.SetActive(true);
-        }
-        catch(System.Exception ex)
-        {
-            Debug.LogError(ex.Message);
-        }
 
     }
 
@@ -73,14 +66,15 @@ public class PortUIEntity : MonoBehaviour
         DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT * FROM " + stockDb.dbSettings.tableName);
         for (int i = 0; i < drc.Count; i++)
         {
-            img_ = imgs[int.Parse(drc[i]["id"].ToString())];
-            img.GetComponentInChildren<TextMeshProUGUI>().text = drc[i]["id"].ToString();
+            img_ = imgs[System.Int32.Parse(drc[i]["id"].ToString())-1];
+            img.GetComponentInChildren<TextMeshProUGUI>().text = drc[i][1].ToString();
+            imgs[System.Int32.Parse(drc[i]["id"].ToString())-1].color = colors[System.Convert.ToInt32(!bool.Parse(drc[i][4].ToString()))];
         }
-
-        model.SetActive(false);
 
         drc = stockDb.ExecuteCustomSelectQuery("SELECT SUM(quantity) FROM " + stockDb.dbSettings.tableName + " WHERE is_disabled = 'false'");
         totalText.text = drc[0][0].ToString();
+
+        model.SetActive(false);
 
     }
 
@@ -91,16 +85,13 @@ public class PortUIEntity : MonoBehaviour
 
     public void SavePort()
     {
-        try
-        {
             stockDb.ExecuteCustomNonQuery(
                 "UPDATE " + stockDb.dbSettings.tableName +
                 " SET quantity = '" + quantityField.text + "' ," +
                 " lane = '" + laneField.text + "' ," +
                 " is_disabled = '" + (!is_enabled).ToString().ToLower() + "'" +
-                " WHERE name = '" + motorName.text + "'"
+                " WHERE id = " + motorId
                 );
-        }catch(System.Exception ex) { Debug.Log(ex.Message); }
     }
 
     public void ValidateInput()

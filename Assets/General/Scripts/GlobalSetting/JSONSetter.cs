@@ -15,6 +15,8 @@ public class JSONSetter : MonoBehaviour
     private string fileName = "Setting.json";
     private string globalFileName = "GlobalSetting.json";
 
+    private string slash = "\\";
+
     public void SaveSetting(JObject jsonObj, bool global = false)
     {
         string savePath = this.savePath;
@@ -26,9 +28,9 @@ public class JSONSetter : MonoBehaviour
             savePath = globalSavePath;
             fileName = this.globalFileName;
         }
- 
+
         // write JSON directly to a file
-        using (StreamWriter file = File.CreateText(savePath + "\\" + fileName))
+        using (StreamWriter file = File.CreateText(savePath + GetPlatFormSlash() + fileName))
         using (JsonTextWriter writer = new JsonTextWriter(file))
         {
             jsonObj.WriteTo(writer);
@@ -76,9 +78,25 @@ public class JSONSetter : MonoBehaviour
             fileName = this.globalFileName;
         }
 
-        string json = File.ReadAllText(savePath + "\\" + "Setting.json");
+        string json = File.ReadAllText(savePath + GetPlatFormSlash() + "Setting.json");
         JObject jsonObj = JObject.Parse(json);
 
         return jsonObj;
+    }
+
+    private string GetPlatFormSlash()
+    {
+        /*
+        if(Application.platform == RuntimePlatform.Android)
+        {
+            slash = "/";
+        }
+        */
+
+        if(Application.platform != RuntimePlatform.WindowsPlayer)
+        {
+            slash = "/";
+        }
+        return slash;
     }
 }

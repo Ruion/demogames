@@ -60,10 +60,10 @@ MonoBehaviour:
       Entry: 6
       Data: 
   dbSettings:
-    fileName: playerscoredata
-    folderPath: C:\UID-APP\APPS\GAME-01
-    dbName: playerscoredata
-    tableName: playerscoredata
+    fileName: PlayerScoreDataDatabaseModel
+    folderPath: C:\UID-APP\GameTemplate-01
+    dbName: PlayerScoreDataDatabaseModel
+    tableName: PlayerScoreDataDatabaseModel
     columns:
     - name: id
       attribute: INTEGER PRIMARY KEY
@@ -97,8 +97,8 @@ MonoBehaviour:
     - resultResponse: Fail
       resultResponseMessage: sync fail
     hasMultipleLocalDB: 0
-    keyDownloadURL: 
-    keyFileName: 
+    keyDownloadAPI: 
+    keyFileName: PlayerScoreDataDatabaseModel Online
     serverEmailFilePath: 
   db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/playerscoredata
   numberToPopulate: 0

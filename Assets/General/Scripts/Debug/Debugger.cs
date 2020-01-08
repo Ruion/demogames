@@ -17,14 +17,22 @@ public class Debugger : MonoBehaviour
     public TextMeshProUGUI msg;
     string error;
 
-    private GameSettingEntity gameSettingEntity; 
+    private GameSettingEntity gameSettingEntity;
 
-    void OnEnable()
+
+        private void Start()
+        {
+            
+        }
+
+        void OnEnable()
     {
             gameSettingEntity = FindObjectOfType<GameSettingEntity>();
-            if (gameSettingEntity.gameSettings.debugMode) { Application.logMessageReceived += HandleLog; }
+          //  Application.logMessageReceived += HandleLog;
+          //  Debug.Log(name + " : addded Debugger");
+            if (gameSettingEntity.gameSettings.debugMode) { Application.logMessageReceived += HandleLog; Debug.Log(name + " : addded Debugger"); }
             else gameObject.SetActive(false); 
-    }
+        }
 
     void OnDisable()
     {
@@ -40,7 +48,7 @@ public class Debugger : MonoBehaviour
             PopUp.SetActive(true);
             title.text = "Error";
             msg.text = error;
-
+                Debug.Log(name + " : " + msg.text);
             JSONExtension.SaveSetting(gameSettingEntity.jsonSetter.savePath + "\\ErrorLog", DateTime.Now.ToString(), logString );
         }
 

@@ -46,6 +46,7 @@ public class GameSettingEntity : MonoBehaviour
 
         string filePath = jsonSetter.savePath + "\\" + "Setting";
        
+       
         JSONExtension.LoadValues(filePath, gameSettings);
     }
 
@@ -65,6 +66,7 @@ public class GameSettingEntity : MonoBehaviour
 
     public virtual void Awake()
     {
+        BetterStreamingAssets.Initialize();
         if(jsonSetter == null) jsonSetter = FindObjectOfType<JSONSetter>();
 
         LoadSetting();
