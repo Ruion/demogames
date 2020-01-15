@@ -1387,6 +1387,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308048091}
   m_CullTransparentMesh: 0
+--- !u!1 &1418284194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1418284196}
+  - component: {fileID: 1418284195}
+  m_Layer: 0
+  m_Name: QueryGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1418284195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418284194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89666933aae02146aabe8d0c21a85a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  databaseModel: {fileID: 218756497967361599}
+--- !u!4 &1418284196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418284194}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1782938920 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 218756497457966181, guid: 3b4d50dd24c7255459098612e26d6ee2,
@@ -1810,6 +1854,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3441537787204854031, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441537787204854035, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 37460735}
     - target: {fileID: 3441537788208888910, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
         type: 3}
       propertyPath: gameSettings.sQliteDBSettings.attributes.Array.size
@@ -1870,11 +1924,6 @@ PrefabInstance:
       propertyPath: DebugMode
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3441537787204854031, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3441537788611805534, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
         type: 3}
       propertyPath: m_text
@@ -1890,11 +1939,6 @@ PrefabInstance:
       propertyPath: m_textInfo.wordCount
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 3441537787204854035, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 37460735}
     - target: {fileID: 3441537787204854029, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
         type: 3}
       propertyPath: m_BlockingMask.m_Bits
