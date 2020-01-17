@@ -46,6 +46,7 @@ public class DBModelMaster : DBSettingEntity
     [HideInInspector] public List<string> serverEmailList;
     [ToggleGroup("hasSync")]
     [ReadOnly] public bool isFetchingData = false;
+    protected bool syncing = false;
 
     #endregion
 

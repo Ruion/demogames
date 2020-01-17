@@ -62,7 +62,7 @@ public class DBModelEntity : DBModelMaster
     {
         base.Sync();
 
-         #region Check Internet
+        #region Check Internet
         ///////////// CHECK Internet Connection /////////////
         if (!NetworkExtension.CheckForInternetConnection())
         {
@@ -70,6 +70,7 @@ public class DBModelEntity : DBModelMaster
             Debug.Log(name + " : No internet connection. Stop Sync()" );
             ToogleHandler(blockDataHandler, false);
             ToogleHandler(internetErrorHandler, false);
+            syncing = false;
             return;
         }
         #endregion
@@ -91,6 +92,7 @@ public class DBModelEntity : DBModelMaster
         if(rows.Count < 1) 
         { 
             if(OnSyncEnd.GetPersistentEventCount() > 0) OnSyncEnd.Invoke();
+            syncing = false;
             StopAllCoroutines(); 
             yield break; 
         }
@@ -111,7 +113,8 @@ public class DBModelEntity : DBModelMaster
                 Debug.Log(name + " : No internet connection. Stop Sync()");
                 ToogleHandler(blockDataHandler, false);
                 ToogleHandler(internetErrorHandler, false);
-                StopAllCoroutines();
+                syncing = false;
+                StopAllCoroutines(); 
                 yield break; 
             }
 
@@ -191,11 +194,18 @@ public class DBModelEntity : DBModelMaster
             }
 
           //  yield return new WaitForEndOfFrame();
-            yield return new WaitForSeconds(1.25f);
+            yield return new WaitForSeconds(1.5f);
         }
         #endregion
 
-        SyncEnd();
+        syncing = false;
+        ToogleHandler(blockDataHandler, false);
+       if(hasSync) failBar.GetComponent<StatusBar>().Finish();
+       if(hasSync) successBar.GetComponent<StatusBar>().Finish();
+        rows.Clear();
+        Close();
+        if(OnSyncEnd.GetPersistentEventCount() > 0) OnSyncEnd.Invoke();
+        
     }
 
 /// <summary>
@@ -211,15 +221,6 @@ public class DBModelEntity : DBModelMaster
         Debug.LogError(name + " :\n" + errorMessage + "\n" + www.error + "\n" + " server url: " + dbSettings.sendURL + dbSettings.sendAPI);
     }
 
-    private void SyncEnd()
-    {
-        ToogleHandler(blockDataHandler, false);
-        if (hasSync) failBar.GetComponent<StatusBar>().Finish();
-        if (hasSync) successBar.GetComponent<StatusBar>().Finish();
-        rows.Clear();
-        Close();
-        if (OnSyncEnd.GetPersistentEventCount() > 0) OnSyncEnd.Invoke();
-    }
 
 }
 
