@@ -15,7 +15,7 @@ public class PortUIEntity : MonoBehaviour
 
     public Color32[] colors;
     public GameObject model;
-    public Image img_ { set { model.SetActive(true); img = value; SelectPort(value.transform.GetSiblingIndex()); } }
+    public Image img_ { set { model.SetActive(true); img = value; SelectPort(value.transform.GetSiblingIndex()+1); } }
     private Image img;
     public Transform portParent;
 
@@ -28,14 +28,15 @@ public class PortUIEntity : MonoBehaviour
     public Button SaveButton;
 
     public bool tempPortIsEnabled;
+    public int item_limit;
 
-    public StockDBModelEntity stockDb;
+    public VendingMachineDBModelEntity vendingMachineDb;
     public TextMeshProUGUI totalText;
     #endregion
 
     void OnEnable()
     {
-        if(stockDb == null) stockDb = FindObjectOfType<StockDBModelEntity>();
+        if (vendingMachineDb == null) vendingMachineDb = FindObjectOfType<VendingMachineDBModelEntity>();
     }
 
     public void ChangeState()
@@ -45,16 +46,17 @@ public class PortUIEntity : MonoBehaviour
 
     private void SelectPort(int id)
     {
-            DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT * FROM " + stockDb.dbSettings.tableName + " WHERE id = " + id);
+        DataRowCollection drc = vendingMachineDb.ExecuteCustomSelectQuery("SELECT * FROM " + vendingMachineDb.dbSettings.tableName + " WHERE id = " + id);
 
-            int.TryParse(drc[0]["id"].ToString(), out motorId);
-            motorName.text = drc[0][1].ToString();
-            quantityField.text = drc[0][2].ToString();
-            laneField.text = drc[0][3].ToString();
-            tempPortIsEnabled = is_enabled_ = !bool.Parse(drc[0][4].ToString());
+        int.TryParse(drc[0]["id"].ToString(), out motorId);
+        motorName.text = drc[0][1].ToString();
+        quantityField.text = drc[0][2].ToString();
+        laneField.text = drc[0][3].ToString();
+        tempPortIsEnabled = is_enabled_ = !bool.Parse(drc[0][4].ToString());
+        item_limit = System.Int32.Parse(drc[0]["item_limit"].ToString());
 
-            if (drc[0][4].ToString() == "false") disabledBtn.SetActive(false);
-            else disabledBtn.SetActive(true);
+        if (drc[0][4].ToString() == "false") disabledBtn.SetActive(false);
+        else disabledBtn.SetActive(true);
 
     }
 
@@ -63,15 +65,23 @@ public class PortUIEntity : MonoBehaviour
     {
         Image[] imgs = portParent.GetComponentsInChildren<Image>();
 
-        DataRowCollection drc = stockDb.ExecuteCustomSelectQuery("SELECT * FROM " + stockDb.dbSettings.tableName);
+        DataRowCollection drc = vendingMachineDb.ExecuteCustomSelectQuery("SELECT * FROM " + vendingMachineDb.dbSettings.tableName);
         for (int i = 0; i < drc.Count; i++)
         {
-            img_ = imgs[System.Int32.Parse(drc[i]["id"].ToString())-1];
+            img_ = imgs[System.Int32.Parse(drc[i]["id"].ToString()) - 1];
+            
+            // name the box
             img.GetComponentInChildren<TextMeshProUGUI>().text = drc[i][1].ToString();
-            imgs[System.Int32.Parse(drc[i]["id"].ToString())-1].color = colors[System.Convert.ToInt32(!bool.Parse(drc[i][4].ToString()))];
+
+            // display the current amount of motor
+            if(img.enabled == true)
+            img.GetComponentsInChildren<TextMeshProUGUI>()[1].text = string.Format("{0}/{1}", new System.Object[] { drc[i]["quantity"].ToString(), drc[i]["item_limit"].ToString() });
+            
+            // display avaibility of motor
+            imgs[System.Int32.Parse(drc[i]["id"].ToString()) - 1].color = colors[System.Convert.ToInt32(!bool.Parse(drc[i][4].ToString()))];
         }
 
-        drc = stockDb.ExecuteCustomSelectQuery("SELECT SUM(quantity) FROM " + stockDb.dbSettings.tableName + " WHERE is_disabled = 'false'");
+        drc = vendingMachineDb.ExecuteCustomSelectQuery("SELECT SUM(quantity) FROM " + vendingMachineDb.dbSettings.tableName + " WHERE is_disabled = 'false'");
         totalText.text = drc[0][0].ToString();
 
         model.SetActive(false);
@@ -85,19 +95,30 @@ public class PortUIEntity : MonoBehaviour
 
     public void SavePort()
     {
-            stockDb.ExecuteCustomNonQuery(
-                "UPDATE " + stockDb.dbSettings.tableName +
-                " SET quantity = '" + quantityField.text + "' ," +
-                " lane = '" + laneField.text + "' ," +
-                " is_disabled = '" + (!is_enabled).ToString().ToLower() + "'" +
-                " WHERE id = " + motorId
-                );
+        vendingMachineDb.ExecuteCustomNonQuery(
+            "UPDATE " + vendingMachineDb.dbSettings.tableName +
+            " SET quantity = '" + quantityField.text + "' ," +
+            " lane = '" + laneField.text + "' ," +
+            " is_disabled = '" + (!is_enabled).ToString().ToLower() + "'" +
+            " WHERE id = " + motorId
+            );
+    }
+
+    public void Refill()
+    {
+        vendingMachineDb.ExecuteCustomNonQuery(
+            "UPDATE " + vendingMachineDb.dbSettings.tableName +
+            " SET quantity = '" + item_limit.ToString() + "' ," +
+            " lane = '" + laneField.text + "' ," +
+            " is_disabled = 'false'" +
+            " WHERE id = " + motorId
+            );
     }
 
     public void ValidateInput()
     {
         if (laneField.text == "" || quantityField.text == "" || int.Parse(quantityField.text) < 1) SaveButton.interactable = false;
-        
+
         else SaveButton.interactable = true;
     }
 }

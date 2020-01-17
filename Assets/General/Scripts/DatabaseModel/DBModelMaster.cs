@@ -489,6 +489,37 @@ public class DBModelMaster : DBSettingEntity
             return null;
         }
     }
+
+    public virtual object ExecuteCustomSelectObject(string query)
+    {
+        #region Usage
+        // Usage
+        // DataRowCollection drc = ExecuteCustomSelectQuery("SELECT " + item + " FROM " + dbSettings.tableName);
+        //    for (int d = 0; d < drc.Count; d++)
+        //    {
+        //        list.Add(drc[0][0].ToString()); drc[0][0] means drc[row0][column0]
+        //    }
+        #endregion
+
+        ConnectDb();
+
+        sqlitedb_connection = new SqliteConnection(db_connection_string);
+        sqlitedb_connection.Open();
+
+        SqliteCommand cmd = new SqliteCommand(query, sqlitedb_connection);
+
+        try
+        {
+            return cmd.ExecuteScalar();
+        }
+        catch (DbException ex)
+        {
+            Debug.LogError(name + " : Error : " + ex.Message);
+            sqlitedb_connection.Close();
+            return null;
+        }
+    }
+
     #endregion
 
     public virtual void Close()

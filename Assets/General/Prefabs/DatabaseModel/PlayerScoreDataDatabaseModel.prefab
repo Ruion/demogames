@@ -85,11 +85,11 @@ MonoBehaviour:
       attribute: TEXT
       sync: 1
       dummyPrefix: 
-    - name: online_status
+    - name: is_sync
       attribute: TEXT
       sync: 0
-      dummyPrefix: new
-    sendURL: http://in-house-game-01-dashboard.uid-staging.com/public/api/
+      dummyPrefix: no
+    sendURL: http://in-house-game-02-dashboard.uid-staging.com/public/api/
     sendAPI: submit-score-data
     serverResponsesArray:
     - resultResponse: Success
@@ -103,7 +103,7 @@ MonoBehaviour:
   db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/playerscoredata
   numberToPopulate: 0
   TestIndex: 5
-  selectCustomCondition: online_status = 'new'
+  selectCustomCondition: is_sync = 'no'
   hasSync: 0
   emptyHandler: {fileID: 0}
   internetErrorHandler: {fileID: 0}

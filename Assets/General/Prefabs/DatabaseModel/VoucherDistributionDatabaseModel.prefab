@@ -63,7 +63,7 @@ MonoBehaviour:
       Data: 
   dbSettings:
     fileName: VoucherDistributionDatabaseModel
-    folderPath: C:\UID-APP\APPS\GAME-01
+    folderPath: C:\UID-APP\GameTemplate-01
     dbName: VoucherDistributionDatabaseModel
     tableName: VoucherDistributionDatabaseModel
     columns:
@@ -79,7 +79,7 @@ MonoBehaviour:
       attribute: TEXT
       sync: 1
       dummyPrefix: 
-    - name: online_status
+    - name: is_sync
       attribute: TEXT
       sync: 0
       dummyPrefix: new
@@ -91,7 +91,7 @@ MonoBehaviour:
     - resultResponse: Fail
       resultResponseMessage: sync fail
     hasMultipleLocalDB: 0
-    keyDownloadURL: 
+    keyDownloadAPI: 
     keyFileName: VoucherDistributionDatabaseModel Online
     serverEmailFilePath: 
   db_connection_string: URI = file:C:\UID-APP\APPS\GAME-01\VoucherDistributionDatabaseModel.sqlite

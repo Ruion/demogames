@@ -66,10 +66,10 @@ MonoBehaviour:
       Entry: 8
       Data: 
   dbSettings:
-    fileName: player
-    folderPath: C:\UID-APP\APPS\GAME-01
-    dbName: player
-    tableName: player
+    fileName: PlayerDataDatabaseModel
+    folderPath: C:\UID-APP\GameTemplate-01
+    dbName: PlayerDataDatabaseModel
+    tableName: PlayerDataDatabaseModel
     columns:
     - name: id
       attribute: INTEGER PRIMARY KEY
@@ -90,24 +90,28 @@ MonoBehaviour:
     - name: age
       attribute: TEXT
       sync: 1
-      dummyPrefix: 0
+      dummyPrefix: 
     - name: dob
       attribute: TEXT
       sync: 1
-      dummyPrefix: 2019-11-18
+      dummyPrefix: 
     - name: gender
       attribute: TEXT
       sync: 1
-      dummyPrefix: 0
+      dummyPrefix: 
+    - name: source_identifier_code
+      attribute: TEXT
+      sync: 1
+      dummyPrefix: FH8D89C77
     - name: created_at
       attribute: TEXT
       sync: 1
       dummyPrefix: '2019-11-18 11:00:'
-    - name: online_status
+    - name: is_sync
       attribute: TEXT
       sync: 0
-      dummyPrefix: new
-    sendURL: http://game-01-dashboard.unicom-interactive-digital.com/public/api/
+      dummyPrefix: no
+    sendURL: http://in-house-game-02-dashboard.uid-staging.com/public/api/
     sendAPI: submit-player-data
     serverResponsesArray:
     - resultResponse: Success
@@ -115,13 +119,13 @@ MonoBehaviour:
     - resultResponse: Fail
       resultResponseMessage: sync fail
     hasMultipleLocalDB: 0
-    keyDownloadURL: 
-    keyFileName: 
+    keyDownloadAPI: 
+    keyFileName: PlayerDataDatabaseModel Online
     serverEmailFilePath: 
   db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/player.sql
   numberToPopulate: 5
   TestIndex: 16
-  selectCustomCondition: online_status = 'new'
+  selectCustomCondition: is_sync = 'no'
   hasSync: 0
   emptyHandler: {fileID: 0}
   internetErrorHandler: {fileID: 0}

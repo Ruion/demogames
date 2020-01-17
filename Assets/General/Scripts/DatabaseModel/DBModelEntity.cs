@@ -105,6 +105,16 @@ public class DBModelEntity : DBModelMaster
 
         for (int u = 0; u < rows.Count; u++)
         {
+            if (!NetworkExtension.CheckForInternetConnection())
+            {
+                //No connection
+                Debug.Log(name + " : No internet connection. Stop Sync()");
+                ToogleHandler(blockDataHandler, false);
+                ToogleHandler(internetErrorHandler, false);
+                StopAllCoroutines();
+                yield break; 
+            }
+
             #region WWW Form
             WWWForm form = new WWWForm();
 
@@ -147,6 +157,8 @@ public class DBModelEntity : DBModelMaster
                     totalNotSent++;
                     ToogleStatusBar(failBar, totalNotSent);
                     ToogleHandler(errorHandler, true);
+                    ExecuteCustomNonQuery(string.Format("UPDATE {0} SET is_sync = '{1}' WHERE id = " + entityId
+                        , new System.Object[] { dbSettings.tableName, www.responseCode.ToString() }));
                 }
                 else
                 {
@@ -179,16 +191,11 @@ public class DBModelEntity : DBModelMaster
             }
 
           //  yield return new WaitForEndOfFrame();
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(1.25f);
         }
         #endregion
 
-        ToogleHandler(blockDataHandler, false);
-       if(hasSync) failBar.GetComponent<StatusBar>().Finish();
-       if(hasSync) successBar.GetComponent<StatusBar>().Finish();
-        rows.Clear();
-        Close();
-        if(OnSyncEnd.GetPersistentEventCount() > 0) OnSyncEnd.Invoke();
+        SyncEnd();
     }
 
 /// <summary>
@@ -204,6 +211,15 @@ public class DBModelEntity : DBModelMaster
         Debug.LogError(name + " :\n" + errorMessage + "\n" + www.error + "\n" + " server url: " + dbSettings.sendURL + dbSettings.sendAPI);
     }
 
+    private void SyncEnd()
+    {
+        ToogleHandler(blockDataHandler, false);
+        if (hasSync) failBar.GetComponent<StatusBar>().Finish();
+        if (hasSync) successBar.GetComponent<StatusBar>().Finish();
+        rows.Clear();
+        Close();
+        if (OnSyncEnd.GetPersistentEventCount() > 0) OnSyncEnd.Invoke();
+    }
 
 }
 

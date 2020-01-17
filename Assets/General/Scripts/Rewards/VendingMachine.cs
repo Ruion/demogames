@@ -2,11 +2,12 @@
 using System.IO.Ports;
 using System;
 
-
-public class VendingMachine : MonoBehaviour
+public class VendingMachine : WaitExtension
 {
+    private const float V = 2f;
+
     /*public byte[] test;
-    public byte aa;*/
+public byte aa;*/
 
     SerialPort VMSerialPort;
 
@@ -29,7 +30,7 @@ public class VendingMachine : MonoBehaviour
         VMSerialPort.DataBits = 8;
         VMSerialPort.Open();
 
-        Debug.Log("Serial Port Opened: " + VMSerialPort.ToString());
+        //        Debug.Log("Serial Port Opened: " + VMSerialPort.ToString());
 
         System.Threading.Thread.Sleep(2000);
     }
@@ -508,10 +509,11 @@ public class VendingMachine : MonoBehaviour
 #region SendToPort (bytes)
     public void SendToPort(byte[] bytes)
     {
-        OpenPort();
-
-            Debug.Log("Running motor ");
+        if (FindObjectOfType<GameSettingEntity>().gameSettings.debugMode)
+        {
+            OpenPort();
             PortReset();
+
             if (VMSerialPortWriteType == WriteType.Byte)
             {
                 byte[] SendingBytes = bytes;
@@ -522,7 +524,37 @@ public class VendingMachine : MonoBehaviour
                 VMSerialPort.Write(vmserialPortText);
             }
 
-        ClosePort();
+            System.Threading.Thread.Sleep(2000);
+
+            ClosePort();
+        }
+
+        else
+        {
+            
+            Wait(V, () => {
+                PortReset();
+                Wait(V, () => {
+                    if (VMSerialPortWriteType == WriteType.Byte)
+                    {
+                        byte[] SendingBytes = bytes;
+                        VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
+                    }
+                    else if (VMSerialPortWriteType == WriteType.String)
+                    {
+                        VMSerialPort.Write(vmserialPortText);
+                    }
+
+                    Wait(V, () => {
+                        ClosePort();
+                    });
+                });
+
+
+            });
+            
+        }
+
     }
     #endregion
 
@@ -538,6 +570,58 @@ public class VendingMachine : MonoBehaviour
         VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
 
         System.Threading.Thread.Sleep(2000);
+    }
+
+    public void TurnMotor(string id)
+    {
+        var proc = new System.Diagnostics.Process();
+
+        var process = new System.Diagnostics.Process
+        {
+            StartInfo = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "C:\\Windows\\System32\\fsutil.exe",
+                Arguments = "behavior query SymlinkEvaluation",
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                CreateNoWindow = true
+            }
+        };
+
+        proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+        proc.StartInfo.Verb = "print";
+
+        // Using PDFtoPrinter
+        proc.StartInfo.FileName = "C:\\Vending-Machine-Controller\\Vending-Machine-Controller.exe";
+      //  proc.StartInfo.Arguments = "-motor_lane " + motor_lane + " -num_trial 3";
+        proc.StartInfo.Arguments = "-motor_lane motor_" + id + " -num_trial 3";
+
+        proc.StartInfo.RedirectStandardOutput = true;
+
+        Debug.Log(proc.StartInfo.Arguments);
+        /*
+        proc.StartInfo.FileName = final_path;
+        proc.StartInfo.Arguments = final_path2;
+        */
+
+        proc.StartInfo.UseShellExecute = false;
+        proc.StartInfo.CreateNoWindow = true;
+
+        proc.Start();
+
+        while(!proc.StandardOutput.EndOfStream)
+        {
+            Debug.Log(proc.StandardOutput.ReadLine());
+        }
+
+        if (proc.HasExited == false)
+        {
+            proc.WaitForExit(3000);
+        }
+
+        proc.EnableRaisingEvents = true;
+
+        proc.Close();
     }
 }
 
