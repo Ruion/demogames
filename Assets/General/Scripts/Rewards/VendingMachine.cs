@@ -593,8 +593,8 @@ public byte aa;*/
 
         // Using PDFtoPrinter
         proc.StartInfo.FileName = "C:\\Vending-Machine-Controller\\Vending-Machine-Controller.exe";
-      //  proc.StartInfo.Arguments = "-motor_lane " + motor_lane + " -num_trial 3";
-        proc.StartInfo.Arguments = "-motor_lane motor_" + id + " -num_trial 3";
+      //  proc.StartInfo.Arguments = "-motor_lane " + motor_lane;
+        proc.StartInfo.Arguments = "-motor_lane motor_" + id;
 
         proc.StartInfo.RedirectStandardOutput = true;
 
