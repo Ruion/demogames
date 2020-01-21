@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.IO.Ports;
 using System;
 
@@ -15,6 +16,9 @@ public byte aa;*/
     public string vmserialPortText;
     public PortName portname = PortName.COM1;
     public PortBaudrate portbaudrate = PortBaudrate.pb115200;
+
+    [HideInInspector] public DBModelEntity vmOperateRecordDB;
+    public UnityEvent onMotorTurn;
 
     // Start is called before the first frame update
     void Start()
@@ -598,7 +602,7 @@ public byte aa;*/
 
         proc.StartInfo.RedirectStandardOutput = true;
 
-        Debug.Log(proc.StartInfo.Arguments);
+      //  Debug.Log(proc.StartInfo.Arguments);
         /*
         proc.StartInfo.FileName = final_path;
         proc.StartInfo.Arguments = final_path2;
@@ -611,7 +615,9 @@ public byte aa;*/
 
         while(!proc.StandardOutput.EndOfStream)
         {
-            Debug.Log(proc.StandardOutput.ReadLine());
+           // Debug.Log(proc.StandardOutput.ReadLine());
+            if (proc.StandardOutput.ReadLine().Contains("fail")) PlayerPrefs.SetString("turn_result", "Fail");
+            else if(proc.StandardOutput.ReadLine().Contains("success")) PlayerPrefs.SetString("turn_result", "Success");
         }
 
         if (proc.HasExited == false)
@@ -622,6 +628,8 @@ public byte aa;*/
         proc.EnableRaisingEvents = true;
 
         proc.Close();
+
+        if(onMotorTurn.GetPersistentEventCount() > 0) onMotorTurn.Invoke();
     }
 }
 

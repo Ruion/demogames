@@ -4315,6 +4315,41 @@ PrefabInstance:
       propertyPath: OnStockGiven.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 791685557324772204, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: dbSettings.sendURL
+      value: http://in-house-game-02-dashboard.uid-staging.com/public/api/
+      objectReference: {fileID: 0}
+    - target: {fileID: 791685557324772204, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: dbSettings.keyDownloadAPI
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 791685557324772204, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: item_id
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 791685557324772204, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: item_name
+      value: Adaptor
+      objectReference: {fileID: 0}
+    - target: {fileID: 791685557324772204, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: item_quantity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 791685557324772204, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: item_limit
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 791685557324772204, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: item_lane
+      value: 0x01, 0x02, 0x31, 0x01, 0x15, 0x00, 0x4A
+      objectReference: {fileID: 0}
     - target: {fileID: 185014424703867228, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -4462,10 +4497,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2523135089830117355, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
+      propertyPath: dbSettings.columns.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523135089830117355, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 2523135089830117355, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
+    - target: {fileID: 2523135089830117355, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[5].name
+      value: result
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523135089830117355, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[5].attribute
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523135089830117355, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: dbSettings.folderPath
+      value: C:\UID-APP\GameTemplate-01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523135089830117355, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: db_connection_string
+      value: URI = file:C:\UID-APP\GameTemplate-01\Databases\VendingMachineOperateRecordDatabaseModel.sqlite
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523135089830117355, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: TestIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 218756497738917074, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6841,6 +6906,36 @@ PrefabInstance:
         type: 3}
       propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572749568536551867, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: onMotorTurn.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572749568536551867, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: onMotorTurn.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572749568536551867, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: onMotorTurn.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572749568536551867, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: onMotorTurn.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 218756497967361610}
+    - target: {fileID: 8572749568536551867, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: onMotorTurn.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveToLocal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572749568536551867, guid: 3b4d50dd24c7255459098612e26d6ee2,
+        type: 3}
+      propertyPath: onMotorTurn.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3094568078730392810, guid: 3b4d50dd24c7255459098612e26d6ee2, type: 3}
