@@ -56,4 +56,19 @@ public class VerticalSwipeDetector : MonoBehaviour
         }
     }
 
+    public void SwipeUp()
+    {
+        OnSwipeUp.Invoke(); if (executeOnce)
+        {
+            enabled = false;
+        }
+    }
+
+    public void SwipeDown()
+    { 
+        OnSwipeDown.Invoke(); if (executeOnce)
+        {
+            enabled = false;
+        }
+    }
 }

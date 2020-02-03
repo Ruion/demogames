@@ -14,7 +14,8 @@ public class Settings
 
     public string serverDomainURL;
     public string userPrimaryKeyName = "userPrimaryKey";
- 
+    public int checkInternetTimeOut = 5000;
+    public int downloadCodeAPITimeOut = 10;
     public Settings(Settings setting)
     {
       //  Debug.Log(setting.savePath);

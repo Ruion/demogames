@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using UnityEngine;
-using UnityEditor;
+using System;
 
-public class NetworkExtension : MonoBehaviour
+public class NetworkExtension 
 {
+    public static bool internet = false;
+    public static int timeOut = 5000;
+
     public static bool IsConnected(string hostedURL = "http://www.google.com")
     {
         try
@@ -61,14 +64,72 @@ public class NetworkExtension : MonoBehaviour
 
     public static bool CheckForInternetConnection()
     {
+        /*
         try
         {
             using (var client = new WebClient())
-            using (client.OpenRead("http://google.com/generate_204"))
-                return true;
+            {
+               
+                using (client.OpenRead("http://google.com/generate_204"))
+                    return true;
+            }
         }
         catch
         {
+            return false;
+        }
+        */
+
+        HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create("http://www.bing.com");
+        myRequest.Timeout = timeOut;
+        HttpWebResponse response = (HttpWebResponse)myRequest.GetResponse();
+
+        if (response.StatusCode == HttpStatusCode.OK)
+        {
+            response.Close();
+            return true;
+        }
+        else
+        {
+            response.Close();
+            return false;
+        }
+    }
+
+    public static IEnumerator CheckForInternetConnectionRoutine()
+    {
+        HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create("http://www.bing.com");
+        myRequest.Timeout = timeOut;
+        HttpWebResponse response = (HttpWebResponse)myRequest.GetResponse();
+
+        if (response.StatusCode == HttpStatusCode.OK)
+        {
+            response.Close();
+            internet = true;
+            yield return true;
+        }
+        else
+        {
+            response.Close();
+            internet = false;
+            yield return false;
+        }
+    }
+
+    public static bool HttpCheckInternet()
+    {
+        HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create("http://www.bing.com");
+        myRequest.Timeout = 5000;
+        HttpWebResponse response = (HttpWebResponse)myRequest.GetResponse();
+
+        if (response.StatusCode == HttpStatusCode.OK)
+        {
+            response.Close();
+            return true;
+        }
+        else
+        {
+            response.Close();
             return false;
         }
     }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Net;
 using UnityEngine;
 using Mono.Data.Sqlite;
 using System.Data;
@@ -46,7 +45,6 @@ public class DBModelMaster : DBSettingEntity
     [HideInInspector] public List<string> serverEmailList;
     [ToggleGroup("hasSync")]
     [ReadOnly] public bool isFetchingData = false;
-    protected bool syncing = false;
 
     #endregion
 
@@ -411,12 +409,12 @@ public class DBModelMaster : DBSettingEntity
         {
             cmd.ExecuteNonQuery();
 
-            Debug.Log("Custom Query success" + "\n" + cmd.CommandText);
+           // Debug.Log(name +" - Custom Query success" + "\n" + cmd.CommandText);
             sqlitedb_connection.Close();
         }
         catch (DbException ex)
         {
-            Debug.Log("Error : " + ex.Message + "\n" + cmd.CommandText);
+            Debug.Log(name +" - Error : " + ex.Message + "\n" + cmd.CommandText);
             sqlitedb_connection.Close();
         }
     }
@@ -468,7 +466,7 @@ public class DBModelMaster : DBSettingEntity
         //    }
         #endregion
 
-       // ConnectDb();     
+        ConnectDb();     
 
         sqlitedb_connection = new SqliteConnection(db_connection_string);
         sqlitedb_connection.Open();
@@ -478,9 +476,9 @@ public class DBModelMaster : DBSettingEntity
         try
         {
             SqliteDataReader reader = cmd.ExecuteReader();
-            reader.Read();
+            reader.Read(); 
 
-           // sqlitedb_connection.Close();
+            // sqlitedb_connection.Close();
             return reader;
         }
         catch (DbException ex)
@@ -520,7 +518,6 @@ public class DBModelMaster : DBSettingEntity
             return null;
         }
     }
-
     #endregion
 
     public virtual void Close()
@@ -557,11 +554,13 @@ public class DBModelMaster : DBSettingEntity
 
         TestIndex++;
     }
-    
+
     #region handler
     public virtual void HideAllHandler()
     {
-        emptyHandler.SetActive(false);
+        if (!hasSync) return;
+       
+       if(emptyHandler != null) emptyHandler.SetActive(false);
         internetErrorHandler.SetActive(false);
         errorHandler.SetActive(false);
         blockDataHandler.SetActive(false); ;
@@ -655,30 +654,67 @@ public class DBModelMaster : DBSettingEntity
         dbSettings.SetUpTextPath();
 
         serverEmailList = new List<string>();
-               
-        if (!NetworkExtension.CheckForInternetConnection()) 
+
+        NetworkExtension.timeOut = FindObjectOfType<GameSettingEntity>().gameSettings.checkInternetTimeOut;
+
+        Debug.Log(name + " GetDataFromServer() started");
+
+        var watchCon = System.Diagnostics.Stopwatch.StartNew();
+        watchCon.Start();
+
+        yield return StartCoroutine(NetworkExtension.CheckForInternetConnectionRoutine());
+
+        if(NetworkExtension.internet == false)
         {
             //No internet connection, stop this Coroutine
-            Debug.Log(name + " - No internet connection. Stop GetDataFromServer()");
             isFetchingData = false;
+            watchCon.Stop();
+            Debug.LogError(name + " - GetDataFromServer() FAILED. No internet connection. Stop GetDataFromServer() check for internet duration taken " + watchCon.Elapsed.TotalMilliseconds);
             yield break;
         }
-        
+
+        watchCon.Stop();
+        Debug.Log(name + " - GetDataFromServer() check for internet duration taken " + watchCon.Elapsed.TotalMilliseconds);
+
+       // var time = System.Diagnostics.Stopwatch.StartNew();
+
         using (UnityWebRequest www = UnityWebRequest.Get(dbSettings.sendURL + dbSettings.keyDownloadAPI))
             {
-                yield return www.SendWebRequest();
-                if (www.isNetworkError || www.isHttpError)
+            //  ulong downloadBytesOrigin = new ulong();
+            www.timeout = FindObjectOfType<GameSettingEntity>().gameSettings.downloadCodeAPITimeOut;
+
+            var watchRequest = System.Diagnostics.Stopwatch.StartNew();
+            watchRequest.Start();
+
+            yield return www.SendWebRequest();
+            watchRequest.Stop();
+            Debug.Log(name + " - GetDataFromServer() send request duration taken " + watchRequest.Elapsed.TotalMilliseconds);
+
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            watch.Start();
+            Debug.Log(name + " start downloading redeem codes");
+
+            if (www.isNetworkError || www.isHttpError)
                 {
                     Debug.LogError(name + "\n" + www.error + "\n" + dbSettings.sendURL + dbSettings.keyDownloadAPI);
-                    isFetchingData = false;
+                    Debug.LogError(name + " - GetDataFromServer() FAILED. No internet connection. Stop GetDataFromServer() check for internet duration taken " + watchCon.Elapsed.TotalMilliseconds);
+
+                 isFetchingData = false;
                     yield break;
                 }
                 else
                 {
-                    while (!www.downloadHandler.isDone) yield return null;
 
-                    string texts = www.downloadHandler.text;
-                    Debug.Log("download used redeem list :\n"+texts);
+                    while (!www.downloadHandler.isDone) 
+                    {
+                      yield return null; 
+                     }
+
+                watch.Stop();
+                Debug.Log(name + " - GetDataFromServer() download codes time : " + watch.Elapsed.TotalSeconds);
+
+                string texts = www.downloadHandler.text;
+                   // Debug.Log("download used redeem list :\n"+texts);
 
                     // clear text file
                     File.WriteAllText(dbSettings.serverEmailFilePath, "");
@@ -703,8 +739,14 @@ public class DBModelMaster : DBSettingEntity
                     {
                        serverEmailList.Add(line.ToString());
                     }
+
+                    Debug.Log(name + " - GetDataFromServer() SUCCESS");
+
                 }
             }
+
+       // time.Stop();
+       // Debug.Log(name + " - GetDataFromServer() download codes time : " + time.Elapsed.TotalMilliseconds);
 
         isFetchingData = false;
     }
@@ -736,6 +778,12 @@ public class DBModelMaster : DBSettingEntity
     }
 
     #endregion
+
+    private void OnDisable()
+    {
+        Close();
+    }
+
 }
 
 

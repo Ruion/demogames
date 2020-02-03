@@ -52,7 +52,7 @@ public class SwipeDetector : MonoBehaviour
                     {
                         enabled = false;
                     }
-             }
+                }
         }
     }
 

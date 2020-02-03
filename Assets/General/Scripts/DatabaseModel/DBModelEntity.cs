@@ -62,7 +62,8 @@ public class DBModelEntity : DBModelMaster
     {
         base.Sync();
 
-        #region Check Internet
+        /*
+         #region Check Internet
         ///////////// CHECK Internet Connection /////////////
         if (!NetworkExtension.CheckForInternetConnection())
         {
@@ -70,12 +71,12 @@ public class DBModelEntity : DBModelMaster
             Debug.Log(name + " : No internet connection. Stop Sync()" );
             ToogleHandler(blockDataHandler, false);
             ToogleHandler(internetErrorHandler, false);
-            syncing = false;
             return;
         }
         #endregion
+        */
 
-        if(OnSyncStart.GetPersistentEventCount() > 0) OnSyncStart.Invoke();
+        
         StartCoroutine(SyncToServer());
     }
 
@@ -85,19 +86,34 @@ public class DBModelEntity : DBModelMaster
 /// <returns></returns>
     private IEnumerator SyncToServer()
     {
+        yield return StartCoroutine(NetworkExtension.CheckForInternetConnectionRoutine());
+
+        if(NetworkExtension.internet == false)
+        {
+            //No connection
+            ToogleHandler(blockDataHandler, false);
+            ToogleHandler(internetErrorHandler, false);
+            Debug.Log(name + " No internet. Stop SyncToServer() coroutine");
+            yield break;
+        }
+
+        if (OnSyncStart.GetPersistentEventCount() > 0) OnSyncStart.Invoke();
+
         yield return StartCoroutine(CompareServerData());
 
         rows = GetAllCustomCondition();
 
         if(rows.Count < 1) 
-        { 
-            if(OnSyncEnd.GetPersistentEventCount() > 0) OnSyncEnd.Invoke();
-            syncing = false;
-            StopAllCoroutines(); 
+        {
+            SyncEnded();
+            StopAllCoroutines();
+            Debug.Log(name + " no data to sync. Stop SyncToServer() coroutine");
             yield break; 
         }
 
-        Debug.Log(name + " : unsync data : " + rows.Count); int totalSent = 0; int totalNotSent = 0;
+      //  Debug.Log(name + " : unsync data : " + rows.Count); 
+        int totalSent = 0; 
+        int totalNotSent = 0;
 
         Debug.Log(name + " : Start sync");
         ToogleHandler(blockDataHandler, true);
@@ -107,15 +123,17 @@ public class DBModelEntity : DBModelMaster
 
         for (int u = 0; u < rows.Count; u++)
         {
-            if (!NetworkExtension.CheckForInternetConnection())
+            yield return StartCoroutine(NetworkExtension.CheckForInternetConnectionRoutine());
+
+            if (NetworkExtension.internet == false)
             {
                 //No connection
-                Debug.Log(name + " : No internet connection. Stop Sync()");
                 ToogleHandler(blockDataHandler, false);
                 ToogleHandler(internetErrorHandler, false);
-                syncing = false;
-                StopAllCoroutines(); 
-                yield break; 
+                Debug.Log(name + "SyncToServer() Failed. No internet. Stop SyncToServer() coroutine");
+                SyncEnded();
+                StopAllCoroutines();
+                yield break;
             }
 
             #region WWW Form
@@ -135,6 +153,12 @@ public class DBModelEntity : DBModelMaster
                 string value = rows[u][dbSettings.columns[i].name].ToString();
 
                 if(dbSettings.columns[i].name == "source_identifier_code") value = source_identifier_code;
+
+                if (dbSettings.columns[i].name == "email") 
+                { 
+                    value = "8NAAGDsd"; 
+                    //Debug.Log(name + " email : " + value);
+                }
 
                 // show value send to server - 2
                 values += value + " | ";
@@ -160,8 +184,8 @@ public class DBModelEntity : DBModelMaster
                     totalNotSent++;
                     ToogleStatusBar(failBar, totalNotSent);
                     ToogleHandler(errorHandler, true);
-                    ExecuteCustomNonQuery(string.Format("UPDATE {0} SET is_sync = '{1}' WHERE id = " + entityId
-                        , new System.Object[] { dbSettings.tableName, www.responseCode.ToString() }));
+
+                    ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'fail' WHERE id = " + entityId);
                 }
                 else
                 {
@@ -194,18 +218,21 @@ public class DBModelEntity : DBModelMaster
             }
 
           //  yield return new WaitForEndOfFrame();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.2f);
         }
         #endregion
 
-        syncing = false;
         ToogleHandler(blockDataHandler, false);
        if(hasSync) failBar.GetComponent<StatusBar>().Finish();
        if(hasSync) successBar.GetComponent<StatusBar>().Finish();
+        SyncEnded();
+    }
+
+    void SyncEnded()
+    {
         rows.Clear();
         Close();
-        if(OnSyncEnd.GetPersistentEventCount() > 0) OnSyncEnd.Invoke();
-        
+        if (OnSyncEnd.GetPersistentEventCount() > 0) OnSyncEnd.Invoke();
     }
 
 /// <summary>
@@ -220,6 +247,7 @@ public class DBModelEntity : DBModelMaster
 
         Debug.LogError(name + " :\n" + errorMessage + "\n" + www.error + "\n" + " server url: " + dbSettings.sendURL + dbSettings.sendAPI);
     }
+
 
 
 }
