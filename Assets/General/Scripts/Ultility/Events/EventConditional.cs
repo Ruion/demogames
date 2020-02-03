@@ -15,6 +15,7 @@ public class ScoreCondition
 
 public class EventConditional : MonoBehaviour {
     public ScoreCondition[] scoreConditions;
+    public bool useScore = false;
     [ReadOnly]public bool conditionIsPass = true;
   
     public EventSequencer OnWin;
@@ -25,14 +26,23 @@ public class EventConditional : MonoBehaviour {
 /// </summary>
 	public void ExecuteScriptableScoreCondition()
     {
-        JSONSetter globalSetting = FindObjectOfType<JSONSetter>();
-        JObject jObject = globalSetting.LoadSetting();
+        
 
-        for (int i = 0; i < scoreConditions.Length; i++)
+        if (useScore)
         {
-            if(scoreConditions[i].score < System.Int32.Parse(jObject["scoreToWin"].ToString())) conditionIsPass = false;
+            JSONSetter globalSetting = FindObjectOfType<JSONSetter>();
+            JObject jObject = globalSetting.LoadSetting();
 
-            //if (scoreConditions[i].score < scoreConditions[i].minimumScore) conditionIsPass = false;        
+            for (int i = 0; i < scoreConditions.Length; i++)
+            {
+                if (scoreConditions[i].score < System.Int32.Parse(jObject["scoreToWin"].ToString())) conditionIsPass = false;
+
+                //if (scoreConditions[i].score < scoreConditions[i].minimumScore) conditionIsPass = false;        
+            }
+        }
+        else
+        {
+            conditionIsPass = FindObjectOfType<GameManager>().isPass;
         }
 
         if (conditionIsPass)

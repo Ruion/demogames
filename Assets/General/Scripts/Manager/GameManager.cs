@@ -13,6 +13,8 @@ using UnityEngine.Events;
         [ReadOnly]
         public float timeScale;
 
+        public bool isPass;
+
         public float gameTimeScale { get { return timeScale; } set { timeScale = value; } }
 
         [HideInInspector]

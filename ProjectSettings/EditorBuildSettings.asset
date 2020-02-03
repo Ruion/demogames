@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game-Racing/HOME.unity
-    guid: dd6b293254d4e7f488dbf2e1f468eec8
-  - enabled: 0
-    path: Assets/Game-Racing/GAME.unity
-    guid: 46a4e19f8b9890945b47a045db2cf918
-  - enabled: 0
-    path: Assets/Game-Racing/SCORE.unity
-    guid: af11af0245fa3d74fb05a81ad4667421
+    path: Assets/Game-Adiwira/HOME.unity
+    guid: 460212c758724204db0d3193dcda4abc
+  - enabled: 1
+    path: Assets/Game-Adiwira/PUZZLE1.unity
+    guid: 657eff79c5c5e2744a0ba97665d49b51
+  - enabled: 1
+    path: Assets/Game-Adiwira/PUZZLE2.unity
+    guid: 433d0577a46b37046a036432fa652a20
   m_configObjects: {}
