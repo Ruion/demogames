@@ -8,7 +8,22 @@ public class PuzzleLevelRandomizer : MonoBehaviour
 
     public void LoadRandomPuzzleLevel()
     {
+       FindObjectOfType<SceneSwitcher>().SwitchScene("PUZZLE" + (ChooseRandomPuzzle() + 1).ToString());
+    }
+
+    int ChooseRandomPuzzle()
+    {
+        int lastPuzzle = PlayerPrefs.GetInt("lastPuzzle", 1);
+
         int puzzle = Random.Range(0, puzzleType);
-        FindObjectOfType<SceneSwitcher>().SwitchScene("PUZZLE" + (puzzle+1).ToString());
+
+        while (puzzle == lastPuzzle)
+        {
+            puzzle = Random.Range(0, puzzleType);
+        }
+
+        PlayerPrefs.SetInt("lastPuzzle", puzzle);
+
+        return puzzle;
     }
 }

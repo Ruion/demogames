@@ -19,8 +19,9 @@ public class PuzzleBuilder : SerializedMonoBehaviour
         puzzleAlphabets = GetComponentsInChildren<PuzzleAlphabet>();
         foreach (PuzzleAlphabet p in puzzleAlphabets)
         {
+          //  Debug.Log(p.alphabet);
             p.transform.GetChild(0).GetComponent<Image>().sprite = alphabetImages[p.alphabet];
-            // p.GetComponentsInChildren<Image>()[1].sprite = alphabetImages[p.alphabet];
+
             p.name = "Button-" + p.alphabet;
         }
     }

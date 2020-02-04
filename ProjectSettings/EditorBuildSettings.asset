@@ -13,5 +13,23 @@ EditorBuildSettings:
     guid: 657eff79c5c5e2744a0ba97665d49b51
   - enabled: 1
     path: Assets/Game-Adiwira/PUZZLE2.unity
-    guid: 433d0577a46b37046a036432fa652a20
+    guid: 8212f0b5933731d4da21c64b5730035e
+  - enabled: 1
+    path: Assets/Game-Adiwira/PUZZLE3.unity
+    guid: e48def04dbfd91141b779cda745dc905
+  - enabled: 1
+    path: Assets/Game-Adiwira/PUZZLE4.unity
+    guid: 2038f9ff37b8dd449a99abf8aebd952c
+  - enabled: 1
+    path: Assets/Game-Adiwira/PUZZLE5.unity
+    guid: 5bdf15660b15d644d86dfebf6fecc263
+  - enabled: 1
+    path: Assets/Game-Adiwira/PUZZLE6.unity
+    guid: f533aad58c8fae34ca1a9c0bd619cca4
+  - enabled: 1
+    path: Assets/Game-Adiwira/PUZZLE7.unity
+    guid: d3a24c861878b2447b1ed14deb00b2b7
+  - enabled: 1
+    path: Assets/Game-Adiwira/PUZZLE8.unity
+    guid: 33868ed14a9ca494e8a70ecbfc47ffde
   m_configObjects: {}

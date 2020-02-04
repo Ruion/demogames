@@ -84,21 +84,21 @@ public class SceneTransitionManager : MonoBehaviour
 
     private IEnumerator SwitchSceneNameCoroutine(string sceneName)
     {
-         Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+       //  Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         yield return new WaitForSeconds(fadeInDelay + animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         SceneManager.LoadScene(sceneName);
     }
 
     private IEnumerator SwitchSceneIndexCoroutine(int sceneIndex)
     {
-        Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+      //  Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         yield return new WaitForSeconds(fadeInDelay + animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         SceneManager.LoadScene(sceneIndex);
     }
 
     private IEnumerator RestartSceneCoroutine()
     {
-        Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+      //  Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         yield return new WaitForSeconds(fadeInDelay + animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

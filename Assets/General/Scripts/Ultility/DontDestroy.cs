@@ -12,7 +12,7 @@ public class DontDestroy : MonoBehaviour
 
     void Awake()
     {
-        transform.parent = null;
+        transform.SetParent(null, false);
 
         gameObject.tag = tagName;
         GameObject[] objs = GameObject.FindGameObjectsWithTag(tagName);

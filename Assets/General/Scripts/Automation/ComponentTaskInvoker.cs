@@ -10,25 +10,25 @@ public class ComponentTaskInvoker : MonoBehaviour
 
     public void TriggerButtonClick(Button btn)
     {
-        VerifyDebugMode();
+       // VerifyDebugMode();
 
-        if (!isDebugging) return;
+      //  if (!isDebugging) return;
 
         btn.onClick.Invoke();
     }
 
     public void ExecuteAutoTasks()
     {
-        VerifyDebugMode();
+      //  VerifyDebugMode();
 
-        if (!isDebugging) return;
+      //  if (!isDebugging) return;
 
         if (autoTasks.GetPersistentEventCount() > 0) autoTasks.Invoke();
     }
 
     protected void VerifyDebugMode()
     {
-        isDebugging = FindObjectOfType<GameSettingEntity>().gameSettings.debugMode;
+      // isDebugging = FindObjectOfType<GameSettingEntity>().gameSettings.debugMode;
        
     }
 }
