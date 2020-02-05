@@ -2711,7 +2711,7 @@ MonoBehaviour:
   targetIsSelf: 1
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
-  delay: 2
+  delay: 1
   duration: 0.5
   easeType: 1
   easeCurve:
@@ -3173,7 +3173,7 @@ MonoBehaviour:
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
   delay: 1.5
-  duration: 1
+  duration: 0.5
   easeType: 1
   easeCurve:
     serializedVersion: 2
@@ -4487,6 +4487,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6051663265072251821, guid: ebe6e84393e2ebd4380c90c8f0f9bcba,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6077067781845472455, guid: ebe6e84393e2ebd4380c90c8f0f9bcba,
         type: 3}
       propertyPath: delay
@@ -4673,6 +4678,7 @@ PrefabInstance:
     - {fileID: 2489144977438564112, guid: ebe6e84393e2ebd4380c90c8f0f9bcba, type: 3}
     - {fileID: 2488562865703597716, guid: ebe6e84393e2ebd4380c90c8f0f9bcba, type: 3}
     - {fileID: 1401349460107183523, guid: ebe6e84393e2ebd4380c90c8f0f9bcba, type: 3}
+    - {fileID: 6051663265072251821, guid: ebe6e84393e2ebd4380c90c8f0f9bcba, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ebe6e84393e2ebd4380c90c8f0f9bcba, type: 3}
 --- !u!224 &5139971081511652329 stripped
 RectTransform:
