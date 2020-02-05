@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 1041647763}
   - component: {fileID: 1041647764}
   - component: {fileID: 1041647765}
+  - component: {fileID: 1041647766}
   m_Layer: 0
   m_Name: _AudioManager
   m_TagString: Untagged
@@ -347,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   addScore: {fileID: 1041647765}
-  minusScore: {fileID: 1041647765}
+  minusScore: {fileID: 1041647766}
 --- !u!82 &1041647765
 AudioSource:
   m_ObjectHideFlags: 0
@@ -359,6 +360,102 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2b8da2cc7bba5d64eb38cd4c511ef5ce, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1041647766
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041647762}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2aab5c0e3e3411c48996590d27104c5a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1430,6 +1527,16 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 8393364184877639020, guid: 2259412f2f91d9a49afe31eaa05ec656,
         type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393364184877639020, guid: 2259412f2f91d9a49afe31eaa05ec656,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393364184877639020, guid: 2259412f2f91d9a49afe31eaa05ec656,
+        type: 3}
       propertyPath: correctAlphabets.Array.size
       value: 7
       objectReference: {fileID: 0}
@@ -1473,6 +1580,56 @@ PrefabInstance:
       propertyPath: correctAlphabets.Array.data[6]
       value: 
       objectReference: {fileID: 1161287197}
+    - target: {fileID: 8393364184877639020, guid: 2259412f2f91d9a49afe31eaa05ec656,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 8393364184877639020, guid: 2259412f2f91d9a49afe31eaa05ec656,
+        type: 3}
+    - target: {fileID: 8393364184877639020, guid: 2259412f2f91d9a49afe31eaa05ec656,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"correctAlphabetDiction","add_keys":{"$id":0,"$type":"System.Object[],
+        mscorlib","$rlength":20,"$rcontent":[{"$id":1,"$type":"System.String, mscorlib","D"},$iref:1,{"$id":2,"$type":"System.String,
+        mscorlib","R"},$iref:1,$iref:2,{"$id":3,"$type":"System.String, mscorlib","I"},$iref:1,$iref:2,$iref:3,{"$id":4,"$type":"System.String,
+        mscorlib","V"},$iref:1,$iref:2,$iref:3,$iref:4,{"$id":5,"$type":"System.String,
+        mscorlib","E"},$iref:1,$iref:2,$iref:3,$iref:4,$iref:5]},"remove_keys":null'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393364184877639020, guid: 2259412f2f91d9a49afe31eaa05ec656,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"correctAlphabetDiction.{\"D\"}","value":{"$id":0,"$type":"System.Int32,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393364184877639020, guid: 2259412f2f91d9a49afe31eaa05ec656,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[2]
+      value: '"path":"correctAlphabetDiction.{\"E\"}","value":{"$id":0,"$type":"System.Int32,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393364184877639020, guid: 2259412f2f91d9a49afe31eaa05ec656,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[3]
+      value: '"path":"correctAlphabetDiction.{\"I\"}","value":{"$id":0,"$type":"System.Int32,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393364184877639020, guid: 2259412f2f91d9a49afe31eaa05ec656,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[4]
+      value: '"path":"correctAlphabetDiction.{\"R\"}","value":{"$id":0,"$type":"System.Int32,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393364184877639020, guid: 2259412f2f91d9a49afe31eaa05ec656,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[5]
+      value: '"path":"correctAlphabetDiction.{\"V\"}","value":{"$id":0,"$type":"System.Int32,
+        mscorlib",1}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393364184877639022, guid: 2259412f2f91d9a49afe31eaa05ec656,
+        type: 3}
+      propertyPath: hasOnComplete
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8393364184877639023, guid: 2259412f2f91d9a49afe31eaa05ec656,
         type: 3}
       propertyPath: serializationData.Prefab

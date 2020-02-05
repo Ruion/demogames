@@ -2,8 +2,9 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using Sirenix.OdinInspector;
 
-public class PuzzleValidator : MonoBehaviour
+public class PuzzleValidator : SerializedMonoBehaviour
 {
     public int correctCharacter = 5;
 
@@ -11,39 +12,47 @@ public class PuzzleValidator : MonoBehaviour
 
     public List<PuzzleAlphabet> correctAlphabets;
 
-    public List<PuzzleAlphabet> answerAlphabets;
+    public Dictionary<string, int> correctAlphabetDiction = new Dictionary<string, int>();
 
-    public HashSet<string> correctChar = new HashSet<string>();
     public List<string> answerChar = new List<string>();
 
     public UnityEvent onCorrect;
+
+    private SoundManager sm;
 
     private void Awake()
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
 
-        foreach (PuzzleAlphabet w in correctAlphabets)
-        {
-            correctChar.Add(w.alphabet);
-        }
+        sm = FindObjectOfType<SoundManager>();
     }
 
     public void ValidateAlphabet(PuzzleAlphabet alphabet)
     {
-        if (answerAlphabets.Contains(alphabet))
+        if(correctAlphabets.Contains(alphabet) && correctAlphabetDiction[alphabet.alphabet] > 0)
         {
-            answerAlphabets.Remove(alphabet);
-            answerChar.Remove(alphabet.alphabet);
+            // if click true alphabet
+            alphabet.CorrectAnsweHandler();
+            sm.AddScore();
+
+            // add correct alphabet to list
+            answerChar.Add(alphabet.alphabet);
+
+            // exclude the true alphabet count
+            correctAlphabetDiction[alphabet.alphabet]--;
+
         }
         else
         {
-            answerAlphabets.Add(alphabet);
-            answerChar.Add(alphabet.alphabet);
+            // click on wrong alphabet
+            alphabet.WrongAnsweHandler();
+            sm.MinusScore();
         }
 
         // stop next checking when alphabet not same
-        if (answerChar.Count == correctCharacter && correctChar.All(answerChar.Contains))
+        // if (answerChar.Count == correctCharacter && correctChar.All(answerChar.Contains))
+        if (answerChar.Count == correctCharacter)
         {
 
             if (onCorrect.GetPersistentEventCount() > 0) onCorrect.Invoke();

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5a0b6dd6bcf5cd547b422a607e70eadf
+guid: f5cd0982b9a58064c8b5ea3f0963fc73
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: natasha
+  fontName: Natasha
   fontNames:
-  - natasha
+  - Natasha
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

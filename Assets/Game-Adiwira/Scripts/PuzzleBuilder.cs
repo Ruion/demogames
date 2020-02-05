@@ -23,6 +23,8 @@ public class PuzzleBuilder : SerializedMonoBehaviour
             p.transform.GetChild(0).GetComponent<Image>().sprite = alphabetImages[p.alphabet];
 
             p.name = "Button-" + p.alphabet;
+
+            p.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = p.alphabet;
         }
     }
 
