@@ -505,7 +505,7 @@ PrefabInstance:
     - target: {fileID: 8203035945194043653, guid: 82b7cab281347c54b8c8e44902c72c6b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8312560872403376091, guid: 82b7cab281347c54b8c8e44902c72c6b,
         type: 3}
@@ -1277,7 +1277,7 @@ PrefabInstance:
     - target: {fileID: 909117667299243315, guid: f42393a7c9533a749b884ac00ab27ddd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 909117667299243315, guid: f42393a7c9533a749b884ac00ab27ddd,
         type: 3}
@@ -1384,6 +1384,11 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5464016396681525322, guid: 2259412f2f91d9a49afe31eaa05ec656,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7bbfd4a8ad513564993a9103f4571aa0, type: 2}
     - target: {fileID: 6318234644739780977, guid: 2259412f2f91d9a49afe31eaa05ec656,
         type: 3}
       propertyPath: alphabet
