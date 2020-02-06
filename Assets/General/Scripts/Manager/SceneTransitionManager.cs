@@ -40,6 +40,7 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void OnEnable()
     {
+
         if (eventsAdded) return;
    
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -49,6 +50,11 @@ public class SceneTransitionManager : MonoBehaviour
     {
         Invoke("FadeOut", fadeOutDelay);
         Debug.Log("scene loaded");
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void SwitchScene(int sceneIndex)
