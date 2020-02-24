@@ -302,7 +302,7 @@ public class DBModelMaster : DBSettingEntity
 
             for (int d = 0; d < drc.Count; d++)
             {
-                list.Add(drc[0][0].ToString());
+                list.Add(drc[d][0].ToString());
             }
 
             return list;

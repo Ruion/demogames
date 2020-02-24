@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.IO;
 
 /// <summary>
 /// Manipulate database for Vending Machine, use with VendingMachine.cs to drop gift
@@ -54,6 +55,7 @@ public class VendingMachineDBModelEntity : DBModelEntity
     [ContextMenu("HideHandler")]
     public new void HideAllHandler()
     {
+        if(stockErrorHandler != null)
         stockErrorHandler.SetActive(false);
     }
 
@@ -64,7 +66,7 @@ public class VendingMachineDBModelEntity : DBModelEntity
 
         // string query = "SELECT * FROM " + dbSettings.tableName + " WHERE " + selectCustomCondition;
         string query = 
-        string.Format("SELECT * FROM {0} WHERE is_disabled = 'false' AND quantity > 0 ORDER BY RANDOM() LIMIT 1"
+        string.Format("SELECT * FROM {0} WHERE is_disabled = 'false' AND quantity > 0 LIMIT 1"
         // string.Format("SELECT * FROM {0} WHERE is_disabled = 'false' ORDER BY RANDOM() LIMIT 1"
                         , new System.Object[]{ dbSettings.tableName });
         DataRowCollection drc = ExecuteCustomSelectQuery(query);
@@ -96,8 +98,6 @@ public class VendingMachineDBModelEntity : DBModelEntity
 
         ConnectDb();
 
-       try
-        {
             // vm.SendToPort(item_lane); int
 
             /*
@@ -168,11 +168,7 @@ public class VendingMachineDBModelEntity : DBModelEntity
             Debug.Log(item_id + " : " + item_name + " has " + item_quantity + " left | Lane : " + item_lane);
 
             Close();
-        }
-       catch (System.Exception ex)
-        {
-            Debug.LogError(ex.Message);
-        }
+
         
     }
 
@@ -342,5 +338,19 @@ public class VendingMachineDBModelEntity : DBModelEntity
     }
     #endregion
 
+    #region External App Text file Communication
+    public void SaveStockRemainToFile()
+    {
 
+        string appLaunchFilePath = Path.Combine(dbSettings.folderPath, "AppLaunchNumberFilePath.txt");
+
+        // Get data file path from AppLaunchNumberFilePath.txt
+        string[] dataFilePath = File.ReadAllLines(appLaunchFilePath);
+
+        // Write stock left to text file
+        DataRowCollection drc = ExecuteCustomSelectQuery("SELECT SUM(quantity) FROM " + dbSettings.tableName + " WHERE is_disabled = 'false'");
+        File.WriteAllText(dataFilePath[1], drc[0][0].ToString());
+    }
+
+    #endregion
 }

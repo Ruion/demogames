@@ -60,7 +60,7 @@ MonoBehaviour:
       Data: 
   dbSettings:
     fileName: VendingMachineOperateRecordDatabaseModel
-    folderPath: C:\UID-APP\191209-MY-GentingVM
+    folderPath: C:\UID-APP\GameTemplate-01
     dbName: VendingMachineOperateRecordDatabaseModel
     tableName: VendingMachineOperateRecordDatabaseModel
     columns:
@@ -81,6 +81,10 @@ MonoBehaviour:
       sync: 0
       dummyPrefix: 
     - name: operate_at
+      attribute: TEXT
+      sync: 0
+      dummyPrefix: 
+    - name: turn_result
       attribute: TEXT
       sync: 0
       dummyPrefix: 

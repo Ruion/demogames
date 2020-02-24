@@ -19,6 +19,7 @@ public byte aa;*/
 
     [HideInInspector] public DBModelEntity vmOperateRecordDB;
     public UnityEvent onMotorTurn;
+    public UnityEvent onDropFail;
 
     // Start is called before the first frame update
     void Start()
@@ -613,11 +614,16 @@ public byte aa;*/
 
         proc.Start();
 
-        while(!proc.StandardOutput.EndOfStream)
+        PlayerPrefs.SetString("turn_result", "Success");
+
+        while (!proc.StandardOutput.EndOfStream)
         {
-           // Debug.Log(proc.StandardOutput.ReadLine());
-            if (proc.StandardOutput.ReadLine().Contains("fail")) PlayerPrefs.SetString("turn_result", "Fail");
-            else if(proc.StandardOutput.ReadLine().Contains("success")) PlayerPrefs.SetString("turn_result", "Success");
+            // Debug.Log(proc.StandardOutput.ReadLine());
+            if (proc.StandardOutput.ReadLine().Contains("fail")) 
+            {
+                PlayerPrefs.SetString("turn_result", "Fail"); 
+                if(onDropFail.GetPersistentEventCount() > 0) onDropFail.Invoke();
+            }
         }
 
         if (proc.HasExited == false)

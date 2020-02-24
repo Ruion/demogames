@@ -3275,7 +3275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8146775649884990455
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5082,12 +5082,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: VendingMachineOperateRecordDatabaseModel
       objectReference: {fileID: 0}
-    - target: {fileID: 1223410718366039836, guid: 6a1e4fbf89eb85c4884353dd73b5ac48,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 1223410718366039836, guid: 6a1e4fbf89eb85c4884353dd73b5ac48,
-        type: 3}
     - target: {fileID: 1223410718366039837, guid: 6a1e4fbf89eb85c4884353dd73b5ac48,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5143,6 +5137,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1223410718366039836, guid: 6a1e4fbf89eb85c4884353dd73b5ac48,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1223410718366039836, guid: 6a1e4fbf89eb85c4884353dd73b5ac48,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1e4fbf89eb85c4884353dd73b5ac48, type: 3}
 --- !u!4 &937376079580813299 stripped
@@ -5668,6 +5668,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: StockDBModelEntity
       objectReference: {fileID: 0}
+    - target: {fileID: 4023794728620865343, guid: cd01b3e299b71ec41b777133ae4c4d1e,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4023794728620865343, guid: cd01b3e299b71ec41b777133ae4c4d1e,
+        type: 3}
     - target: {fileID: 1556465688544172219, guid: cd01b3e299b71ec41b777133ae4c4d1e,
         type: 3}
       propertyPath: OnOutOfStock.m_PersistentCalls.m_Calls.Array.size
@@ -5974,12 +5980,6 @@ PrefabInstance:
       propertyPath: dropCycleField
       value: 
       objectReference: {fileID: 4721143137233041816}
-    - target: {fileID: 4023794728620865343, guid: cd01b3e299b71ec41b777133ae4c4d1e,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 4023794728620865343, guid: cd01b3e299b71ec41b777133ae4c4d1e,
-        type: 3}
     - target: {fileID: 8936311120894992473, guid: cd01b3e299b71ec41b777133ae4c4d1e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8437,7 +8437,7 @@ PrefabInstance:
     - target: {fileID: 4758777847552199356, guid: 81e5d3fcc15fdf54e966454e6e51f438,
         type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4758777847552199356, guid: 81e5d3fcc15fdf54e966454e6e51f438,
         type: 3}

@@ -5,6 +5,8 @@ using System.Data;
 using UnityEngine.Networking;
 using System.Collections;
 using System.Linq;
+using System.IO;
+using Sirenix.OdinInspector;
 
 /// <summary>
 /// Create/delete table, insert/update/delete data, and send data to server \n
@@ -22,6 +24,9 @@ public class DBModelEntity : DBModelMaster
     public UnityEvent OnSyncStart;
     public UnityEvent OnSyncEnd;
     private bool Saved = false;
+
+    [Header("Fill in number if saving data from a file")]
+    public int dataFilePathIndex;
 
     /// <summary>
     /// Save PlayerPrefs value into all table column set in inspector
@@ -154,12 +159,6 @@ public class DBModelEntity : DBModelMaster
 
                 if(dbSettings.columns[i].name == "source_identifier_code") value = source_identifier_code;
 
-                if (dbSettings.columns[i].name == "email") 
-                { 
-                    value = "8NAAGDsd"; 
-                    //Debug.Log(name + " email : " + value);
-                }
-
                 // show value send to server - 2
                 values += value + " | ";
 
@@ -184,8 +183,8 @@ public class DBModelEntity : DBModelMaster
                     totalNotSent++;
                     ToogleStatusBar(failBar, totalNotSent);
                     ToogleHandler(errorHandler, true);
-
-                    ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'fail' WHERE id = " + entityId);
+                  //  SyncEnded();
+                  //  yield break;
                 }
                 else
                 {
@@ -202,7 +201,7 @@ public class DBModelEntity : DBModelMaster
                         totalNotSent++;
                         ToogleStatusBar(failBar, totalNotSent);
 
-                        ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'fail' WHERE id = " + entityId);
+                        ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = '"+ jsonData.result + "' WHERE id = " + entityId);
                     }
                     else
                     {
@@ -248,7 +247,42 @@ public class DBModelEntity : DBModelMaster
         Debug.LogError(name + " :\n" + errorMessage + "\n" + www.error + "\n" + " server url: " + dbSettings.sendURL + dbSettings.sendAPI);
     }
 
+    [Button]
+    public void SaveToDBFromFile()
+    {
+        if (Saved)
+           return;
 
+        Saved = true;
+
+
+        string appLaunchFilePath = Path.Combine(dbSettings.folderPath, "AppLaunchNumberFilePath.txt");
+
+        // Get data file path from AppLaunchNumberFilePath.txt
+        string[] dataFilePath = File.ReadAllLines(appLaunchFilePath);
+
+        // Read the text lines from the selected file path
+        string[] datas = File.ReadAllLines(dataFilePath[dataFilePathIndex]);
+
+        Debug.Log(string.Join("\n", datas));
+
+        List<string> col = new List<string>();
+        List<string> val = new List<string>();
+
+        for (int v = 1; v < dbSettings.columns.Count; v++)
+        {
+            col.Add(dbSettings.columns[v].name);
+        }
+
+        val.AddRange(col);
+
+        for (int i = 0; i < col.Count; i++)
+        {
+            val[i] = datas[i];
+        }
+
+        AddData(col, val);
+    }
 
 }
 

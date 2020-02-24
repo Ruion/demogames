@@ -63,7 +63,7 @@ MonoBehaviour:
       Data: 
   dbSettings:
     fileName: VoucherDistributionDatabaseModel
-    folderPath: C:\UID-APP\GameTemplate-01
+    folderPath: C:\UID-APP\200201-MY-YellowLead
     dbName: VoucherDistributionDatabaseModel
     tableName: VoucherDistributionDatabaseModel
     columns:
@@ -97,7 +97,7 @@ MonoBehaviour:
   db_connection_string: URI = file:C:\UID-APP\APPS\GAME-01\VoucherDistributionDatabaseModel.sqlite
   numberToPopulate: 5
   TestIndex: 12
-  selectCustomCondition: online_status = 'new'
+  selectCustomCondition: is_sync = 'no'
   hasSync: 0
   emptyHandler: {fileID: 0}
   internetErrorHandler: {fileID: 0}
@@ -158,3 +158,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  dataFilePathIndex: 0

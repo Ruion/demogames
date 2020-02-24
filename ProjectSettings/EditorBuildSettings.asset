@@ -6,12 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game-Racing/HOME.unity
-    guid: dd6b293254d4e7f488dbf2e1f468eec8
-  - enabled: 0
-    path: Assets/Game-Racing/GAME.unity
-    guid: 46a4e19f8b9890945b47a045db2cf918
-  - enabled: 0
-    path: Assets/Game-Racing/SCORE.unity
-    guid: af11af0245fa3d74fb05a81ad4667421
+    path: Assets/Apps/200201-MY-YellowLead/VendingMachineStockManager.unity
+    guid: 4eeaff054a2740640bac89c7fb52f46d
   m_configObjects: {}

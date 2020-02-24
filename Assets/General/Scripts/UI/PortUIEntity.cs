@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using System.Data;
@@ -32,6 +33,8 @@ public class PortUIEntity : MonoBehaviour
 
     public VendingMachineDBModelEntity vendingMachineDb;
     public TextMeshProUGUI totalText;
+
+    public UnityEvent onSetPorts;
     #endregion
 
     void OnEnable()
@@ -86,6 +89,8 @@ public class PortUIEntity : MonoBehaviour
 
         model.SetActive(false);
 
+        if (onSetPorts.GetPersistentEventCount() > 0) onSetPorts.Invoke();
+
     }
 
     public void RevertPortInfo()
@@ -113,6 +118,16 @@ public class PortUIEntity : MonoBehaviour
             " is_disabled = 'false'" +
             " WHERE id = " + motorId
             );
+    }
+
+    public void RefillAll()
+    {
+        vendingMachineDb.ExecuteCustomNonQuery(
+            "UPDATE " + vendingMachineDb.dbSettings.tableName +
+            " SET quantity = '5' ,is_disabled = 'false'"
+            );
+
+        SetPorts();
     }
 
     public void ValidateInput()

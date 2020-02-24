@@ -197,6 +197,8 @@ MonoBehaviour:
     debugMode: 0
     serverDomainURL: 
     userPrimaryKeyName: 
+    checkInternetTimeOut: 0
+    downloadCodeAPITimeOut: 0
   jsonSetter: {fileID: 8106013693145944861}
   Submit: {fileID: 218756497738917073}
   virtualSubmit: {fileID: 218756497738917073}
@@ -8667,6 +8669,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
+        type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
+        type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8387562500859247587}
+    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
+        type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Sync
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
+        type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7610391580906879201, guid: 3cffb02027d43384387fe596707fe3e1,
         type: 3}
       propertyPath: dbSettings.columns.Array.size
@@ -8981,26 +9003,6 @@ PrefabInstance:
     - target: {fileID: 7610391580906879201, guid: 3cffb02027d43384387fe596707fe3e1,
         type: 3}
       propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
-        type: 3}
-      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
-        type: 3}
-      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8387562500859247587}
-    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
-        type: 3}
-      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Sync
-      objectReference: {fileID: 0}
-    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
-        type: 3}
-      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10042,6 +10044,11 @@ PrefabInstance:
       propertyPath: inputTextField
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2452114811308096172, guid: c216c4fb684db134c9cdf8441b831f9f,
+        type: 3}
+      propertyPath: inputFieldTMPro
+      value: 
+      objectReference: {fileID: 1141605882768715910}
     - target: {fileID: 2452114810006785953, guid: c216c4fb684db134c9cdf8441b831f9f,
         type: 3}
       propertyPath: m_IsActive
@@ -11171,6 +11178,16 @@ PrefabInstance:
     - target: {fileID: 8942889261852245931, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.checkInternetTimeOut
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.downloadCodeAPITimeOut
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3880680860983199461, guid: 8cf9bc346bec815448f5896dcc069492,
