@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Apps/200201-MY-YellowLead/VendingMachineStockManager.unity
-    guid: 4eeaff054a2740640bac89c7fb52f46d
+    path: Assets/Features-App/VendingMachineTester.unity
+    guid: 3567c83cc6ca0974fa6694da8859c3b7
   m_configObjects: {}

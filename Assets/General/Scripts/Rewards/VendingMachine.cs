@@ -10,7 +10,7 @@ public class VendingMachine : WaitExtension
     /*public byte[] test;
 public byte aa;*/
 
-    SerialPort VMSerialPort;
+    private SerialPort VMSerialPort;
 
     public WriteType VMSerialPortWriteType = WriteType.Byte;
     public string vmserialPortText;
@@ -22,7 +22,7 @@ public byte aa;*/
     public UnityEvent onDropFail;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         VMSerialPort = new SerialPort();
     }
@@ -40,7 +40,8 @@ public byte aa;*/
         System.Threading.Thread.Sleep(2000);
     }
 
-#region SendToPort (int)
+    #region SendToPort (int)
+
     public void SendToPort(int value_)
     {
         OpenPort();
@@ -509,9 +510,11 @@ public byte aa;*/
 
         ClosePort();
     }
-    #endregion
 
-#region SendToPort (bytes)
+    #endregion SendToPort (int)
+
+    #region SendToPort (bytes)
+
     public void SendToPort(byte[] bytes)
     {
         if (FindObjectOfType<GameSettingEntity>().gameSettings.debugMode)
@@ -533,13 +536,13 @@ public byte aa;*/
 
             ClosePort();
         }
-
         else
         {
-            
-            Wait(V, () => {
+            Wait(V, () =>
+            {
                 PortReset();
-                Wait(V, () => {
+                Wait(V, () =>
+                {
                     if (VMSerialPortWriteType == WriteType.Byte)
                     {
                         byte[] SendingBytes = bytes;
@@ -550,26 +553,23 @@ public byte aa;*/
                         VMSerialPort.Write(vmserialPortText);
                     }
 
-                    Wait(V, () => {
+                    Wait(V, () =>
+                    {
                         ClosePort();
                     });
                 });
-
-
             });
-            
         }
-
     }
-    #endregion
 
+    #endregion SendToPort (bytes)
 
-    void ClosePort()
+    private void ClosePort()
     {
         VMSerialPort.Close();
     }
 
-    void PortReset()
+    private void PortReset()
     {
         byte[] SendingBytes = { 0xFF, 0x01, 0x01, 0x01, 0x01, 0x01, 0x03 };
         VMSerialPort.Write(SendingBytes, 0, SendingBytes.Length);
@@ -598,12 +598,12 @@ public byte aa;*/
 
         // Using PDFtoPrinter
         proc.StartInfo.FileName = "C:\\Vending-Machine-Controller\\Vending-Machine-Controller.exe";
-      //  proc.StartInfo.Arguments = "-motor_lane " + motor_lane;
+        //  proc.StartInfo.Arguments = "-motor_lane " + motor_lane;
         proc.StartInfo.Arguments = "-motor_lane motor_" + id;
 
         proc.StartInfo.RedirectStandardOutput = true;
 
-      //  Debug.Log(proc.StartInfo.Arguments);
+        //  Debug.Log(proc.StartInfo.Arguments);
         /*
         proc.StartInfo.FileName = final_path;
         proc.StartInfo.Arguments = final_path2;
@@ -619,10 +619,10 @@ public byte aa;*/
         while (!proc.StandardOutput.EndOfStream)
         {
             // Debug.Log(proc.StandardOutput.ReadLine());
-            if (proc.StandardOutput.ReadLine().Contains("fail")) 
+            if (proc.StandardOutput.ReadLine().Contains("fail"))
             {
-                PlayerPrefs.SetString("turn_result", "Fail"); 
-                if(onDropFail.GetPersistentEventCount() > 0) onDropFail.Invoke();
+                PlayerPrefs.SetString("turn_result", "Fail");
+                if (onDropFail.GetPersistentEventCount() > 0) onDropFail.Invoke();
             }
         }
 
@@ -635,11 +635,12 @@ public byte aa;*/
 
         proc.Close();
 
-        if(onMotorTurn.GetPersistentEventCount() > 0) onMotorTurn.Invoke();
+        if (onMotorTurn.GetPersistentEventCount() > 0) onMotorTurn.Invoke();
     }
 }
 
 #region properties class
+
 [Serializable]
 public enum PortName
 {
@@ -673,4 +674,4 @@ public enum WriteType
     String
 }
 
-#endregion
+#endregion properties class

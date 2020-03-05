@@ -11,12 +11,13 @@ using Sirenix.OdinInspector;
 public class PortUIEntity : MonoBehaviour
 {
     #region Fields
+
     public bool is_enabled_ { get { return is_enabled; } set { is_enabled = value; ChangeState(); } }
     public bool is_enabled = false;
 
     public Color32[] colors;
     public GameObject model;
-    public Image img_ { set { model.SetActive(true); img = value; SelectPort(value.transform.GetSiblingIndex()+1); } }
+    public Image img_ { set { model.SetActive(true); img = value; SelectPort(value.transform.GetSiblingIndex() + 1); } }
     private Image img;
     public Transform portParent;
 
@@ -35,9 +36,10 @@ public class PortUIEntity : MonoBehaviour
     public TextMeshProUGUI totalText;
 
     public UnityEvent onSetPorts;
-    #endregion
 
-    void OnEnable()
+    #endregion Fields
+
+    private void OnEnable()
     {
         if (vendingMachineDb == null) vendingMachineDb = FindObjectOfType<VendingMachineDBModelEntity>();
     }
@@ -60,7 +62,6 @@ public class PortUIEntity : MonoBehaviour
 
         if (drc[0][4].ToString() == "false") disabledBtn.SetActive(false);
         else disabledBtn.SetActive(true);
-
     }
 
     [Button(ButtonSizes.Medium)]
@@ -72,14 +73,14 @@ public class PortUIEntity : MonoBehaviour
         for (int i = 0; i < drc.Count; i++)
         {
             img_ = imgs[System.Int32.Parse(drc[i]["id"].ToString()) - 1];
-            
+
             // name the box
             img.GetComponentInChildren<TextMeshProUGUI>().text = drc[i][1].ToString();
 
             // display the current amount of motor
-            if(img.enabled == true)
-            img.GetComponentsInChildren<TextMeshProUGUI>()[1].text = string.Format("{0}/{1}", new System.Object[] { drc[i]["quantity"].ToString(), drc[i]["item_limit"].ToString() });
-            
+            if (img.enabled == true)
+                img.GetComponentsInChildren<TextMeshProUGUI>()[1].text = string.Format("{0}/{1}", new System.Object[] { drc[i]["quantity"].ToString(), drc[i]["item_limit"].ToString() });
+
             // display avaibility of motor
             imgs[System.Int32.Parse(drc[i]["id"].ToString()) - 1].color = colors[System.Convert.ToInt32(!bool.Parse(drc[i][4].ToString()))];
         }
@@ -90,7 +91,6 @@ public class PortUIEntity : MonoBehaviour
         model.SetActive(false);
 
         if (onSetPorts.GetPersistentEventCount() > 0) onSetPorts.Invoke();
-
     }
 
     public void RevertPortInfo()
@@ -130,10 +130,14 @@ public class PortUIEntity : MonoBehaviour
         SetPorts();
     }
 
+    public void DropPort()
+    {
+        vendingMachineDb.DropTestSpecific(motorId);
+    }
+
     public void ValidateInput()
     {
         if (laneField.text == "" || quantityField.text == "" || int.Parse(quantityField.text) < 1) SaveButton.interactable = false;
-
         else SaveButton.interactable = true;
     }
 }

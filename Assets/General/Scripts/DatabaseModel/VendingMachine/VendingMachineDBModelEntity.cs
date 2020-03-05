@@ -20,17 +20,15 @@ public class VendingMachineDBModelEntity : DBModelEntity
     public GameObject stockErrorHandler;
 
     [Header("Stock setting")]
-
     public VendingMachine vm;
 
-    
+    private DataRowCollection rows;
+    [DisableInEditorMode] [SerializeField] private int item_id;
+    [DisableInEditorMode] [SerializeField] private string item_name;
+    [DisableInEditorMode] [SerializeField] private int item_quantity;
+    [DisableInEditorMode] [SerializeField] private int item_limit;
+    [DisableInEditorMode] [SerializeField] private string item_lane;
 
-    DataRowCollection rows;
-    [DisableInEditorMode][SerializeField] int item_id;
-    [DisableInEditorMode][SerializeField] string item_name;
-    [DisableInEditorMode][SerializeField] int item_quantity;
-    [DisableInEditorMode][SerializeField] int item_limit;
-    [DisableInEditorMode][SerializeField] string item_lane;
     //[SerializeField] private int laneOccupyPerItem = 1;
     [SerializeField] private int quantityPerLane = 2;
 
@@ -44,7 +42,8 @@ public class VendingMachineDBModelEntity : DBModelEntity
     public TMP_InputField dropIntervalField;
     public TMP_InputField dropQuantityField;
     public TMP_InputField dropCycleField;
-    #endregion
+
+    #endregion fields
 
     protected override void OnEnable()
     {
@@ -55,8 +54,8 @@ public class VendingMachineDBModelEntity : DBModelEntity
     [ContextMenu("HideHandler")]
     public new void HideAllHandler()
     {
-        if(stockErrorHandler != null)
-        stockErrorHandler.SetActive(false);
+        if (stockErrorHandler != null)
+            stockErrorHandler.SetActive(false);
     }
 
     public virtual void GetItem()
@@ -65,26 +64,25 @@ public class VendingMachineDBModelEntity : DBModelEntity
         LoadSetting();
 
         // string query = "SELECT * FROM " + dbSettings.tableName + " WHERE " + selectCustomCondition;
-        string query = 
+        string query =
         string.Format("SELECT * FROM {0} WHERE is_disabled = 'false' AND quantity > 0 LIMIT 1"
         // string.Format("SELECT * FROM {0} WHERE is_disabled = 'false' ORDER BY RANDOM() LIMIT 1"
-                        , new System.Object[]{ dbSettings.tableName });
+                        , new System.Object[] { dbSettings.tableName });
         DataRowCollection drc = ExecuteCustomSelectQuery(query);
 
         if (drc.Count < 1)
         {
             // out of stock
             Debug.LogError("out of stock");
-            if (OnOutOfStock.GetPersistentEventCount() > 0) {OnOutOfStock.Invoke();}
+            if (OnOutOfStock.GetPersistentEventCount() > 0) { OnOutOfStock.Invoke(); }
             return;
         }
         else
         {
-
-            item_id = (int)drc[0][0];
+            item_id = int.Parse(drc[0][0].ToString());
             item_name = drc[0][1].ToString();
             item_quantity = int.Parse(drc[0][2].ToString());
-            item_lane = drc[0][3].ToString() ;
+            item_lane = drc[0][3].ToString();
             item_limit = System.Int32.Parse(drc[0]["item_limit"].ToString());
         }
     }
@@ -98,87 +96,116 @@ public class VendingMachineDBModelEntity : DBModelEntity
 
         ConnectDb();
 
-            // vm.SendToPort(item_lane); int
+        // turn the motor
+        vm.TurnMotor(item_id.ToString());
 
-            /*
-            #region testing
+        PlayerPrefs.SetString("motor_id", item_id.ToString());
+        PlayerPrefs.SetString("lane", item_lane);
+        PlayerPrefs.SetString("item_index", (item_limit + 1 - item_quantity).ToString());
+        PlayerPrefs.SetString("operate_at", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
-            byte[] SendingBytes = new byte[]{ 0x01, 0x02, 0x31, 0x01, 0x00, 0x00, 0x35 };
-            System.Text.ASCIIEncoding encodingString = new System.Text.ASCIIEncoding();
-            Debug.Log("string : " + encodingString.GetString(SendingBytes));
+        if (OnStockGiven.GetPersistentEventCount() > 0) OnStockGiven.Invoke();
 
-            #endregion
-            */
+        item_quantity--;
 
-            #region SendToPort by bytes
-            // convert text 0x01, 0x02, 0x31, 0x01, 0x00, 0x00, 0x35 to byte[]
-            // split text by ","
-            // convert to byte[]
-            /*
-            string[] byteTextArray = item_lane.ToString().Split(new string[] {","}, System.StringSplitOptions.RemoveEmptyEntries);
-            string byteText = "";
-            
-            byte[] bytes = new byte[byteTextArray.Length];
+        List<string> col = new List<string>();
+        List<string> val = new List<string>();
 
-            for (int b = 0; b < byteTextArray.Length; b++)
-            {
-                byteText = byteTextArray[b].Trim().Replace(" ", string.Empty); // .Trim() remove whitespace at start and end | .Replace(" ", string.Empty) remove whitespace between character
-                
-                bytes[b] = System.Convert.ToByte(byteText, 16); // convert text to 16 bit byte 0x01(string) >> 0x01(byte16)
-            }
+        col.Add("quantity");
+        val.Add(item_quantity.ToString());
 
-            System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
-            Debug.Log("string from bytes : " + encoding.GetString(bytes));
+        UpdateData(col, val, "id = " + item_id);
 
-            vm.SendToPort(bytes); // bytes
-            */
-            #endregion
+        if (item_quantity < 1)
+        {
+            col = new List<string>();
+            val = new List<string>();
 
-            // turn the motor
-            vm.TurnMotor(item_id.ToString());
+            col.Add("is_disabled");
+            val.Add("true");
 
-            PlayerPrefs.SetString("motor_id", item_id.ToString());
-            PlayerPrefs.SetString("lane", item_lane);
-            PlayerPrefs.SetString("item_index", (item_limit + 1 - item_quantity).ToString());
-            PlayerPrefs.SetString("operate_at", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            UpdateData(col, val, "id = '" + item_id + "'");
+        }
 
-            if (OnStockGiven.GetPersistentEventCount() > 0) OnStockGiven.Invoke();
+        Debug.Log(item_id + " : " + item_name + " has " + item_quantity + " left | Lane : " + item_lane);
 
-            item_quantity--;
-
-            List<string> col = new List<string>();
-            List<string> val = new List<string>();
-
-            col.Add("quantity");
-            val.Add(item_quantity.ToString());
-
-            UpdateData(col, val, "id = " + item_id );
-
-            if (item_quantity < 1)
-            {
-                col = new List<string>();
-                val = new List<string>();
-
-                col.Add("is_disabled");
-                val.Add("true");
-
-                UpdateData(col, val, "id = '" + item_id + "'");
-            }
-
-            Debug.Log(item_id + " : " + item_name + " has " + item_quantity + " left | Lane : " + item_lane);
-
-            Close();
-
-        
+        Close();
     }
 
     #region Testing
+
     [Button(ButtonSizes.Large)]
     public void AutoTest()
     {
         autoDropInterval = float.Parse(dropIntervalField.text);
         // RefreshAutoTest();
         StartCoroutine(DropTestRoutine());
+    }
+
+    public void DropTestSpecific(int motorId)
+    {
+        LoadSetting();
+
+        // string query = "SELECT * FROM " + dbSettings.tableName + " WHERE " + selectCustomCondition;
+        string query =
+        string.Format("SELECT * FROM {0} WHERE is_disabled = 'false' AND quantity > 0 AND id = {1} LIMIT 1"
+                        , new System.Object[] { dbSettings.tableName, motorId });
+        DataRowCollection drc = ExecuteCustomSelectQuery(query);
+
+        if (drc.Count < 1)
+        {
+            // out of stock
+            Debug.LogError("out of stock");
+            if (OnOutOfStock.GetPersistentEventCount() > 0) { OnOutOfStock.Invoke(); }
+            return;
+        }
+        else
+        {
+            item_id = int.Parse(drc[0][0].ToString());
+            item_name = drc[0][1].ToString();
+            item_quantity = int.Parse(drc[0][2].ToString());
+            item_lane = drc[0][3].ToString();
+            item_limit = System.Int32.Parse(drc[0]["item_limit"].ToString());
+        }
+
+        if (item_quantity < 1) return;
+
+        ConnectDb();
+
+        // turn the motor
+        vm.TurnMotor(item_id.ToString());
+
+        PlayerPrefs.SetString("motor_id", item_id.ToString());
+        PlayerPrefs.SetString("lane", item_lane);
+        PlayerPrefs.SetString("item_index", (item_limit + 1 - item_quantity).ToString());
+        PlayerPrefs.SetString("operate_at", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+        if (OnStockGiven.GetPersistentEventCount() > 0) OnStockGiven.Invoke();
+
+        item_quantity--;
+
+        List<string> col = new List<string>();
+        List<string> val = new List<string>();
+
+        col.Add("quantity");
+        val.Add(item_quantity.ToString());
+
+        UpdateData(col, val, "id = " + item_id);
+
+        if (item_quantity < 1)
+        {
+            col = new List<string>();
+            val = new List<string>();
+
+            col.Add("is_disabled");
+            val.Add("true");
+
+            UpdateData(col, val, "id = '" + item_id + "'");
+        }
+
+        Debug.Log(item_id + " : " + item_name + " has " + item_quantity + " left | Lane : " + item_lane);
+
+        Close();
     }
 
     [Button(ButtonSizes.Large)]
@@ -207,7 +234,7 @@ public class VendingMachineDBModelEntity : DBModelEntity
                new System.Object[] { dbSettings.tableName }));
     }
 
-    IEnumerator RefreshAutoTestRoutine()
+    private IEnumerator RefreshAutoTestRoutine()
     {
         DataRowCollection drc = ExecuteCustomSelectQuery("SELECT id FROM " + dbSettings.tableName + " WHERE item_limit > 0");
 
@@ -227,7 +254,7 @@ public class VendingMachineDBModelEntity : DBModelEntity
         yield return null;
     }
 
-    IEnumerator DropTestRoutine()
+    private IEnumerator DropTestRoutine()
     {
         for (int d = 0; d < System.Int32.Parse(dropCycleField.text); d++)
         {
@@ -257,7 +284,7 @@ public class VendingMachineDBModelEntity : DBModelEntity
         }
     }
 
-    IEnumerator DropTestRandomRoutine()
+    private IEnumerator DropTestRandomRoutine()
     {
         for (int d = 0; d < System.Int32.Parse(dropCycleField.text); d++)
         {
@@ -287,9 +314,10 @@ public class VendingMachineDBModelEntity : DBModelEntity
         }
     }
 
-    #endregion
+    #endregion Testing
 
     #region Save
+
     public void SaveStockMultiple()
     {
         List<string> col = new List<string>();
@@ -310,20 +338,20 @@ public class VendingMachineDBModelEntity : DBModelEntity
                 string lane = i.ToString();
                 string is_disabled = "true";
 
-               // if (i % (laneOccupyPerItem) == 0) { is_disabled = "false"; Debug.Log(i + "% " + laneOccupyPerItem + " is " + i % laneOccupyPerItem); }
-               // if (i == 0) is_disabled = "false";
+                // if (i % (laneOccupyPerItem) == 0) { is_disabled = "false"; Debug.Log(i + "% " + laneOccupyPerItem + " is " + i % laneOccupyPerItem); }
+                // if (i == 0) is_disabled = "false";
 
                 val = new List<string>();
                 val.Add(i.ToString());
                 val.Add(name);
                 val.Add(quantity);
                 val.Add(lane);
-                val.Add(is_disabled); 
+                val.Add(is_disabled);
 
                 AddData(col, val);
             }
         }
-        catch(System.Exception ex)
+        catch (System.Exception ex)
         {
             Debug.LogError(ex.Message);
         }
@@ -336,12 +364,13 @@ public class VendingMachineDBModelEntity : DBModelEntity
         SaveStockMultiple();
         TestIndex++;
     }
-    #endregion
+
+    #endregion Save
 
     #region External App Text file Communication
+
     public void SaveStockRemainToFile()
     {
-
         string appLaunchFilePath = Path.Combine(dbSettings.folderPath, "AppLaunchNumberFilePath.txt");
 
         // Get data file path from AppLaunchNumberFilePath.txt
@@ -352,5 +381,5 @@ public class VendingMachineDBModelEntity : DBModelEntity
         File.WriteAllText(dataFilePath[1], drc[0][0].ToString());
     }
 
-    #endregion
+    #endregion External App Text file Communication
 }

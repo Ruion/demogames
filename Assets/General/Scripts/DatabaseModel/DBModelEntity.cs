@@ -15,12 +15,13 @@ using Sirenix.OdinInspector;
 /// Server > set server url, get data url \n
 /// Handler > toogle hasSync and drag message gameObjects into corresponsding field \n
 /// Tips: \n
-/// Insert player data > use PlayerPrefsSaver or PlayerPrefsSave_Group to save the value 
+/// Insert player data > use PlayerPrefsSaver or PlayerPrefsSave_Group to save the value
 /// with name same with table column, call SaveToLocal() to insert data into database
 /// </summary>
 public class DBModelEntity : DBModelMaster
 {
-    DataRowCollection rows;
+    private DataRowCollection rows;
+    public UnityEvent OnSaveToLocal;
     public UnityEvent OnSyncStart;
     public UnityEvent OnSyncEnd;
     private bool Saved = false;
@@ -31,7 +32,8 @@ public class DBModelEntity : DBModelMaster
     /// <summary>
     /// Save PlayerPrefs value into all table column set in inspector
     /// </summary>
-    public override void SaveToLocal() {
+    public override void SaveToLocal()
+    {
         base.SaveToLocal();
 
         if (Saved)
@@ -57,18 +59,21 @@ public class DBModelEntity : DBModelMaster
             val[i] = PlayerPrefs.GetString(col[i]);
         }
 
-       AddData(col, val);
+        AddData(col, val);
+        if (OnSaveToLocal.GetPersistentEventCount() > 0) OnSaveToLocal.Invoke();
     }
 
-/// <summary>
-/// Load setting like send url and call SyncToServer() coroutine to Send data to server
-/// </summary>
+    /// <summary>
+    /// Load setting like send url and call SyncToServer() coroutine to Send data to server
+    /// </summary>
     public override void Sync()
     {
         base.Sync();
 
         /*
+
          #region Check Internet
+
         ///////////// CHECK Internet Connection /////////////
         if (!NetworkExtension.CheckForInternetConnection())
         {
@@ -78,22 +83,23 @@ public class DBModelEntity : DBModelMaster
             ToogleHandler(internetErrorHandler, false);
             return;
         }
-        #endregion
+
+        #endregion Check Internet
+
         */
 
-        
         StartCoroutine(SyncToServer());
     }
 
-/// <summary>
-/// Make web request and send data to server, data will continue to send regardless of any error encounter
-/// </summary>
-/// <returns></returns>
+    /// <summary>
+    /// Make web request and send data to server, data will continue to send regardless of any error encounter
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator SyncToServer()
     {
         yield return StartCoroutine(NetworkExtension.CheckForInternetConnectionRoutine());
 
-        if(NetworkExtension.internet == false)
+        if (NetworkExtension.internet == false)
         {
             //No connection
             ToogleHandler(blockDataHandler, false);
@@ -108,23 +114,23 @@ public class DBModelEntity : DBModelMaster
 
         rows = GetAllCustomCondition();
 
-        if(rows.Count < 1) 
+        if (rows.Count < 1)
         {
             SyncEnded();
             StopAllCoroutines();
             Debug.Log(name + " no data to sync. Stop SyncToServer() coroutine");
-            yield break; 
+            yield break;
         }
 
-      //  Debug.Log(name + " : unsync data : " + rows.Count); 
-        int totalSent = 0; 
+        //  Debug.Log(name + " : unsync data : " + rows.Count);
+        int totalSent = 0;
         int totalNotSent = 0;
 
         Debug.Log(name + " : Start sync");
         ToogleHandler(blockDataHandler, true);
 
-       // Get global event_code
-       string source_identifier_code = JSONExtension.LoadSetting(dbSettings.folderPath + "\\Setting", "source_identifier_code");
+        // Get global event_code
+        string source_identifier_code = JSONExtension.LoadSetting(dbSettings.folderPath + "\\Setting", "source_identifier_code");
 
         for (int u = 0; u < rows.Count; u++)
         {
@@ -142,6 +148,7 @@ public class DBModelEntity : DBModelMaster
             }
 
             #region WWW Form
+
             WWWForm form = new WWWForm();
 
             // Debug.Log("field to sent : " + dbSettings.columnsToSync.Count);
@@ -149,15 +156,13 @@ public class DBModelEntity : DBModelMaster
             string values = "";
             entityId = int.Parse(rows[u]["id"].ToString());
 
-            
-
             for (int i = 0; i < dbSettings.columns.Count; i++)
             {
                 if (!dbSettings.columns[i].sync) continue;
 
                 string value = rows[u][dbSettings.columns[i].name].ToString();
 
-                if(dbSettings.columns[i].name == "source_identifier_code") value = source_identifier_code;
+                if (dbSettings.columns[i].name == "source_identifier_code") value = source_identifier_code;
 
                 // show value send to server - 2
                 values += value + " | ";
@@ -169,12 +174,13 @@ public class DBModelEntity : DBModelMaster
 
             // show value send to server - 3
             // Debug.Log(values);
-            #endregion
+
+            #endregion WWW Form
 
             #region WebRequest
+
             using (UnityWebRequest www = UnityWebRequest.Post((dbSettings.sendURL + dbSettings.sendAPI).Replace(" ", string.Empty), form))
             {
-
                 yield return www.SendWebRequest();
 
                 if (www.isNetworkError || www.isHttpError)
@@ -183,8 +189,8 @@ public class DBModelEntity : DBModelMaster
                     totalNotSent++;
                     ToogleStatusBar(failBar, totalNotSent);
                     ToogleHandler(errorHandler, true);
-                  //  SyncEnded();
-                  //  yield break;
+                    //  SyncEnded();
+                    //  yield break;
                 }
                 else
                 {
@@ -196,12 +202,12 @@ public class DBModelEntity : DBModelMaster
                         //  string response = dbSettings.serverResponses.resultResponses.FirstOrDefault(r => r == jsonData.result);
                         ServerResponses response = dbSettings.serverResponsesArray.FirstOrDefault(r => r.resultResponse == jsonData.result);
                         int index = System.Array.IndexOf(dbSettings.serverResponsesArray, response);
-                        Debug.LogError(name + " - " +response.resultResponseMessage + "\n Values : " + values);
+                        Debug.LogError(name + " - " + response.resultResponseMessage + "\n Values : " + values);
 
                         totalNotSent++;
                         ToogleStatusBar(failBar, totalNotSent);
 
-                        ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = '"+ jsonData.result + "' WHERE id = " + entityId);
+                        ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = '" + jsonData.result + "' WHERE id = " + entityId);
                     }
                     else
                     {
@@ -216,29 +222,30 @@ public class DBModelEntity : DBModelMaster
                 }
             }
 
-          //  yield return new WaitForEndOfFrame();
+            //  yield return new WaitForEndOfFrame();
             yield return new WaitForSeconds(1.2f);
         }
-        #endregion
+
+        #endregion WebRequest
 
         ToogleHandler(blockDataHandler, false);
-       if(hasSync) failBar.GetComponent<StatusBar>().Finish();
-       if(hasSync) successBar.GetComponent<StatusBar>().Finish();
+        if (hasSync) failBar.GetComponent<StatusBar>().Finish();
+        if (hasSync) successBar.GetComponent<StatusBar>().Finish();
         SyncEnded();
     }
 
-    void SyncEnded()
+    private void SyncEnded()
     {
         rows.Clear();
         Close();
         if (OnSyncEnd.GetPersistentEventCount() > 0) OnSyncEnd.Invoke();
     }
 
-/// <summary>
-/// Show error message and handler when encounter error sending data to server
-/// </summary>
-/// <param name="www"></param>
-/// <param name="errorMessage"></param>
+    /// <summary>
+    /// Show error message and handler when encounter error sending data to server
+    /// </summary>
+    /// <param name="www"></param>
+    /// <param name="errorMessage"></param>
     private void ErrorAction(UnityWebRequest www, string errorMessage)
     {
         ToogleHandler(blockDataHandler, false);
@@ -251,10 +258,9 @@ public class DBModelEntity : DBModelMaster
     public void SaveToDBFromFile()
     {
         if (Saved)
-           return;
+            return;
 
         Saved = true;
-
 
         string appLaunchFilePath = Path.Combine(dbSettings.folderPath, "AppLaunchNumberFilePath.txt");
 
@@ -282,7 +288,7 @@ public class DBModelEntity : DBModelMaster
         }
 
         AddData(col, val);
+
+        if (OnSaveToLocal.GetPersistentEventCount() > 0) OnSaveToLocal.Invoke();
     }
-
 }
-

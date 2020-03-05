@@ -8,8 +8,8 @@ using UnityEngine;
 [System.Serializable]
 public class Settings
 {
-    public string scoreName = "game_score";
-    public int scoreToWin = 3;
+    //public string scoreName = "game_score";
+    //public int scoreToWin = 3;
     public bool debugMode = false;
 
     public string serverDomainURL;

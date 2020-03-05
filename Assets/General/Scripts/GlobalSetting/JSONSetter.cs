@@ -6,16 +6,14 @@ using Sirenix.OdinInspector;
 
 public class JSONSetter : MonoBehaviour
 {
-    [FolderPath(AbsolutePath=true, UseBackslashes=true)]
-    public string savePath;
+    [FolderPath(AbsolutePath = true, UseBackslashes = true)]
+    public string savePath { get { return LoadGlobalSettingFile(@"C:\UID-APP\GLOBAL")["projectFolder"].ToString(); } }
 
-    [FolderPath(AbsolutePath=true, UseBackslashes=true)]
+    [FolderPath(AbsolutePath = true, UseBackslashes = true)]
     public string globalSavePath;
 
     private string fileName = "Setting.json";
     private string globalFileName = "GlobalSetting.json";
-
-    private string slash = "\\";
 
     public void SaveSetting(JObject jsonObj, bool global = false)
     {
@@ -23,14 +21,15 @@ public class JSONSetter : MonoBehaviour
 
         string fileName = this.fileName;
 
-        if(global) 
+        if (global)
         {
             savePath = globalSavePath;
             fileName = this.globalFileName;
         }
 
+        Directory.CreateDirectory(Path.GetDirectoryName(savePath + "\\" + fileName));
         // write JSON directly to a file
-        using (StreamWriter file = File.CreateText(savePath + GetPlatFormSlash() + fileName))
+        using (StreamWriter file = File.CreateText(savePath + "\\" + fileName))
         using (JsonTextWriter writer = new JsonTextWriter(file))
         {
             jsonObj.WriteTo(writer);
@@ -41,7 +40,7 @@ public class JSONSetter : MonoBehaviour
     {
         JObject jsonObj = LoadSetting();
 
-        if(!jsonObj.ContainsKey(name) && !string.IsNullOrEmpty(value))
+        if (!jsonObj.ContainsKey(name) && !string.IsNullOrEmpty(value))
         {
             jsonObj.Add(new JProperty(name, value));
         }
@@ -57,7 +56,7 @@ public class JSONSetter : MonoBehaviour
     {
         JObject jsonObj = LoadSetting();
 
-        if(!jsonObj.ContainsKey(name) && !string.IsNullOrEmpty(value))
+        if (!jsonObj.ContainsKey(name) && !string.IsNullOrEmpty(value))
         {
             jsonObj.Add(new JProperty(name, value));
         }
@@ -72,31 +71,23 @@ public class JSONSetter : MonoBehaviour
     public JObject LoadSetting(bool global = false)
     {
         string savePath = this.savePath;
-        if(global) 
+        if (global)
         {
             savePath = globalSavePath;
             fileName = this.globalFileName;
         }
 
-        string json = File.ReadAllText(savePath + GetPlatFormSlash() + "Setting.json");
+        string json = File.ReadAllText(savePath + "\\" + "Setting.json");
         JObject jsonObj = JObject.Parse(json);
 
         return jsonObj;
     }
 
-    private string GetPlatFormSlash()
+    public JObject LoadGlobalSettingFile(string filePath)
     {
-        /*
-        if(Application.platform == RuntimePlatform.Android)
-        {
-            slash = "/";
-        }
-        */
+        string json = File.ReadAllText(filePath + "\\" + globalFileName);
+        JObject jsonObj = JObject.Parse(json);
 
-        if(Application.platform != RuntimePlatform.WindowsPlayer)
-        {
-            slash = "/";
-        }
-        return slash;
+        return jsonObj;
     }
 }

@@ -347,15 +347,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
-        type: 3}
-      propertyPath: gameSettings.serverDomainURL
-      value: http://200201-my-pediasure.uid-testing.space
-      objectReference: {fileID: 0}
     - target: {fileID: 1661002323923998949, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: savePath
       value: C:\UID-APP\200201-MY-YellowLead
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.serverDomainURL
+      value: http://200201-my-pediasure.uid-testing.space
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf9bc346bec815448f5896dcc069492, type: 3}
@@ -572,8 +572,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1154095593}
   - component: {fileID: 1154095596}
-  - component: {fileID: 1154095595}
   - component: {fileID: 1154095594}
+  - component: {fileID: 1154095595}
   m_Layer: 0
   m_Name: SaveDataFromFile
   m_TagString: Untagged
@@ -616,16 +616,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1154095592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c4b0fa41e3f84c4483504d6babaaff1, type: 3}
+  m_Script: {fileID: 11500000, guid: cbeb71ec69cc3ba4f94c1f4415ece488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  second: 2
-  initialSecond: 0
-  isRealtime: 1
-  stringFormat: 
-  countDownTexts: []
-  countdownEndEvents:
-    m_PersistentCalls:
+  events:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1383472148}
+        m_MethodName: WriteExistingDataToFile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1154095594}
         m_MethodName: QuitApplication
@@ -638,7 +646,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  useShortcut: 1
+  delays:
+  - 5
+  - 2
+  isRealtime: 1
 --- !u!114 &1154095596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,7 +688,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1154095595}
-        m_MethodName: StartGame
+        m_MethodName: Run
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -776,6 +787,77 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerDataDatabaseModel
       objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.serverResponsesArray.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: OnSaveToLocal.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dataFilePathIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.folderPath
+      value: C:\UID-APP\200201-MY-YellowLead
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: db_connection_string
+      value: URI = file:C:\UID-APP\200201-MY-YellowLead\Databases\PlayerDataDatabaseModel.sqlite
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.sendURL
+      value: http://200201-my-pediasure.unicom-interactive-digital.com/public/api/
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.serverResponsesArray.Array.data[2].resultResponse
+      value: Duplicate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.serverResponsesArray.Array.data[2].resultResponseMessage
+      value: duplicate message sent
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: OnSaveToLocal.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: OnSaveToLocal.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: OnSaveToLocal.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1383472148}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: OnSaveToLocal.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: WriteExistingDataToFile
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: OnSaveToLocal.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -831,48 +913,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
-        type: 3}
-      propertyPath: dbSettings.serverResponsesArray.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
-        type: 3}
-    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
-        type: 3}
-      propertyPath: dataFilePathIndex
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
-        type: 3}
-      propertyPath: dbSettings.folderPath
-      value: C:\UID-APP\200201-MY-YellowLead
-      objectReference: {fileID: 0}
-    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
-        type: 3}
-      propertyPath: db_connection_string
-      value: URI = file:C:\UID-APP\200201-MY-YellowLead\Databases\PlayerDataDatabaseModel.sqlite
-      objectReference: {fileID: 0}
-    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
-        type: 3}
-      propertyPath: dbSettings.sendURL
-      value: http://200201-my-pediasure.unicom-interactive-digital.com/public/api/
-      objectReference: {fileID: 0}
-    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
-        type: 3}
-      propertyPath: dbSettings.serverResponsesArray.Array.data[2].resultResponse
-      value: Duplicate
-      objectReference: {fileID: 0}
-    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
-        type: 3}
-      propertyPath: dbSettings.serverResponsesArray.Array.data[2].resultResponseMessage
-      value: duplicate message sent
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7497790228101722038, guid: a6edbdc5526c8c546be385658ee37371, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a6edbdc5526c8c546be385658ee37371, type: 3}
 --- !u!4 &1383472145 stripped
 Transform:
@@ -886,12 +928,85 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1383472144}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1383472147}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db476e859c69a7d448df1b2a28465c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1383472147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7497790228101721993, guid: a6edbdc5526c8c546be385658ee37371,
+    type: 3}
+  m_PrefabInstance: {fileID: 1383472144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1383472148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383472147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99c068f33d396742b5931477e00e6ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: writeInfo
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: ExistingEmailList.txt
+    - Name: $v
+      Entry: 1
+      Data: email
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: ExistingContactList.txt
+    - Name: $v
+      Entry: 1
+      Data: contact
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  dbmodel: {fileID: 1383472146}
+  copyInfo: []
 --- !u!1 &1564364619
 GameObject:
   m_ObjectHideFlags: 0
