@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5218877418571574473}
   - component: {fileID: 5218877418571574454}
   m_Layer: 5
-  m_Name: SettingField
+  m_Name: SettingFieldNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,6 +298,11 @@ PrefabInstance:
       propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 804039847741614279, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 804039847741614278, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
         type: 3}
       propertyPath: m_Color.r
@@ -420,6 +425,11 @@ PrefabInstance:
     - target: {fileID: 804039847896398453, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
         type: 3}
       propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 804039847896398453, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

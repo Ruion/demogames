@@ -32,21 +32,23 @@ public class SceneTransitionManager : MonoBehaviour
 
     private bool eventsAdded = false;
 
-    void Awake()
+    private void Awake()
     {
-        if(instance == null)
-        instance = this;
+        if (instance == null)
+            instance = this;
     }
 
     public void OnEnable()
     {
         if (eventsAdded) return;
-   
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (this == null) return;
+
         Invoke("FadeOut", fadeOutDelay);
         Debug.Log("scene loaded");
     }
@@ -65,7 +67,7 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void RestartScene()
     {
-        FadeIn(); 
+        FadeIn();
         StartCoroutine(RestartSceneCoroutine());
     }
 
@@ -73,18 +75,18 @@ public class SceneTransitionManager : MonoBehaviour
     {
         animator.gameObject.SetActive(true);
         animator.SetInteger("Fade", 1);
-        if(onFadeIn.GetPersistentEventCount() > 0) onFadeIn.Invoke();
+        if (onFadeIn.GetPersistentEventCount() > 0) onFadeIn.Invoke();
     }
 
     public void FadeOut()
     {
         animator.SetInteger("Fade", 0);
-        if(onFadeOut.GetPersistentEventCount() > 0) onFadeOut.Invoke();
+        if (onFadeOut.GetPersistentEventCount() > 0) onFadeOut.Invoke();
     }
 
     private IEnumerator SwitchSceneNameCoroutine(string sceneName)
     {
-         Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         yield return new WaitForSeconds(fadeInDelay + animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         SceneManager.LoadScene(sceneName);
     }
@@ -102,5 +104,4 @@ public class SceneTransitionManager : MonoBehaviour
         yield return new WaitForSeconds(fadeInDelay + animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    
 }

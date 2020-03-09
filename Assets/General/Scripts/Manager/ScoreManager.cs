@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class ScoreManager : MonoBehaviour {
-
+public class ScoreManager : MonoBehaviour
+{
     public static ScoreManager instance;
 
     public ScoreVisualizer scoreVisualizer;
@@ -14,44 +14,31 @@ public class ScoreManager : MonoBehaviour {
     public GameObject minusScoreEffectPrefab;
 
     [ReadOnly]
-    public string scoreName = "game_score";
+    public string scoreName = "score";
 
-    void Awake()
+    private void Awake()
     {
         instance = this;
-
-        GameSettingEntity dm = GameObject.Find("GameSettingEntity_DoNotChangeName").GetComponent<GameSettingEntity>();
-        dm.LoadSetting();
-
-        if(dm == null)
-        {
-            Debug.LogError("GameSettingEntity not found in scene");
-        }
-        else
-        {
-            scoreName = dm.gameSettings.scoreName;
-        }
 
         PlayerPrefs.SetString(scoreName, "0");
     }
 
-	public void AddScore(int amount)
+    public void AddScore(int amount)
     {
         soundManager.AddScore();
         SpawnScoreEffect(addScoreEffectPrefab);
-       scoreVisualizer.UpdateText(amount);             
+        scoreVisualizer.UpdateText(amount);
     }
 
     public void MinusScore(int amount)
     {
         soundManager.MinusScore();
         SpawnScoreEffect(minusScoreEffectPrefab);
-        scoreVisualizer.UpdateText(-amount);       
+        scoreVisualizer.UpdateText(-amount);
     }
 
     public void SpawnScoreEffect(GameObject effectPrefab)
     {
-        Instantiate(effectPrefab, player.position + Vector3.up , Quaternion.identity, scoreEffectContainer);
+        Instantiate(effectPrefab, player.position + Vector3.up, Quaternion.identity, scoreEffectContainer);
     }
-
 }

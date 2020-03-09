@@ -11,12 +11,7 @@ public class JumpShootScoreManagerScript : GameSettingEntity
 
     public int JumpAddScore = 1;
 
-    public string scoreName = "game_score";
-
-    private void Start()
-    {
-        scoreName = gameSettings.scoreName;
-    }
+    public string scoreName = "score";
 
     public void AddScore()
     {

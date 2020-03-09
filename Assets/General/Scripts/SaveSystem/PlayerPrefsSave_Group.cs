@@ -3,21 +3,21 @@ using UnityEngine.UI;
 using TMPro;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
-using System.Collections;
 
 /// <summary>
-/// Save the form field, string value into PlayerPrefs. 
+/// Save the form field, string value into PlayerPrefs.
 /// Saving type supported are TMP_InputField, TMP_Dropdown, InputField, TextMeshProUGUI, DateTime, manual set string
 /// </summary>
 public class PlayerPrefsSave_Group : SerializedMonoBehaviour
 {
-   // [TableList]
+    // [TableList]
     public DataField[] dataFields;
 
-    [TableList][DictionaryDrawerSettings(KeyLabel = "Name", ValueLabel = "Value")]
-    [DisableInEditorMode] public Dictionary<string,string> playerprefs;
+    [TableList]
+    [DictionaryDrawerSettings(KeyLabel = "Name", ValueLabel = "Value")]
+    [DisableInEditorMode] public Dictionary<string, string> playerprefs;
 
-    [Button(ButtonSizes.Large,ButtonStyle.CompactBox)]
+    [Button(ButtonSizes.Large, ButtonStyle.CompactBox)]
     public void SaveAll()
     {
         for (int d = 0; d < dataFields.Length; d++)
@@ -36,11 +36,10 @@ public class PlayerPrefsSave_Group : SerializedMonoBehaviour
     {
         PlayerPrefs.SetString(df.name_, df.GetValue());
     }
-
 }
 
 [System.Serializable]
-public class DataField 
+public class DataField
 {
     [HorizontalGroup("Field", .5f, LabelWidth = 60)]
     [BoxGroup("Field/Parameter")]
@@ -54,12 +53,15 @@ public class DataField
     [ShowIf("savetype", SaveType.Text, false)]
     public TextMeshProUGUI textMeshProUGUI;
 
-    [HideLabel][BoxGroup("Field/Fields")][HideIf("savetype", SaveType.DateTime, false)][DisableIf("@savetype==SaveType.Manual", false)]
+    [HideLabel]
+    [BoxGroup("Field/Fields")]
+    [HideIf("savetype", SaveType.DateTime, false)]
+    [DisableIf("@savetype==SaveType.Manual", false)]
     public TMP_Dropdown dropdown;
 
     [HideLabel]
     [BoxGroup("Field/Fields")]
-    [ShowIf("savetype", SaveType.InputField_TMP,false)]
+    [ShowIf("savetype", SaveType.InputField_TMP, false)]
     public TMP_InputField inputField_TMP;
 
     [HideLabel]
@@ -67,15 +69,15 @@ public class DataField
     [ShowIf("savetype", SaveType.InputField, false)]
     public InputField inputField;
 
-    [BoxGroup("Field/Fields")][EnableIf("savetype", SaveType.Manual)]
+    [BoxGroup("Field/Fields")]
+    [EnableIf("savetype", SaveType.Manual)]
     public string value_;
 
     public string GetValue()
     {
-        
         string dropDownValue = "";
         if (dropdown != null && savetype != SaveType.DateTime && savetype != SaveType.Manual) dropDownValue = dropdown.options[dropdown.value].text;
-        
+
         switch (savetype)
         {
             case SaveType.InputField_TMP:
@@ -97,16 +99,14 @@ public class DataField
             case SaveType.Manual:
                 break;
 
-            case SaveType.GlobalSetting:
-             JSONSetter jsonSetter = GameObject.FindObjectOfType<JSONSetter>();
-             jsonSetter.UpdateSettingGlobal(name_, value_);
-
-             break;
+            case SaveType.SourceIdentifierCode:
+                GameSettingEntity gse = GameObject.FindGameObjectWithTag("GameSettingMaster").GetComponent<GameSettingEntity>();
+                value_ = gse.gameSettings.source_identifier_code;
+                break;
         }
 
         return value_;
     }
-
 }
 
 public enum SaveType
@@ -117,4 +117,5 @@ public enum SaveType
     Manual = 5,
     Text = 6,
     GlobalSetting = 7,
+    SourceIdentifierCode = 8,
 }

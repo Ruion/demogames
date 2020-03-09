@@ -95,15 +95,14 @@ public class DBModelMaster : DBSettingEntity
 
         string folder = "";
 
-        if (!debugMode)
+        if (debugMode)
             folder = "\\Databases\\";
         else
             folder = "\\Debug\\Databases\\";
 
-        db_connection_string = "URI = file:" + dbSettings.folderPath + folder + dbSettings.dbName + ".sqlite";
+        db_connection_string = "URI = file:" + dbSettings.folderPath + "\\Databases\\" + dbSettings.dbName + ".sqlite";
 
-        string path = dbSettings.folderPath + folder;
-        Directory.CreateDirectory(Path.GetDirectoryName((path)));
+        Directory.CreateDirectory(Directory(db_connection_string));
 
         db_connection = new SqliteConnection(db_connection_string);
         db_connection.Open();
@@ -663,6 +662,8 @@ public class DBModelMaster : DBSettingEntity
         isFetchingData = true;
     }
 
+    #endregion Legacy
+
     public void DoGetDataFromServer()
     {
         try
@@ -711,6 +712,8 @@ public class DBModelMaster : DBSettingEntity
         using (UnityWebRequest www = UnityWebRequest.Get(dbSettings.sendURL + dbSettings.keyDownloadAPI))
         {
             //  ulong downloadBytesOrigin = new ulong();
+            www.timeout = FindObjectOfType<GameSettingEntity>().gameSettings.downloadCodeAPITimeOut;
+
             var watchRequest = System.Diagnostics.Stopwatch.StartNew();
             watchRequest.Start();
 
@@ -776,8 +779,6 @@ public class DBModelMaster : DBSettingEntity
 
         isFetchingData = false;
     }
-
-    #endregion Legacy
 
     /// <summary>
     /// call GetDataFromServer() coroutine to get the list of email from server, call UpdateEmailExistedOnline() to

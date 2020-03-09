@@ -5,10 +5,11 @@ using TMPro;
 /// Visualize the score to TextMeshProUGUI text. Use this component
 /// to add/minus score and display score to text
 /// </summary>
-public class ScoreVisualizer : GameSettingEntity {
-
+public class ScoreVisualizer : GameSettingEntity
+{
     public TextMeshProUGUI[] scoreTexts;
     private int score;
+
     public override void Awake()
     {
         base.Awake();
@@ -32,7 +33,7 @@ public class ScoreVisualizer : GameSettingEntity {
 
     public void GetScoreFromPlayerPrefs()
     {
-        score = System.Int32.Parse(PlayerPrefs.GetString("game_score"));
+        score = System.Int32.Parse(PlayerPrefs.GetString("score"));
     }
 
     public void VisualiseScore()
@@ -47,9 +48,6 @@ public class ScoreVisualizer : GameSettingEntity {
     {
         LoadGameSettingFromMaster();
 
-        string scoreName = gameSettings.scoreName;
-
-        PlayerPrefs.SetString(scoreName, score.ToString());
+        PlayerPrefs.SetString("score", score.ToString());
     }
-
 }

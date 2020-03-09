@@ -192,13 +192,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings:
-    scoreName: game_score
-    scoreToWin: 3
     debugMode: 0
     serverDomainURL: 
-    userPrimaryKeyName: 
+    source_identifier_code: 
     checkInternetTimeOut: 0
-    downloadCodeAPITimeOut: 0
   jsonSetter: {fileID: 8106013693145944861}
   Submit: {fileID: 218756497738917073}
   virtualSubmit: {fileID: 218756497738917073}
@@ -2827,7 +2824,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 8
+      Data: 9
     - Name: 
       Entry: 7
       Data: 
@@ -2908,7 +2905,7 @@ MonoBehaviour:
       Data: created_at
     - Name: $v
       Entry: 1
-      Data: 2019-11-19 15:28:03
+      Data: 2020-03-06 15:43:40
     - Name: 
       Entry: 8
       Data: 
@@ -2917,10 +2914,22 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: is_submitted
+      Data: online_status
     - Name: $v
       Entry: 1
-      Data: false
+      Data: new
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: source_identifier_code
+    - Name: $v
+      Entry: 1
+      Data: BBW
     - Name: 
       Entry: 8
       Data: 
@@ -2979,7 +2988,7 @@ MonoBehaviour:
     dropdown: {fileID: 0}
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
-    value_: 2019-11-19 15:28:03
+    value_: 2020-03-06 15:43:40
   - name_: online_status
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -4229,9 +4238,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropDown: {fileID: 5747227008793542732}
-  phoneCodeFileName: PhoneNumberExtensionMalaysia.txt
-  phoneCodeFile: C:/UID-APP/APPS/GAME-01/PhoneNumberExtensionMalaysia.txt
-  fileExtension: txt
 --- !u!1 &5747227008908997577
 GameObject:
   m_ObjectHideFlags: 0
@@ -8669,26 +8675,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
-        type: 3}
-      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
-        type: 3}
-      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8387562500859247587}
-    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
-        type: 3}
-      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Sync
-      objectReference: {fileID: 0}
-    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
-        type: 3}
-      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 7610391580906879201, guid: 3cffb02027d43384387fe596707fe3e1,
         type: 3}
       propertyPath: dbSettings.columns.Array.size
@@ -9003,6 +8989,26 @@ PrefabInstance:
     - target: {fileID: 7610391580906879201, guid: 3cffb02027d43384387fe596707fe3e1,
         type: 3}
       propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
+        type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
+        type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8387562500859247587}
+    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
+        type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Sync
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610391580906879207, guid: 3cffb02027d43384387fe596707fe3e1,
+        type: 3}
+      propertyPath: eventsOEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10618,7 +10624,7 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: db_connection_string
-      value: URI = file:C:/UID_Honda/demogames/Assets/StreamingAssets/player.sql
+      value: URI = file:C:\UID-APP\GameTemplate-01\Debug\Databases\PlayerDataDatabaseModel.sqlite
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}

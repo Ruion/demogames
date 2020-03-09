@@ -271,7 +271,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: This App save Data from File
+  m_Text: This App sync data to server
 --- !u!222 &185697626
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -350,7 +350,17 @@ PrefabInstance:
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: gameSettings.serverDomainURL
-      value: http://200201-my-pediasure.uid-testing.space
+      value: http://200202-my-genting.unicom-interactive-digital.com
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.debugMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.checkInternetTimeOut
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1661002323923998949, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
@@ -364,7 +374,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1564364623}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3723183745067904047, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
@@ -384,7 +394,7 @@ PrefabInstance:
     - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1537.3124
+      value: 0.0078372955
       objectReference: {fileID: 0}
     - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
@@ -409,7 +419,7 @@ PrefabInstance:
     - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
@@ -429,17 +439,17 @@ PrefabInstance:
     - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 192.16405
+      value: 1.0009797
       objectReference: {fileID: 0}
     - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 192.16405
+      value: 1.0009797
       objectReference: {fileID: 0}
     - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 192.16405
+      value: 1.0009797
       objectReference: {fileID: 0}
     - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
@@ -449,7 +459,7 @@ PrefabInstance:
     - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
       propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
@@ -522,14 +532,33 @@ PrefabInstance:
       propertyPath: dbSettings.sendURL
       value: http://200201-my-pediasure.uid-testing.space/public/api/
       objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1154095595}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: selectCustomCondition
+      value: is_sync = 'no'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30fea551c920b624b9fd0c8e148823e5, type: 3}
---- !u!4 &1008898135 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1008898134}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1008898136 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
@@ -551,11 +580,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1154095593}
-  - component: {fileID: 1154095596}
   - component: {fileID: 1154095595}
   - component: {fileID: 1154095594}
   m_Layer: 0
-  m_Name: SaveDataFromFile
+  m_Name: AutoSync
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -599,7 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4b0fa41e3f84c4483504d6babaaff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  second: 2
+  second: 10
   initialSecond: 0
   isRealtime: 1
   stringFormat: 
@@ -607,8 +635,8 @@ MonoBehaviour:
   countdownEndEvents:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1154095594}
-        m_MethodName: QuitApplication
+      - m_Target: {fileID: 1383472146}
+        m_MethodName: Sync
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -619,54 +647,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   useShortcut: 1
---- !u!114 &1154095596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1154095592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 571c04249d3eb754096dafc97ee440fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventsOEnable:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1383472146}
-        m_MethodName: SaveToDBFromFile
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1008898136}
-        m_MethodName: SaveToDBFromFile
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1154095595}
-        m_MethodName: StartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1262684572
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,7 +729,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1564364623}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7497790228101721993, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -769,22 +749,22 @@ PrefabInstance:
     - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -794,7 +774,7 @@ PrefabInstance:
     - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -811,6 +791,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0052089854
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0052089854
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0052089854
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.serverResponsesArray.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -825,21 +830,70 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.folderPath
-      value: C:\UID-APP\200201-MY-YellowLead
+      value: C:\UID-APP\GameTemplate-01
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: db_connection_string
-      value: URI = file:C:\UID-APP\200201-MY-YellowLead\Databases\PlayerDataDatabaseModel.sqlite
+      value: URI = file:C:\UID-APP\GameTemplate-01\Debug\Databases\PlayerDataDatabaseModel.sqlite
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1008898136}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Sync
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.serverResponsesArray.Array.data[2].resultResponse
+      value: Duplicate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.serverResponsesArray.Array.data[2].resultResponseMessage
+      value: duplicate message sent
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.sendURL
+      value: http://200202-my-genting.unicom-interactive-digital.com/public/api/
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[9].dummyPrefix
+      value: no
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.keyDownloadAPI
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: TestIndex
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6edbdc5526c8c546be385658ee37371, type: 3}
---- !u!4 &1383472145 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
-    type: 3}
-  m_PrefabInstance: {fileID: 1383472144}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1383472146 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
@@ -943,8 +997,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 185697624}
-  - {fileID: 1383472145}
-  - {fileID: 1008898135}
   - {fileID: 2123428634}
   - {fileID: 1985827957}
   m_Father: {fileID: 0}
@@ -986,7 +1038,7 @@ RectTransform:
   m_Children:
   - {fileID: 1262684573}
   m_Father: {fileID: 1564364623}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1063,11 +1115,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1564364623}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.8308716, y: 195.19997}
+  m_AnchoredPosition: {x: -3.8308716, y: 111}
   m_SizeDelta: {x: 469.4, y: 202}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2123428635
@@ -1101,9 +1153,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.36
-  m_Text: 'Launch this app via console to save data into
-
-    PlayerDataDatabaseModel.sqlite & VoucherDistributionDatabaseModel'
+  m_Text: Launch this app via console to sync data to server
 --- !u!222 &2123428636
 CanvasRenderer:
   m_ObjectHideFlags: 0

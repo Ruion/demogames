@@ -21,11 +21,13 @@ using Sirenix.OdinInspector;
 public class DBModelEntity : DBModelMaster
 {
     private DataRowCollection rows;
-    public UnityEvent OnSaveToLocal;
-    public UnityEvent OnSyncStart;
-    public UnityEvent OnSyncEnd;
+
+    [FoldoutGroup("OperationEvent")] public UnityEvent OnSaveToLocal;
+    [FoldoutGroup("OperationEvent")] public UnityEvent OnSyncStart;
+    [FoldoutGroup("OperationEvent")] public UnityEvent OnSyncEnd;
     private bool Saved = false;
 
+    [FoldoutGroup("UWP APP Communication")]
     [Header("Fill in number if saving data from a file")]
     public int dataFilePathIndex;
 
@@ -254,7 +256,8 @@ public class DBModelEntity : DBModelMaster
         Debug.LogError(name + " :\n" + errorMessage + "\n" + www.error + "\n" + " server url: " + dbSettings.sendURL + dbSettings.sendAPI);
     }
 
-    [Button]
+    [FoldoutGroup("UWP APP Communication")]
+    [Button(ButtonSizes.Medium)]
     public void SaveToDBFromFile()
     {
         if (Saved)

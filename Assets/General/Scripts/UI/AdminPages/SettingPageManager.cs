@@ -9,6 +9,7 @@ using System.Linq;
 public class SettingPageManager : MonoBehaviour
 {
     #region Public Fields
+
     public JSONSetter jsonSetter;
     public GameObject settingFieldPrefab;
     public Transform settingFieldContainer;
@@ -18,13 +19,13 @@ public class SettingPageManager : MonoBehaviour
 
     public TextMeshProUGUI selectedField_
     {
-        get {return selectedField;}
+        get { return selectedField; }
         set
         {
             selectedField = value;
             propertyTitle.text = selectedField.text;
-            valueField.text = 
-            jsonSetter.LoadSetting()[properties.FirstOrDefault( f => f.Equals(selectedField.text, System.StringComparison.InvariantCultureIgnoreCase))].ToString();
+            valueField.text =
+            jsonSetter.LoadSetting()[properties.FirstOrDefault(f => f.Equals(selectedField.text, System.StringComparison.InvariantCultureIgnoreCase))].ToString();
             popUpModal.SetActive(true);
         }
     }
@@ -32,43 +33,59 @@ public class SettingPageManager : MonoBehaviour
     public TextMeshProUGUI propertyTitle;
     public TMP_InputField valueField;
 
-    #endregion
+    #endregion Public Fields
 
     #region Private Fields
+
     private TextMeshProUGUI selectedField;
     private List<string> properties = new List<string>();
 
-    #endregion
+    #endregion Private Fields
 
     [ContextMenu("LoadGlobaSettings")]
-    void OnEnable()
+    private void OnEnable()
     {
-        if(jsonSetter == null) jsonSetter = FindObjectOfType<JSONSetter>();
+        if (jsonSetter == null) jsonSetter = FindObjectOfType<JSONSetter>();
 
-        if(settingFieldContainer.childCount < 1) {
-        
-        JObject globalSettings = jsonSetter.LoadSetting();
-
-        foreach (JProperty p in globalSettings.Properties())
+        if (settingFieldContainer.childCount < 1)
         {
-            GameObject newField = Instantiate(settingFieldPrefab, settingFieldContainer);
-            
-            // assign property name
-            TextMeshProUGUI property = newField.GetComponent<TextMeshProUGUI>();
-            property.text = StringExtensions.FirstCharToUpper(p.Name);
-            properties.Add(p.Name);
+            JObject globalSettings = jsonSetter.LoadSetting();
 
-            // assign On Click () event ot btn
-            Button btn = newField.GetComponentInChildren<Button>();
-            btn.onClick.AddListener(delegate
+            foreach (JProperty p in globalSettings.Properties())
             {
-                selectedField_ = btn.GetComponentInParent<TextMeshProUGUI>();
-            });
+                switch (p.Type)
+                {
+                    case JTokenType.String:
+                        Debug.Log(name + " " + p.Name + " - string");
+                        break;
 
-            // assign value to text
-            TextMeshProUGUI valueText = btn.GetComponentInChildren<TextMeshProUGUI>();
-            valueText.text = p.Value.ToString();
-        }
+                    case JTokenType.Integer:
+                        Debug.Log(name + " " + p.Name + " - integer");
+                        break;
+
+                    case JTokenType.Boolean:
+                        Debug.Log(name + " " + p.Name + " - boolean");
+                        break;
+                }
+
+                GameObject newField = Instantiate(settingFieldPrefab, settingFieldContainer);
+
+                // assign property name
+                TextMeshProUGUI property = newField.GetComponent<TextMeshProUGUI>();
+                property.text = StringExtensions.FirstCharToUpper(p.Name);
+                properties.Add(p.Name);
+
+                // assign On Click () event ot btn
+                Button btn = newField.GetComponentInChildren<Button>();
+                btn.onClick.AddListener(delegate
+                {
+                    selectedField_ = btn.GetComponentInParent<TextMeshProUGUI>();
+                });
+
+                // assign value to text
+                TextMeshProUGUI valueText = btn.GetComponentInChildren<TextMeshProUGUI>();
+                valueText.text = p.Value.ToString();
+            }
         }
     }
 
@@ -81,7 +98,7 @@ public class SettingPageManager : MonoBehaviour
 
     public void ValidateField()
     {
-        if(string.IsNullOrEmpty(valueField.text)) doneButton.interactable = false;
+        if (string.IsNullOrEmpty(valueField.text)) doneButton.interactable = false;
         else doneButton.interactable = true;
     }
 }

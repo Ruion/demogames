@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Data;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 
 /// <summary>
 /// Use on port UI model popup to change lane, enable state of a port.
@@ -37,7 +38,11 @@ public class PortUIEntity : MonoBehaviour
 
     public UnityEvent onSetPorts;
 
+    [SerializeField] private List<Toggle> selectionToggles;
+
     #endregion Fields
+
+    #region Set Up
 
     private void OnEnable()
     {
@@ -93,9 +98,19 @@ public class PortUIEntity : MonoBehaviour
         if (onSetPorts.GetPersistentEventCount() > 0) onSetPorts.Invoke();
     }
 
+    #endregion Set Up
+
     public void RevertPortInfo()
     {
         is_enabled_ = tempPortIsEnabled;
+    }
+
+    public void RevertSelectionToggles()
+    {
+        for (int i = 0; i < selectionToggles.Count; i++)
+        {
+            selectionToggles[i].isOn = false;
+        }
     }
 
     public void SavePort()
@@ -120,13 +135,66 @@ public class PortUIEntity : MonoBehaviour
             );
     }
 
+    /// <summary>
+    /// Refill Selected Port to it's item limit
+    /// </summary>
+    public void RefillSelections()
+    {
+        // Get all selected Toggle
+        Toggle[] selectedToggle = selectionToggles.FindAll(x => x.isOn == true).ToArray();
+        List<int> selectionIds = new List<int>();
+        // Get selected selectionToggles sibling index
+        for (int t = 0; t < selectedToggle.Length; t++)
+        {
+            selectionIds.Add(selectedToggle[t].transform.GetSiblingIndex());
+        }
+
+        // refill the lane to its item using sibling index
+        for (int v = 0; v < selectionIds.Count; v++)
+        {
+            DataRowCollection drc = vendingMachineDb.ExecuteCustomSelectQuery("SELECT * FROM " + vendingMachineDb.dbSettings.tableName + " WHERE id = " + (selectionIds[v] + 1));
+
+            int selectedMotorId;
+            int.TryParse(drc[0]["id"].ToString(), out selectedMotorId);
+            int selectedItemLimit = System.Int32.Parse(drc[0]["item_limit"].ToString());
+
+            // Update item_quantity to item_limit
+            vendingMachineDb.ExecuteCustomNonQuery(
+            "UPDATE " + vendingMachineDb.dbSettings.tableName +
+            " SET quantity = '" + item_limit.ToString() + "' ," +
+            " lane = '" + laneField.text + "' ," +
+            " is_disabled = 'false'" +
+            " WHERE id = " + selectedMotorId
+            );
+        }
+
+        // Clear selections
+        RevertSelectionToggles();
+    }
+
+    /// <summary>
+    /// Refill All Port to it's item limit
+    /// </summary>
     public void RefillAll()
     {
-        vendingMachineDb.ExecuteCustomNonQuery(
-            "UPDATE " + vendingMachineDb.dbSettings.tableName +
-            " SET quantity = '5' ,is_disabled = 'false'"
-            );
+        // refill the lane to its item using sibling index
+        for (int v = 0; v < selectionToggles.Count; v++)
+        {
+            DataRowCollection drc = vendingMachineDb.ExecuteCustomSelectQuery("SELECT * FROM " + vendingMachineDb.dbSettings.tableName + " WHERE id = " + (v + 1));
 
+            int selectedMotorId;
+            int.TryParse(drc[0]["id"].ToString(), out selectedMotorId);
+            int selectedItemLimit = System.Int32.Parse(drc[0]["item_limit"].ToString());
+
+            // Update item_quantity to item_limit
+            vendingMachineDb.ExecuteCustomNonQuery(
+            "UPDATE " + vendingMachineDb.dbSettings.tableName +
+            " SET quantity = '" + item_limit.ToString() + "' ," +
+            " lane = '" + laneField.text + "' ," +
+            " is_disabled = 'false'" +
+            " WHERE id = " + selectedMotorId
+            );
+        }
         SetPorts();
     }
 

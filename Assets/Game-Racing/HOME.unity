@@ -513,7 +513,7 @@ PrefabInstance:
     - target: {fileID: 8550038974102940281, guid: bf2cbd1e109e1ee4d9957dc4cfc0693d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8550038974102940281, guid: bf2cbd1e109e1ee4d9957dc4cfc0693d,
         type: 3}
@@ -1256,7 +1256,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &741092721
 GameObject:
@@ -2269,165 +2269,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934981104}
   m_CullTransparentMesh: 0
---- !u!1001 &2078368757
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3441537788208888905, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_Name
-      value: Debugger
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888911, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888911, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888911, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888911, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888911, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888911, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888911, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888911, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888911, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888911, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888911, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888910, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.attributes.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888910, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.columnsToSkipWhenSync.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888910, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: gameSettings.fileName
-      value: game_honda
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888910, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: gameSettings.scoreName
-      value: score
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888910, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: gameSettings.serverAddress
-      value: http://localhost/honda/honda/submit-data.php
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888910, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: gameSettings.serverGetDataAddress
-      value: http://localhost/honda/honda/get-data.php
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888910, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: gameSettings.scoreToWin
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888910, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: gameSettings.userTypeName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888910, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: gameSettings.rewardType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888910, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.dbName
-      value: db_
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888910, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: gameSettings.sQliteDBSettings.tableName
-      value: registration
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788208888910, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: DebugMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537787204854031, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788611805534, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_text
-      value: 'DllNotFoundException: sqlite3.dll'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788611805534, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537788611805534, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441537787204854035, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 37460735}
-    - target: {fileID: 3441537787204854029, guid: ae8d0cef7c9561b4d92b23d7af309bcf,
-        type: 3}
-      propertyPath: m_BlockingMask.m_Bits
-      value: 311
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ae8d0cef7c9561b4d92b23d7af309bcf, type: 3}
 --- !u!1001 &218756497967361591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4793,7 +4634,7 @@ PrefabInstance:
     - target: {fileID: 8594354104743014386, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6254535195247367517, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
@@ -6349,7 +6190,7 @@ PrefabInstance:
     - target: {fileID: 6849669536560841723, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8387562500859247589, guid: 3b4d50dd24c7255459098612e26d6ee2,
         type: 3}

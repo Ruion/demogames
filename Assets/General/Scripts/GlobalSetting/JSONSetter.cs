@@ -15,21 +15,15 @@ public class JSONSetter : MonoBehaviour
     private string fileName = "Setting.json";
     private string globalFileName = "GlobalSetting.json";
 
-    public void SaveSetting(JObject jsonObj, bool global = false)
+    public void SaveSetting(JObject jsonObj)
     {
         string savePath = this.savePath;
 
         string fileName = this.fileName;
 
-        if (global)
-        {
-            savePath = globalSavePath;
-            fileName = this.globalFileName;
-        }
-
-        Directory.CreateDirectory(Path.GetDirectoryName(savePath + "\\" + fileName));
+        Directory.CreateDirectory(Path.GetDirectoryName(savePath + "\\Settings\\" + fileName));
         // write JSON directly to a file
-        using (StreamWriter file = File.CreateText(savePath + "\\" + fileName))
+        using (StreamWriter file = File.CreateText(savePath + "\\Settings\\" + fileName))
         using (JsonTextWriter writer = new JsonTextWriter(file))
         {
             jsonObj.WriteTo(writer);
@@ -65,19 +59,14 @@ public class JSONSetter : MonoBehaviour
             jsonObj[name] = value;
         }
 
-        SaveSetting(jsonObj, true);
+        SaveSetting(jsonObj);
     }
 
-    public JObject LoadSetting(bool global = false)
+    public JObject LoadSetting()
     {
         string savePath = this.savePath;
-        if (global)
-        {
-            savePath = globalSavePath;
-            fileName = this.globalFileName;
-        }
 
-        string json = File.ReadAllText(savePath + "\\" + "Setting.json");
+        string json = File.ReadAllText(savePath + "\\Settings\\" + "Setting.json");
         JObject jsonObj = JObject.Parse(json);
 
         return jsonObj;

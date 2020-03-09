@@ -13,15 +13,16 @@ public class DBSettingEntity : SerializedMonoBehaviour
     public DBEntitySetting dbSettings;
 
     #region Basics
+
     public virtual void Awake()
     {
-       // LoadSetting();
+        // LoadSetting();
     }
 
-    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
+    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)]
+    [ButtonGroup("Setting")]
     public virtual void SaveSetting()
     {
-            
         dbSettings.fileName = name;
         dbSettings.tableName = name;
         dbSettings.dbName = name;
@@ -39,43 +40,42 @@ public class DBSettingEntity : SerializedMonoBehaviour
         DBSettingEntity[] dBSettingEntities = FindObjectsOfType<DBSettingEntity>();
         foreach (DBSettingEntity e in dBSettingEntities)
         {
-            if(string.IsNullOrEmpty(e.dbSettings.sendAPI)) continue;
-            
-            jsonSetter.UpdateSetting(e.dbSettings.fileName+ "-API", e.dbSettings.sendAPI);
+            if (string.IsNullOrEmpty(e.dbSettings.sendAPI)) continue;
+
+            jsonSetter.UpdateSetting(e.dbSettings.fileName + "-API", e.dbSettings.sendAPI);
         }
 
         // legacy binary formatter save method
         // DBSetting.SaveSetting(dbSettings);
 
-        
-
         // save to json file
-        JSONExtension.SaveObject(dbSettings.folderPath + "\\" + name, dbSettings);
+        JSONExtension.SaveObject(dbSettings.folderPath + "\\Settings\\" + name, dbSettings);
     }
 
-    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)][ButtonGroup("Setting")]
+    [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)]
+    [ButtonGroup("Setting")]
     public virtual void LoadSetting()
     {
         // fetch & Update setting from global JSONSetter
         JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
         dbSettings.folderPath = jsonSetter.savePath;
 
-        string filePath = dbSettings.folderPath + "\\" + name;
-       
-       // Load from json file
-       dbSettings = JsonConvert.DeserializeObject<DBEntitySetting>(File.ReadAllText(filePath + ".json"));
+        string filePath = dbSettings.folderPath + "\\Settings\\" + name;
+
+        // Load from json file
+        dbSettings = JsonConvert.DeserializeObject<DBEntitySetting>(File.ReadAllText(filePath + ".json"));
 
         // fetch & Update setting from global JSONSetter
         JObject jObject = jsonSetter.LoadSetting();
         dbSettings.sendURL = jObject["serverDomainURL"].ToString();
 
-        var substrings = new[] {"api"};
-        if(!dbSettings.sendURL.ContainsAny(substrings, StringComparison.CurrentCultureIgnoreCase))
+        var substrings = new[] { "api" };
+        if (!dbSettings.sendURL.ContainsAny(substrings, StringComparison.CurrentCultureIgnoreCase))
             dbSettings.sendURL += "/public/api/";
 
         // load sendAPI from global setting file
-        if(jObject.ContainsKey(dbSettings.fileName+"-API")) dbSettings.sendAPI = jObject[dbSettings.fileName+"-API"].ToString();
+        if (jObject.ContainsKey(dbSettings.fileName + "-API")) dbSettings.sendAPI = jObject[dbSettings.fileName + "-API"].ToString();
     }
-    #endregion
 
+    #endregion Basics
 }

@@ -10,9 +10,9 @@ using System.Reflection;
 /// </summary>
 public class GameSettingEntity : MonoBehaviour
 {
-    
     [Header("GameSetting - SAVE setting every new project")]
     public Settings gameSettings;
+
     public JSONSetter jsonSetter;
 
     private string fileName = "GameSetting";
@@ -23,14 +23,13 @@ public class GameSettingEntity : MonoBehaviour
     [ContextMenu("SaveSetting")]
     public virtual void SaveSetting()
     {
-       // GameSetting.SaveSetting(gameSettings);
+        // GameSetting.SaveSetting(gameSettings);
 
-        string filePath = jsonSetter.savePath + "\\" + "Setting";
+        string filePath = jsonSetter.savePath + "\\Settings\\" + "Setting";
 
         JSONExtension.SaveValues(filePath, gameSettings);
 
         Debug.Log("Save setting success");
-
     }
 
     /// <summary>
@@ -44,9 +43,8 @@ public class GameSettingEntity : MonoBehaviour
         gameSettings = GameSetting.LoadSetting(gameSettings);
         */
 
-        string filePath = jsonSetter.savePath + "\\" + "Setting";
-       
-       
+        string filePath = jsonSetter.savePath + "\\Settings\\" + "Setting";
+
         JSONExtension.LoadValues(filePath, gameSettings);
     }
 
@@ -61,15 +59,32 @@ public class GameSettingEntity : MonoBehaviour
 
         dm.LoadSetting();
         gameSettings = dm.gameSettings;
-
     }
 
     public virtual void Awake()
     {
         BetterStreamingAssets.Initialize();
-        if(jsonSetter == null) jsonSetter = FindObjectOfType<JSONSetter>();
+        if (jsonSetter == null) jsonSetter = FindObjectOfType<JSONSetter>();
 
         LoadSetting();
         LoadGameSettingFromMaster();
     }
+}
+
+/// <summary>
+/// Settings to be used by gameplay objects
+/// add variable like speed, hp, game time and make other class to use those values, to made tweaking and testing easier.
+/// </summary>
+[System.Serializable]
+public class Settings
+{
+    //public string scoreName = "game_score";
+    //public int scoreToWin = 3;
+    public bool debugMode = false;
+
+    public string serverDomainURL;
+    public string source_identifier_code;
+
+    //public string userPrimaryKeyName = "userPrimaryKey";
+    public int checkInternetTimeOut = 5000;
 }
