@@ -132,7 +132,7 @@ public class DBModelEntity : DBModelMaster
         ToogleHandler(blockDataHandler, true);
 
         // Get global event_code
-        string source_identifier_code = JSONExtension.LoadSetting(dbSettings.folderPath + "\\Setting", "source_identifier_code");
+        string source_identifier_code = JSONExtension.LoadSetting(dbSettings.folderPath + "\\Settings\\Setting", "source_identifier_code");
 
         for (int u = 0; u < rows.Count; u++)
         {

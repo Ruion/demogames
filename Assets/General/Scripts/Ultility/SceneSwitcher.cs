@@ -8,6 +8,11 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SceneSwitcher : MonoBehaviour
 {
+    // General scene order
+    // 0 HOME
+    // 1 REGISTRATION
+    // 2 GAME
+
     public void SwitchScene(int sceneNumber)
     {
         Debug.Log("switch to scene " + sceneNumber);
@@ -15,9 +20,6 @@ public class SceneSwitcher : MonoBehaviour
         // SceneManager.LoadScene(sceneNumber);
 
         SceneTransitionManager.instance.SwitchScene(sceneNumber);
-        // 0 HOME
-        // 1 GAME
-        // 2 SCORE
     }
 
     public void SwitchScene(string sceneName)
@@ -27,9 +29,14 @@ public class SceneSwitcher : MonoBehaviour
         // SceneManager.LoadScene(sceneName);
 
         SceneTransitionManager.instance.SwitchScene(sceneName);
-        // 0 HOME
-        // 1 GAME
-        // 2 SCORE
+    }
+
+    public void SwitchNextScene()
+    {
+        Time.timeScale = 1f;
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        SceneTransitionManager.instance.SwitchScene(nextSceneIndex);
     }
 
     public void RestartScene()

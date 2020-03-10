@@ -68,9 +68,6 @@ public class PuzzleValidator : MonoBehaviour
 
         if (firstAlphabet == alphabet.alphabet)
         {
-            //if (raycaster != null)
-            //    raycaster.enabled = false;
-
             matchPair.Add(firstSelectedPuzzle);
             matchPair.Add(alphabet);
 
@@ -86,9 +83,6 @@ public class PuzzleValidator : MonoBehaviour
         }
         else
         {
-            //if (raycaster != null)
-            //    raycaster.enabled = false;
-
             unMatchPair.Add(firstSelectedPuzzle);
             unMatchPair.Add(alphabet);
 
@@ -98,8 +92,6 @@ public class PuzzleValidator : MonoBehaviour
             StartCoroutine(WrongAnswerHandler(unMatchPair[1], .5f));
 
             firstAlphabet = "";
-
-            //Invoke("WrongAnswerHandler", .5f);
 
             PI.EndInteract();
         }
@@ -116,13 +108,13 @@ public class PuzzleValidator : MonoBehaviour
     {
         correctAlphabet++;
 
-        if (sv != null)
-            sv.UpdateText(1);
-
         PI.Interact(matchPair[0].transform, PI.ps2);
         PI.Interact(matchPair[1].transform, PI.ps1);
 
         matchPair.RemoveRange(0, 2);
+
+        if (correctAlphabet >= 6)
+            FindObjectOfType<GameManager>().GameOver();
     }
 
     private void WrongAnswerHandler()

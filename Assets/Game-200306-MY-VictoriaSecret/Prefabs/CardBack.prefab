@@ -69,15 +69,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 95031e741ed255541a62e361445b728e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 040e192235d102241a61f1b4956f6c46, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.95, y: 2.25}
+  m_Size: {x: 2.11, y: 2.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5331835806910186596
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: e49641dbf19cd02478da9acfc4499548, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7de11f620ab357844b6c33d16d0684f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alphabet: Molten
+  isInteractable: 1
   dta: {fileID: 5331835806910186601}
   dtaCorrect: {fileID: 4030495920460511708}
 --- !u!114 &5331835806910186601
@@ -332,7 +333,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.95, y: 2.25}
+    oldSize: {x: 2.1, y: 2.1}
     newSize: {x: 1.95, y: 2.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

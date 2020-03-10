@@ -87,4 +87,6 @@ public class Settings
 
     //public string userPrimaryKeyName = "userPrimaryKey";
     public int checkInternetTimeOut = 5000;
+
+    public int gameTime = 30;
 }

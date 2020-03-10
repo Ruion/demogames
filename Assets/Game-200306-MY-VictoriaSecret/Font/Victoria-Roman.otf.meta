@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: d23c79f4c8886954aa23adcaa4c0b117
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Victoria
+  fontNames:
+  - Victoria
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 09ae2c5518a1e3e4583843712c307a2e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
