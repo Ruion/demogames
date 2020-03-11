@@ -368,7 +368,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1154095593}
-  - component: {fileID: 1154095595}
   - component: {fileID: 1154095594}
   m_Layer: 0
   m_Name: AutoSync
@@ -403,38 +402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a64c8d43291f7a942988ca13faebd8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1154095595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1154095592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c4b0fa41e3f84c4483504d6babaaff1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  second: 10
-  initialSecond: 0
-  isRealtime: 1
-  stringFormat: 
-  countDownTexts: []
-  countdownEndEvents:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1383472146}
-        m_MethodName: Sync
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  useShortcut: 1
 --- !u!1 &1262684572
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,11 +536,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1383472147}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Sync
+      value: Run
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -672,18 +639,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6edbdc5526c8c546be385658ee37371, type: 3}
+--- !u!1 &1383472145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7497790228101721993, guid: a6edbdc5526c8c546be385658ee37371,
+    type: 3}
+  m_PrefabInstance: {fileID: 1383472144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1383472146 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
     type: 3}
   m_PrefabInstance: {fileID: 1383472144}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1383472145}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db476e859c69a7d448df1b2a28465c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1383472147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383472145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbeb71ec69cc3ba4f94c1f4415ece488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  events:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1383472146}
+        m_MethodName: Sync
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delays:
+  - 60
+  isRealtime: 1
 --- !u!1 &1564364619
 GameObject:
   m_ObjectHideFlags: 0

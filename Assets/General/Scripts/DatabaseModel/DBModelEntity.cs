@@ -199,12 +199,9 @@ public class DBModelEntity : DBModelMaster
                     //  yield return new WaitForEndOfFrame();
                     var jsonData = JsonUtility.FromJson<JSONResponse>(www.downloadHandler.text);
 
-                    if (jsonData.result != dbSettings.serverResponsesArray[0].resultResponse)
+                    if (jsonData.result != "Success")
                     {
-                        //  string response = dbSettings.serverResponses.resultResponses.FirstOrDefault(r => r == jsonData.result);
-                        ServerResponses response = dbSettings.serverResponsesArray.FirstOrDefault(r => r.resultResponse == jsonData.result);
-                        int index = System.Array.IndexOf(dbSettings.serverResponsesArray, response);
-                        Debug.LogError(name + " - " + response.resultResponseMessage + "\n Values : " + values);
+                        Debug.LogError(name + " - " + jsonData.result + "\n Values : " + values);
 
                         totalNotSent++;
                         ToogleStatusBar(failBar, totalNotSent);
@@ -213,7 +210,7 @@ public class DBModelEntity : DBModelMaster
                     }
                     else
                     {
-                        Debug.Log(name + " : " + dbSettings.serverResponsesArray[0].resultResponseMessage);
+                        Debug.Log(name + " : Success");
 
                         // update successfully sync is_sync to submitted
                         ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'yes' WHERE id = " + entityId);

@@ -25,9 +25,6 @@ public class PuzzleValidator : MonoBehaviour
     private PuzzleAlphabet firstSelectedPuzzle;
     private PuzzleAlphabet secondSelectedPuzzle;
 
-    [SerializeField]
-    private ScoreVisualizer sv;
-
     private SoundManager sm;
 
     [SerializeField]
@@ -35,6 +32,9 @@ public class PuzzleValidator : MonoBehaviour
 
     private List<PuzzleAlphabet> matchPair = new List<PuzzleAlphabet>();
     private List<PuzzleAlphabet> unMatchPair = new List<PuzzleAlphabet>();
+
+    [SerializeField]
+    private ParticleSystem correctVFX;
 
     private int unMatchIndex;
     private int matchIndex;
@@ -107,6 +107,7 @@ public class PuzzleValidator : MonoBehaviour
     private void CorrectAnswerHandler()
     {
         correctAlphabet++;
+        correctVFX.Play();
 
         PI.Interact(matchPair[0].transform, PI.ps2);
         PI.Interact(matchPair[1].transform, PI.ps1);

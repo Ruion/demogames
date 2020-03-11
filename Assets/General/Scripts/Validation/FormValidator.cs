@@ -13,15 +13,14 @@ using TMPro;
 /// </summary>
 public class FormValidator : ServerModelMaster
 {
-
     #region variables
-    bool Text1OK = false;
-    bool Text2OK = false;
-    bool Text3OK = false;
+
+    private bool Text1OK = false;
+    private bool Text2OK = false;
+    private bool Text3OK = false;
 
     public Button Submit;
     public Button virtualSubmit;
-
 
     public TMP_InputField NameText;
     public TMP_InputField PhoneText;
@@ -29,9 +28,9 @@ public class FormValidator : ServerModelMaster
     public TMP_Dropdown contactDropdown;
     public Toggle consent;
 
-    string MailPattern = @"^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$";
+    private string MailPattern = @"^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$";
 
-    string PhonePattern = @"^6?01\d{8,9}$";
+    private string PhonePattern = @"^6?01\d{8,9}$";
 
     public GameObject emailWarning;
     public GameObject phoneWarning;
@@ -46,31 +45,14 @@ public class FormValidator : ServerModelMaster
     private int oskID;
     public float validateFrequency;
     public string contactPrefix = "+6";
-    #endregion
+
+    #endregion variables
 
     private void OnEnable()
     {
-
         emailList = playerDataDbModelEntity.GetDataByStringToList("email");
         contactList = playerDataDbModelEntity.GetDataByStringToList("contact");
     }
-
-    /*
-    void Update()
-    {
-        if (Text1OK && Text2OK && Text3OK && consent.isOn)
-        {
-            Submit.interactable = true;
-            virtualSubmit.interactable = true;
-        }
-        else
-        {
-            Submit.interactable = false;
-            virtualSubmit.interactable = false;
-        }
-
-    }
-    */
 
     public void StartValidateOnFrequency()
     {
@@ -111,7 +93,8 @@ public class FormValidator : ServerModelMaster
 
     public void T2Change()
     {
-        string contact = contactDropdown.options[contactDropdown.value].text + PhoneText.text;
+        //string contact = contactDropdown.options[contactDropdown.value].text + PhoneText.text;
+        string contact = PhoneText.text;
         Text2OK = Regex.IsMatch(contact, PhonePattern);
 
         if (!Text2OK || ToogleWarning(PhoneText.text, contactList, phoneWarning)) { ChangeHint(1, false); }
@@ -145,7 +128,7 @@ public class FormValidator : ServerModelMaster
     {
         if (text == "") return false;
 
-        if(ValidateDuplicate(list, text))
+        if (ValidateDuplicate(list, text))
         {
             warningObject.SetActive(true);
             return true;
@@ -155,7 +138,6 @@ public class FormValidator : ServerModelMaster
             warningObject.SetActive(false);
             return false;
         }
-
     }
 
     private bool ValidateDuplicate(List<string> source, string text_)
