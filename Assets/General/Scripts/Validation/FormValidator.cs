@@ -16,11 +16,14 @@ public class FormValidator : ServerModelMaster
     #region variables
 
     private bool Text1OK = false;
-    private bool Text2OK = false;
-    private bool Text3OK = false;
+    private bool contactValid = false;
+    private bool emailValid = false;
+
+    private bool contactDuplicate = false;
+    private bool emailDuplicate = false;
 
     public Button Submit;
-    public Button virtualSubmit;
+    public Button warningButton;
 
     public TMP_InputField NameText;
     public TMP_InputField PhoneText;
@@ -34,6 +37,9 @@ public class FormValidator : ServerModelMaster
 
     public GameObject emailWarning;
     public GameObject phoneWarning;
+
+    public GameObject msgWarning;
+    public TextMeshProUGUI warningText;
 
     public GameObject[] Ok_Markers;
     public GameObject[] NotOk_Markers;
@@ -71,15 +77,15 @@ public class FormValidator : ServerModelMaster
         T2Change();
         T3Change();
 
-        if (Text1OK && Text2OK && Text3OK && consent.isOn)
+        if (Text1OK && contactValid && emailValid && consent.isOn)
         {
             Submit.interactable = true;
-            virtualSubmit.interactable = true;
+            warningButton.interactable = false;
         }
         else
         {
             Submit.interactable = false;
-            virtualSubmit.interactable = false;
+            warningButton.interactable = true;
         }
     }
 
@@ -93,19 +99,18 @@ public class FormValidator : ServerModelMaster
 
     public void T2Change()
     {
-        //string contact = contactDropdown.options[contactDropdown.value].text + PhoneText.text;
-        string contact = PhoneText.text;
-        Text2OK = Regex.IsMatch(contact, PhonePattern);
+        string contact = contactDropdown.options[contactDropdown.value].text + PhoneText.text;
+        contactValid = Regex.IsMatch(contact, PhonePattern);
 
-        if (!Text2OK || ToogleWarning(PhoneText.text, contactList, phoneWarning)) { ChangeHint(1, false); }
+        if (!contactValid || ToogleWarning(PhoneText.text, contactList, phoneWarning, contactDuplicate)) { ChangeHint(1, false); }
         else { ChangeHint(1, true); }
     }
 
     public void T3Change()
     {
-        Text3OK = Regex.IsMatch(EmailText.text, MailPattern);
+        emailValid = Regex.IsMatch(EmailText.text, MailPattern);
 
-        if (!Text3OK || ToogleWarning(EmailText.text, emailList, emailWarning)) { ChangeHint(2, false); }
+        if (!emailValid || ToogleWarning(EmailText.text, emailList, emailWarning, emailDuplicate)) { ChangeHint(2, false); }
         else { ChangeHint(2, true); }
     }
 
@@ -124,13 +129,14 @@ public class FormValidator : ServerModelMaster
         NotOk_Markers[InputIndex].SetActive(!isPass);
     }
 
-    private bool ToogleWarning(string text, List<string> list, GameObject warningObject)
+    private bool ToogleWarning(string text, List<string> list, GameObject warningObject, bool duplicateBool)
     {
         if (text == "") return false;
 
-        if (ValidateDuplicate(list, text))
+        if (ValidateDuplicate(list, text, duplicateBool))
         {
             warningObject.SetActive(true);
+
             return true;
         }
         else
@@ -140,14 +146,52 @@ public class FormValidator : ServerModelMaster
         }
     }
 
-    private bool ValidateDuplicate(List<string> source, string text_)
+    private bool ValidateDuplicate(List<string> source, string text_, bool duplicateBool)
     {
         bool hasSame = false;
 
         string same = source.FirstOrDefault(t => t == text_);
         if (same != null) hasSame = true;
 
+        duplicateBool = hasSame;
         return hasSame;
+    }
+
+    public void ShowWarning()
+    {
+        warningText.text = "";
+
+        if (!consent.isOn)
+            warningText.text = "Please accept policy agreement";
+
+        // if contact duplicate
+        if (contactDuplicate)
+            warningText.text = "The mobile number you have entered is already registered,\nplease enter a different mobile number.";
+
+        // if email duplicate
+        if (emailDuplicate)
+            warningText.text = "The email address you have entered is already registered,\nplease enter a different email address.";
+
+        // if email valid
+        if (!emailValid)
+            warningText.text = "The email address you have entered is invalid\n example : example@gmail.com";
+        if (string.IsNullOrEmpty(EmailText.text))
+            warningText.text = "Please fill in your email address\n example : example@gmail.com";
+
+        // if contact valid
+        if (!contactValid)
+            warningText.text = "Mobile number format entered is invalid\n Example : 0146734292";
+        if (string.IsNullOrEmpty(PhoneText.text))
+            warningText.text = "Please fill in your mobile number\n example : 0146734292";
+
+        // NAME is empty
+        if (!Text1OK)
+        {
+            warningText.text = "Please fill in your name";
+        }
+
+        if (warningText.text != "")
+            msgWarning.SetActive(true);
     }
 
     public void DoCombineServerUsers()
