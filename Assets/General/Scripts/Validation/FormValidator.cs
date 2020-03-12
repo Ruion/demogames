@@ -33,6 +33,7 @@ public class FormValidator : ServerModelMaster
 
     private string MailPattern = @"^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$";
 
+    //private string PhonePattern = @"^6?01\d{8,9}$";
     private string PhonePattern = @"^6?01\d{8,9}$";
 
     public GameObject emailWarning;
@@ -84,12 +85,12 @@ public class FormValidator : ServerModelMaster
         if (Text1OK && contactValid && emailValid && consent.isOn)
         {
             Submit.interactable = true;
-            warningButton.interactable = false;
+            warningButton.gameObject.SetActive(false);
         }
         else
         {
             Submit.interactable = false;
-            warningButton.interactable = true;
+            warningButton.gameObject.SetActive(true);
         }
     }
 
@@ -103,7 +104,8 @@ public class FormValidator : ServerModelMaster
 
     public void T2Change()
     {
-        string contact = contactDropdown.options[contactDropdown.value].text + PhoneText.text;
+        //string contact = contactDropdown.options[contactDropdown.value].text + PhoneText.text;
+        string contact = PhoneText.text;
         contactValid = Regex.IsMatch(contact, PhonePattern);
 
         if (!contactValid || ToogleWarning(PhoneText.text, contactList, phoneWarning, contactDuplicate)) { ChangeHint(1, false); }

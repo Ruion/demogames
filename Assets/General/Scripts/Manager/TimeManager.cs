@@ -33,13 +33,32 @@ public class TimeManager : MonoBehaviour
 
     public UnityEvent countdownEndEvents;
 
+    public bool useUpdate = false;
     public bool useShortcut = true;
     private bool counting = false;
 
+    public bool useGameSettingTime = false;
+
     private void Awake()
     {
+        if (useGameSettingTime)
+        {
+            GameSettingEntity gse = GameObject.FindGameObjectWithTag("GameSettingMaster").GetComponent<GameSettingEntity>();
+            second = gse.gameSettings.gameTime;
+        }
+
         initialSecond = second;
-        UpdateText();
+
+        if (countDownTexts.Length < 1) return;
+
+        if (useUpdate)
+        {
+            System.TimeSpan interval = System.TimeSpan.FromSeconds(second);
+            UpdateText(System.String.Format("{0}:{1}0",
+             new object[] { interval.Seconds, interval.Milliseconds }
+             ));
+        }
+        else UpdateText();
     }
 
     public void StartGame()
@@ -47,11 +66,34 @@ public class TimeManager : MonoBehaviour
         if (initialSecond == 0) initialSecond = second;
 
         // ResetCountDown();
-        StartCoroutine(StartCountdown());
+        counting = true;
+
+        if (!useUpdate) StartCoroutine(StartCountdown());
     }
 
     private void Update()
     {
+        if (useUpdate && counting)
+        {
+            second -= Time.deltaTime;
+
+            System.TimeSpan interval = System.TimeSpan.FromSeconds(second);
+            if (countDownTexts.Length > 0)
+            {
+                UpdateText(System.String.Format("{0}:{1}",
+                 new object[] { interval.Seconds, interval.Milliseconds }
+                 ));
+            }
+
+            if (second <= 0)
+            {
+                countdownEndEvents.Invoke();
+                counting = false;
+                ResetCountDown();
+                UpdateText("00:00");
+            }
+        }
+
         if (!useShortcut) return;
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -62,8 +104,6 @@ public class TimeManager : MonoBehaviour
 
     public IEnumerator StartCountdown()
     {
-        counting = true;
-
         while (counting)
         {
             if (isRealtime) yield return new WaitForSecondsRealtime(1);
@@ -74,7 +114,7 @@ public class TimeManager : MonoBehaviour
             // update textmesh text if textmesh components exists
             if (countDownTexts.Length > 0) { UpdateText(countDownTexts, Mathf.RoundToInt(second)); }
 
-            if (second <= 0 && gameObject.activeInHierarchy)
+            if (second <= 0)
             {
                 // Execute event on countdown ended
                 countdownEndEvents.Invoke();
@@ -96,11 +136,29 @@ public class TimeManager : MonoBehaviour
         }
     }
 
+    private void UpdateText(TextMeshProUGUI[] texts_, float number)
+    {
+        for (int t = 0; t < texts_.Length; t++)
+        {
+            texts_[t].text = number.ToString(stringFormat);
+        }
+    }
+
     public void UpdateText()
     {
+        if (countDownTexts.Length < 1) return;
+
         for (int t = 0; t < countDownTexts.Length; t++)
         {
             countDownTexts[t].text = second.ToString(stringFormat);
+        }
+    }
+
+    public void UpdateText(string time)
+    {
+        for (int t = 0; t < countDownTexts.Length; t++)
+        {
+            countDownTexts[t].text = time;
         }
     }
 

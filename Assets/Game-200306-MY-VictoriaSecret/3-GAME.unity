@@ -1610,7 +1610,7 @@ GameObject:
   - component: {fileID: 745080995}
   - component: {fileID: 745080994}
   m_Layer: 0
-  m_Name: 3
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1878,7 +1878,7 @@ SpriteRenderer:
   m_SortingLayerID: 129691607
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 62855444d7f28cf42b89c1715dad0462, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01d6111793217124992b88dc6a4e864a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2281,7 +2281,7 @@ GameObject:
   - component: {fileID: 892102256}
   - component: {fileID: 892102255}
   m_Layer: 0
-  m_Name: 1
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2549,7 +2549,7 @@ SpriteRenderer:
   m_SortingLayerID: 129691607
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 01d6111793217124992b88dc6a4e864a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62855444d7f28cf42b89c1715dad0462, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4178,6 +4178,7 @@ GameObject:
   - component: {fileID: 1407198810}
   - component: {fileID: 1407198809}
   - component: {fileID: 1407198808}
+  - component: {fileID: 1407198811}
   m_Layer: 0
   m_Name: AutoTask
   m_TagString: Untagged
@@ -4205,9 +4206,9 @@ MonoBehaviour:
   countdownEndEvents:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1518671885}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1407198811}
+        m_MethodName: ExecuteAutoTasks
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4216,7 +4217,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  useUpdate: 0
   useShortcut: 1
+  useGameSettingTime: 0
 --- !u!114 &1407198809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4258,6 +4261,32 @@ Transform:
   m_Father: {fileID: 1551850484}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1407198811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407198807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8ed554fa5fae242a7eea65f0182123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoTasks:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1518671885}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &1429731024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2833253333141093655, guid: b430b884ff7d771459ad8c0c9564a87c,
@@ -4431,7 +4460,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  useUpdate: 0
   useShortcut: 1
+  useGameSettingTime: 1
 --- !u!1 &1518671885
 GameObject:
   m_ObjectHideFlags: 0
@@ -4592,7 +4623,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  useUpdate: 0
   useShortcut: 1
+  useGameSettingTime: 0
 --- !u!1 &1551850483
 GameObject:
   m_ObjectHideFlags: 0
@@ -4636,7 +4669,7 @@ GameObject:
   - component: {fileID: 1613074704}
   - component: {fileID: 1613074705}
   m_Layer: 0
-  m_Name: 3 fadeout
+  m_Name: 1 fadeout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

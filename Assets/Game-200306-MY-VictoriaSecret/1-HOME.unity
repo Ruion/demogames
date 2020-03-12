@@ -1025,7 +1025,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  useUpdate: 0
   useShortcut: 1
+  useGameSettingTime: 0
 --- !u!114 &541084140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9555,7 +9557,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  useUpdate: 0
   useShortcut: 1
+  useGameSettingTime: 0
 --- !u!1001 &6329343788590589169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10072,7 +10076,7 @@ PrefabInstance:
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: gameSettings.source_identifier_code
-      value: WP1
+      value: WP2
       objectReference: {fileID: 0}
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
@@ -10092,7 +10096,17 @@ PrefabInstance:
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: gameSettings.serverDomainURL
-      value: http://200306-my-victoriasecret.uid-testing.space
+      value: http://200306-my-victoriasecret.unicom-interactive-digital.com
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.serverEmailPath
+      value: C:\Vending-Machine-Controller\used_redeem_codes.txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
+        type: 3}
+      propertyPath: gameSettings.serverContactPath
+      value: C:\Vending-Machine-Controller\used_redeem_codes.txt
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf9bc346bec815448f5896dcc069492, type: 3}
@@ -10718,7 +10732,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  useUpdate: 0
   useShortcut: 1
+  useGameSettingTime: 0
 --- !u!1 &8594354103246095446
 GameObject:
   m_ObjectHideFlags: 0
