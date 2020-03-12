@@ -6,6 +6,9 @@ public class AutoFormFill : ComponentTaskInvoker
     public DBModelEntity db;
     public TMP_InputField field;
 
+    [SerializeField]
+    private bool disableRecordAfterUse = false;
+
     public void AutoFillField()
     {
         VerifyDebugMode();
@@ -25,11 +28,12 @@ public class AutoFormFill : ComponentTaskInvoker
 
         if (!isDebugging) return;
 
-        int count = PlayerPrefs.GetInt("playerNameCount", 1);
+        string name = db.ExecuteCustomSelectObject("SELECT name FROM " + db.dbSettings.tableName + " WHERE is_enabled = 'true'").ToString();
 
-        field.text = "demo" + count.ToString();
+        field.text = name;
 
-        PlayerPrefs.SetInt("playerNameCount", count + 1);
+        if (disableRecordAfterUse)
+            db.ExecuteCustomNonQuery(string.Format("UPDATE {0} SET is_enabled ='false' WHERE name = '{1}'", db.dbSettings.tableName, name));
     }
 
     public void AutoFillEmail()
@@ -38,11 +42,12 @@ public class AutoFormFill : ComponentTaskInvoker
 
         if (!isDebugging) return;
 
-        int count = PlayerPrefs.GetInt("playerEmailCount", 1);
+        string email = db.ExecuteCustomSelectObject("SELECT email FROM " + db.dbSettings.tableName + " WHERE is_enabled = 'true'").ToString();
 
-        field.text = "demo" + count + "@gmail.com";
+        field.text = email;
 
-        PlayerPrefs.SetInt("playerEmailCount", count + 1);
+        if (disableRecordAfterUse)
+            db.ExecuteCustomNonQuery(string.Format("UPDATE {0} SET is_enabled ='false' WHERE email = '{1}'", db.dbSettings.tableName, email));
     }
 
     public void AutoFillContact()
@@ -51,22 +56,11 @@ public class AutoFormFill : ComponentTaskInvoker
 
         if (!isDebugging) return;
 
-        int replaceIndex = PlayerPrefs.GetInt("playerContactReplaceCount", 1); ;
-        string contact = "0000000";
+        string contact = db.ExecuteCustomSelectObject("SELECT contact FROM " + db.dbSettings.tableName + " WHERE is_enabled = 'true'").ToString();
 
-        int count = PlayerPrefs.GetInt("playerContactCount", 1);
+        field.text = contact;
 
-        // remove and replace the string in specific index
-        string finalContact = contact.Remove(replaceIndex, 1).Insert(replaceIndex, count.ToString());
-
-        field.text = finalContact;
-
-        PlayerPrefs.SetInt("playerContactCount", count + 1);
-
-        if (count > 9)
-        {
-            PlayerPrefs.SetInt("playerContactReplaceCount", replaceIndex + 1);
-            PlayerPrefs.SetInt("playerContactCount", 0);
-        }
+        if (disableRecordAfterUse)
+            db.ExecuteCustomNonQuery(string.Format("UPDATE {0} SET is_enabled ='false' WHERE contact = '{1}'", db.dbSettings.tableName, contact));
     }
 }

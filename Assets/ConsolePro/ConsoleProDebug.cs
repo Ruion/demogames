@@ -1,7 +1,10 @@
 using UnityEngine;
 using System;
+
 #if UNITY_EDITOR
+
 using System.Reflection;
+
 #endif
 
 public static class ConsoleProDebug
@@ -40,9 +43,12 @@ public static class ConsoleProDebug
 	}
 
 	#if UNITY_EDITOR
+
 	// Reflection calls to access Console Pro from runtime
 	private static bool _checkedConsoleClearMethod = false;
+
 	private static MethodInfo _consoleClearMethod = null;
+
 	private static MethodInfo ConsoleClearMethod
 	{
 		get
@@ -64,6 +70,7 @@ public static class ConsoleProDebug
 
 	private static bool _checkedConsoleWindowType = false;
 	private static Type _consoleWindowType = null;
+
 	private static Type ConsoleWindowType
 	{
 		get
@@ -88,5 +95,6 @@ public static class ConsoleProDebug
 			return _consoleWindowType;
 		}
 	}
+
 	#endif
 }

@@ -53,21 +53,6 @@ public class SettingPageManager : MonoBehaviour
 
             foreach (JProperty p in globalSettings.Properties())
             {
-                switch (p.Type)
-                {
-                    case JTokenType.String:
-                        Debug.Log(name + " " + p.Name + " - string");
-                        break;
-
-                    case JTokenType.Integer:
-                        Debug.Log(name + " " + p.Name + " - integer");
-                        break;
-
-                    case JTokenType.Boolean:
-                        Debug.Log(name + " " + p.Name + " - boolean");
-                        break;
-                }
-
                 GameObject newField = Instantiate(settingFieldPrefab, settingFieldContainer);
 
                 // assign property name
@@ -89,11 +74,46 @@ public class SettingPageManager : MonoBehaviour
         }
     }
 
+    private void RefreshSetting()
+    {
+        //Clear all fields
+        for (int i = 0; i < settingFieldContainer.childCount; i++)
+        {
+            Destroy(settingFieldContainer.GetChild(i).gameObject);
+        }
+
+        JObject globalSettings = jsonSetter.LoadSetting();
+
+        foreach (JProperty p in globalSettings.Properties())
+        {
+            GameObject newField = Instantiate(settingFieldPrefab, settingFieldContainer);
+
+            // assign property name
+            TextMeshProUGUI property = newField.GetComponent<TextMeshProUGUI>();
+            property.text = StringExtensions.FirstCharToUpper(p.Name);
+            properties.Add(p.Name);
+
+            // assign On Click () event ot btn
+            Button btn = newField.GetComponentInChildren<Button>();
+            btn.onClick.AddListener(delegate
+            {
+                selectedField_ = btn.GetComponentInParent<TextMeshProUGUI>();
+            });
+
+            // assign value to text
+            TextMeshProUGUI valueText = btn.GetComponentInChildren<TextMeshProUGUI>();
+            valueText.text = p.Value.ToString();
+        }
+    }
+
     public void UpdateProperty()
     {
-        jsonSetter.UpdateSetting(selectedField.text, valueField.text);
+        // jsonSetter.UpdateSetting(selectedField.text, valueField.text);
+        jsonSetter.UpdateSetting(StringExtensions.FirstCharToLower(selectedField.text), valueField.text);
+
+        // RefreshSetting();
         selectedField.transform.GetChild(0).GetComponentInChildren<TextMeshProUGUI>().text
-         = jsonSetter.LoadSetting()[selectedField.text].ToString();
+         = jsonSetter.LoadSetting()[StringExtensions.FirstCharToLower(selectedField.text)].ToString();
     }
 
     public void ValidateField()

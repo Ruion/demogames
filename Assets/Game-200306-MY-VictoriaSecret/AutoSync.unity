@@ -515,7 +515,7 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.folderPath
-      value: C:\UID-APP\200306-MY-VictorieSecret
+      value: C:\UID-APP\200306-MY-VictoriaSecret
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -566,6 +566,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectCustomCondition
       value: is_sync = 'no' OR is_sync = 'fail' ORDER BY is_sync DESC
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[9].dummyPrefix
+      value: new
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}

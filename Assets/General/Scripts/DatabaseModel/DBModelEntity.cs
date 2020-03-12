@@ -72,24 +72,6 @@ public class DBModelEntity : DBModelMaster
     {
         base.Sync();
 
-        /*
-
-         #region Check Internet
-
-        ///////////// CHECK Internet Connection /////////////
-        if (!NetworkExtension.CheckForInternetConnection())
-        {
-            //No connection
-            Debug.Log(name + " : No internet connection. Stop Sync()" );
-            ToogleHandler(blockDataHandler, false);
-            ToogleHandler(internetErrorHandler, false);
-            return;
-        }
-
-        #endregion Check Internet
-
-        */
-
         StartCoroutine(SyncToServer());
     }
 

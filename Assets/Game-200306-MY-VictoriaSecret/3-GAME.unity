@@ -3503,7 +3503,23 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.61960787
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6034976551783468899, guid: 82b7cab281347c54b8c8e44902c72c6b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 20985878}
+    - target: {fileID: 6034976551783468899, guid: 82b7cab281347c54b8c8e44902c72c6b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6034976551783468899, guid: 82b7cab281347c54b8c8e44902c72c6b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2374752316570186753, guid: 82b7cab281347c54b8c8e44902c72c6b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 82b7cab281347c54b8c8e44902c72c6b, type: 3}
 --- !u!224 &1118684372 stripped
 RectTransform:
@@ -4370,6 +4386,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1518671887}
+        m_MethodName: StopAllCoroutines
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   timeScale: 0
   isGameEnded: 0
 --- !u!114 &1438147068
@@ -5021,7 +5048,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   delays:
-  - 3
+  - 4
   - 1
   - 1
   - 1

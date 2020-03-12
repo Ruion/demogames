@@ -85,6 +85,9 @@ public class Settings
     public string serverDomainURL;
     public string source_identifier_code;
 
+    public string serverEmailPath;
+    public string serverContactPath;
+
     //public string userPrimaryKeyName = "userPrimaryKey";
     public int checkInternetTimeOut = 5000;
 

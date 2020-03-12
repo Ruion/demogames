@@ -29,6 +29,7 @@ namespace FlyingWormConsole3
 	#if USECONSOLEPROREMOTESERVER
 public class ConsoleProRemoteServer : MonoBehaviour, INetEventListener
 	#else
+
 public class ConsoleProRemoteServer : MonoBehaviour
 	#endif
 {
@@ -45,7 +46,7 @@ public class ConsoleProRemoteServer : MonoBehaviour
 	}
 
 	#elif !USECONSOLEPROREMOTESERVER
-	
+
 	public void Awake()
 	{
 		Debug.Log("Console Pro Remote Server is disabled in release mode, please use a Development build or define DEBUG to use it");
@@ -65,7 +66,6 @@ public class ConsoleProRemoteServer : MonoBehaviour
 		public LogType type;
 	}
 
-	
 	[NonSerializedAttribute]
 	public List<QueuedLog> logs = new List<QueuedLog>();
 
@@ -77,9 +77,9 @@ public class ConsoleProRemoteServer : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
-		
+
 		instance = this;
-		
+
 		DontDestroyOnLoad(gameObject);
 
 		Debug.Log("Starting Console Pro Server on port : " + port);
@@ -118,12 +118,10 @@ public class ConsoleProRemoteServer : MonoBehaviour
 
 	public void OnNetworkReceive(NetPeer peer, NetDataReader reader)
 	{
-	
 	}
 
 	public void OnPeerDisconnected(NetPeer peer, DisconnectReason reason, int socketErrorCode)
 	{
-
 	}
 
 	public void OnNetworkError(NetEndPoint endPoint, int socketErrorCode)
@@ -141,9 +139,7 @@ public class ConsoleProRemoteServer : MonoBehaviour
 
 	public void OnNetworkLatencyUpdate(NetPeer peer, int latency)
 	{
-		
 	}
-
 
 	#if UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7 || UNITY_4_8 || UNITY_4_9
 

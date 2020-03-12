@@ -46,18 +46,19 @@ public class DBModelMaster : DBSettingEntity
     [ToggleGroup("hasSync")] [ReadOnly] public int entityId;
 
     [HideInInspector] public List<string> serverEmailList;
+    [HideInInspector] public List<string> serverContactList;
 
     [ToggleGroup("hasSync")]
     [ReadOnly] public bool isFetchingData = false;
 
     #endregion fields
 
+    #region setUp
+
     protected virtual void OnEnable()
     {
         CreateTable();
     }
-
-    #region setUp
 
     [ContextMenu("CreateTable")]
     public virtual void CreateTable()
@@ -113,6 +114,16 @@ public class DBModelMaster : DBSettingEntity
     protected IDbCommand GetDbCommand()
     {
         return db_connection.CreateCommand();
+    }
+
+    private void OnDisable()
+    {
+        Close();
+    }
+
+    public virtual void Close()
+    {
+        db_connection.Close();
     }
 
     #endregion setUp
@@ -545,11 +556,6 @@ public class DBModelMaster : DBSettingEntity
 
     #endregion Custom Query
 
-    public virtual void Close()
-    {
-        db_connection.Close();
-    }
-
     [Button(ButtonSizes.Medium)]
     [HorizontalGroup("Populate Setting/Btn")]
     protected virtual void Populate()
@@ -805,10 +811,43 @@ public class DBModelMaster : DBSettingEntity
         serverEmailList = new List<string>();
     }
 
-    #endregion Online Server Fetching
+    #region Synchronize Server Data
 
-    private void OnDisable()
+    public void GetEmailDataFromTextFile()
     {
-        Close();
+        serverEmailList = new List<string>();
+
+        //Debug.Log(name + " GetEmailDataFromTextFile() started");
+
+        string[] lines = File.ReadAllLines(GameObject.FindGameObjectWithTag("GameSettingMaster").GetComponent<GameSettingEntity>().gameSettings.serverEmailPath);
+
+        // add emails to list
+        foreach (string line in lines)
+        {
+            serverEmailList.Add(line.ToString());
+        }
+
+        //Debug.Log(name + " - GetEmailDataFromTextFile() SUCCESS");
     }
+
+    public void GetContactDataFromTextFile()
+    {
+        serverContactList = new List<string>();
+
+        //Debug.Log(name + " GetContactDataFromTextFile() started");
+
+        string[] lines = File.ReadAllLines(GameObject.FindGameObjectWithTag("GameSettingMaster").GetComponent<GameSettingEntity>().gameSettings.serverContactPath);
+
+        // add emails to list
+        foreach (string line in lines)
+        {
+            serverContactList.Add(line.ToString());
+        }
+
+        //Debug.Log(name + " - GetContactDataFromTextFile SUCCESS");
+    }
+
+    #endregion Synchronize Server Data
+
+    #endregion Online Server Fetching
 }

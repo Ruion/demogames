@@ -35,8 +35,6 @@ public class PuzzleBuilder : SerializedMonoBehaviour
 
         selectedAlphabets = alphabetKeys.OrderBy(x => rand.Next(puzzleTypeCount)).Take(puzzleTypeCount).ToList();
 
-        // Debug.Log(string.Join("\n", selectedAlphabets));
-
         // select 2 Image for 1 sprite
         for (int i = 0; i < puzzleTypeCount; i++)
         {

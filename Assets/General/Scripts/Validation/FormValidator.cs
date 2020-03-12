@@ -58,11 +58,15 @@ public class FormValidator : ServerModelMaster
     {
         emailList = playerDataDbModelEntity.GetDataByStringToList("email");
         contactList = playerDataDbModelEntity.GetDataByStringToList("contact");
+        playerDataDbModelEntity.GetEmailDataFromTextFile();
+        playerDataDbModelEntity.GetContactDataFromTextFile();
+
+        DoCombineServerUsers();
     }
 
     public void StartValidateOnFrequency()
     {
-        Debug.Log("Start validate");
+        //Debug.Log("Start validate");
         InvokeRepeating("Validate", 2f, validateFrequency);
     }
 
@@ -164,14 +168,6 @@ public class FormValidator : ServerModelMaster
         if (!consent.isOn)
             warningText.text = "Please accept policy agreement";
 
-        // if contact duplicate
-        if (contactDuplicate)
-            warningText.text = "The mobile number you have entered is already registered,\nplease enter a different mobile number.";
-
-        // if email duplicate
-        if (emailDuplicate)
-            warningText.text = "The email address you have entered is already registered,\nplease enter a different email address.";
-
         // if email valid
         if (!emailValid)
             warningText.text = "The email address you have entered is invalid\n example : example@gmail.com";
@@ -190,24 +186,28 @@ public class FormValidator : ServerModelMaster
             warningText.text = "Please fill in your name";
         }
 
+        // if email duplicate
+        if (emailDuplicate)
+            warningText.text = "The email address you have entered is already registered,\nplease enter a different email address.";
+
+        // if contact duplicate
+        if (contactDuplicate)
+            warningText.text = "The mobile number you have entered is already registered,\nplease enter a different mobile number.";
+
         if (warningText.text != "")
             msgWarning.SetActive(true);
     }
 
     public void DoCombineServerUsers()
     {
-        StartCoroutine(CombineServerUsers());
-    }
-
-    private IEnumerator CombineServerUsers()
-    {
-        yield return StartCoroutine(playerDataDbModelEntity.GetDataFromServer());
-
         for (int i = 0; i < playerDataDbModelEntity.serverEmailList.Count; i++)
         {
             AddUniqueUser(playerDataDbModelEntity.serverEmailList[i], emailList);
         }
 
-        playerDataDbModelEntity.serverEmailList = new List<string>();
+        for (int i = 0; i < playerDataDbModelEntity.serverContactList.Count; i++)
+        {
+            AddUniqueUser(playerDataDbModelEntity.serverContactList[i], contactList);
+        }
     }
 }

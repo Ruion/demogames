@@ -16,7 +16,7 @@ public class DBSettingEntity : SerializedMonoBehaviour
 
     public virtual void Awake()
     {
-        // LoadSetting();
+        LoadSetting();
     }
 
     [Button(ButtonSizes.Large), GUIColor(.3f, .78f, .78f)]
