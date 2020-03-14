@@ -68,6 +68,8 @@ public class GameSettingEntity : MonoBehaviour
 
         LoadSetting();
         LoadGameSettingFromMaster();
+
+        Screen.fullScreen = true;
     }
 }
 

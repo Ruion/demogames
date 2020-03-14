@@ -86,6 +86,12 @@ public class FormValidator : ServerModelMaster
         {
             Submit.interactable = true;
             warningButton.gameObject.SetActive(false);
+
+            if (contactDuplicate || emailDuplicate)
+            {
+                Submit.interactable = false;
+                warningButton.gameObject.SetActive(true);
+            }
         }
         else
         {
@@ -108,7 +114,7 @@ public class FormValidator : ServerModelMaster
         string contact = PhoneText.text;
         contactValid = Regex.IsMatch(contact, PhonePattern);
 
-        if (!contactValid || ToogleWarning(PhoneText.text, contactList, phoneWarning, contactDuplicate)) { ChangeHint(1, false); }
+        if (!contactValid || ToogleWarning(PhoneText.text, contactList, phoneWarning, ref contactDuplicate)) { ChangeHint(1, false); }
         else { ChangeHint(1, true); }
     }
 
@@ -116,7 +122,7 @@ public class FormValidator : ServerModelMaster
     {
         emailValid = Regex.IsMatch(EmailText.text, MailPattern);
 
-        if (!emailValid || ToogleWarning(EmailText.text, emailList, emailWarning, emailDuplicate)) { ChangeHint(2, false); }
+        if (!emailValid || ToogleWarning(EmailText.text, emailList, emailWarning, ref emailDuplicate)) { ChangeHint(2, false); }
         else { ChangeHint(2, true); }
     }
 
@@ -135,31 +141,55 @@ public class FormValidator : ServerModelMaster
         NotOk_Markers[InputIndex].SetActive(!isPass);
     }
 
-    private bool ToogleWarning(string text, List<string> list, GameObject warningObject, bool duplicateBool)
+    private bool ToogleWarning(string text, List<string> list, GameObject warningObject, ref bool duplicateBool)
     {
         if (text == "") return false;
 
-        if (ValidateDuplicate(list, text, duplicateBool))
+        if (ValidateDuplicate(list, text))
         {
             warningObject.SetActive(true);
-
+            duplicateBool = true;
             return true;
         }
         else
         {
             warningObject.SetActive(false);
+            duplicateBool = false;
             return false;
         }
     }
 
-    private bool ValidateDuplicate(List<string> source, string text_, bool duplicateBool)
+    private bool ValidateDuplicate(List<string> source, string text_)
     {
         bool hasSame = false;
 
         string same = source.FirstOrDefault(t => t == text_);
         if (same != null) hasSame = true;
 
-        duplicateBool = hasSame;
+        return hasSame;
+    }
+
+    private bool ValidateEmailDuplicate(List<string> source, string text_)
+    {
+        bool hasSame = false;
+
+        string same = source.FirstOrDefault(t => t == text_);
+        if (same != null) hasSame = true;
+
+        emailDuplicate = hasSame;
+
+        return hasSame;
+    }
+
+    private bool ValidateContactDuplicate(List<string> source, string text_)
+    {
+        bool hasSame = false;
+
+        string same = source.FirstOrDefault(t => t == text_);
+        if (same != null) hasSame = true;
+
+        contactDuplicate = hasSame;
+
         return hasSame;
     }
 

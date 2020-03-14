@@ -52,7 +52,6 @@ namespace DG.Tweening
         }
 
 #if UNITY_2018_1_OR_NEWER
-#pragma warning disable
         [UnityEngine.Scripting.Preserve]
         // Just used to preserve methods when building, never called
         static void Preserver()
@@ -60,7 +59,6 @@ namespace DG.Tweening
             Assembly[] loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies();
             MethodInfo mi = typeof(MonoBehaviour).GetMethod("Stub");
         }
-#pragma warning restore
 #endif
 
         #endregion
