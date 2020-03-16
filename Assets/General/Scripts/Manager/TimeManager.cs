@@ -11,6 +11,8 @@ using TMPro;
 /// </summary>
 public class TimeManager : MonoBehaviour
 {
+    #region Fields
+
     /// <summary>
     /// set this value to change value of "second",
     /// </summary>
@@ -32,12 +34,15 @@ public class TimeManager : MonoBehaviour
     public TextMeshProUGUI[] countDownTexts;
 
     public UnityEvent countdownEndEvents;
+    public UnityEvent onCountDown;
 
     public bool useUpdate = false;
     public bool useShortcut = true;
     private bool counting = false;
 
     public bool useGameSettingTime = false;
+
+    #endregion Fields
 
     private void Awake()
     {
@@ -51,14 +56,7 @@ public class TimeManager : MonoBehaviour
 
         if (countDownTexts.Length < 1) return;
 
-        if (useUpdate)
-        {
-            System.TimeSpan interval = System.TimeSpan.FromSeconds(second);
-            UpdateText(System.String.Format("{0}:{1}0",
-             new object[] { interval.Seconds, interval.Milliseconds }
-             ));
-        }
-        else UpdateText();
+        UpdateText();
     }
 
     public void StartGame()
@@ -80,17 +78,17 @@ public class TimeManager : MonoBehaviour
             System.TimeSpan interval = System.TimeSpan.FromSeconds(second);
             if (countDownTexts.Length > 0)
             {
-                UpdateText(System.String.Format("{0}:{1}",
-                 new object[] { interval.Seconds, interval.Milliseconds }
-                 ));
+                UpdateText();
             }
+
+            if (onCountDown.GetPersistentEventCount() > 0) onCountDown.Invoke();
 
             if (second <= 0)
             {
                 countdownEndEvents.Invoke();
                 counting = false;
                 ResetCountDown();
-                UpdateText("00:00");
+                UpdateText();
             }
         }
 
@@ -111,8 +109,10 @@ public class TimeManager : MonoBehaviour
 
             second--;
 
+            if (onCountDown.GetPersistentEventCount() > 0) onCountDown.Invoke();
+
             // update textmesh text if textmesh components exists
-            if (countDownTexts.Length > 0) { UpdateText(countDownTexts, Mathf.RoundToInt(second)); }
+            if (countDownTexts.Length > 0) { UpdateText(); }
 
             if (second <= 0)
             {
@@ -128,22 +128,6 @@ public class TimeManager : MonoBehaviour
         //StartCoroutine(StartCountdown());
     }
 
-    private void UpdateText(TextMeshProUGUI[] texts_, int number)
-    {
-        for (int t = 0; t < texts_.Length; t++)
-        {
-            texts_[t].text = number.ToString(stringFormat);
-        }
-    }
-
-    private void UpdateText(TextMeshProUGUI[] texts_, float number)
-    {
-        for (int t = 0; t < texts_.Length; t++)
-        {
-            texts_[t].text = number.ToString(stringFormat);
-        }
-    }
-
     public void UpdateText()
     {
         if (countDownTexts.Length < 1) return;
@@ -151,14 +135,6 @@ public class TimeManager : MonoBehaviour
         for (int t = 0; t < countDownTexts.Length; t++)
         {
             countDownTexts[t].text = second.ToString(stringFormat);
-        }
-    }
-
-    public void UpdateText(string time)
-    {
-        for (int t = 0; t < countDownTexts.Length; t++)
-        {
-            countDownTexts[t].text = time;
         }
     }
 

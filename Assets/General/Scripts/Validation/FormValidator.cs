@@ -53,6 +53,9 @@ public class FormValidator : ServerModelMaster
     public float validateFrequency;
     public string contactPrefix = "+6";
 
+    private bool ageIsSelected = false;
+    public bool AgeIsSelected { get { return ageIsSelected; } set { ageIsSelected = value; } }
+
     #endregion variables
 
     private void OnEnable()
@@ -82,7 +85,7 @@ public class FormValidator : ServerModelMaster
         T2Change();
         T3Change();
 
-        if (Text1OK && contactValid && emailValid && consent.isOn)
+        if (Text1OK && contactValid && emailValid && consent.isOn && ageIsSelected)
         {
             Submit.interactable = true;
             warningButton.gameObject.SetActive(false);

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1D4F7EBE-A44A-B5BA-3299-F90959AEB4C4}</ProjectGuid>
+    <ProjectGuid>{D8C34C35-587A-0F3E-2ED7-A9D7DF7EF5C0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Sirenix.OdinInspector.CompatibilityLayer</AssemblyName>
@@ -66,10 +66,10 @@
     <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\SerializedNetworkBehaviour.cs" />
     <Compile Include="Assets\Plugins\Sirenix\Odin Inspector\Scripts\VectorIntFormatters.cs" />
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/2019.2.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -261,46 +261,46 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="DemiLib">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
     </Reference>
     <Reference Include="DemiEditor">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenEditor">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenPro">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenProEditor">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/2019.2.6f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

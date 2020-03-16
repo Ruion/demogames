@@ -6,18 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game-200306-MY-VictoriaSecret/1-HOME.unity
-    guid: 4c57817a6bfa68d4e9433b9e5e58edce
+    path: Assets/Game-200306-MY-Zurich/1-HOME.unity
+    guid: 84fd7a803ef95834187d8c13c0ebdc4c
   - enabled: 1
-    path: Assets/Game-200306-MY-VictoriaSecret/2-INSTRUCTION.unity
-    guid: d7146c968e4f09543a33c3028b4ef84f
+    path: Assets/Game-200306-MY-Zurich/2-REGISTRATION.unity
+    guid: 49fa797cc9465674888c7638fc0f4917
   - enabled: 1
-    path: Assets/Game-200306-MY-VictoriaSecret/3-GAME.unity
-    guid: 06ca5f9b3b6981249bf012b2efab7ffe
+    path: Assets/Game-200306-MY-Zurich/3-GAME.unity
+    guid: 2021eff424b962f4cacb5de575f64bc3
   - enabled: 1
-    path: Assets/Game-200306-MY-VictoriaSecret/4-REGISTRATION.unity
-    guid: 92bb11830ab396b4bb409b92cd6c043e
-  - enabled: 1
-    path: Assets/Game-200306-MY-VictoriaSecret/5-CONGRATULATION.unity
-    guid: c5193a11db2a85447a11a958311096f5
+    path: Assets/Game-200306-MY-Zurich/4-CONGRATULATION.unity
+    guid: 3eb0302ba07dc6f4fb85953357568503
   m_configObjects: {}

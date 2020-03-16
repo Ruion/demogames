@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1EF52B14-15EA-FD5C-3546-D49105DE3C5D}</ProjectGuid>
+    <ProjectGuid>{5A67CEA8-F119-C309-2D01-59312D81E27C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -83,22 +83,22 @@
     <None Include="Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
     <None Include="Assets\Editor\Doxygen\ReadMe.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.quicksearch">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Library/ScriptAssemblies/com.unity.quicksearch.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Library/ScriptAssemblies/com.unity.quicksearch.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/2019.2.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -290,49 +290,49 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="DemiLib">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
     </Reference>
     <Reference Include="DemiEditor">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenEditor">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenPro">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenProEditor">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>C:/UID-Projects/200305-MY-VictoriaSecret/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>C:/UID-Projects/UID-200306-MY-Zurich/200306-MY-Zurich/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/2019.2.6f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -691,19 +691,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{A207079A-E79F-3A13-B1CD-E1A36D17DE64}</Project>
+      <Project>{BA4914A3-0A05-795A-216C-31872BF13B7C}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{4832D646-8E6D-195D-CC20-82205105CCCF}</Project>
+      <Project>{FB5B1610-AD76-5999-D3F1-5400AD2E2E10}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
-      <Project>{50A0ACDA-DB05-ED84-9715-9E2B00DDF2A4}</Project>
+      <Project>{6C6F0EDB-2B7A-B2B5-A188-1769AC2497AF}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
-      <Project>{1D4F7EBE-A44A-B5BA-3299-F90959AEB4C4}</Project>
+      <Project>{D8C34C35-587A-0F3E-2ED7-A9D7DF7EF5C0}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
     </ProjectReference>
   </ItemGroup>
