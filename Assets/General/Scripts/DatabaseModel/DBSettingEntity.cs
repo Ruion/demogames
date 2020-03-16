@@ -28,16 +28,20 @@ public class DBSettingEntity : SerializedMonoBehaviour
         dbSettings.dbName = name;
         dbSettings.keyFileName = name + " Online";
 
-        // fetch & Update setting from Setting.json
-        JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
-        dbSettings.folderPath = jsonSetter.savePath;
+        GameSettingEntity gse = FindObjectOfType<GameSettingEntity>().GetComponent<GameSettingEntity>();
 
-        //  dbSettings.keyDownloadURL = dbSettings.sendURL + ;
+        dbSettings.sendURL = gse.Server_URL;
+
+        // fetch & Update setting from Setting.json
+
+        dbSettings.folderPath = gse.Project_Folder;
 
         Directory.CreateDirectory(Path.GetDirectoryName(dbSettings.folderPath + "\\Databases\\"));
 
         // add api to Setting.json - playerdata_sendAPI : submit-player-data
         DBSettingEntity[] dBSettingEntities = FindObjectsOfType<DBSettingEntity>();
+
+        JSONSetter jsonSetter = gse.jsonSetter;
         foreach (DBSettingEntity e in dBSettingEntities)
         {
             if (string.IsNullOrEmpty(e.dbSettings.sendAPI)) continue;
@@ -56,9 +60,11 @@ public class DBSettingEntity : SerializedMonoBehaviour
     [ButtonGroup("Setting")]
     public virtual void LoadSetting()
     {
+        GameSettingEntity gse = FindObjectOfType<GameSettingEntity>().GetComponent<GameSettingEntity>();
+
         // fetch & Update setting from global JSONSetter
-        JSONSetter jsonSetter = FindObjectOfType<JSONSetter>();
-        dbSettings.folderPath = jsonSetter.savePath;
+
+        dbSettings.folderPath = gse.Project_Folder;
 
         string filePath = dbSettings.folderPath + "\\Settings\\" + name;
 
@@ -66,12 +72,14 @@ public class DBSettingEntity : SerializedMonoBehaviour
         dbSettings = JsonConvert.DeserializeObject<DBEntitySetting>(File.ReadAllText(filePath + ".json"));
 
         // fetch & Update setting from global JSONSetter
+        JSONSetter jsonSetter = gse.jsonSetter;
+
         JObject jObject = jsonSetter.LoadSetting();
-        dbSettings.sendURL = jObject["serverDomainURL"].ToString();
+        dbSettings.sendURL = gse.Server_URL;
 
         var substrings = new[] { "api" };
         if (!dbSettings.sendURL.ContainsAny(substrings, StringComparison.CurrentCultureIgnoreCase))
-            dbSettings.sendURL += "/public/api/";
+            dbSettings.sendURL += "public/api/";
 
         // load sendAPI from global setting file
         if (jObject.ContainsKey(dbSettings.fileName + "-API")) dbSettings.sendAPI = jObject[dbSettings.fileName + "-API"].ToString();

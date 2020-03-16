@@ -72,24 +72,6 @@ public class DBModelEntity : DBModelMaster
     {
         base.Sync();
 
-        /*
-
-         #region Check Internet
-
-        ///////////// CHECK Internet Connection /////////////
-        if (!NetworkExtension.CheckForInternetConnection())
-        {
-            //No connection
-            Debug.Log(name + " : No internet connection. Stop Sync()" );
-            ToogleHandler(blockDataHandler, false);
-            ToogleHandler(internetErrorHandler, false);
-            return;
-        }
-
-        #endregion Check Internet
-
-        */
-
         StartCoroutine(SyncToServer());
     }
 
@@ -191,6 +173,7 @@ public class DBModelEntity : DBModelMaster
                     totalNotSent++;
                     ToogleStatusBar(failBar, totalNotSent);
                     ToogleHandler(errorHandler, true);
+                    ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'fail' WHERE id = " + entityId);
                     //  SyncEnded();
                     //  yield break;
                 }
@@ -199,22 +182,18 @@ public class DBModelEntity : DBModelMaster
                     //  yield return new WaitForEndOfFrame();
                     var jsonData = JsonUtility.FromJson<JSONResponse>(www.downloadHandler.text);
 
-                    if (jsonData.result != dbSettings.serverResponsesArray[0].resultResponse)
+                    if (jsonData.result != "Success")
                     {
-                        //  string response = dbSettings.serverResponses.resultResponses.FirstOrDefault(r => r == jsonData.result);
-                        ServerResponses response = dbSettings.serverResponsesArray.FirstOrDefault(r => r.resultResponse == jsonData.result);
-                        int index = System.Array.IndexOf(dbSettings.serverResponsesArray, response);
-                        Debug.LogError(name + " - " + response.resultResponseMessage + "\n Values : " + values);
-
                         totalNotSent++;
                         ToogleStatusBar(failBar, totalNotSent);
 
-                        ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = '" + jsonData.result + "' WHERE id = " + entityId);
+                        if (jsonData.result.Contains("Duplicate"))
+                            ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'duplicate' WHERE id = " + entityId);
+                        else
+                            ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'fail' WHERE id = " + entityId);
                     }
                     else
                     {
-                        Debug.Log(name + " : " + dbSettings.serverResponsesArray[0].resultResponseMessage);
-
                         // update successfully sync is_sync to submitted
                         ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'yes' WHERE id = " + entityId);
 
@@ -224,7 +203,6 @@ public class DBModelEntity : DBModelMaster
                 }
             }
 
-            //  yield return new WaitForEndOfFrame();
             yield return new WaitForSeconds(1.2f);
         }
 

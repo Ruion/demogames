@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using System.Reflection;
 
 /// <summary>
 /// Master class for Saving and Retrieving gameplay settings.
@@ -13,9 +10,17 @@ public class GameSettingEntity : MonoBehaviour
     [Header("GameSetting - SAVE setting every new project")]
     public Settings gameSettings;
 
-    public JSONSetter jsonSetter;
+    public string Server_URL { get { return jsonSetter.LoadGlobalSettingFile(@"C:\UID_Toolkit\Global.json")["Server_URL"].ToString(); } }
 
-    private string fileName = "GameSetting";
+    public string Project_Folder
+    {
+        get
+        {
+            return @"C:\UID-APP\" + jsonSetter.LoadGlobalSettingFile(@"C:\UID_Toolkit\Global.json")["Project_Code"].ToString();
+        }
+    }
+
+    public JSONSetter jsonSetter;
 
     /// <summary>
     /// Save the settings value in to file. This function eccesible by right click component in inspector and click "SaveSetting"
@@ -46,6 +51,8 @@ public class GameSettingEntity : MonoBehaviour
         string filePath = jsonSetter.savePath + "\\Settings\\" + "Setting";
 
         JSONExtension.LoadValues(filePath, gameSettings);
+
+        Debug.Log(Server_URL);
     }
 
     /// <summary>
@@ -63,7 +70,7 @@ public class GameSettingEntity : MonoBehaviour
 
     public virtual void Awake()
     {
-        BetterStreamingAssets.Initialize();
+        // BetterStreamingAssets.Initialize();
         if (jsonSetter == null) jsonSetter = FindObjectOfType<JSONSetter>();
 
         LoadSetting();
