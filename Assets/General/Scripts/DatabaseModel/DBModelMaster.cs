@@ -27,6 +27,7 @@ public class DBModelMaster : DBSettingEntity
     private const string CodistanTag = "Codistan: SqliteHelper:\t";
 
     [HideInInspector] public string db_connection_string;
+    [HideInInspector] public string directoryPath;
     [HideInInspector] public IDbConnection db_connection;
     [HideInInspector] public SqliteConnection sqlitedb_connection;
 
@@ -62,8 +63,6 @@ public class DBModelMaster : DBSettingEntity
     [ContextMenu("CreateTable")]
     public virtual void CreateTable()
     {
-        LoadSetting();
-
         ConnectDb();
 
         IDbCommand dbcmd = GetDbCommand();
@@ -88,6 +87,7 @@ public class DBModelMaster : DBSettingEntity
 
     public virtual void ConnectDb()
     {
+        LoadSetting();
         /// we use StreamingAssets folder in pass, but now use C:\UID-APP\APPS folder now
         // db_connection_string = "URI = file:" + Application.streamingAssetsPath + "/" + dbSettings.dbName + ".sqlite";
         GameSettingEntity gse = GameObject.FindGameObjectWithTag("GameSettingMaster").GetComponent<GameSettingEntity>();
@@ -102,8 +102,8 @@ public class DBModelMaster : DBSettingEntity
 
         db_connection_string = "URI = file:" + dbSettings.folderPath + folder + dbSettings.dbName + ".sqlite";
 
-        string path = dbSettings.folderPath + folder;
-        Directory.CreateDirectory(Path.GetDirectoryName((path)));
+        directoryPath = dbSettings.folderPath + folder;
+        Directory.CreateDirectory(Path.GetDirectoryName((directoryPath)));
 
         db_connection = new SqliteConnection(db_connection_string);
         db_connection.Open();
@@ -238,20 +238,20 @@ public class DBModelMaster : DBSettingEntity
                             "View in Tools > Local DB (selecting the db gameObject) "
                             );
                             */
-
+            string record = "";
             foreach (DataRow r in dt.Rows)
             {
-                string record = "";
-
                 foreach (TableColumn col in dbSettings.columns)
                 {
                     record += col.name + " : " + r[col.name].ToString() + " | ";
                     // Debug.Log(record);
                 }
-                Debug.Log(record);
+                record += "\n";
             }
+            Debug.Log(name + " - all record in table " + dbSettings.tableName + " " + record);
 
             Close();
+
             return dt;
         }
         catch (DbException ex)

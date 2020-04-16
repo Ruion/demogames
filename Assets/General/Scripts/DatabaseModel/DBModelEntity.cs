@@ -214,6 +214,123 @@ public class DBModelEntity : DBModelMaster
         SyncEnded();
     }
 
+    [Button(ButtonSizes.Small)]
+    public void SyncToServerByBatch()
+    {
+        StartCoroutine(SyncToServerBatch());
+    }
+
+    private IEnumerator SyncToServerBatch()
+    {
+        yield return StartCoroutine(NetworkExtension.CheckForInternetConnectionRoutine());
+
+        // if no internet connection, end this coroutine, call SyncEnded() to start over again
+        if (NetworkExtension.internet == false)
+        {
+            //No connection
+            Debug.Log(name + " No internet. Stop SyncToServer() coroutine");
+            SyncEnded();
+            yield break;
+        }
+
+        if (OnSyncStart.GetPersistentEventCount() > 0) OnSyncStart.Invoke();
+
+        yield return StartCoroutine(CompareServerData());
+
+        // if no data to sync, end this coroutine, call SyncEnded() to start over again
+        rows = GetAllCustomCondition();
+        if (rows.Count < 1)
+        {
+            SyncEnded();
+            StopAllCoroutines();
+            Debug.Log(name + " no data to sync. Stop SyncToServer() coroutine");
+            yield break;
+        }
+
+        Debug.Log(name + " : Start sync");
+
+        // Get global event_code
+        string source_identifier_code = JSONExtension.LoadSetting(dbSettings.folderPath + "\\Settings\\Setting", "source_identifier_code");
+
+        // start writing json , add { to start of string
+        string jsonString = "{\"" + dbSettings.sendAPI + "\":[";
+
+        for (int u = 0; u < rows.Count; u++)
+        {
+            entityId = int.Parse(rows[u]["id"].ToString());
+
+            jsonString += "{";
+
+            // select the column that will be sync
+            List<TableColumn> syncColumn = dbSettings.columns.FindAll(x => x.sync == true);
+            for (int i = 0; i < syncColumn.Count; i++)
+            {
+                string value = rows[u][syncColumn[i].name].ToString();
+
+                jsonString += string.Format("\"{0}\" : \"{1}\",", new System.Object[] { syncColumn[i].name, value });
+            }
+
+            // remove "," at the end of string
+            jsonString = jsonString.Remove(jsonString.Length - 1, 1);
+
+            jsonString += "},";
+
+            #region WebRequest
+
+            //using (UnityWebRequest www = UnityWebRequest.Post((dbSettings.sendURL + dbSettings.sendAPI).Replace(" ", string.Empty), form))
+            //{
+            //    yield return www.SendWebRequest();
+
+            //    if (www.isNetworkError || www.isHttpError)
+            //    {
+            //        ErrorAction(www, "server error \n Values : " + values);
+            //        totalNotSent++;
+            //        ToogleStatusBar(failBar, totalNotSent);
+            //        ToogleHandler(errorHandler, true);
+            //        ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'fail' WHERE id = " + entityId);
+            //        //  SyncEnded();
+            //        //  yield break;
+            //    }
+            //    else
+            //    {
+            //        //  yield return new WaitForEndOfFrame();
+            //        var jsonData = JsonUtility.FromJson<JSONResponse>(www.downloadHandler.text);
+
+            //        if (jsonData.result != "Success")
+            //        {
+            //            totalNotSent++;
+            //            ToogleStatusBar(failBar, totalNotSent);
+
+            //            if (jsonData.result.Contains("Duplicate"))
+            //                ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'duplicate' WHERE id = " + entityId);
+            //            else
+            //                ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'fail' WHERE id = " + entityId);
+            //        }
+            //        else
+            //        {
+            //            // update successfully sync is_sync to submitted
+            //            ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'yes' WHERE id = " + entityId);
+
+            //            totalSent++;
+            //            ToogleStatusBar(successBar, totalSent);
+            //        }
+            //    }
+            //}
+        }
+
+        // end writing json, remove "," at the end of string
+        jsonString = jsonString.Remove(jsonString.Length - 1, 1);
+
+        // add } to end of string
+        jsonString += "]}";
+        Debug.Log(name + " - batch json data to sync : " + jsonString);
+
+        #endregion WebRequest
+
+        if (hasSync) successBar.GetComponent<StatusBar>().Finish();
+        SyncEnded();
+    }
+
     private void SyncEnded()
     {
         rows.Clear();
@@ -251,7 +368,7 @@ public class DBModelEntity : DBModelMaster
         // Read the text lines from the selected file path
         string[] datas = File.ReadAllLines(dataFilePath[dataFilePathIndex]);
 
-        Debug.Log(string.Join("\n", datas));
+        Debug.Log(name + " - data from file " + dataFilePath[dataFilePathIndex] + "\n" + string.Join("\n", datas));
 
         List<string> col = new List<string>();
         List<string> val = new List<string>();

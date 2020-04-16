@@ -127,7 +127,7 @@ public class VendingMachineDBModelEntity : DBModelEntity
             UpdateData(col, val, "id = '" + item_id + "'");
         }
 
-        Debug.Log(item_id + " : " + item_name + " has " + item_quantity + " left | Lane : " + item_lane);
+        Debug.Log(name + " - " + item_id + " : " + item_name + " has " + item_quantity + " left | Lane : " + item_lane);
 
         Close();
     }
@@ -203,7 +203,7 @@ public class VendingMachineDBModelEntity : DBModelEntity
             UpdateData(col, val, "id = '" + item_id + "'");
         }
 
-        Debug.Log(item_id + " : " + item_name + " has " + item_quantity + " left | Lane : " + item_lane);
+        Debug.Log(name + " - " + item_id + " : " + item_name + " has " + item_quantity + " left | Lane : " + item_lane);
 
         Close();
     }

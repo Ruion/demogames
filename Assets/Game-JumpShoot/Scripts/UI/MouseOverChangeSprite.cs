@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseOverChangeSprite : MonoBehaviour {
+public class MouseOverChangeSprite : MonoBehaviour
+{
+    public Sprite newSprite;
 
-	public Sprite newSprite;
-
-	void OnMouseOver()
-	{
-		transform.GetComponent<SpriteRenderer>().sprite = newSprite;
-		Debug.Log("changing sprite");
-	}
+    private void OnMouseOver()
+    {
+        transform.GetComponent<SpriteRenderer>().sprite = newSprite;
+        Debug.Log(name + " changing sprite");
+    }
 }

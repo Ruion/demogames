@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
 /// Reposition gameObjects to target gameObjects destination
-/// Tips: drag gameObjects into "newObject", drag destination gameObject into "destinations", 
+/// Tips: drag gameObjects into "newObject", drag destination gameObject into "destinations",
 /// right click component in inspector and select Reposition
 /// </summary>
 public class ObjectReposition : MonoBehaviour
@@ -19,5 +18,10 @@ public class ObjectReposition : MonoBehaviour
         {
             newObject[i].position = destinations[i].position;
         }
+    }
+
+    public void RepositionSingle(Transform destination)
+    {
+        transform.position = destination.position;
     }
 }

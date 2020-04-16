@@ -9,10 +9,11 @@ using Sirenix.OdinInspector;
 public class VoucherDBModelEntity : DBModelMaster
 {
     #region Fields
-    DataRowCollection rows;
-    [ReadOnly] int voucher_id;
-    [ReadOnly] string voucher_name;
-    [ReadOnly] int voucher_quantity;
+
+    private DataRowCollection rows;
+    [ReadOnly] private int voucher_id;
+    [ReadOnly] private string voucher_name;
+    [ReadOnly] private int voucher_quantity;
     [SerializeField] private int populate_quantity;
 
     public UnityEvent OnOutOfStock;
@@ -28,9 +29,10 @@ public class VoucherDBModelEntity : DBModelMaster
     public Print_Program printer;
     public DBModelEntity voucherDistributionDBModelEntity;
 
-    #endregion
+    #endregion Fields
 
     #region SetUp
+
     protected override void OnEnable()
     {
         CheckDay();
@@ -74,12 +76,13 @@ public class VoucherDBModelEntity : DBModelMaster
         Close();
     }
 
-    #endregion
+    #endregion SetUp
 
     [ContextMenu("Print")]
     public void PrintVoucher()
     {
         #region Get Voucher
+
         LoadSetting();
 
         ProbabilityCheck pc = rf.CalculateProbability();
@@ -91,9 +94,11 @@ public class VoucherDBModelEntity : DBModelMaster
         voucher_quantity = pc.quantity;
 
         voucher_quantity--;
-        #endregion
+
+        #endregion Get Voucher
 
         #region Print Voucher
+
         if (OnVoucherPrint.GetPersistentEventCount() > 0) OnVoucherPrint.Invoke();
 
         printer.printerPath = dbSettings.folderPath + "\\Vouchers\\";
@@ -103,9 +108,9 @@ public class VoucherDBModelEntity : DBModelMaster
 
         voucherDistributionDBModelEntity.SaveToLocal();
 
-        Debug.Log(voucher_id + " : " + voucher_name + " has " + voucher_quantity + " left");
+        Debug.Log(name + " - " + voucher_id + " : " + voucher_name + " has " + voucher_quantity + " left");
 
-        #endregion
+        #endregion Print Voucher
     }
 
     public void CheckDay()
@@ -127,7 +132,6 @@ public class VoucherDBModelEntity : DBModelMaster
             string todaydate = DateTime.Now.Date.ToString();
             PlayerPrefs.SetString("TheDate", todaydate);
         }
-
     }
 
     [ContextMenu("Reset Daily Stock")]
@@ -144,10 +148,8 @@ public class VoucherDBModelEntity : DBModelMaster
     }
 }
 
-
 public class VoucherEntity
 {
-
     public int _id;
     public string _type;
     public int _stock;

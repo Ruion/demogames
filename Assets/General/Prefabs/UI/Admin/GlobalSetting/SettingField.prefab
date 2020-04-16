@@ -92,8 +92,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_firstOverflowCharacterIndex: -1
@@ -231,7 +231,7 @@ PrefabInstance:
     - target: {fileID: 804039847741614280, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -12
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 804039847741614280, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
         type: 3}
@@ -273,6 +273,33 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1076673659, guid: b24ad6a3ffa0fc3498883f23ca77eb69, type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0.2924528
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076673659, guid: b24ad6a3ffa0fc3498883f23ca77eb69, type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.2924528
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076673659, guid: b24ad6a3ffa0fc3498883f23ca77eb69, type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0.2924528
+      objectReference: {fileID: 0}
+    - target: {fileID: 804039847741614278, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 804039847741614278, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 804039847741614278, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 804039847741614279, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -297,33 +324,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Interactable
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 804039847741614278, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 804039847741614278, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 804039847741614278, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1076673659, guid: b24ad6a3ffa0fc3498883f23ca77eb69, type: 3}
-      propertyPath: m_EffectColor.r
-      value: 0.2924528
-      objectReference: {fileID: 0}
-    - target: {fileID: 1076673659, guid: b24ad6a3ffa0fc3498883f23ca77eb69, type: 3}
-      propertyPath: m_EffectColor.g
-      value: 0.2924528
-      objectReference: {fileID: 0}
-    - target: {fileID: 1076673659, guid: b24ad6a3ffa0fc3498883f23ca77eb69, type: 3}
-      propertyPath: m_EffectColor.b
-      value: 0.2924528
       objectReference: {fileID: 0}
     - target: {fileID: 804039847896398453, guid: b24ad6a3ffa0fc3498883f23ca77eb69,
         type: 3}

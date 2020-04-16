@@ -62,7 +62,7 @@ public class FormValidator : ServerModelMaster
 
     public void StartValidateOnFrequency()
     {
-        Debug.Log("Start validate");
+        Debug.Log(name + " - " + "Start validate");
         InvokeRepeating("Validate", 2f, validateFrequency);
     }
 

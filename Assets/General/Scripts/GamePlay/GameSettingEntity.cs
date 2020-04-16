@@ -10,13 +10,13 @@ public class GameSettingEntity : MonoBehaviour
     [Header("GameSetting - SAVE setting every new project")]
     public Settings gameSettings;
 
-    public string Server_URL { get { return jsonSetter.LoadGlobalSettingFile(@"C:\UID_Toolkit\Global.json")["Server_URL"].ToString(); } }
+    public string Server_URL { get { return jsonSetter.LoadSettingFileFromPath(@"C:\UID_Toolkit\Global.json")["Server_URL"].ToString(); } }
 
     public string Project_Folder
     {
         get
         {
-            return @"C:\UID-APP\" + jsonSetter.LoadGlobalSettingFile(@"C:\UID_Toolkit\Global.json")["Project_Code"].ToString();
+            return @"C:\UID-APP\" + jsonSetter.LoadSettingFileFromPath(@"C:\UID_Toolkit\Global.json")["Project_Code"].ToString();
         }
     }
 
@@ -34,7 +34,7 @@ public class GameSettingEntity : MonoBehaviour
 
         JSONExtension.SaveValues(filePath, gameSettings);
 
-        Debug.Log("Save setting success");
+        Debug.Log(name + " Save setting success");
     }
 
     /// <summary>
@@ -43,16 +43,11 @@ public class GameSettingEntity : MonoBehaviour
     [ContextMenu("LoadSetting")]
     public virtual void LoadSetting()
     {
-        /*
-        gameSettings.savePath = jsonSetter.savePath;
-        gameSettings = GameSetting.LoadSetting(gameSettings);
-        */
-
         string filePath = jsonSetter.savePath + "\\Settings\\" + "Setting";
 
         JSONExtension.LoadValues(filePath, gameSettings);
 
-        Debug.Log(Server_URL);
+        gameSettings.serverDomainURL = Server_URL;
     }
 
     /// <summary>

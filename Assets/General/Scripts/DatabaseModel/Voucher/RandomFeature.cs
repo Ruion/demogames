@@ -10,9 +10,8 @@ public class RandomFeature : MonoBehaviour
     public List<ProbabilityCheck> voucher_probability = new List<ProbabilityCheck>();
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
     }
 
     public void MakeRandomProbability()
@@ -48,8 +47,8 @@ public class RandomFeature : MonoBehaviour
 
         ProbabilityCheck pc = voucher_probability.FirstOrDefault(x => rand > x.min_prob && rand < x.max_prob);
 
-        if (pc != null) { Debug.Log("Choosen voucher name : " + pc.name); return pc; }
-        else { Debug.Log("Choosen last voucher name : " + voucher_probability.LastOrDefault().name); return voucher_probability.LastOrDefault(); }
+        if (pc != null) { Debug.Log(name + " - Choosen voucher name : " + pc.name); return pc; }
+        else { Debug.Log(name + " - Choosen last voucher name : " + voucher_probability.LastOrDefault().name); return voucher_probability.LastOrDefault(); }
     }
 }
 

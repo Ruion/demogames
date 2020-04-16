@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 public class JSONSetter : MonoBehaviour
 {
     [FolderPath(AbsolutePath = true, UseBackslashes = true)]
-    public string savePath { get { return @"C:\UID-APP\" + LoadGlobalSettingFile(@"C:\UID_Toolkit\Global.json")["Project_Code"].ToString(); } }
+    public string savePath { get { return LoadGlobalSettingFile(@"C:\UID-APP\GLOBAL")["projectFolder"].ToString(); } }
 
     [FolderPath(AbsolutePath = true, UseBackslashes = true)]
     public string globalSavePath;
@@ -73,6 +73,14 @@ public class JSONSetter : MonoBehaviour
     }
 
     public JObject LoadGlobalSettingFile(string filePath)
+    {
+        string json = File.ReadAllText(filePath + "\\" + globalFileName);
+        JObject jsonObj = JObject.Parse(json);
+
+        return jsonObj;
+    }
+
+    public JObject LoadSettingFileFromPath(string filePath)
     {
         string json = File.ReadAllText(filePath);
         JObject jsonObj = JObject.Parse(json);
