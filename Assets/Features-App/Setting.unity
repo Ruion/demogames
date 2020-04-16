@@ -1850,24 +1850,18 @@ PrefabInstance:
     - target: {fileID: 4775206556606313759, guid: 4ac61e9d6489be845ae635d1eb1d5dca,
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4775206556606313759, guid: 4ac61e9d6489be845ae635d1eb1d5dca,
         type: 3}
       propertyPath: m_fontSize
-      value: 26
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4775206556606313759, guid: 4ac61e9d6489be845ae635d1eb1d5dca,
         type: 3}
       propertyPath: m_fontSizeMax
       value: 26
       objectReference: {fileID: 0}
-    - target: {fileID: 7904705313042130055, guid: 4ac61e9d6489be845ae635d1eb1d5dca,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 32b86befa32f3ec49a543bb6db71d4e3,
-        type: 3}
     - target: {fileID: 7904705313042130055, guid: 4ac61e9d6489be845ae635d1eb1d5dca,
         type: 3}
       propertyPath: m_PreserveAspect
@@ -2191,23 +2185,12 @@ PrefabInstance:
     - target: {fileID: 4775206556606313759, guid: 4ac61e9d6489be845ae635d1eb1d5dca,
         type: 3}
       propertyPath: m_fontSize
-      value: 26
+      value: 20.1
       objectReference: {fileID: 0}
     - target: {fileID: 4775206556606313759, guid: 4ac61e9d6489be845ae635d1eb1d5dca,
         type: 3}
       propertyPath: m_fontSizeMax
       value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 7904705313042130055, guid: 4ac61e9d6489be845ae635d1eb1d5dca,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 32b86befa32f3ec49a543bb6db71d4e3,
-        type: 3}
-    - target: {fileID: 7904705313042130055, guid: 4ac61e9d6489be845ae635d1eb1d5dca,
-        type: 3}
-      propertyPath: m_PreserveAspect
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3124374008326789237, guid: 4ac61e9d6489be845ae635d1eb1d5dca, type: 3}
