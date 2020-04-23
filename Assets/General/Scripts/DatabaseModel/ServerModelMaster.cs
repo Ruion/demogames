@@ -4,10 +4,15 @@ using System.Linq;
 using System.Net;
 using UnityEngine;
 
-public class ServerModelMaster : GameSettingEntity
+public class ServerModelMaster : MonoBehaviour
 {
-    public virtual void SaveToLocal() { }
-    public virtual void Sync() { }
+    public virtual void SaveToLocal()
+    {
+    }
+
+    public virtual void Sync()
+    {
+    }
 
     public string GetHtmlFromUri(string resource = "http://google.com")
     {
@@ -23,7 +28,7 @@ public class ServerModelMaster : GameSettingEntity
                     using (StreamReader reader = new StreamReader(resp.GetResponseStream()))
                     {
                         //We are limiting the array to 80 so we don't have
-                        //to parse the entire html document feel free to 
+                        //to parse the entire html document feel free to
                         //adjust (probably stay under 300)
                         char[] cs = new char[80];
                         reader.Read(cs, 0, cs.Length);

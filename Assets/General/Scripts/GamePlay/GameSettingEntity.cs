@@ -8,7 +8,7 @@
 public class GameSettingEntity : MonoBehaviour
 {
     [Header("GameSetting - SAVE setting every new project")]
-    public Settings gameSettings;
+    public Game.Settings gameSettings;
 
     public string Server_URL { get { return jsonSetter.LoadSettingFileFromPath(@"C:\UID_Toolkit\Global.json")["Server_URL"].ToString(); } }
 
@@ -30,7 +30,7 @@ public class GameSettingEntity : MonoBehaviour
     {
         // GameSetting.SaveSetting(gameSettings);
 
-        string filePath = jsonSetter.savePath + "\\Settings\\" + "Setting";
+        string filePath = Project_Folder + "\\Settings\\" + "Setting";
 
         JSONExtension.SaveValues(filePath, gameSettings);
 
@@ -43,7 +43,7 @@ public class GameSettingEntity : MonoBehaviour
     [ContextMenu("LoadSetting")]
     public virtual void LoadSetting()
     {
-        string filePath = jsonSetter.savePath + "\\Settings\\" + "Setting";
+        string filePath = Project_Folder + "\\Settings\\" + "Setting";
 
         JSONExtension.LoadValues(filePath, gameSettings);
 
@@ -73,20 +73,24 @@ public class GameSettingEntity : MonoBehaviour
     }
 }
 
-/// <summary>
-/// Settings to be used by gameplay objects
-/// add variable like speed, hp, game time and make other class to use those values, to made tweaking and testing easier.
-/// </summary>
-[System.Serializable]
-public class Settings
+namespace Game
 {
-    //public string scoreName = "game_score";
-    //public int scoreToWin = 3;
-    public bool debugMode = false;
+    /// <summary>
+    /// Settings to be used by gameplay objects
+    /// add variable like speed, hp, game time and make other class to use those values, to made tweaking and testing easier.
+    /// </summary>
+    [System.Serializable]
+    public class Settings
+    {
+        //public string scoreName = "game_score";
+        //public int scoreToWin = 3;
+        public bool debugMode = false;
 
-    public string serverDomainURL;
-    public string source_identifier_code;
+        public string serverDomainURL;
+        public string source_identifier_code;
+        public string serverEmailPath = @"C:\UID_Toolkit\output\player_email_list.txt";
 
-    //public string userPrimaryKeyName = "userPrimaryKey";
-    public int checkInternetTimeOut = 5000;
+        //public string userPrimaryKeyName = "userPrimaryKey";
+        public int checkInternetTimeOut = 5000;
+    }
 }

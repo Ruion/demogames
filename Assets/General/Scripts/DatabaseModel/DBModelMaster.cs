@@ -445,7 +445,7 @@ public class DBModelMaster : DBSettingEntity
         // DataRowCollection drc = ExecuteCustomSelectQuery("SELECT " + item + " FROM " + dbSettings.tableName);
         //    for (int d = 0; d < drc.Count; d++)
         //    {
-        //        list.Add(drc[0][0].ToString()); drc[0][0] means drc[row0][column0]
+        //        list.Add(drc[d][0].ToString()); drc[d][0] means drc[row(index)][column0]
         //    }
 
         #endregion Usage
@@ -803,6 +803,38 @@ public class DBModelMaster : DBSettingEntity
         }
 
         serverEmailList = new List<string>();
+    }
+
+    public void GetEmailDataFromTextFile()
+    {
+        serverEmailList = new List<string>();
+
+        //Debug.Log(name + " GetEmailDataFromTextFile() started");
+
+        string[] lines = File.ReadAllLines(GameObject.FindGameObjectWithTag("GameSettingMaster").GetComponent<GameSettingEntity>().gameSettings.serverEmailPath);
+
+        // add emails to list
+        foreach (string line in lines)
+        {
+            serverEmailList.Add(line.ToString());
+        }
+    }
+
+    public List<string> GetServerDataFromTextFile(string filePath)
+    {
+        List<string> textList = new List<string>();
+
+        //Debug.Log(name + " GetEmailDataFromTextFile() started");
+
+        string[] lines = File.ReadAllLines(filePath);
+
+        // add emails to list
+        foreach (string line in lines)
+        {
+            textList.Add(line.ToString());
+        }
+
+        return textList;
     }
 
     #endregion Online Server Fetching

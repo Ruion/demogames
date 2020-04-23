@@ -5,209 +5,306 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using System.Collections;
 using TMPro;
+using Sirenix.OdinInspector;
+using System.IO;
 
 /// <summary>
 /// Validate the user input in Registration Page.
 /// Validate Type support : text, email.
 /// Notes: By default it get "email" and "contact" list from DBModelEntity to check email, contact duplication
 /// </summary>
-public class FormValidator : ServerModelMaster
+public class FormValidator : MonoBehaviour
 {
     #region variables
 
-    private bool Text1OK = false;
-    private bool contactValid = false;
-    private bool emailValid = false;
-
-    private bool contactDuplicate = false;
-    private bool emailDuplicate = false;
-
     public Button Submit;
-    public Button warningButton;
 
-    public TMP_InputField NameText;
-    public TMP_InputField PhoneText;
-    public TMP_InputField EmailText;
-    public TMP_Dropdown contactDropdown;
+    //[InfoBox("Same button as submit put on top. Warn player when click on it, when form is not completed")]
+    //public Button WarningSubmit;
+
     public Toggle consent;
 
-    private string MailPattern = @"^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$";
+    //public GameObject formWarning;
+    //public TextMeshProUGUI warningText;
 
-    private string PhonePattern = @"^6?01\d{8,9}$";
+    [TableList]
+    public List<FormField> formFields = new List<FormField>();
 
-    public GameObject emailWarning;
-    public GameObject phoneWarning;
-
-    public GameObject msgWarning;
-    public TextMeshProUGUI warningText;
-
-    public GameObject[] Ok_Markers;
-    public GameObject[] NotOk_Markers;
-
-    private List<string> emailList;
-    private List<string> contactList;
-    public DBModelEntity playerDataDbModelEntity;
-
-    private int oskID;
-    public float validateFrequency;
-    public string contactPrefix = "+6";
+    private FormField invalidField;
 
     #endregion variables
 
     private void OnEnable()
     {
-        emailList = playerDataDbModelEntity.GetDataByStringToList("email");
-        contactList = playerDataDbModelEntity.GetDataByStringToList("contact");
+        InvokeRepeating("ValidateFields", 2f, .5f);
     }
 
-    public void StartValidateOnFrequency()
+    private void Start()
     {
-        Debug.Log(name + " - " + "Start validate");
-        InvokeRepeating("Validate", 2f, validateFrequency);
+        for (int i = 0; i < formFields.Count; i++)
+        {
+            Debug.Log(i);
+            formFields[i].Initialize();
+        }
     }
 
-    public void StopValidateOnFrequency()
+    private void ValidateFields()
     {
-        CancelInvoke("Validate");
-    }
+        invalidField = formFields.FirstOrDefault(f => f.isValid == false);
 
-    public void Validate()
-    {
-        T1Change();
-        T2Change();
-        T3Change();
-
-        if (Text1OK && contactValid && emailValid && consent.isOn)
+        if (invalidField == null && consent.isOn == true)
         {
             Submit.interactable = true;
-            warningButton.interactable = false;
+            //WarningSubmit.gameObject.SetActive(false);
         }
         else
         {
+            //WarningSubmit.gameObject.SetActive(true);
             Submit.interactable = false;
-            warningButton.interactable = true;
+            //warningText.text = invalidField.warningMessage;
         }
     }
 
-    public void T1Change()
-    {
-        Text1OK = InputNotEmpty(NameText);
+    //public void WarningValidate()
+    //{
+    //    if (invalidField != null)
+    //    {
+    //        formWarning.SetActive(true);
+    //    }
+    //    else
+    //    {
+    //        if (consent.isOn == false)
+    //        {
+    //            warningText.text = "Please accept policy agreement before submit";
+    //            formWarning.SetActive(true);
+    //        }
+    //    }
+    //}
 
-        if (!Text1OK) { ChangeHint(0, false); }
-        else { ChangeHint(0, true); }
+    private void OnDisable()
+    {
+        CancelInvoke();
     }
+}
 
-    public void T2Change()
+[System.Serializable]
+public class FormField
+{
+    //public FieldType fieldType = FieldType.text;
+    [HorizontalGroup("Fields")]
+    [VerticalGroup("Fields/Left")]
+    [PropertyTooltip("Label the item with a name. This is important to make the set up clear and easier to manage. Database Model will take coulmn from \"Field Name\" to compare when Is Unique is tick.")]
+    public string fieldName;
+
+    [VerticalGroup("Fields/Left")]
+    public TMP_InputField textField;
+
+    [VerticalGroup("Fields/Left")]
+    [LabelText("DropDown (optional)")]
+    [PropertyTooltip("Provide optional dropdown input. The final value will become DropDown + Text Field. Example : dropdown value + abc")]
+    public TMP_Dropdown dropDown;
+
+    [VerticalGroup("Fields/Left")]
+    [LabelText("RegexPattern (optional)")]
+    [PropertyTooltip(@"Regex pattern that validate value of Text Field. When dropdown is provided, regext will validate value of Drop Down + Text Field")]
+    public string regexPattern;
+
+    [VerticalGroup("Fields/Right")]
+    [PropertyTooltip("Tick to check for duplication. You must provide either a Database Model component or Data txt file")]
+    public bool isUnique = false;
+
+    [VerticalGroup("Fields/Right")]
+    [PropertyTooltip("Allow the input to use once. When column \"status\" is \"ready\", it will be valid. When it is \"redeemed\", will validate as duplicate")]
+    public bool useOnceOnly = false;
+
+    [ShowIf("isUnique")]
+    [VerticalGroup("Fields/Right")]
+    [LabelText("Database Model (optional)")]
+    [PropertyTooltip("By providing Database Model Component, duplicate checking will check column in database name with Field Name. For example, Field Name is contact, validation will check \"contact\" column in database")]
+    public DBModelMaster dbmodel;
+
+    [ShowIf("isUnique")]
+    [VerticalGroup("Fields/Right")]
+    [FilePath(AbsolutePath = true)]
+    [LabelText("Data txt file (optional)")]
+    [PropertyTooltip(@"By providing full txt file path, checking will add the lines of string inside txt file. Example: C:\UID_Toolkit\output\player_email_list.txt")]
+    public string serverDataFilePath;
+
+    [ShowIf("isUnique")]
+    [VerticalGroup("Fields/Right")]
+    [PropertyTooltip("This object will be display when duplicate detected")]
+    public GameObject duplicateWarning;
+
+    [VerticalGroup("Fields/Left")]
+    [PropertyTooltip("This object will be display when field is valid")]
+    public GameObject validMarker;
+
+    [VerticalGroup("Fields/Left")]
+    [PropertyTooltip("This object will be display when field is invalid")]
+    public GameObject invalidMarker;
+
+    //[VerticalGroup("Fields/Left")]
+    //[FoldoutGroup("Fields/Left/WarningMessage")]
+    //[Multiline]
+    //public string invalidFormatMessage;
+
+    //[VerticalGroup("Fields/Left")]
+    //[FoldoutGroup("Fields/Left/WarningMessage")]
+    //[Multiline]
+    //public string emptyMessage;
+
+    //[VerticalGroup("Fields/Left")]
+    //[FoldoutGroup("Fields/Left/WarningMessage")]
+    //[ShowIf("isUnique")]
+    //[Multiline]
+    //public string duplicateMessage;
+
+    //[HideInInspector]
+    //public string warningMessage;
+
+    [HideInInspector] public bool isValid;
+    [HideInInspector] public bool isDuplicated;
+    private List<string> dataList;
+    private bool initialize;
+
+    public string value
     {
-        string contact = contactDropdown.options[contactDropdown.value].text + PhoneText.text;
-        contactValid = Regex.IsMatch(contact, PhonePattern);
-
-        if (!contactValid || ToogleWarning(PhoneText.text, contactList, phoneWarning, contactDuplicate)) { ChangeHint(1, false); }
-        else { ChangeHint(1, true); }
-    }
-
-    public void T3Change()
-    {
-        emailValid = Regex.IsMatch(EmailText.text, MailPattern);
-
-        if (!emailValid || ToogleWarning(EmailText.text, emailList, emailWarning, emailDuplicate)) { ChangeHint(2, false); }
-        else { ChangeHint(2, true); }
-    }
-
-    private bool InputNotEmpty(TMP_InputField text)
-    {
-        bool notEmpty = true;
-
-        if (text.text == "" || text.text == null) notEmpty = false;
-
-        return notEmpty;
-    }
-
-    private void ChangeHint(int InputIndex, bool isPass = false)
-    {
-        Ok_Markers[InputIndex].SetActive(isPass);
-        NotOk_Markers[InputIndex].SetActive(!isPass);
-    }
-
-    private bool ToogleWarning(string text, List<string> list, GameObject warningObject, bool duplicateBool)
-    {
-        if (text == "") return false;
-
-        if (ValidateDuplicate(list, text, duplicateBool))
+        get
         {
-            warningObject.SetActive(true);
+            if (dropDown != null)
+                return dropDown.options[dropDown.value].text + textField.text;
+            else return textField.text;
+        }
+    }
 
-            return true;
+    public void Initialize()
+    {
+        if (initialize) return;
+        initialize = true;
+
+        if (isUnique)
+        {
+            if (serverDataFilePath != "")
+                dataList = GetDataFromTextFile(serverDataFilePath);
+
+            if (dbmodel != null && useOnceOnly == false)
+                // add distinct item that not exist in dataList
+                dataList.AddRange(dbmodel.GetDataByStringToList(fieldName).Except(dataList));
+        }
+
+        if (dropDown != null)
+            dropDown.onValueChanged.AddListener(delegate { OnValueChange(); });
+        textField.onValueChanged.AddListener(delegate { OnValueChange(); });
+    }
+
+    public void UpdateDatabase()
+    {
+    }
+
+    private List<string> GetDataFromTextFile(string filePath)
+    {
+        List<string> textList = new List<string>();
+
+        //Debug.Log(name + " GetEmailDataFromTextFile() started");
+
+        string[] lines = File.ReadAllLines(filePath);
+
+        // add emails to list
+        foreach (string line in lines)
+        {
+            textList.Add(line.ToString());
+        }
+
+        return textList;
+    }
+
+    public void OnValueChange()
+    {
+        // check empty string
+        isValid = !string.IsNullOrEmpty(textField.text);
+
+        // string is empty
+        if (isValid)
+        {
+            // check regex match
+            if (!string.IsNullOrEmpty(regexPattern))
+                isValid = Regex.IsMatch(value, regexPattern);
+
+            // format not match
+            //if (!isValid) warningMessage = invalidFormatMessage;
+
+            // Check duplication
+            if (isUnique)
+            {
+                // check duplicate
+                string same = dataList.FirstOrDefault(t => t == value);
+
+                if (same != null)
+                {
+                    isDuplicated = true;
+                }
+                else
+                {
+                    isDuplicated = false;
+                }
+            }
+
+            if (useOnceOnly)
+            {
+                string query = $"SELECT status FROM {dbmodel.dbSettings.tableName} WHERE {fieldName} IN ('{value}')";
+                object status = dbmodel.ExecuteCustomSelectObject(query);
+                if (status != null)
+                {
+                    Debug.Log(status.ToString());
+
+                    if (status.ToString() == "redeemed")
+                    {
+                        isDuplicated = true;
+                    }
+                }
+            }
+
+            DuplicateAction();
         }
         else
         {
-            warningObject.SetActive(false);
-            return false;
+            //warningMessage = emptyMessage;
         }
-    }
 
-    private bool ValidateDuplicate(List<string> source, string text_, bool duplicateBool)
-    {
-        bool hasSame = false;
-
-        string same = source.FirstOrDefault(t => t == text_);
-        if (same != null) hasSame = true;
-
-        duplicateBool = hasSame;
-        return hasSame;
-    }
-
-    public void ShowWarning()
-    {
-        warningText.text = "";
-
-        if (!consent.isOn)
-            warningText.text = "Please accept policy agreement";
-
-        // if contact duplicate
-        if (contactDuplicate)
-            warningText.text = "The mobile number you have entered is already registered,\nplease enter a different mobile number.";
-
-        // if email duplicate
-        if (emailDuplicate)
-            warningText.text = "The email address you have entered is already registered,\nplease enter a different email address.";
-
-        // if contact valid
-        if (!contactValid)
-            warningText.text = "Mobile number format entered is invalid\n Example : 0146734292";
-        if (string.IsNullOrEmpty(PhoneText.text))
-            warningText.text = "Please fill in your mobile number\n example : 0146734292";
-
-        // if email valid
-        if (!emailValid)
-            warningText.text = "The email address you have entered is invalid\n example : example@gmail.com";
-        if (string.IsNullOrEmpty(EmailText.text))
-            warningText.text = "Please fill in your email address\n example : example@gmail.com";
-
-        // NAME is empty
-        if (!Text1OK)
+        if (!isValid)
         {
-            warningText.text = "Please fill in your name";
+            invalidMarker.SetActive(true);
+            validMarker.SetActive(false);
         }
-
-        if (warningText.text != "")
-            msgWarning.SetActive(true);
-    }
-
-    public void DoCombineServerUsers()
-    {
-        StartCoroutine(CombineServerUsers());
-    }
-
-    private IEnumerator CombineServerUsers()
-    {
-        yield return StartCoroutine(playerDataDbModelEntity.GetDataFromServer());
-
-        for (int i = 0; i < playerDataDbModelEntity.serverEmailList.Count; i++)
+        else
         {
-            AddUniqueUser(playerDataDbModelEntity.serverEmailList[i], emailList);
+            invalidMarker.SetActive(false);
+            validMarker.SetActive(true);
         }
-
-        playerDataDbModelEntity.serverEmailList = new List<string>();
     }
+
+    private void DuplicateAction()
+    {
+        if (isDuplicated)
+        {
+            isValid = false;
+            //if (duplicateWarning != null)
+            duplicateWarning.SetActive(true);
+            //warningMessage = duplicateMessage;
+        }
+        else
+        {
+            isDuplicated = false;
+
+            //if (duplicateWarning != null)
+            duplicateWarning.SetActive(false);
+        }
+    }
+}
+
+public enum FieldType
+{
+    text = 1,
+    consent = 2,
+    option = 3
 }

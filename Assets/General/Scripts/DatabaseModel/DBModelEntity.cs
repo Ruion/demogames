@@ -81,17 +81,6 @@ public class DBModelEntity : DBModelMaster
     /// <returns></returns>
     private IEnumerator SyncToServer()
     {
-        yield return StartCoroutine(NetworkExtension.CheckForInternetConnectionRoutine());
-
-        if (NetworkExtension.internet == false)
-        {
-            //No connection
-            ToogleHandler(blockDataHandler, false);
-            ToogleHandler(internetErrorHandler, false);
-            Debug.Log(name + " No internet. Stop SyncToServer() coroutine");
-            yield break;
-        }
-
         if (OnSyncStart.GetPersistentEventCount() > 0) OnSyncStart.Invoke();
 
         yield return StartCoroutine(CompareServerData());
@@ -114,7 +103,7 @@ public class DBModelEntity : DBModelMaster
         ToogleHandler(blockDataHandler, true);
 
         // Get global event_code
-        string source_identifier_code = JSONExtension.LoadSetting(dbSettings.folderPath + "\\Setting", "source_identifier_code");
+        string source_identifier_code = JSONExtension.LoadSetting(dbSettings.folderPath + "\\Settings\\Setting", "source_identifier_code");
 
         for (int u = 0; u < rows.Count; u++)
         {

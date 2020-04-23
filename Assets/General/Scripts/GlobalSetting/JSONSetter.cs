@@ -6,8 +6,11 @@ using Sirenix.OdinInspector;
 
 public class JSONSetter : MonoBehaviour
 {
-    [FolderPath(AbsolutePath = true, UseBackslashes = true)]
-    public string savePath { get { return LoadGlobalSettingFile(@"C:\UID-APP\GLOBAL")["projectFolder"].ToString(); } }
+    public string Server_URL { get { return LoadSettingFileFromPath(@"C:\UID_Toolkit\Global.json")["Server_URL"].ToString(); } }
+
+    public string Project_Folder { get { return @"C:\UID-APP\" + LoadSettingFileFromPath(@"C:\UID_Toolkit\Global.json")["Project_Code"].ToString(); } }
+
+    public string Server_FTP { get { return @"C:\UID-APP\" + LoadSettingFileFromPath(@"C:\UID_Toolkit\Global.json")["Server_FTP"].ToString(); } }
 
     [FolderPath(AbsolutePath = true, UseBackslashes = true)]
     public string globalSavePath;
@@ -17,7 +20,7 @@ public class JSONSetter : MonoBehaviour
 
     public void SaveSetting(JObject jsonObj)
     {
-        string savePath = this.savePath;
+        string savePath = Project_Folder;
 
         string fileName = this.fileName;
 
@@ -64,7 +67,7 @@ public class JSONSetter : MonoBehaviour
 
     public JObject LoadSetting()
     {
-        string savePath = this.savePath;
+        string savePath = Project_Folder;
 
         string json = File.ReadAllText(savePath + "\\Settings\\" + "Setting.json");
         JObject jsonObj = JObject.Parse(json);

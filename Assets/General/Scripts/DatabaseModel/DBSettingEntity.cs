@@ -77,6 +77,8 @@ public class DBSettingEntity : SerializedMonoBehaviour
         JObject jObject = jsonSetter.LoadSetting();
         dbSettings.sendURL = gse.Server_URL;
 
+        dbSettings.folderPath = gse.Project_Folder;
+
         var substrings = new[] { "api" };
         if (!dbSettings.sendURL.ContainsAny(substrings, StringComparison.CurrentCultureIgnoreCase))
             dbSettings.sendURL += "public/api/";

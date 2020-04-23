@@ -14,7 +14,7 @@ public class DropDownFieldFeeder : MonoBehaviour
     [Header("Add options to Dropdown")]
     public TMP_Dropdown dropDown;
 
-    public string phoneCodeFile { get { return FindObjectOfType<GameSettingEntity>().jsonSetter.savePath + "\\Others\\PhoneNumberExtension.txt"; } }
+    public string phoneCodeFile { get { return FindObjectOfType<GameSettingEntity>().jsonSetter.Project_Folder + "\\Others\\PhoneNumberExtension.txt"; } }
 
     private void Start()
     {
