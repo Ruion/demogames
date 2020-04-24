@@ -1513,7 +1513,7 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -1898,7 +1898,7 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[1].name
-      value: card_number
+      value: genting_member_id
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -1934,6 +1934,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dbSettings.columns.Array.data[1].dummyPrefix
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[1].sync
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -4814,7 +4819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: -90}
+  m_AnchoredPosition: {x: 111, y: -41}
   m_SizeDelta: {x: 392.11, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &218756498188703667
@@ -5459,15 +5464,16 @@ MonoBehaviour:
   Submit: {fileID: 218756498993336181}
   consent: {fileID: 218756497447957755}
   formFields:
-  - fieldName: card_number
+  - fieldName: genting_member_id
     textField: {fileID: 8519955086241770127}
     dropDown: {fileID: 0}
-    regexPattern: 
+    regexPattern: \d{10}
     isUnique: 1
-    useOnceOnly: 1
-    dbmodel: {fileID: 1465147936}
+    dbmodel: {fileID: 1247127199}
     serverDataFilePath: C:/UID-APP/200401-MY-Genting-Update/Membercard_List.txt
     duplicateWarning: {fileID: 551002339}
+    checkMatching: 1
+    matchingDatabase: {fileID: 1465147936}
     validMarker: {fileID: 4355731957447638125}
     invalidMarker: {fileID: 8359151922846209992}
     isValid: 0
@@ -5477,10 +5483,11 @@ MonoBehaviour:
     dropDown: {fileID: 0}
     regexPattern: ^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$
     isUnique: 1
-    useOnceOnly: 0
     dbmodel: {fileID: 1247127199}
     serverDataFilePath: C:/UID_Toolkit/output/player_email_list.txt
     duplicateWarning: {fileID: 218756497386793683}
+    checkMatching: 0
+    matchingDatabase: {fileID: 0}
     validMarker: {fileID: 6471618269218576305}
     invalidMarker: {fileID: 9189682838042401742}
     isValid: 0
@@ -5490,10 +5497,11 @@ MonoBehaviour:
     dropDown: {fileID: 5747227009963830248}
     regexPattern: ^(01)[0-46-9]*[0-9]{7,8}$
     isUnique: 1
-    useOnceOnly: 0
     dbmodel: {fileID: 1247127199}
     serverDataFilePath: C:\UID_Toolkit\output\player_contact_list.txt
     duplicateWarning: {fileID: 218756498188703667}
+    checkMatching: 0
+    matchingDatabase: {fileID: 0}
     validMarker: {fileID: 7230937053267172858}
     invalidMarker: {fileID: 5881184545376668468}
     isValid: 0
@@ -11751,7 +11759,7 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.size
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -11777,16 +11785,17 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: db_connection_string
-      value: URI = file:C:\UID-APP\200306-MY-Zurich\Debug\Databases\PlayerDataDatabaseModel.sqlite
+      value: URI = file:C:\UID-APP\GameTemplate\Databases\PlayerDataDatabaseModel.sqlite
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[4].name
-      value: age
+      value: ic_number
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -11796,7 +11805,7 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[5].name
-      value: dob
+      value: genting_member_id
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -11806,7 +11815,7 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[6].name
-      value: gender
+      value: photo_url
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -11826,7 +11835,7 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[7].name
-      value: source_identifier_code
+      value: age
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -11841,12 +11850,12 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[7].dummyPrefix
-      value: FH8D89C77
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[8].name
-      value: created_at
+      value: dob
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -11856,22 +11865,22 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[8].dummyPrefix
-      value: '2019-11-18 11:00:'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: TestIndex
-      value: 42
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[9].name
-      value: is_sync
+      value: gender
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[10].name
-      value: online_status
+      value: source_identifier_code
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -11906,12 +11915,12 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[9].dummyPrefix
-      value: new
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[9].sync
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -11921,7 +11930,7 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[10].dummyPrefix
-      value: new
+      value: WP1
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -12125,7 +12134,77 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.folderPath
-      value: C:\UID-APP\VictoriaSecret
+      value: C:\UID-APP\GameTemplate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[11].name
+      value: created_at
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[11].attribute
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[10].sync
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[11].sync
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[12].name
+      value: is_sync
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[12].attribute
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[12].dummyPrefix
+      value: new
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[11].dummyPrefix
+      value: '2019-11-18 11:00:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[13].name
+      value: is_sync
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[13].attribute
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[13].sync
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[12].sync
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[13].dummyPrefix
+      value: new
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: directoryPath
+      value: C:\UID-APP\GameTemplate\Databases\
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}

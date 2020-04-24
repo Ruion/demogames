@@ -23,6 +23,7 @@ public class PlayerPrefsSave_Group : SerializedMonoBehaviour
         for (int d = 0; d < dataFields.Length; d++)
         {
             Save(dataFields[d]);
+            Debug.Log($"{name} - {dataFields[d].name_} : {dataFields[d].GetValue()} ");
         }
 
         playerprefs = new Dictionary<string, string>();

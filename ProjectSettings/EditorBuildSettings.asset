@@ -8,19 +8,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/AutoUpdater/Launcher.unity
     guid: 5ff3edb6edad83f43b50acd228489bda
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game-JumpShoot/HOME.unity
     guid: ce654b8d8e82a1a4eabd81ad3624e955
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game-JumpShoot/REGISTRATION.unity
     guid: 83eb16ea893585541a51847e78aad7cf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game-JumpShoot/GAME.unity
     guid: ae8900706fbe4ef4b9ac84d1b7f8437b
   - enabled: 0
     path: Assets/Features-App/Setting.unity
     guid: bedf67318795c5e44b84b567415abcaf
-  - enabled: 0
+  - enabled: 1
     path: Assets/Features-App/AutoSync.unity
     guid: 5405e2840a04f7345943d58c3d2d2790
   m_configObjects: {}

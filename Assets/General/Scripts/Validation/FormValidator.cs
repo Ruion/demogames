@@ -45,6 +45,9 @@ public class FormValidator : MonoBehaviour
         {
             Debug.Log(i);
             formFields[i].Initialize();
+
+            //if (formFields[i].useOnceOnly)
+            //    Submit.onClick.AddListener(delegate { formFields[i].UpdateRecordStatus(); });
         }
     }
 
@@ -90,7 +93,8 @@ public class FormValidator : MonoBehaviour
 [System.Serializable]
 public class FormField
 {
-    //public FieldType fieldType = FieldType.text;
+    #region Fields
+
     [HorizontalGroup("Fields")]
     [VerticalGroup("Fields/Left")]
     [PropertyTooltip("Label the item with a name. This is important to make the set up clear and easier to manage. Database Model will take coulmn from \"Field Name\" to compare when Is Unique is tick.")]
@@ -113,10 +117,6 @@ public class FormField
     [PropertyTooltip("Tick to check for duplication. You must provide either a Database Model component or Data txt file")]
     public bool isUnique = false;
 
-    [VerticalGroup("Fields/Right")]
-    [PropertyTooltip("Allow the input to use once. When column \"status\" is \"ready\", it will be valid. When it is \"redeemed\", will validate as duplicate")]
-    public bool useOnceOnly = false;
-
     [ShowIf("isUnique")]
     [VerticalGroup("Fields/Right")]
     [LabelText("Database Model (optional)")]
@@ -134,6 +134,16 @@ public class FormField
     [VerticalGroup("Fields/Right")]
     [PropertyTooltip("This object will be display when duplicate detected")]
     public GameObject duplicateWarning;
+
+    [VerticalGroup("Fields/Right")]
+    [PropertyTooltip("Allow the input to use once. When column \"status\" is \"ready\", it will be valid. When it is \"redeemed\", will validate as duplicate")]
+    public bool checkMatching = false;
+
+    [ShowIf("checkMatching")]
+    [VerticalGroup("Fields/Right")]
+    [LabelText("Matching Database Model (allow code use once)")]
+    [PropertyTooltip("By providing Database Model Component, validation will check the field is match with record in database. If \"card_number\" is match with \"card_number\" data in database, the field is valid")]
+    public DBModelMaster matchingDatabase;
 
     [VerticalGroup("Fields/Left")]
     [PropertyTooltip("This object will be display when field is valid")]
@@ -177,6 +187,8 @@ public class FormField
         }
     }
 
+    #endregion Fields
+
     public void Initialize()
     {
         if (initialize) return;
@@ -187,7 +199,7 @@ public class FormField
             if (serverDataFilePath != "")
                 dataList = GetDataFromTextFile(serverDataFilePath);
 
-            if (dbmodel != null && useOnceOnly == false)
+            if (dbmodel != null)
                 // add distinct item that not exist in dataList
                 dataList.AddRange(dbmodel.GetDataByStringToList(fieldName).Except(dataList));
         }
@@ -197,9 +209,11 @@ public class FormField
         textField.onValueChanged.AddListener(delegate { OnValueChange(); });
     }
 
-    public void UpdateDatabase()
-    {
-    }
+    //public void UpdateRecordStatus()
+    //{
+    //    string query = $"UPDATE {dbmodel.dbSettings.tableName} SET status = 'redeemed' WHERE {fieldName} IN ('{value}')";
+    //    dbmodel.ExecuteCustomNonQuery(query);
+    //}
 
     private List<string> GetDataFromTextFile(string filePath)
     {
@@ -220,18 +234,33 @@ public class FormField
 
     public void OnValueChange()
     {
+        isDuplicated = false;
+
         // check empty string
         isValid = !string.IsNullOrEmpty(textField.text);
+
+        if (isValid)
+        {
+            if (!string.IsNullOrEmpty(regexPattern))
+                // check regex match
+                isValid = Regex.IsMatch(value, regexPattern);
+        }
 
         // string is empty
         if (isValid)
         {
-            // check regex match
-            if (!string.IsNullOrEmpty(regexPattern))
-                isValid = Regex.IsMatch(value, regexPattern);
-
-            // format not match
-            //if (!isValid) warningMessage = invalidFormatMessage;
+            if (checkMatching)
+            {
+                string query = $"SELECT {fieldName} FROM {matchingDatabase.dbSettings.tableName} WHERE {fieldName} IN ('{value}')";
+                object status = matchingDatabase.ExecuteCustomSelectObject(query);
+                if (status == null)
+                {
+                    Debug.Log("matching not found");
+                    isValid = false;
+                }
+                else
+                    Debug.Log("Matching found - " + status.ToString());
+            }
 
             // Check duplication
             if (isUnique)
@@ -247,24 +276,9 @@ public class FormField
                 {
                     isDuplicated = false;
                 }
+
+                DuplicateAction();
             }
-
-            if (useOnceOnly)
-            {
-                string query = $"SELECT status FROM {dbmodel.dbSettings.tableName} WHERE {fieldName} IN ('{value}')";
-                object status = dbmodel.ExecuteCustomSelectObject(query);
-                if (status != null)
-                {
-                    Debug.Log(status.ToString());
-
-                    if (status.ToString() == "redeemed")
-                    {
-                        isDuplicated = true;
-                    }
-                }
-            }
-
-            DuplicateAction();
         }
         else
         {
@@ -294,17 +308,8 @@ public class FormField
         }
         else
         {
-            isDuplicated = false;
-
             //if (duplicateWarning != null)
             duplicateWarning.SetActive(false);
         }
     }
-}
-
-public enum FieldType
-{
-    text = 1,
-    consent = 2,
-    option = 3
 }
