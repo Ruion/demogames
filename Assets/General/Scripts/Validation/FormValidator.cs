@@ -43,7 +43,7 @@ public class FormValidator : MonoBehaviour
     {
         for (int i = 0; i < formFields.Count; i++)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             formFields[i].Initialize();
 
             //if (formFields[i].useOnceOnly)
@@ -153,6 +153,14 @@ public class FormField
     [PropertyTooltip("This object will be display when field is invalid")]
     public GameObject invalidMarker;
 
+    [VerticalGroup("Fields/Right")]
+    [PropertyTooltip("Only validate number in the input.")]
+    public bool ignoreAlphabetOnRegexValidation = false;
+
+    [VerticalGroup("Fields/Right")]
+    [PropertyTooltip("Only validate number in the input.")]
+    public string[] ignoreCharactersOnRegexValidation;
+
     //[VerticalGroup("Fields/Left")]
     //[FoldoutGroup("Fields/Left/WarningMessage")]
     //[Multiline]
@@ -184,6 +192,22 @@ public class FormField
             if (dropDown != null)
                 return dropDown.options[dropDown.value].text + textField.text;
             else return textField.text;
+        }
+    }
+
+    private string processedValueForRegexValidation
+    {
+        get
+        {
+            string newValue = value;
+
+            if (ignoreAlphabetOnRegexValidation)
+                newValue = StringExtensions.RemoveAlphabets(value);
+
+            if (ignoreCharactersOnRegexValidation.Length > 0)
+                newValue = StringExtensions.RemoveCharacters(value, ignoreCharactersOnRegexValidation);
+
+            return newValue;
         }
     }
 
@@ -243,7 +267,7 @@ public class FormField
         {
             if (!string.IsNullOrEmpty(regexPattern))
                 // check regex match
-                isValid = Regex.IsMatch(value, regexPattern);
+                isValid = Regex.IsMatch(processedValueForRegexValidation, regexPattern);
         }
 
         // string is empty

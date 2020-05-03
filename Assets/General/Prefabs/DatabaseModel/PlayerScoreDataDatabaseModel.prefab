@@ -96,9 +96,10 @@ MonoBehaviour:
     keyFileName: PlayerScoreDataDatabaseModel Online
     serverEmailFilePath: 
   db_connection_string: URI = file:C:/UID_Projects/demogames/demogames/Assets/StreamingAssets/playerscoredata
+  directoryPath: 
   numberToPopulate: 0
   TestIndex: 5
-  selectCustomCondition: is_sync = 'no'
+  selectCustomCondition: is_sync = 'no' OR is_sync = 'fail' ORDER BY is_sync DESC
   hasSync: 0
   emptyHandler: {fileID: 0}
   internetErrorHandler: {fileID: 0}

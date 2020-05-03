@@ -95,9 +95,10 @@ MonoBehaviour:
     keyFileName: VoucherDistributionDatabaseModel Online
     serverEmailFilePath: 
   db_connection_string: URI = file:C:\UID-APP\APPS\GAME-01\VoucherDistributionDatabaseModel.sqlite
+  directoryPath: 
   numberToPopulate: 5
   TestIndex: 12
-  selectCustomCondition: is_sync = 'no'
+  selectCustomCondition: is_sync = 'no' OR is_sync = 'fail' ORDER BY is_sync DESC
   hasSync: 0
   emptyHandler: {fileID: 0}
   internetErrorHandler: {fileID: 0}
@@ -108,6 +109,9 @@ MonoBehaviour:
   entityId: 5
   serverEmailList: []
   isFetchingData: 0
+  OnSaveToLocal:
+    m_PersistentCalls:
+      m_Calls: []
   OnSyncStart:
     m_PersistentCalls:
       m_Calls:

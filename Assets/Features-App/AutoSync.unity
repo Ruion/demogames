@@ -359,6 +359,314 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf9bc346bec815448f5896dcc069492, type: 3}
+--- !u!1001 &519750560
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3723183745067904047, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_Name
+      value: PhotoDataDatabaseModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904045, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.folderPath
+      value: C:\UID-APP\200401-MY-Genting
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[1].name
+      value: email
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[2].name
+      value: imageBase64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[3].name
+      value: created_at
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[3].sync
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[3].dummyPrefix
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.sendURL
+      value: https://dashboard.gentingnewmembership.com/public/api/
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.keyDownloadAPI
+      value: download-used-redeem-code-list
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[4].name
+      value: is_sync
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[4].attribute
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[4].sync
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[4].dummyPrefix
+      value: no
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[5].name
+      value: voucher_category
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[5].attribute
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[6].name
+      value: voucher_category
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[6].attribute
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: hasSync
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1154095597}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Run
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.fileName
+      value: PhotoDataDatabaseModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.dbName
+      value: PhotoDataDatabaseModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.tableName
+      value: PhotoDataDatabaseModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.keyFileName
+      value: PhotoDataDatabaseModel Online
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1154095597}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Run
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 519750561}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: db_connection_string
+      value: URI = file:C:\UID-APP\200401-MY-Genting\Databases\PhotoDataDatabaseModel.sqlite
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: directoryPath
+      value: C:\UID-APP\200401-MY-Genting\Databases\
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: TestIndex
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: dbSettings.sendAPI
+      value: submit-player-photo
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 30fea551c920b624b9fd0c8e148823e5, type: 3}
+--- !u!1 &519750561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3723183745067904047, guid: 30fea551c920b624b9fd0c8e148823e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 519750560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &519750562 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 519750560}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519750561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db476e859c69a7d448df1b2a28465c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &610208956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,26 +678,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerScoreDataDatabaseModel
-      objectReference: {fileID: 0}
-    - target: {fileID: 7610391580906879200, guid: 3cffb02027d43384387fe596707fe3e1,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7610391580906879200, guid: 3cffb02027d43384387fe596707fe3e1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7610391580906879200, guid: 3cffb02027d43384387fe596707fe3e1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7610391580906879200, guid: 3cffb02027d43384387fe596707fe3e1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7610391580906879201, guid: 3cffb02027d43384387fe596707fe3e1,
         type: 3}
@@ -441,6 +729,26 @@ PrefabInstance:
         type: 3}
       propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610391580906879200, guid: 3cffb02027d43384387fe596707fe3e1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610391580906879200, guid: 3cffb02027d43384387fe596707fe3e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610391580906879200, guid: 3cffb02027d43384387fe596707fe3e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610391580906879200, guid: 3cffb02027d43384387fe596707fe3e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cffb02027d43384387fe596707fe3e1, type: 3}
@@ -553,7 +861,7 @@ PrefabInstance:
     - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
       propertyPath: dbSettings.folderPath
-      value: C:\UID-APP\GameTemplate
+      value: C:\UID-APP\200401-MY-Genting
       objectReference: {fileID: 0}
     - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
@@ -583,7 +891,7 @@ PrefabInstance:
     - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
       propertyPath: dbSettings.sendURL
-      value: http://200305-my-victoriasecret.unicom-interactive-digital.com/public/api/
+      value: https://dashboard.gentingnewmembership.com/public/api/
       objectReference: {fileID: 0}
     - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
@@ -654,16 +962,41 @@ PrefabInstance:
         type: 3}
       propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1154095597}
+      objectReference: {fileID: 519750562}
     - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
       propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Run
+      value: Sync
       objectReference: {fileID: 0}
     - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
         type: 3}
       propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 519750561}
+    - target: {fileID: 3723183745067904044, guid: 30fea551c920b624b9fd0c8e148823e5,
+        type: 3}
+      propertyPath: OnSyncEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30fea551c920b624b9fd0c8e148823e5, type: 3}
@@ -810,7 +1143,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   delays:
-  - 300
+  - 30
   isRealtime: 1
 --- !u!1 &1262684572
 GameObject:
@@ -913,6 +1246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
+      propertyPath: dbSettings.columns.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
@@ -925,7 +1263,7 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.folderPath
-      value: C:\UID-APP\GameTemplate
+      value: C:\UID-APP\200401-MY-Genting
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
@@ -970,12 +1308,127 @@ PrefabInstance:
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.sendURL
-      value: http://200305-my-victoriasecret.unicom-interactive-digital.com/public/api/
+      value: http://dashboard.gentingnewmembership.com/public/api/
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}
       propertyPath: dbSettings.columns.Array.data[9].dummyPrefix
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[4].name
+      value: ic_number
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[4].dummyPrefix
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[5].name
+      value: genting_member_id
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[5].dummyPrefix
+      value: 888
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[6].name
+      value: photo_url
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[7].name
+      value: age
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[7].dummyPrefix
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[8].name
+      value: dob
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[8].dummyPrefix
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[9].name
+      value: gender
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[9].sync
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[10].name
+      value: source_identifier_code
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[10].attribute
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[10].sync
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[10].dummyPrefix
+      value: WP1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[11].name
+      value: created_at
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[11].attribute
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[11].sync
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[11].dummyPrefix
+      value: '2019-11-18 11:00:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[12].name
+      value: is_sync
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[12].attribute
+      value: TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[12].dummyPrefix
       value: new
+      objectReference: {fileID: 0}
+    - target: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
+        type: 3}
+      propertyPath: dbSettings.columns.Array.data[6].sync
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7497790228101722039, guid: a6edbdc5526c8c546be385658ee37371,
         type: 3}

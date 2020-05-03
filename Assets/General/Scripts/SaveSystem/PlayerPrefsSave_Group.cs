@@ -23,7 +23,7 @@ public class PlayerPrefsSave_Group : SerializedMonoBehaviour
         for (int d = 0; d < dataFields.Length; d++)
         {
             Save(dataFields[d]);
-            Debug.Log($"{name} - {dataFields[d].name_} : {dataFields[d].GetValue()} ");
+            //Debug.Log($"{name} - {dataFields[d].name_} : {dataFields[d].GetValue()} ");
         }
 
         playerprefs = new Dictionary<string, string>();
@@ -74,6 +74,14 @@ public class DataField
     [EnableIf("savetype", SaveType.Manual)]
     public string value_;
 
+    [BoxGroup("Field/Fields")]
+    [PropertyTooltip("Remove alphabets when saving the value")]
+    public bool removeAlphabetsAtSave;
+
+    [BoxGroup("Field/Fields")]
+    [PropertyTooltip("Remove characters in the list when saving the value")]
+    public string[] removeCharAtSave;
+
     public string GetValue()
     {
         string dropDownValue = "";
@@ -82,6 +90,7 @@ public class DataField
         switch (savetype)
         {
             case SaveType.InputField_TMP:
+
                 value_ = dropDownValue + inputField_TMP.text;
                 break;
 
@@ -105,6 +114,12 @@ public class DataField
                 value_ = gse.gameSettings.source_identifier_code;
                 break;
         }
+
+        if (removeAlphabetsAtSave)
+            value_ = StringExtensions.RemoveAlphabets(value_);
+
+        if (removeCharAtSave.Length > 0)
+            value_ = StringExtensions.RemoveCharacters(value_, removeCharAtSave);
 
         return value_;
     }

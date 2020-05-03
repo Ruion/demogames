@@ -95,12 +95,7 @@ public class DBModelEntity : DBModelMaster
             yield break;
         }
 
-        //  Debug.Log(name + " : unsync data : " + rows.Count);
-        int totalSent = 0;
-        int totalNotSent = 0;
-
         Debug.Log(name + " : Start sync");
-        ToogleHandler(blockDataHandler, true);
 
         // Get global event_code
         string source_identifier_code = JSONExtension.LoadSetting(dbSettings.folderPath + "\\Settings\\Setting", "source_identifier_code");
@@ -112,9 +107,7 @@ public class DBModelEntity : DBModelMaster
             if (NetworkExtension.internet == false)
             {
                 //No connection
-                ToogleHandler(blockDataHandler, false);
-                ToogleHandler(internetErrorHandler, false);
-                Debug.Log(name + "SyncToServer() Failed. No internet. Stop SyncToServer() coroutine");
+
                 SyncEnded();
                 StopAllCoroutines();
                 yield break;
@@ -158,10 +151,9 @@ public class DBModelEntity : DBModelMaster
 
                 if (www.isNetworkError || www.isHttpError)
                 {
-                    ErrorAction(www, "server error \n Values : " + values);
-                    totalNotSent++;
-                    ToogleStatusBar(failBar, totalNotSent);
-                    ToogleHandler(errorHandler, true);
+                    //ErrorAction(www, "server error \n Values : " + values);
+                    ErrorAction(www, "server error \n");
+
                     ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'fail' WHERE id = " + entityId);
                     //  SyncEnded();
                     //  yield break;
@@ -173,21 +165,18 @@ public class DBModelEntity : DBModelMaster
 
                     if (jsonData.result != "Success")
                     {
-                        totalNotSent++;
-                        ToogleStatusBar(failBar, totalNotSent);
-
                         if (jsonData.result.Contains("Duplicate"))
                             ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'duplicate' WHERE id = " + entityId);
                         else
+                        {
                             ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'fail' WHERE id = " + entityId);
+                            ErrorAction(www, "fail uploading \n");
+                        }
                     }
                     else
                     {
                         // update successfully sync is_sync to submitted
                         ExecuteCustomNonQuery("UPDATE " + dbSettings.tableName + " SET is_sync = 'yes' WHERE id = " + entityId);
-
-                        totalSent++;
-                        ToogleStatusBar(successBar, totalSent);
                     }
                 }
             }
@@ -197,9 +186,6 @@ public class DBModelEntity : DBModelMaster
 
         #endregion WebRequest
 
-        ToogleHandler(blockDataHandler, false);
-        if (hasSync) failBar.GetComponent<StatusBar>().Finish();
-        if (hasSync) successBar.GetComponent<StatusBar>().Finish();
         SyncEnded();
     }
 
@@ -334,9 +320,6 @@ public class DBModelEntity : DBModelMaster
     /// <param name="errorMessage"></param>
     private void ErrorAction(UnityWebRequest www, string errorMessage)
     {
-        ToogleHandler(blockDataHandler, false);
-        ToogleHandler(failBar, true);
-
         Debug.LogError(name + " :\n" + errorMessage + "\n" + www.error + "\n" + " server url: " + dbSettings.sendURL + dbSettings.sendAPI);
     }
 

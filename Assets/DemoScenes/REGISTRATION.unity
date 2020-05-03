@@ -1607,6 +1607,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 8519955086241770127}
     inputField: {fileID: 0}
     value_: 
+    saveDigitOnly: 0
   - name_: email
     savetype: 1
     textMeshProUGUI: {fileID: 0}
@@ -1614,6 +1615,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 948007165774243566}
     inputField: {fileID: 0}
     value_: 
+    saveDigitOnly: 0
   - name_: contact
     savetype: 1
     textMeshProUGUI: {fileID: 0}
@@ -1621,6 +1623,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 379529685464098293}
     inputField: {fileID: 0}
     value_: 011
+    saveDigitOnly: 0
   - name_: gender
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -1628,6 +1631,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: male
+    saveDigitOnly: 0
   - name_: age
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -1635,6 +1639,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: 0
+    saveDigitOnly: 0
   - name_: dob
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -1642,6 +1647,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: 0000-00-00
+    saveDigitOnly: 0
   - name_: created_at
     savetype: 3
     textMeshProUGUI: {fileID: 0}
@@ -1649,6 +1655,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: 2019-11-19 15:28:03
+    saveDigitOnly: 0
   - name_: is_sync
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -1656,6 +1663,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: no
+    saveDigitOnly: 0
   - name_: source_identifier_code
     savetype: 8
     textMeshProUGUI: {fileID: 0}
@@ -1663,6 +1671,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: BBW
+    saveDigitOnly: 0
 --- !u!114 &1465147936 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
@@ -4203,6 +4212,7 @@ MonoBehaviour:
     matchingDatabase: {fileID: 1465147936}
     validMarker: {fileID: 4355731957447638125}
     invalidMarker: {fileID: 8359151922846209992}
+    validateNumberOnly: 0
     isValid: 0
     isDuplicated: 0
 --- !u!1 &403656338521999156
@@ -4503,9 +4513,9 @@ RectTransform:
   m_Father: {fileID: 218756498657031912}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.00006, y: -249.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1069074294559396522
@@ -5299,6 +5309,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 8519955086241770127}
     inputField: {fileID: 0}
     value_: 
+    saveDigitOnly: 0
   - name_: email
     savetype: 1
     textMeshProUGUI: {fileID: 0}
@@ -5306,6 +5317,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 948007165774243566}
     inputField: {fileID: 0}
     value_: 
+    saveDigitOnly: 0
   - name_: contact
     savetype: 1
     textMeshProUGUI: {fileID: 0}
@@ -5313,6 +5325,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 379529685464098293}
     inputField: {fileID: 0}
     value_: 011
+    saveDigitOnly: 0
   - name_: gender
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -5320,6 +5333,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: male
+    saveDigitOnly: 0
   - name_: age
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -5327,6 +5341,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: 0
+    saveDigitOnly: 0
   - name_: dob
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -5334,6 +5349,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: 0000-00-00
+    saveDigitOnly: 0
   - name_: created_at
     savetype: 3
     textMeshProUGUI: {fileID: 0}
@@ -5341,6 +5357,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: 2020-04-24 13:55:29
+    saveDigitOnly: 0
   - name_: is_sync
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -5348,6 +5365,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: no
+    saveDigitOnly: 0
   - name_: source_identifier_code
     savetype: 8
     textMeshProUGUI: {fileID: 0}
@@ -5355,6 +5373,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: gvm1
+    saveDigitOnly: 0
   - name_: ic_number
     savetype: 1
     textMeshProUGUI: {fileID: 0}
@@ -5362,6 +5381,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 8519955086241770127}
     inputField: {fileID: 0}
     value_: gvm1
+    saveDigitOnly: 0
   - name_: genting_member_id
     savetype: 1
     textMeshProUGUI: {fileID: 0}
@@ -5369,6 +5389,7 @@ MonoBehaviour:
     inputField_TMP: {fileID: 8519955086241770127}
     inputField: {fileID: 0}
     value_: 
+    saveDigitOnly: 0
 --- !u!1 &4064778560898209322
 GameObject:
   m_ObjectHideFlags: 0
@@ -7251,7 +7272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &6206667664836148784
 GameObject:
   m_ObjectHideFlags: 0
@@ -7321,9 +7342,9 @@ RectTransform:
   m_Father: {fileID: 218756498657031912}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.00006, y: -437.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6461002081439727158
@@ -9051,7 +9072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &9219407481018422130
 MonoBehaviour:
   m_ObjectHideFlags: 0

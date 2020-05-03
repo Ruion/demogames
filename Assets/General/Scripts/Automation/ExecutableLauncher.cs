@@ -5,6 +5,7 @@ public class ExecutableLauncher : MonoBehaviour
 {
     public string executablePath;
     private bool launched = false;
+    public bool launchOnceOnly = false;
 
     private Process proc;
 
@@ -12,6 +13,10 @@ public class ExecutableLauncher : MonoBehaviour
 
     public void LaunchExecutable()
     {
+        if (launchOnceOnly)
+            if (Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(executablePath)).Length > 0)
+                return;
+
         proc = new Process();
         proc.StartInfo.FileName = executablePath;
         proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;

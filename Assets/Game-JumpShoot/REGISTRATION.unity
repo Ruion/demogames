@@ -2176,6 +2176,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 8519955086241770127}
     inputField: {fileID: 0}
     value_: 
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: email
     savetype: 1
     textMeshProUGUI: {fileID: 0}
@@ -2183,6 +2185,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 948007165774243566}
     inputField: {fileID: 0}
     value_: 
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: contact
     savetype: 1
     textMeshProUGUI: {fileID: 0}
@@ -2190,6 +2194,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 379529685464098293}
     inputField: {fileID: 0}
     value_: 011
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: gender
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -2197,6 +2203,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: male
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: age
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -2204,6 +2212,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: 0
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: dob
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -2211,6 +2221,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: 0000-00-00
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: created_at
     savetype: 3
     textMeshProUGUI: {fileID: 0}
@@ -2218,6 +2230,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: 2019-11-19 15:28:03
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: is_sync
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -2225,6 +2239,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: no
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: source_identifier_code
     savetype: 8
     textMeshProUGUI: {fileID: 0}
@@ -2232,6 +2248,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: BBW
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
 --- !u!114 &1465147936 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7497790228101721992, guid: a6edbdc5526c8c546be385658ee37371,
@@ -5476,6 +5494,8 @@ MonoBehaviour:
     matchingDatabase: {fileID: 1465147936}
     validMarker: {fileID: 4355731957447638125}
     invalidMarker: {fileID: 8359151922846209992}
+    ignoreAlphabetOnRegexValidation: 0
+    ignoreCharactersOnRegexValidation: []
     isValid: 0
     isDuplicated: 0
   - fieldName: email
@@ -5490,6 +5510,8 @@ MonoBehaviour:
     matchingDatabase: {fileID: 0}
     validMarker: {fileID: 6471618269218576305}
     invalidMarker: {fileID: 9189682838042401742}
+    ignoreAlphabetOnRegexValidation: 0
+    ignoreCharactersOnRegexValidation: []
     isValid: 0
     isDuplicated: 0
   - fieldName: contact
@@ -5504,6 +5526,10 @@ MonoBehaviour:
     matchingDatabase: {fileID: 0}
     validMarker: {fileID: 7230937053267172858}
     invalidMarker: {fileID: 5881184545376668468}
+    ignoreAlphabetOnRegexValidation: 1
+    ignoreCharactersOnRegexValidation:
+    - (
+    - )
     isValid: 0
     isDuplicated: 0
 --- !u!1 &403656338521999156
@@ -8211,6 +8237,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 8519955086241770127}
     inputField: {fileID: 0}
     value_: 
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: email
     savetype: 1
     textMeshProUGUI: {fileID: 0}
@@ -8218,6 +8246,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 948007165774243566}
     inputField: {fileID: 0}
     value_: 
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: contact
     savetype: 1
     textMeshProUGUI: {fileID: 0}
@@ -8225,6 +8255,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 379529685464098293}
     inputField: {fileID: 0}
     value_: 011
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: gender
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -8232,6 +8264,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: male
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: age
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -8239,6 +8273,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: 0
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: dob
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -8246,6 +8282,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: 0000-00-00
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: created_at
     savetype: 3
     textMeshProUGUI: {fileID: 0}
@@ -8253,6 +8291,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: 2019-11-19 15:28:03
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: is_sync
     savetype: 5
     textMeshProUGUI: {fileID: 0}
@@ -8260,6 +8300,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: no
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
   - name_: source_identifier_code
     savetype: 8
     textMeshProUGUI: {fileID: 0}
@@ -8267,6 +8309,8 @@ MonoBehaviour:
     inputField_TMP: {fileID: 0}
     inputField: {fileID: 0}
     value_: BBW
+    removeAlphabetsAtSave: 0
+    removeCharAtSave: []
 --- !u!1 &4064778560898209322
 GameObject:
   m_ObjectHideFlags: 0
