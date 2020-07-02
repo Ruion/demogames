@@ -1,33 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
+public class GameManager : MonoBehaviour
+{
+    public UnityEvent StartGameEvents;
+    public UnityEvent GameOverEvents;
+    public static GameManager GM;
 
-    public class GameManager : MonoBehaviour
+    [ReadOnly]
+    public float timeScale;
+
+    public float gameTimeScale { get { return timeScale; } set { timeScale = value; } }
+
+    [HideInInspector]
+    public bool isGameEnded;
+
+    private void Awake()
     {
-
-        public UnityEvent StartGameEvents;
-        public UnityEvent GameOverEvents;
-
-        [ReadOnly]
-        public float timeScale;
-
-        public float gameTimeScale { get { return timeScale; } set { timeScale = value; } }
-
-        [HideInInspector]
-        public bool isGameEnded;
-
-        // Use this for initialization
-        public void StartGame()
-        {
-            StartGameEvents.Invoke();
-        }
-
-        // Update is called once per frame
-        public void GameOver()
-        {
-            isGameEnded = true ;
-            GameOverEvents.Invoke();
-        }
+        GM = this;
     }
+
+    // Use this for initialization
+    public void StartGame()
+    {
+        StartGameEvents.Invoke();
+    }
+
+    // Update is called once per frame
+    public void GameOver()
+    {
+        isGameEnded = true;
+        GameOverEvents.Invoke();
+    }
+}

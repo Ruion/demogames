@@ -50,7 +50,6 @@ public class SpawnerParallel : MonoBehaviour
     void AssignDestination(GameObject obj, Transform target)
     {
         ObjectMover objectMover = obj.GetComponentInChildren<ObjectMover>();
-        objectMover.GM = GM;
         objectMover.target = target;
         objectMover.enabled = true;
     }

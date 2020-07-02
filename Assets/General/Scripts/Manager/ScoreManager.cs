@@ -8,10 +8,11 @@ public class ScoreManager : MonoBehaviour
     public ScoreVisualizer scoreVisualizer;
 
     public SoundManager soundManager;
-    public Transform player;
-    public Transform scoreEffectContainer;
+    public Transform spawnTarget;
     public GameObject addScoreEffectPrefab;
     public GameObject minusScoreEffectPrefab;
+    public ParticleSystem playerScoreEffectPrefab;
+    public ParticleSystem playerMinusScoreEffectPrefab;
 
     [ReadOnly]
     public string scoreName = "score";
@@ -25,20 +26,34 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(int amount)
     {
-        soundManager.AddScore();
         SpawnScoreEffect(addScoreEffectPrefab);
         scoreVisualizer.UpdateText(amount);
+        SpawnPlayerAddScoreEffect();
+        soundManager.AddScore();
     }
 
     public void MinusScore(int amount)
     {
-        soundManager.MinusScore();
         SpawnScoreEffect(minusScoreEffectPrefab);
         scoreVisualizer.UpdateText(-amount);
+        soundManager.MinusScore();
+        SpawnPlayerMinusScoreEffect();
     }
 
     public void SpawnScoreEffect(GameObject effectPrefab)
     {
-        Instantiate(effectPrefab, player.position + Vector3.up, Quaternion.identity, scoreEffectContainer);
+        GameObject vfx = Instantiate(effectPrefab, spawnTarget.position, Quaternion.identity);
+    }
+
+    public void SpawnPlayerAddScoreEffect()
+    {
+        playerScoreEffectPrefab.Clear();
+        playerScoreEffectPrefab.Play();
+    }
+
+    public void SpawnPlayerMinusScoreEffect()
+    {
+        playerMinusScoreEffectPrefab.Clear();
+        playerMinusScoreEffectPrefab.Play();
     }
 }

@@ -20,7 +20,7 @@ using Sirenix.OdinInspector;
 /// </summary>
 public class DBModelEntity : DBModelMaster
 {
-    private DataRowCollection rows;
+    protected DataRowCollection rows;
 
     [FoldoutGroup("OperationEvent")] public UnityEvent OnSaveToLocal;
     [FoldoutGroup("OperationEvent")] public UnityEvent OnSyncStart;
@@ -79,7 +79,7 @@ public class DBModelEntity : DBModelMaster
     /// Make web request and send data to server, data will continue to send regardless of any error encounter
     /// </summary>
     /// <returns></returns>
-    private IEnumerator SyncToServer()
+    protected virtual IEnumerator SyncToServer()
     {
         if (OnSyncStart.GetPersistentEventCount() > 0) OnSyncStart.Invoke();
 
@@ -302,11 +302,10 @@ public class DBModelEntity : DBModelMaster
 
         #endregion WebRequest
 
-        if (hasSync) successBar.GetComponent<StatusBar>().Finish();
         SyncEnded();
     }
 
-    private void SyncEnded()
+    protected void SyncEnded()
     {
         rows.Clear();
         Close();
@@ -318,7 +317,7 @@ public class DBModelEntity : DBModelMaster
     /// </summary>
     /// <param name="www"></param>
     /// <param name="errorMessage"></param>
-    private void ErrorAction(UnityWebRequest www, string errorMessage)
+    protected void ErrorAction(UnityWebRequest www, string errorMessage)
     {
         Debug.LogError(name + " :\n" + errorMessage + "\n" + www.error + "\n" + " server url: " + dbSettings.sendURL + dbSettings.sendAPI);
     }

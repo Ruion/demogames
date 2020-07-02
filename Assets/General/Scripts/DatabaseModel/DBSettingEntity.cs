@@ -41,12 +41,15 @@ public class DBSettingEntity : SerializedMonoBehaviour
         // add api to Setting.json - playerdata_sendAPI : submit-player-data
         DBSettingEntity[] dBSettingEntities = FindObjectsOfType<DBSettingEntity>();
 
-        JSONSetter jsonSetter = gse.jsonSetter;
+        //JSONSetter jsonSetter = gse.jsonSetter;
         foreach (DBSettingEntity e in dBSettingEntities)
         {
             if (string.IsNullOrEmpty(e.dbSettings.sendAPI)) continue;
 
-            jsonSetter.UpdateSetting(e.dbSettings.fileName + "-API", e.dbSettings.sendAPI);
+            //jsonSetter.UpdateSetting(e.dbSettings.fileName + "-API", e.dbSettings.sendAPI);
+
+            // save to Settings.json
+            JSONExtension.SaveSetting(gse.SettingFilePath, e.dbSettings.fileName + "-API", e.dbSettings.sendAPI);
         }
 
         // legacy binary formatter save method
@@ -72,9 +75,10 @@ public class DBSettingEntity : SerializedMonoBehaviour
         dbSettings = JsonConvert.DeserializeObject<DBEntitySetting>(File.ReadAllText(filePath + ".json"));
 
         // fetch & Update setting from global JSONSetter
-        JSONSetter jsonSetter = gse.jsonSetter;
+        //JSONSetter jsonSetter = gse.jsonSetter;
 
-        JObject jObject = jsonSetter.LoadSetting();
+        //JObject jObject = jsonSetter.LoadSetting();
+        JObject jObject = JSONExtension.LoadJson(gse.SettingFilePath);
         dbSettings.sendURL = gse.Server_URL;
 
         dbSettings.folderPath = gse.Project_Folder;

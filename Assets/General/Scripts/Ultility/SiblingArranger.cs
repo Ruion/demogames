@@ -12,9 +12,12 @@ public class SiblingArranger : MonoBehaviour
 {
     public int siblingIndex;
 
-    
+    [SerializeField]
+    private bool arrangeOnEnable = true;
+
     void OnEnable()
     {
+        if(arrangeOnEnable)
         SetSiblingIndex();
     }
 

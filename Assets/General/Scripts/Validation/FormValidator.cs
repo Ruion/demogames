@@ -7,6 +7,7 @@ using System.Collections;
 using TMPro;
 using Sirenix.OdinInspector;
 using System.IO;
+using UnityEngine.Events;
 
 /// <summary>
 /// Validate the user input in Registration Page.
@@ -31,6 +32,9 @@ public class FormValidator : MonoBehaviour
     public List<FormField> formFields = new List<FormField>();
 
     private FormField invalidField;
+
+    public UnityEvent onValidatePass;
+    private bool validatePass;
 
     #endregion variables
 
@@ -58,6 +62,11 @@ public class FormValidator : MonoBehaviour
         if (invalidField == null && consent.isOn == true)
         {
             Submit.interactable = true;
+            if (!validatePass)
+            {
+                validatePass = true;
+                if (onValidatePass.GetPersistentEventCount() > 0) onValidatePass.Invoke();
+            }
             //WarningSubmit.gameObject.SetActive(false);
         }
         else
@@ -127,7 +136,7 @@ public class FormField
     [VerticalGroup("Fields/Right")]
     [FilePath(AbsolutePath = true)]
     [LabelText("Data txt file (optional)")]
-    [PropertyTooltip(@"By providing full txt file path, checking will add the lines of string inside txt file. Example: C:\UID_Toolkit\output\player_email_list.txt")]
+    [PropertyTooltip(@"By providing full txt file path, checking will include lines of string inside txt file. Example: C:\UID_Toolkit\output\player_email_list.txt")]
     public string serverDataFilePath;
 
     [ShowIf("isUnique")]
@@ -155,11 +164,11 @@ public class FormField
 
     [VerticalGroup("Fields/Right")]
     [PropertyTooltip("Only validate number in the input.")]
-    public bool ignoreAlphabetOnRegexValidation = false;
+    public bool ignoreAlphabet = false;
 
     [VerticalGroup("Fields/Right")]
     [PropertyTooltip("Only validate number in the input.")]
-    public string[] ignoreCharactersOnRegexValidation;
+    public string[] ignoreCharactersOnValidation;
 
     //[VerticalGroup("Fields/Left")]
     //[FoldoutGroup("Fields/Left/WarningMessage")]
@@ -182,7 +191,7 @@ public class FormField
 
     [HideInInspector] public bool isValid;
     [HideInInspector] public bool isDuplicated;
-    private List<string> dataList;
+    private List<string> dataList = new List<string>();
     private bool initialize;
 
     public string value
@@ -195,17 +204,17 @@ public class FormField
         }
     }
 
-    private string processedValueForRegexValidation
+    private string processedValue
     {
         get
         {
             string newValue = value;
 
-            if (ignoreAlphabetOnRegexValidation)
+            if (ignoreAlphabet)
                 newValue = StringExtensions.RemoveAlphabets(value);
 
-            if (ignoreCharactersOnRegexValidation.Length > 0)
-                newValue = StringExtensions.RemoveCharacters(value, ignoreCharactersOnRegexValidation);
+            if (ignoreCharactersOnValidation.Length > 0)
+                newValue = StringExtensions.RemoveCharacters(value, ignoreCharactersOnValidation);
 
             return newValue;
         }
@@ -225,12 +234,16 @@ public class FormField
 
             if (dbmodel != null)
                 // add distinct item that not exist in dataList
-                dataList.AddRange(dbmodel.GetDataByStringToList(fieldName).Except(dataList));
+                if (dataList.Count > 0)
+                    dataList.AddRange(dbmodel.GetDataByStringToList(fieldName).Except(dataList));
+                else
+                    dataList.AddRange(dbmodel.GetDataByStringToList(fieldName));
         }
 
         if (dropDown != null)
             dropDown.onValueChanged.AddListener(delegate { OnValueChange(); });
         textField.onValueChanged.AddListener(delegate { OnValueChange(); });
+        textField.onDeselect.AddListener(delegate { OnValueChange(); });
     }
 
     //public void UpdateRecordStatus()
@@ -267,7 +280,7 @@ public class FormField
         {
             if (!string.IsNullOrEmpty(regexPattern))
                 // check regex match
-                isValid = Regex.IsMatch(processedValueForRegexValidation, regexPattern);
+                isValid = Regex.IsMatch(processedValue, regexPattern);
         }
 
         // string is empty
@@ -275,7 +288,7 @@ public class FormField
         {
             if (checkMatching)
             {
-                string query = $"SELECT {fieldName} FROM {matchingDatabase.dbSettings.tableName} WHERE {fieldName} IN ('{value}')";
+                string query = $"SELECT {fieldName} FROM {matchingDatabase.dbSettings.tableName} WHERE {fieldName} IN ('{processedValue}')";
                 object status = matchingDatabase.ExecuteCustomSelectObject(query);
                 if (status == null)
                 {
@@ -290,7 +303,7 @@ public class FormField
             if (isUnique)
             {
                 // check duplicate
-                string same = dataList.FirstOrDefault(t => t == value);
+                string same = dataList.FirstOrDefault(t => t == processedValue);
 
                 if (same != null)
                 {
@@ -311,13 +324,19 @@ public class FormField
 
         if (!isValid)
         {
-            invalidMarker.SetActive(true);
-            validMarker.SetActive(false);
+            if (invalidMarker != null)
+                invalidMarker.SetActive(true);
+
+            if (validMarker != null)
+                validMarker.SetActive(false);
         }
         else
         {
-            invalidMarker.SetActive(false);
-            validMarker.SetActive(true);
+            if (invalidMarker != null)
+                invalidMarker.SetActive(false);
+
+            if (validMarker != null)
+                validMarker.SetActive(true);
         }
     }
 
@@ -326,14 +345,14 @@ public class FormField
         if (isDuplicated)
         {
             isValid = false;
-            //if (duplicateWarning != null)
-            duplicateWarning.SetActive(true);
+            if (duplicateWarning != null)
+                duplicateWarning.SetActive(true);
             //warningMessage = duplicateMessage;
         }
         else
         {
-            //if (duplicateWarning != null)
-            duplicateWarning.SetActive(false);
+            if (duplicateWarning != null)
+                duplicateWarning.SetActive(false);
         }
     }
 }

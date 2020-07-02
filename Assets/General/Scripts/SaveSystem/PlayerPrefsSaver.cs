@@ -4,7 +4,7 @@ using TMPro;
 
 /// <summary>
 /// Save the value of field / ScriptableScore / DataTime into PlayerPrefs
-/// Tips: set the name_ in inspector, drag this component into UnityEvent 
+/// Tips: set the name_ in inspector, drag this component into UnityEvent
 /// and select which function to execute, and drop the TMP UI Object into the function field.
 /// You can also call various Save() function via script.
 /// Supported type : TMP_InputField, InputField, TexhMeshProUGUI, ScriptableScore, DateTime, string
@@ -34,17 +34,9 @@ public class PlayerPrefsSaver : MonoBehaviour
         PlayerPrefs.SetString(name_, value);
     }
 
-    public void Save(ScriptableScore scoreCard)
-    {
-        PlayerPrefs.SetString(name_, scoreCard.score.ToString());
-    }
-
     [ContextMenu("DateTime")]
     public void SaveDateTime()
     {
         PlayerPrefs.SetString(name_, System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-        Debug.Log(PlayerPrefs.GetString(name_));
-       // Debug.Log(System.DateTime.UtcNow);
     }
 }
-

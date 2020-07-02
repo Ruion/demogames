@@ -18,6 +18,10 @@ public class JSONSetter : MonoBehaviour
     private string fileName = "Setting.json";
     private string globalFileName = "GlobalSetting.json";
 
+    private void Start()
+    {
+    }
+
     public void SaveSetting(JObject jsonObj)
     {
         string savePath = Project_Folder;

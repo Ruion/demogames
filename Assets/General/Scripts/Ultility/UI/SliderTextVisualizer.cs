@@ -19,6 +19,7 @@ public class SliderTextVisualizer : MonoBehaviour
 
     public void VisualizeSliderValue()
     {
-        text_.text = slider_.value.ToString();
+        text_.text =
+            slider_.value.ToString();
     }
 }

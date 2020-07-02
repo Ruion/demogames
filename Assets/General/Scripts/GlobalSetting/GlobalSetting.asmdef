@@ -1,0 +1,16 @@
+{
+    "name": "GlobalSetting",
+    "references": [
+        "GUID:d4f8f3098ca064117a9b67941bfedd91",
+        "GUID:9e8394a702a529c44bb6efcbd6f4bccc",
+        "GUID:4f31952b963a1e440a29f3485e06cabe"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

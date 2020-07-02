@@ -16,7 +16,7 @@ public class AdminPagesManager : MonoBehaviour
         if(tabButtonContainer.childCount < 2) SpawnTabButtons();
 
         if(selectedPage != null) selectedPage.SetActive(true);
-        else selectedPage = pages[0].page;
+        else selectedPage = pages[pages.Length-1].page;
     }
 
     private void SpawnTabButtons()

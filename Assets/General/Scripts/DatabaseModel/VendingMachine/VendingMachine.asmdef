@@ -1,0 +1,17 @@
+{
+    "name": "VendingMachine",
+    "references": [
+        "GUID:6717110001acbd14fad1fd9021ab6a21",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:0f2ca96fa4fdf354981f2204b930cf4d",
+        "GUID:9e8394a702a529c44bb6efcbd6f4bccc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

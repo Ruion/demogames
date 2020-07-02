@@ -48,7 +48,7 @@ namespace Universal
                 title.text = "Error";
                 msg.text = error;
                 Debug.Log(name + " : " + msg.text);
-                JSONExtension.SaveSetting(gameSettingEntity.jsonSetter.Project_Folder + "\\ErrorLog", DateTime.Now.ToString(), logString);
+                JSONExtension.SaveSetting(gameSettingEntity.Project_Folder + "\\ErrorLog", DateTime.Now.ToString(), logString);
             }
         }
     }

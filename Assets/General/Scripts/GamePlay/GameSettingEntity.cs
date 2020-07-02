@@ -10,17 +10,25 @@ public class GameSettingEntity : MonoBehaviour
     [Header("GameSetting - SAVE setting every new project")]
     public Game.Settings gameSettings;
 
-    public string Server_URL { get { return jsonSetter.LoadSettingFileFromPath(@"C:\UID_Toolkit\Global.json")["Server_URL"].ToString(); } }
+    //public static GameSettingEntity instance;
+
+    public string Server_URL { get { return JSONExtension.LoadSetting(@"C:\UID_Toolkit\Global.json", "Server_URL").ToString(); } }
 
     public string Project_Folder
     {
         get
         {
-            return @"C:\UID-APP\" + jsonSetter.LoadSettingFileFromPath(@"C:\UID_Toolkit\Global.json")["Project_Code"].ToString();
+            return @"C:\UID-APP\" + JSONExtension.LoadSetting(@"C:\UID_Toolkit\Global.json", "Project_Code").ToString();
         }
     }
 
-    public JSONSetter jsonSetter;
+    public string SettingFilePath
+    {
+        get
+        {
+            return @"C:\UID-APP\" + JSONExtension.LoadSetting(@"C:\UID_Toolkit\Global.json", "Project_Code").ToString() + "\\Settings\\Setting";
+        }
+    }
 
     /// <summary>
     /// Save the settings value in to file. This function eccesible by right click component in inspector and click "SaveSetting"
@@ -28,8 +36,6 @@ public class GameSettingEntity : MonoBehaviour
     [ContextMenu("SaveSetting")]
     public virtual void SaveSetting()
     {
-        // GameSetting.SaveSetting(gameSettings);
-
         string filePath = Project_Folder + "\\Settings\\" + "Setting";
 
         JSONExtension.SaveValues(filePath, gameSettings);
@@ -66,10 +72,9 @@ public class GameSettingEntity : MonoBehaviour
     public virtual void Awake()
     {
         // BetterStreamingAssets.Initialize();
-        if (jsonSetter == null) jsonSetter = FindObjectOfType<JSONSetter>();
 
-        LoadSetting();
-        LoadGameSettingFromMaster();
+        //LoadSetting();
+        //LoadGameSettingFromMaster();
     }
 }
 
@@ -92,5 +97,15 @@ namespace Game
 
         //public string userPrimaryKeyName = "userPrimaryKey";
         public int checkInternetTimeOut = 5000;
+
+        public int gameTime = 25;
+
+        public string voucherCodeDownloadAPI;
+        public string userPrimaryKeyName = "userPrimaryKey";
+        public bool realTimeOnlineValidate = true;
+        public int downloadCodeAPITimeOut = 10;
+        public int tier1Score = 1;
+        public int tier2Score = 2;
+        public int tier3Score = 7;
     }
 }

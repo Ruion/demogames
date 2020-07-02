@@ -42,7 +42,7 @@ public class Launcher : MonoBehaviour
     //[Tooltip("Your patches directory remote URL")]
     //public string PatchesDirectoryURL = "http://your/url/to/patches/directory/";
 
-    public string PatchesDirectoryURL { get { return FindObjectOfType<JSONSetter>().Server_FTP + "/patch/patches/directory/"; } }
+    public string PatchesDirectoryURL { get { return FindObjectOfType<JSONSetter>().Server_FTP + "/patch/patches/"; } }
 
     [Tooltip("Your game name! This string will be attached to app root path to launch your game when patching process will end!")]
     public string AppToLaunch = "Build.exe";

@@ -31,8 +31,11 @@ public static class JSONExtension
         // Create folder at the given path
         Directory.CreateDirectory(Path.GetDirectoryName(filePath));
 
+        if (!filePath.Contains(".json"))
+            filePath += ".json";
+
         // Create a .json file with "{}" text in the file
-        if (!File.Exists(filePath + ".json")) File.WriteAllText(filePath + ".json", "{}");
+        if (!File.Exists(filePath)) File.WriteAllText(filePath, "{}");
 
         // Load the json file
         JObject jsonObj = LoadJson(filePath);
@@ -49,10 +52,10 @@ public static class JSONExtension
         }
 
         // Write the json text into a file
-        File.WriteAllText(filePath + ".json", JsonConvert.SerializeObject(jsonObj, Formatting.Indented));
+        File.WriteAllText(filePath, JsonConvert.SerializeObject(jsonObj, Formatting.Indented));
 
         // Pure C# delete this line
-        Debug.Log(string.Format("Save to file {0}", filePath + ".json"));
+        Debug.Log(string.Format("Save to file {0}", filePath));
     }
 
     // Load single property from .json file
@@ -78,8 +81,13 @@ public static class JSONExtension
     // Load a .json file's text and parse to JSON format
     public static JObject LoadJson(string filePath)
     {
+        if (!filePath.Contains(".json"))
+        {
+            filePath += ".json";
+        }
+
         // Read the file text
-        string json = File.ReadAllText(filePath + ".json");
+        string json = File.ReadAllText(filePath);
 
         // Deserialize into json format
         JObject jsonObj = JObject.Parse(json);
@@ -121,6 +129,23 @@ public static class JSONExtension
                 fields[i].SetValue(Object, bool.Parse(LoadSetting(filePath, fields[i].Name)));
             }
         }
+    }
+
+    public static JObject JObjectFromString(this string jsonString)
+    {
+        if (!jsonString.StartsWith("{"))
+        {
+            Debug.Log("string not end with '{'");
+            return null;
+        }
+
+        if (!jsonString.EndsWith("}"))
+        {
+            Debug.Log("string not end with '}'");
+            return null;
+        }
+
+        return JObject.Parse(jsonString);
     }
 
     #endregion Utilities

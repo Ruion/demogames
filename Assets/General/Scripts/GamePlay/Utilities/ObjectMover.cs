@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Move towars a target transform position
@@ -6,42 +7,32 @@
 /// Notes: component depends on GameManager.isGameEnded state, it will stop moving and disable itself
 /// if GameManager.isGameEnded is true
 /// </summary>
-public class ObjectMover : MonoBehaviour {
-
+public class ObjectMover : MonoBehaviour
+{
     // Adjust the speed for the application.
-    public float speed = 1.5f;
+    public float speed = 5f;
 
-    // The target (cylinder) position.
+    public float speedMultipier = 1f;
+
+    public Vector3 direction;
+
     public Transform target;
+    public float minDistance = 0.01f;
 
-    [HideInInspector]
-    public GameManager GM;
-
-    void Update()
+    private void Update()
     {
-        if(GM == null)
+        float step = speed * Time.deltaTime * speedMultipier;
+
+        if (target == null)
         {
-            GM = FindObjectOfType<GameManager>();
+            // Move our position a step closer to the target.
+            // calculate distance to move
+            transform.Translate(direction * step);
         }
-
-        if (GM.isGameEnded)
+        else
         {
-            enabled = false;
-            return;
+            if ((transform.position - target.position).sqrMagnitude > minDistance * minDistance)
+                transform.position = Vector3.MoveTowards(transform.position, target.position, speed * step);
         }
-
-        // Move our position a step closer to the target.
-        float step = speed * Time.deltaTime; // calculate distance to move
-        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-
-        // Check if the position of the cube and sphere are approximately equal.
-        if (Vector3.Distance(transform.position, target.position) < 0.001f)
-        {
-            // destroy unseen object 
-            Destroy(transform.parent.gameObject);
-        }
-
-        
     }
 }
-

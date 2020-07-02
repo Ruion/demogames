@@ -2,6 +2,8 @@
 using UnityEngine.Events;
 using System.IO.Ports;
 using System;
+using System.Collections.Generic;
+using System.Collections;
 
 public class VendingMachine : WaitExtension
 {
@@ -19,7 +21,7 @@ public byte aa;*/
 
     [HideInInspector] public DBModelEntity vmOperateRecordDB;
     public UnityEvent onMotorTurn;
-    public UnityEvent onDropFail;
+    public UnityEvent onMotorFail;
 
     // Start is called before the first frame update
     private void Start()
@@ -622,7 +624,136 @@ public byte aa;*/
             if (proc.StandardOutput.ReadLine().Contains("fail"))
             {
                 PlayerPrefs.SetString("turn_result", "Fail");
-                if (onDropFail.GetPersistentEventCount() > 0) onDropFail.Invoke();
+                if (onMotorFail.GetPersistentEventCount() > 0) { Debug.LogError($"Motor turn failed on {PlayerPrefs.GetString("operate_at")}"); onMotorFail.Invoke(); }
+            }
+        }
+
+        if (proc.HasExited == false)
+        {
+            proc.WaitForExit(3000);
+        }
+
+        proc.EnableRaisingEvents = true;
+
+        proc.Close();
+
+        if (onMotorTurn.GetPersistentEventCount() > 0) onMotorTurn.Invoke();
+
+        if (PlayerPrefs.GetString("turn_result") == "Fail") StartCoroutine(SecondTurn(id));
+    }
+
+    private IEnumerator SecondTurn(string id)
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        var proc = new System.Diagnostics.Process();
+
+        var process = new System.Diagnostics.Process
+        {
+            StartInfo = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "C:\\Windows\\System32\\fsutil.exe",
+                Arguments = "behavior query SymlinkEvaluation",
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                CreateNoWindow = true
+            }
+        };
+
+        proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+        proc.StartInfo.Verb = "print";
+
+        // Using PDFtoPrinter
+        proc.StartInfo.FileName = "C:\\Vending-Machine-Controller\\Vending-Machine-Controller.exe";
+        //  proc.StartInfo.Arguments = "-motor_lane " + motor_lane;
+        proc.StartInfo.Arguments = "-motor_lane motor_" + id;
+
+        proc.StartInfo.RedirectStandardOutput = true;
+
+        //  Debug.Log(proc.StartInfo.Arguments);
+        /*
+        proc.StartInfo.FileName = final_path;
+        proc.StartInfo.Arguments = final_path2;
+        */
+
+        PlayerPrefs.SetString("turn_result", "Success");
+
+        proc.StartInfo.UseShellExecute = false;
+        proc.StartInfo.CreateNoWindow = true;
+
+        proc.Start();
+
+        while (!proc.StandardOutput.EndOfStream)
+        {
+            // Debug.Log(proc.StandardOutput.ReadLine());
+            if (proc.StandardOutput.ReadLine().Contains("fail"))
+            {
+                PlayerPrefs.SetString("turn_result", "Fail");
+                if (onMotorFail.GetPersistentEventCount() > 0) onMotorFail.Invoke();
+            }
+        }
+
+        if (proc.HasExited == false)
+        {
+            proc.WaitForExit(3000);
+        }
+
+        proc.EnableRaisingEvents = true;
+
+        proc.Close();
+
+        if (onMotorTurn.GetPersistentEventCount() > 0) onMotorTurn.Invoke();
+
+        if (PlayerPrefs.GetString("turn_result") == "Fail") StartCoroutine(ThirdTurn(id));
+    }
+
+    private IEnumerator ThirdTurn(string id)
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        var proc = new System.Diagnostics.Process();
+
+        var process = new System.Diagnostics.Process
+        {
+            StartInfo = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "C:\\Windows\\System32\\fsutil.exe",
+                Arguments = "behavior query SymlinkEvaluation",
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                CreateNoWindow = true
+            }
+        };
+
+        proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+        proc.StartInfo.Verb = "print";
+
+        // Using PDFtoPrinter
+        proc.StartInfo.FileName = "C:\\Vending-Machine-Controller\\Vending-Machine-Controller.exe";
+        //  proc.StartInfo.Arguments = "-motor_lane " + motor_lane;
+        proc.StartInfo.Arguments = "-motor_lane motor_" + id;
+
+        proc.StartInfo.RedirectStandardOutput = true;
+
+        //  Debug.Log(proc.StartInfo.Arguments);
+        /*
+        proc.StartInfo.FileName = final_path;
+        proc.StartInfo.Arguments = final_path2;
+        */
+        PlayerPrefs.SetString("turn_result", "Success");
+
+        proc.StartInfo.UseShellExecute = false;
+        proc.StartInfo.CreateNoWindow = true;
+
+        proc.Start();
+
+        while (!proc.StandardOutput.EndOfStream)
+        {
+            // Debug.Log(proc.StandardOutput.ReadLine());
+            if (proc.StandardOutput.ReadLine().Contains("fail"))
+            {
+                PlayerPrefs.SetString("turn_result", "Fail");
+                if (onMotorFail.GetPersistentEventCount() > 0) onMotorFail.Invoke();
             }
         }
 

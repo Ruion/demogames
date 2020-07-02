@@ -14,7 +14,7 @@ public class LogMessageRecorder : MonoBehaviour
         get
         {
             return string.Format(
-gameSettingEntity.jsonSetter.Project_Folder + "{0}{1}{2}",
+gameSettingEntity.Project_Folder + "{0}{1}{2}",
 new System.Object[] { "\\DebugMessages\\", System.DateTime.Now.ToShortDateString().Replace("/", "-"), "_DebugMessage.txt" });
         }
     }
@@ -23,7 +23,7 @@ new System.Object[] { "\\DebugMessages\\", System.DateTime.Now.ToShortDateString
     {
         get
         {
-            return string.Format(gameSettingEntity.jsonSetter.Project_Folder + "{0}{1}{2}",
+            return string.Format(gameSettingEntity.Project_Folder + "{0}{1}{2}",
             new System.Object[] { "\\DebugMessages\\", System.DateTime.Now.ToShortDateString().Replace("/", "-"), "_DebugMessage.csv" });
         }
     }

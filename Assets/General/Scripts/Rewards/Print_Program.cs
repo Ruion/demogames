@@ -1,9 +1,11 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Print_Program : RewardMaster { 
     public string printerPath;
 
+    public UnityEvent OnPrinted;
 
     public void Print(string name)
     {
@@ -24,6 +26,8 @@ public class Print_Program : RewardMaster {
         proc.StartInfo.UseShellExecute = false;
         proc.StartInfo.CreateNoWindow = true;
 
+        OnPrinted.Invoke();
+
         proc.Start();
 
         if (proc.HasExited == false)
@@ -33,18 +37,8 @@ public class Print_Program : RewardMaster {
 
         proc.EnableRaisingEvents = true;
 
+        Debug.Log("Printed");
+        
         proc.Close();
     }
-    /*
-    private static bool KillAdobe(string name)
-    {
-        foreach (System.Diagnostics.Process process in System.Diagnostics.Process.GetProcesses().Where(
-            process => process.ProcessName.StartsWith(name)))
-        {
-            process.Kill();
-            return true;
-        }
-        return false;
-    }
-    */
 }

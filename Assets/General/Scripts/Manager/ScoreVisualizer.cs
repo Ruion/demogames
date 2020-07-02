@@ -5,14 +5,13 @@ using TMPro;
 /// Visualize the score to TextMeshProUGUI text. Use this component
 /// to add/minus score and display score to text
 /// </summary>
-public class ScoreVisualizer : GameSettingEntity
+public class ScoreVisualizer : MonoBehaviour
 {
     public TextMeshProUGUI[] scoreTexts;
     private int score;
 
-    public override void Awake()
+    private void Awake()
     {
-        base.Awake();
         score = 0;
     }
 
@@ -26,6 +25,7 @@ public class ScoreVisualizer : GameSettingEntity
 
     public void UpdateText(int amount)
     {
+        if (score + amount < 0) return;
         score += amount;
 
         VisualiseScore();
@@ -44,10 +44,26 @@ public class ScoreVisualizer : GameSettingEntity
         }
     }
 
+    public void VisualiseTier()
+    {
+        for (int t = 0; t < scoreTexts.Length; t++)
+        {
+            scoreTexts[t].text = PlayerPrefs.GetString("voucher_code").Insert(4, " ");
+        }
+    }
+
     public void SaveScore()
     {
-        LoadGameSettingFromMaster();
-
         PlayerPrefs.SetString("score", score.ToString());
+
+        GameSettingEntity gse = FindObjectOfType<GameSettingEntity>();
+
+        if (score >= gse.gameSettings.tier1Score) PlayerPrefs.SetString("voucher_code", "TIER1");
+        if (score >= gse.gameSettings.tier2Score) PlayerPrefs.SetString("voucher_code", "TIER2");
+        if (score >= gse.gameSettings.tier3Score) PlayerPrefs.SetString("voucher_code", "TIER3");
+
+        if (score >= gse.gameSettings.tier1Score) PlayerPrefs.SetString("result", "TIER1");
+        if (score >= gse.gameSettings.tier2Score) PlayerPrefs.SetString("result", "TIER2");
+        if (score >= gse.gameSettings.tier3Score) PlayerPrefs.SetString("result", "TIER3");
     }
 }

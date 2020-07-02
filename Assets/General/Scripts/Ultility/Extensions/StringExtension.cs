@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using UnityEngine;
 
 public static class StringExtensions
 {
@@ -12,6 +13,16 @@ public static class StringExtensions
 
         char[] a = s.ToCharArray();
         a[0] = char.ToUpper(a[0]);
+        return new string(a);
+    }
+
+    public static string FirstCharToLower(this string s)
+    {
+        if (string.IsNullOrEmpty(s))
+            throw new ArgumentException("There is no first letter");
+
+        char[] a = s.ToCharArray();
+        a[0] = char.ToLower(a[0]);
         return new string(a);
     }
 
@@ -42,5 +53,12 @@ public static class StringExtensions
         var newValue = Regex.Replace(oldString, @"[A-Za-z]+", "");
 
         return newValue;
+    }
+
+    public static string FromBase64String(this string base64String)
+    {
+        byte[] data = System.Convert.FromBase64String(base64String);
+
+        return System.Text.ASCIIEncoding.ASCII.GetString(data);
     }
 }

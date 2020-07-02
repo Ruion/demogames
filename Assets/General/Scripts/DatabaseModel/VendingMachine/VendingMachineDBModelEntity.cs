@@ -43,6 +43,9 @@ public class VendingMachineDBModelEntity : DBModelEntity
     public TMP_InputField dropQuantityField;
     public TMP_InputField dropCycleField;
 
+    [FilePath(AbsolutePath = true, Extensions = "txt")]
+    public string queryCondition { get { return System.IO.File.ReadAllText(@"C:\UID-APP\App-VendingMachineDropper\QueryCondition.txt"); } }
+
     #endregion fields
 
     protected override void OnEnable()
@@ -65,9 +68,14 @@ public class VendingMachineDBModelEntity : DBModelEntity
 
         // string query = "SELECT * FROM " + dbSettings.tableName + " WHERE " + selectCustomCondition;
         string query =
+        string.Format("SELECT * FROM {0} WHERE is_disabled = 'false' AND quantity > 0{1} LIMIT 1"
+        // string.Format("SELECT * FROM {0} WHERE is_disabled = 'false' ORDER BY RANDOM() LIMIT 1"
+                        , new System.Object[] { dbSettings.tableName, queryCondition });
+
+        /*string query =
         string.Format("SELECT * FROM {0} WHERE is_disabled = 'false' AND quantity > 0 LIMIT 1"
         // string.Format("SELECT * FROM {0} WHERE is_disabled = 'false' ORDER BY RANDOM() LIMIT 1"
-                        , new System.Object[] { dbSettings.tableName });
+                        , new System.Object[] { dbSettings.tableName });*/
         DataRowCollection drc = ExecuteCustomSelectQuery(query);
 
         if (drc.Count < 1)
@@ -133,6 +141,52 @@ public class VendingMachineDBModelEntity : DBModelEntity
     }
 
     #region Testing
+
+    public void DropTest()
+    {
+        GetItem();
+
+        if (item_quantity < 1) return;
+
+        ConnectDb();
+
+        // turn the motor
+        vm.TurnMotor(item_id.ToString());
+
+        PlayerPrefs.SetString("motor_id", item_id.ToString());
+        PlayerPrefs.SetString("lane", item_lane);
+        PlayerPrefs.SetString("item_index", (item_limit + 1 - item_quantity).ToString());
+        PlayerPrefs.SetString("operate_at", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+        if (OnStockGiven.GetPersistentEventCount() > 0) OnStockGiven.Invoke();
+
+        item_quantity--;
+
+        List<string> col = new List<string>();
+        List<string> val = new List<string>();
+
+        col.Add("quantity");
+        val.Add(item_quantity.ToString());
+
+        UpdateData(col, val, "id = " + item_id);
+
+        if (item_quantity < 1)
+        {
+            col = new List<string>();
+            val = new List<string>();
+
+            col.Add("is_disabled");
+            val.Add("true");
+
+            UpdateData(col, val, "id = '" + item_id + "'");
+        }
+
+        Debug.Log(name + " - " + item_id + " : " + item_name + " has " + item_quantity + " left | Lane : " + item_lane);
+
+        Close();
+
+        if (OnTestEnded.GetPersistentEventCount() > 0) OnTestEnded.Invoke();
+    }
 
     [Button(ButtonSizes.Large)]
     public void AutoTest()

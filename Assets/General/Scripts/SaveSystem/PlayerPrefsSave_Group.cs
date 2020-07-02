@@ -56,8 +56,8 @@ public class DataField
 
     [HideLabel]
     [BoxGroup("Field/Fields")]
-    [HideIf("savetype", SaveType.DateTime, false)]
-    [DisableIf("@savetype==SaveType.Manual", false)]
+    [ShowIf("savetype", SaveType.InputField_TMP, false)]
+    [ShowIf("savetype", SaveType.InputField, false)]
     public TMP_Dropdown dropdown;
 
     [HideLabel]
@@ -72,7 +72,7 @@ public class DataField
 
     [BoxGroup("Field/Fields")]
     [EnableIf("savetype", SaveType.Manual)]
-    public string value_;
+    public string value_ = "";
 
     [BoxGroup("Field/Fields")]
     [PropertyTooltip("Remove alphabets when saving the value")]
@@ -85,7 +85,8 @@ public class DataField
     public string GetValue()
     {
         string dropDownValue = "";
-        if (dropdown != null && savetype != SaveType.DateTime && savetype != SaveType.Manual) dropDownValue = dropdown.options[dropdown.value].text;
+        //if (dropdown != null && (savetype == SaveType.InputField_TMP || savetype == SaveType.InputField)) dropDownValue = dropdown.options[dropdown.value].text;
+        if (dropdown != null) dropDownValue = dropdown.options[dropdown.value].text;
 
         switch (savetype)
         {
