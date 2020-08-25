@@ -4397,7 +4397,7 @@ PrefabInstance:
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}
       propertyPath: gameSettings.serverDomainURL
-      value: http://200305-my-victoriasecret.unicom-interactive-digital
+      value: http://200305-my-victoriasecret.unicom-interactive-digital.com
       objectReference: {fileID: 0}
     - target: {fileID: 5107244017836863797, guid: 8cf9bc346bec815448f5896dcc069492,
         type: 3}

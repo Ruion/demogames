@@ -17,7 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game-200306-MY-VictoriaSecret/4-REGISTRATION.unity
     guid: 92bb11830ab396b4bb409b92cd6c043e
-  - enabled: 1
-    path: Assets/Game-200306-MY-VictoriaSecret/5-CONGRATULATION.unity
-    guid: c5193a11db2a85447a11a958311096f5
   m_configObjects: {}
