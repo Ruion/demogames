@@ -19,18 +19,22 @@ public class PuzzleValidator : SerializedMonoBehaviour
     public UnityEvent onCorrect;
 
     private SoundManager sm;
+    private GameManager gm;
 
     private void Awake()
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
 
+        gm = FindObjectOfType<GameManager>();
         sm = FindObjectOfType<SoundManager>();
     }
 
     public void ValidateAlphabet(PuzzleAlphabet alphabet)
     {
-        if(correctAlphabets.Contains(alphabet) && correctAlphabetDiction[alphabet.alphabet] > 0)
+        if (gm.isPass == true) return;
+
+        if (correctAlphabets.Contains(alphabet) && correctAlphabetDiction[alphabet.alphabet] > 0)
         {
             // if click true alphabet
             alphabet.CorrectAnsweHandler();
@@ -43,20 +47,18 @@ public class PuzzleValidator : SerializedMonoBehaviour
             correctAlphabetDiction[alphabet.alphabet]--;
 
         }
-        else
-        {
-            // click on wrong alphabet
-            alphabet.WrongAnsweHandler();
-            sm.MinusScore();
-        }
+        //else
+        //{
+        //    // click on wrong alphabet
+        //    alphabet.WrongAnsweHandler();
+        //    sm.MinusScore();
+        //}
 
         // stop next checking when alphabet not same
         // if (answerChar.Count == correctCharacter && correctChar.All(answerChar.Contains))
         if (answerChar.Count == correctCharacter)
         {
-
             if (onCorrect.GetPersistentEventCount() > 0) onCorrect.Invoke();
-            GameManager gm = FindObjectOfType<GameManager>();
             gm.isPass = true;
             gm.GameOver();
         }

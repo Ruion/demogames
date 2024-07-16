@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PuzzleAlphabet : MonoBehaviour
+public class PuzzleAlphabet : MonoBehaviour, IPointerEnterHandler
 {
     public string alphabet;
     public GameObject alphabetObj;
     public GameObject wrongImage;
+    private bool validated = false;
 
     public void NotifyPuzzle()
     {
@@ -26,5 +28,14 @@ public class PuzzleAlphabet : MonoBehaviour
         wrongImage.SetActive(true);
         GetComponent<Button>().enabled = false;
 
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (validated) return;
+
+        PuzzleValidator.instance.ValidateAlphabet(this);
+
+        validated = true;
     }
 }
