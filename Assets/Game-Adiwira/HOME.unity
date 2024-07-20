@@ -1845,7 +1845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867258de60e9e5c47938be2a6544e20d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleType: 8
+  puzzleType: 1
 --- !u!82 &218756497902720213
 AudioSource:
   m_ObjectHideFlags: 0

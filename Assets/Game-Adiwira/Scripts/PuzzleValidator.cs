@@ -34,6 +34,8 @@ public class PuzzleValidator : SerializedMonoBehaviour
     {
         if (gm.isPass == true) return;
 
+        if(gm.isGameStarted == false) return;
+
         if (correctAlphabets.Contains(alphabet) && correctAlphabetDiction[alphabet.alphabet] > 0)
         {
             // if click true alphabet
